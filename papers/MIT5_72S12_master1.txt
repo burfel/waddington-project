@@ -1,0 +1,1255 @@
+Chapter 1
+
+Stochastic Processes and Brownian
+Motion
+
+Equilibrium thermodynamics and statistical mechanics are widely considered to be core subject
+matter for any practicing chemist [1]. There are plenty of reasons for this:
+
+   •	 A great many chemical phenomena encountered in the laboratory are well described by equi­
+      librium thermodynamics.
+
+   •	 The physics of chemical systems at equilibrium is generally well understood and mathemati­
+      cally tractable.
+
+   •	 Equilibrium thermodynamics motivates our thinking and understanding about chemistry
+      away from equilibrium.
+
+This last point, however, raises a serious question: how well does equilibrium thermodynamics really
+motivate our understanding of nonequilibrium phenomena? Is it reasonable for an organometallic
+chemist to analyze a catalytic cycle in terms of rate-law kinetics, or for a biochemist to treat the
+concentration of a solute in an organelle as a bulk mixture of compounds? Under many circum­
+stances, equilibrium thermodynamics suﬃces, but a growing number of outstanding problems in
+chemistry – from electron transfer in light-harvesting complexes to the chemical mechanisms behind
+immune system response– concern processes that are fundamentally out of equilibrium.
+
+This course endeavors to introduce the key ideas that have been developed over the last century to
+describe nonequilibrium phenomena. These ideas are almost invariably founded upon a statistical
+description of matter, as in the equilibrium case. However, since nonequilibrium phenomena con­
+tain a more explicit time-dependence than their equilibrium counterparts (consider, for example,
+the decay of an NMR signal or the progress of a reaction), the probabilistic tools we develop will
+require some time-dependence as well.
+
+In this chapter, we consider systems whose behavior is inherently nondeterministic, or stochas­
+tic, and we establish methods for describing the probability of ﬁnding the system in a particular
+state at a speciﬁed time.
+
+                                                 1
+Chapter 1. Stochastic Processes and Brownian Motion                                                  2
+
+
+1.1     Markov Processes
+1.1.1    Probability Distributions and Transitions
+Suppose that an arbitrary system of interest can be in any one of N distinct states. The system
+could be a protein exploring diﬀerent conformational states; or a pair of molecules oscillating be­
+tween a “reactants” state and a “products” state; or any system that can sample diﬀerent states
+over time. Note here that N is ﬁnite, that is, the available states are discretized. In general, we
+could consider systems with a continuous set of available states (and we will do so in section 1.3),
+but for now we will conﬁne ourselves to the case of a ﬁnite number of available states. In keeping
+with our discretization scheme, we will also (again, for now) consider the time evolution of the
+system in terms of discrete timesteps rather than a continuous time variable.
+
+Let the system be in some unknown state m at timestep s, and suppose we’re interested in the
+probability of ﬁnding the system in a speciﬁc state n, possibly but not necessarily the same as state
+m, at the next timestep s + 1. We will denote this probability by
+
+                                             P (n, s + 1)
+
+If we had knowledge of m, then this probability could be described as the probability of the system
+being in state n at timestep s + 1 given that the system was in state m at timestep s. Probabilities
+of this form are known as conditional probabilities, and we will denote this conditional probability
+by
+                                          Q(m, s | n, s + 1)
+
+
+In many situations of physical interest, the probability of a transition from state m to state n is
+time-independent, depending only on the nature of m and n, and so we drop the timestep arguments
+to simplify the notation,
+                                   Q(m, s | n, s + 1) ≡ Q(m, n)
+This observation may seem contradictory, because we are interested in the time-dependent proba­
+bility of observing a system in a state n while also claiming that the transition probability described
+above is time-independent. But there is no contradiction here, because the transition probability Q
+– a conditional probability – is a diﬀerent quantity from the time-dependent probability P we are
+interested in. In fact, we can express P (n, s+1) in terms of Q(m, n) and other quantities as follows:
+
+   Since we don’t know the current state m of the system, we consider all possible states m and
+   multiply the probability that the system is in state m at timestep s by the probability of the
+   system being in state n at timestep s+1 given that it is in state m at timestep s. Summing over
+   all possible states m gives P (n, s1 ) at timestep s + 1 in terms of the corresponding probabilities
+   at timestep s.
+
+Mathematically, this formulation reads
+                                                  ∑
+                                 P (n, s + 1) =       P (m, s)Q(m, n)                             (1.1)
+                                                  m
+
+We’ve made some progress towards a practical method of ﬁnding P (n, s+1), but the current formu­
+lation Eq.(1.1) requires knowledge of both the transition probabilities Q(m, n) and the probabilities
+
+5.72, Spring 2008                                                                               J. Cao
+
+Chapter 1. Stochastic Processes and Brownian Motion                                              3
+
+
+P (m, s) for all states m. Unfortunately, P (m, s) is just as much a mystery to us as P (n, s + 1).
+What we usually know and control in experiments are the initial conditions; that is, if we prepare
+the system in state k at timestep s = 0, then we know that P (k, 0) = 1 and P (n, 0) = 0 for all
+n≠ k. So how do we express P (n, s + 1) in terms of the initial conditions of the experiment?
+
+We can proceed inductively: if we can write P (n, s + 1) in terms of P (m, s), then we can also
+write P (m, s) in terms of P (l, s − 1) by the same approach:
+                                            ∑
+                            P (n, s + 1) =      P (l, s − 1)Q(l, m)Q(m, n)                (1.2)
+                                             l,m
+
+Note that Q has two parameters, each of which can take on N possible values. Consequently we
+may choose to write Q as an N ×N matrix Q with matrix elements (Q)mn = Q(m, n). Rearranging
+the sums in Eq.(1.2) in the following manner,
+                                        ∑              ∑
+                         P (n, s + 1) =   P (l, s − 1)   Q(l, m)Q(m, n)                 (1.3)
+                                         l                      m
+
+we recognize the sum over m as the deﬁnition of a matrix product,
+                                   ∑
+                                      (Q)lm (Q)mn = (Q2 )ln                                   (1.4)
+                                     m
+
+Hence, Eq.(1.2) can be recast as
+                                                   ∑
+                                P (n, s + 1) =             P (l, s − 1)(Q2 )ln                (1.5)
+                                                   l
+
+This process can be continued inductively until P (n, s + 1) is written fully in terms of initial
+conditions. The ﬁnal result is:
+                                               ∑
+                                P (n, s + 1) =   P (m, 0)(Qs+1 )mn                         (1.6)
+                                                   m
+                                              = P (k, 0)(Qs+1 )mn                             (1.7)
+
+where k is the known initial state of the system (all other m do not contribute to the sum since
+P (m, 0) = 0 for m ̸= k). Any process that can be described in this manner is called a Markov
+process, and the sequence of events comprising the process is called a Markov chain.
+
+A more rigorous discussion of the origins and nature of Markov processes may be found in, e.g., de
+Groot and Mazur [2].
+
+1.1.2   The Transition Probability Matrix
+We now consider some important properties of the transition probability matrix Q. By virtue of
+its deﬁnition, Q is not necessarily Hermitian: if it were Hermitian, every conceivable transition
+between states would have to have the same forward and backward probability, which is often not
+the case.
+
+Example: Consider a chemical system that can exist in either a reactant state A or a product state
+B, with forward reaction probability p and backward reaction probability q = 1 − p,
+                                                       p
+                                                   A�B
+                                                       q
+
+
+5.72, Spring 2008                                                                           J. Cao
+
+Chapter 1. Stochastic Processes and Brownian Motion                                                       4
+
+
+The transition probability matrix Q for this system is the 2 × 2 matrix
+                                                   (        )
+                                                      q p
+                                              Q=
+                                                      q p
+
+To construct this matrix, we ﬁrst observe that the given probabilities directly describe the oﬀ-diagonal el­
+ements QAB and QBA ; then we invoke conservation of probability. For example, if the system is in the
+reactant state A, it can only stay in A or react to form product B; there are no other possible outcomes, so
+we must have QAA +QAB = 1. This forces the value 1−p = q upon QAA , and a similar argument yields QBB .
+
+Clearly this matrix is not symmetric, hence it is not Hermitian either, thus demonstrating our ﬁrst gen­
+eral observation about Q.
+
+The non-Hermiticity of Q implies also that its eigenvalues λi are not necessarily real-valued. Nev­
+ertheless, Q yields two sets of eigenvectors, a left set χi and a right set ϕi , which satisfy the
+relations
+
+                                                      χi Q = λi χi                                    (1.8)
+                                                      Q ϕi = λi ϕi                                    (1.9)
+
+The left- and right-eigenvectors of Q are orthonormal,
+
+                                                   ⟨χi |ϕj ⟩ = δij                                   (1.10)
+
+and they form a complete set, hence there is a resolution of the identity of the form
+                                        ∑
+
+                                             |ϕi ⟩ ⟨χi | = 1                                         (1.11)
+                                                  i
+                                                                                      ∑
+
+Conservation of probability further restricts the elements of Q to be nonnegative with n Qmn = 1.
+It can be shown that this condition guarantees that all eigenvalues of Q are bounded by the unit
+circle in the complex plane,
+                                              |λi | ≤ 1, ∀i                                (1.12)
+Proof of Eq.(1.12): The ith eigenvalue of Q satisﬁes
+                                                  ∑
+                                      λi ϕi (n) =   Qnm ϕi (m)
+                                                           m
+
+for each n. Take the absolute value of this relation,
+
+                                                           ∑
+                                           |λi ϕi (n)| =       Qnm ϕi (m)
+                                                           m
+
+Now we can apply the triangle inequality to the right hand side of the equation:
+
+                                      ∑                        ∑
+                                            Qnm ϕi (m) ≤           |Qnm ϕi (m)|
+                                       m                       m
+
+Also, since all elements of Q are nonnegative,
+                                                           ∑
+                                           |λi ϕi (n)| ≤       Qnm |ϕi (m)|
+                                                           m
+
+
+5.72, Spring 2008                                                                                   J. Cao
+
+Chapter 1. Stochastic Processes and Brownian Motion                                                        5
+
+
+Now, the ϕi (n) are ﬁnite, so there must be some constant c such that
+
+                                                        |ϕi (n)| ≤ c
+
+for all n. Then our triangle inequality relation reads
+                                                                 ∑
+                                                   c |λi | ≤ c       Qnm
+                                                                 m
+                 ∑
+Finally, since    Qnm = 1, we have the desired result,
+                 m
+
+                                                         |λi | ≤ 1
+
+
+Another key feature of the transition probability matrix Q is the following claim, which is intimately
+connected with the notion of an equilibrium state:
+
+                                      Q always has the eigenvalue λ = 1                                (1.13)
+
+
+Proof of Eq.(1.13): We refer now to the left eigenvectors of Q: a given left eigenvector χi satisﬁes
+                                                  ∑
+                                      χi (n)λi =     χi (m)Qmn
+                                                             m
+
+Summing over n, we ﬁnd           ∑                 ∑∑                         ∑
+                                      χi (n)λi =             χi (m)Qmn =          χi (m)
+                                  n                 n    m                    m
+        ∑
+since    Qnm = 1. Thus, we have the following secular equation:
+        m
+                                                           ∑
+                                              (λi − 1)           χi (n) = 0
+                                                             n
+
+Clearly, λ = 1 is one of the eigenvalues satisfying this equation.
+
+The decomposition of the secular equation in the preceding proof has a direct∑physical interpre­
+tation: the eigenvalue λ1 = 1 has a corresponding eigenvector which satisﬁes n χ1 (n) = 1; this
+stationary-state eigensolution corresponds to the steady state of a system χ1 (n) = Pst (n). It then
+        from the normalization condition that ϕ1 (n) = 1. The remaining eigenvalues |λj | < 1 each
+follows ∑
+satisfy n χj (n) = 0 and hence correspond to zero-sum ﬂuctuations about the equilibrium state.
+
+In light of these properties of Q, we can deﬁne the time-dependent evolution of a system in terms
+of the eigenstates of Q; this representation is termed the spectral decomposition of P (n, s) (the set
+of eigenvalues of a matrix is also known as the spectrum of that matrix). In the basis of left and
+right eigenvectors of Q, the probability of being in state n at timestep s, given the initial state as
+n0 , is                                                ∑
+                              P (n, s) = ⟨n0 |Qs |n⟩ =   ⟨n0 |ϕi ⟩λsi ⟨χi |n⟩                   (1.14)
+                                                                     i
+
+If we (arbitrarily) assign the stationary state to i = 1, we have λ1 = 1 and χ1 = Pst , where Pst is
+the steady-state or equilibrium probability distribution. Thus,
+                                                      ∑
+                                 P (n, s) = Pst (n) +   ϕi (n0 )λsi χi (n)                   (1.15)
+                                                                 i̸=1
+
+
+5.72, Spring 2008                                                                                  J. Cao
+
+Chapter 1. Stochastic Processes and Brownian Motion                                                          6
+
+
+The spectral decomposition proves to be quite useful in the analysis of more complicated proba­
+bility distributions, especially those that have suﬃciently many states as to require computational
+analysis.
+
+Example: Consider a system which has three states with transition probabilities as illustrated in Figure
+1.1. Notice that counterclockwise and clockwise transitions have diﬀering probabilities, which allows this
+system to exhibit a net current or ﬂux. Also, suppose that p + q = 1 so that the system must switch states
+at every timestep.
+
+
+
+
+                         Figure 1.1: A simple three-state system with nonzero ﬂux
+
+The transition probability matrix for this system is
+                                                       
+                                                  0 p q
+                                              Q= q 0 p 
+                                                  p q 0
+
+To determine P (s), we ﬁnd the eigenvalues and eigenvectors of this matrix and use the spectral decomposition,
+Eq.(1.14). The secular equation is
+                                                Det(Q − λI) = 0
+
+and its roots are
+                                                     1 1√
+                                      λ1 = 1 , λ± = − ±  3(4pq − 1)
+                                                     2 2
+Notice that the nonequilibrium eigenvalues are complex unless p = q = 12 , which corresponds to the case of
+vanishing net ﬂux. If there is a net ﬂux, these complex eigenvalues introduce an oscillatory behavior to P (s).
+
+                               1
+In the special case p = q =    2,   the matrix Q is symmetric, so the left and right eigenvectors are identi­
+cal,
+
+                                                        1
+                                            χ1 = ϕT1 = √ (1, 1, 1)
+                                                         3
+                                                        1
+                                            χ2 = ϕ2 = √ (1, 1, −2)
+                                                   T
+                                                         6
+                                                        1
+                                            χ3 = ϕT3 = √ (1, −1, 0)
+                                                         2
+
+where T denotes transposition. Suppose the initial state is given as state 1, and we’re interested in the
+probability of being in state 3 at timestep s, P1-3 (s). According to the spectral decomposition formula
+
+5.72, Spring 2008                                                                                      J. Cao
+
+Chapter 1. Stochastic Processes and Brownian Motion                                                          7
+
+
+Eq.(1.14),
+                                             ∑
+                                P1-3 (s) =       ϕi (1)λsi χi (3)
+                                             i
+                                             (  )       (     )
+                                             1             1
+                                         =  √       s
+                                                  (1 )    √
+                                              3             3
+                                            (      )      (     )s (     )
+                                                1             1       1
+                                           + √       (1) −           √     (−2)
+                                                 6            2        6
+                                            (      )      (     )s (     )
+                                                1             1       1
+                                           + √       (1) −           √     (0)
+                                                 2            2        2
+                                                 (      )s
+                                           1 1        1
+                                P1-3 (s) = −       −
+                                           3 3        2
+
+Note that in the evaluation of each term, the ﬁrst element of each left eigenvector χ and the third element of
+each right eigenvector ϕ was used, since we’re interested in the transition from state 1 to state 3. Figure 1.2
+is a plot of P1-3 (s); it shows that the probability oscillates about the equilibrium value of 13 , approaching
+the equilibrium value asymptotically.
+
+
+
+
+Figure 1.2: Probability of a transition from state 1 to state 3 vs. number of timesteps. Black points
+correspond to actual timesteps; grey points have been interpolated to emphasize the oscillatory nature of
+P (s).
+
+
+
+1.1.3    Detailed Balance
+Our last topic of consideration within the subject of Markov processes is the notion of detailed
+balance, which is probably already somewhat familiar from elementary kinetics. Formally, a Markov
+process with transition probability matrix Q satisﬁes detailed balance if the following condition
+holds:
+                                     Pst (n)Qnm = Pst (m)Qmn                                (1.16)
+And this steady state deﬁnes the equilibrium distribution:
+
+                                    Peq (n) = Pst (n) = lim P (n, t)
+                                                            t→∞
+
+5.72, Spring 2008                                                                                      J. Cao
+
+Chapter 1. Stochastic Processes and Brownian Motion                                                                   8
+
+
+This relation generalizes the notion of detailed balance from simple kinetics that the rates of for­
+ward and backward processes at equilibrium should be equal: here, instead of considering only a
+reactant state and a product state, we require that all pairs of states be related by Eq.(1.16).
+
+Note also that this detailed balance condition is more general than merely requiring that Q be
+symmetric, as the simpler deﬁnition from elementary kinetics would imply. However, if a system
+obeys detailed balance, we can describe it using a symmetric matrix via the following transforma­
+tion: let                                       √
+                                                  Pst (n)
+                                        Vnm = √           Qnm                                (1.17)
+                                                 Pst (m)
+                                        √
+If we make the substitution P (n, s) = Pst (n) · P˜ (n, s), some manipulation using equations (1.1)
+and (1.17) yields
+                                     dP˜ (n, t) ∑ ˜
+                                               =    P (m, t)Vmn                              (1.18)
+                                         dt      m
+                    ˜
+The derivative dP dt
+                  (n,s)
+                        here is really the ﬁnite diﬀerence P˜ (n, s+1)−P˜ (n, s) since we are considering
+discrete-time Markov processes, but we have introduced the derivative notation for comparison of
+this formula to later results for continuous-time systems.
+
+As we did for Q, we can set up an eigensystem for V, which yields a spectral decomposition
+similar to that of Q with the exception that the left and right eigenvectors ψ of V are identical
+since V is symmetric; in other words, ⟨ψi |ψj ⟩ = δij . Furthermore, it can be shown that all eigen­
+values not corresponding to the equilibrium state are either negative or zero; in particular, they
+are real. The eigenvectors of V are related to the left and right eigenvectors of Q by
+                                            1                            √
+                                   |ϕi ⟩ = √ |ψi ⟩       and ⟨χi | =      Pst ⟨ψi |                             (1.19)
+                                            Pst
+
+Example: Our ﬁnal model Markovian system is a linear three-state chain (Figure 1.3) in which the system
+must pass through the middle state in order to get from either end of the chain to the other. Again we
+require that p + q = 1. From this information, we can construct Q,
+                                                            
+                                                    q p 0
+                                            Q= q 0 p 
+                                                    0 q p
+
+Notice how the diﬀerence between the three-site linear chain and the three-site ring of the previous example
+is manifest in the structure of Q, particularly in the direction of the zero diagonal. This structural diﬀerence
+carries through to general N -site chains and rings.
+
+To determine the equilibrium probability distribution Pst for this system, one could multiply Q by itself
+many times over and hope to ﬁnd an analytic formula for lims-o Qs ; however, a less tedious and more
+intuitive approach is the following:
+
+Noticing that the system cannot stay in state 2 at time s if it is already in state 2 at time s − 1, we conclude
+that P (1, s + 2) depends only on P (1, s) and P (3, s). Also, the conditional probabilities P (1, s + 2 | 1, s) and
+P (1, s + 2 | 3, s) are both equal to q 2 . Likewise, P (3, s + 2 | 1, s) and P (3, s + 2 | 3, s) are both equal to p2 .
+Finally, if the system is in state 2 at time s, it can only get back to state 2 at time s + 2 by passing through
+either state 1 or state 3 at time s + 1. The probability of either of these occurrences is pq.
+
+
+5.72, Spring 2008                                                                                               J. Cao
+
+Chapter 1. Stochastic Processes and Brownian Motion                                                            9
+
+
+
+
+                   Figure 1.3: A three-state system in which sites are no longer identical
+
+So the ratio Pst (1) : Pst (2) : Pst (3) in the equilibrium limit is q 2 : qp : p2 . We merely have to normal­
+ize these probabilities by noting that q 2 + qp + p2 = (q + p)2 − qp = 1 − qp. Thus, the equilibrium distribution
+is
+                                                        1
+                                             P (s) =        (q 2 , qp, p2 )
+                                                     1 − qp
+Plugging each pair of states into the detailed balance condition, we verify that this system satisﬁes detailed
+balance, and hence all of its eigenvalues are real, even though Q is not symmetric.
+
+
+1.2     Master Equations
+1.2.1    Motivation and Derivation
+The techniques developed in the basic theory of Markov processes are widely applicable, but there
+are of course many instances in which the discretization of time is either inconvenient or completely
+unphysical. In such instances, a master equation (more humbly referred to as a rate equation) may
+provide a continuous-time description of the system that is in keeping with all of our results about
+stochastic processes.
+
+To formalize the connection between the discrete and continuous formulations, we consider the
+probability Eq.(1.1) in the limit of small timesteps. Let t = s∆; Eq.(1.1) then reads
+                                                 ∑
+                                  P (n, s + 1) =   P (m, s)Qmn (∆)                     (1.20)
+                                                      m
+                                                     ∑
+                                      Pn (t + ∆) =        Pm (t)Qmn (∆)                                   (1.21)
+                                                      m
+
+Here we have switched the labeling of the state whose probability we’re interested in from an
+argument of P to a subscript; this notation is more common in the literature when used in Master
+equations. The Master equation is the small-∆ limit of Eq.(1.21); in this limit, we can treat the
+dependence of Q on ∆ as a linear dependence, i.e. a Taylor expansion to ﬁrst order, with the
+constant term set to zero since the system can’t evolve without the passage of time:
+                                          
+                                           Wmn ∆,           m= ̸ n
+                                                ∑
+                               Qmn (∆) = 1 −
+                                                   Wmk ∆, m = n
+                                                          k
+
+Then in the limit ∆ → 0, one can verify that Eq.(1.21) becomes
+                                  dPn (t) ∑
+                                         =   (Pm (t)Wmn − Pn (t)Wnm )                                     (1.22)
+                                    dt     m
+
+5.72, Spring 2008                                                                                        J. Cao
+
+Chapter 1. Stochastic Processes and Brownian Motion                                                             10
+
+
+
+
+               Figure 1.4: Inﬁnite lattice with transition rate k between all contiguous states
+
+Eq.(1.22) is a master equation. As the derivation suggests, W plays the role of a transition proba­
+bility matrix in this formulation. You may notice that the master equation looks structurally very
+similar to rate equations in elementary kinetics; in fact, the master equation is a generalization of
+such rate equations, and the derivation above provides some formal justiﬁcation for the rules we
+learn in kinetics for writing them down. The matrix W is analogous to the set of rate constants
+indicating the relative rates of reaction between species in the system, and the probabilities Pn are
+analogous to the relative concentrations of these species.
+
+Example: Consider a random walk on a one-dimensional inﬁnite lattice (see Figure 1.4). As indicated
+in the ﬁgure, the transition probability between a lattice point and either adjacent lattice point is k, and all
+other transition probabilities are zero (in other words, the system cannot “hop” over a lattice point without
+ﬁrst occupying it). We can write down a master equation to describe the ﬂow of probability among the lattice
+sites in a manner analogous to writing down a rate law. For any given site n on the lattice, probability can
+ﬂow into n from either site n − 1 or site n + 1, and both of these occur at rate k; likewise, probability can
+ﬂow out of state n to either site n + 1 or site n − 1, both of which also happen at rate k. Hence, the master
+equation for all sites n on the lattice is
+
+                                          P˙ n = k (Pn+1 + Pn−1 − 2Pn )
+
+Now we deﬁne the average site of occupation as a sum over all sites, weighted by the probability of occupation
+at each site,
+                                                   o
+                                                   ∑
+                                             n
+                                             ¯=        nPn (t)
+                                                     n=−o
+
+Then we can compute, for example, how this average site evolves with time,
+                                               o
+                                               ∑
+                                                     nP˙n (t) = n
+                                                                ¯˙ = 0
+                                              n=−o
+
+Hence the average site of occupation does not change over time in this model, so if we choose the initial
+distribution to satisfy n
+                        ¯ = 0, then this will always be the average site of occupation.
+
+  However, the mean square displacement n¯ 2 is not constant; in keeping with our physical interpretation
+of the model, the mean square displacement increases with time. In particular,
+                                             o
+                                             ∑
+                                                   n2 P˙n (t) = n
+                                                                ¯˙ 2 = 2k
+                                            n=−o
+
+If the initial probability distribution is a delta function on site 0, Pn (0) = δ0 , then it turns out that Fourier
+analysis provides a route towards a closed-form expression for the long-time limit of Pn (t):
+                                                    ∫ 2�
+                                                  1
+                                        Pn (t) =         einz e−2k(1−cos z)t dz
+                                                 2π 0
+                                                       ∫ o             ( 2)
+                                                     1              −2D z2 t
+                                       lim Pn (t) =          einz e           dz
+                                      t-o           2π −o
+
+5.72, Spring 2008                                                                                          J. Cao
+
+Chapter 1. Stochastic Processes and Brownian Motion                                                      11
+
+                                                        √
+                                                          1 − n2
+                                        lim Pn (t) =         e 4Dt
+                                        t-o            4πDt
+In the above manipulations, we have replaced k with the diﬀusion constant D, the long-time limit of the rate
+constant (in this case, the two are identical). Thus the probability distribution for occupying the various
+sites becomes Gaussian at long times.
+
+1.2.2    Mean First Passage Time
+One of the most useful quantities we can determine from the master equation for a random walk is
+the average time it takes for the random walk to reach a particular site ns for the ﬁrst time. This
+quantity, called the mean ﬁrst passage time, can be determined via the following trick: we place an
+absorbing boundary condition at ns , Pns (t) = 0. Whenever the walk reaches site ns , it stays there
+for all later times. One then calculates the survival probability S(t), that is, the probability that
+the walker has not yet visited ns at time t,
+                                                 ∑
+
+                                         S(t) =      Pn (t)                                    (1.23)
+                                                    n̸=ns
+
+The mean ﬁrst passage time ⟨t⟩ then corresponds to the time-averaged survival probability,
+                                             ∫ ∞
+                                       ⟨t⟩ =     S(t) dt                                   (1.24)
+                                                    0
+
+Sometimes it is more convenient to write the mean ﬁrst passage time in terms of the probability
+density of reaching site ns at time t. This quantity is denoted by f (t) and satisﬁes
+
+                                               dS(t)   ∑
+
+                                   f (t) = −         =    Pn (t)Wnns                                 (1.25)
+                                                dt
+                                                        n̸=ns
+
+In terms of f (t), the mean ﬁrst passage time is given by
+                                               ∫ ∞
+                                         ⟨t⟩ =      t f (t) dt                                       (1.26)
+                                                   0
+
+The mean ﬁrst passage time is a quantity of interest in a number of current research applications.
+Rates of ﬂuorescence quenching, electron transfer, and exciton quenching can all be formulated in
+terms of the mean ﬁrst passage time of a stochastic process.
+
+Example: Let’s calculate the mean ﬁrst passage time of the three-site model introduced in Figure 1.1,
+with all transition rates having the same value k. Suppose the system is prepared in state 1, and we’re
+interested in knowing the mean ﬁrst passage time for site 3. Applying the absorbing boundary condition at
+site 3, we derive the following master equations:
+                                            ˙
+                                            1 = −2kP1 + kP2
+                                             P
+                                              P˙2 = kP1 − 2kP2
+                                           
+                                           
+                                              P˙3 = kP1 + kP2
+
+The transition matrix W corresponding to this system would have a zero column since P3 does not occur on
+the right hand side of any of these equations; hence the sink leads to a zero eigenvalue that we can ignore.
+The relevant submatrix                            (              )
+                                                     −2k     k
+                                          W1,2 =
+                                                      k    −2k
+
+5.72, Spring 2008                                                                                   J. Cao
+
+Chapter 1. Stochastic Processes and Brownian Motion                                                      12
+
+
+has eigenvalues λ1 = −k, λ2 = −3k. Using the spectral decomposition formula, we ﬁnd that the survival
+probability is                           ∑
+                                  S(t) =   ⟨1|ψi ⟩e i t ⟨ψi |n⟩ = e−kt
+                                                  i,n
+
+Hence, the previously deﬁned probability density f (t) is given by f (t) = ke−kt , and the mean ﬁrst passage
+time for site 3 is
+                                                         1
+                                                 ⟨t⟩ =
+                                                         k
+
+
+
+1.3     Fokker-Planck Equations and Diﬀusion
+We have already generalized the equations governing Markov processes to account for systems that
+evolve continuously in time, which resulted in the master equations. In this section, we adapt these
+equations further so that they may be suitable for the description of systems with a continuum of
+states, rather than a discrete, countable number of states.
+
+1.3.1    Motivation and Derivation
+Consider once again the inﬁnite one-dimensional lattice, with lattice spacing ∆x and timestep size
+∆t. In the previous section, we wrote down the master equation (discrete sites, continuous time)
+for this system, but here we will begin with the Markov chain expression (discrete sites, discrete
+time) for the system,
+                                         1
+                           P (n, s + 1) = (P (n + 1, s) + P (n − 1, s))                     (1.27)
+                                         2
+In terms of ∆x and ∆t, this equation is
+                                                  1
+                            P (x, t + ∆t) =         [P (x + ∆x, t) + P (x − ∆x, t)]                  (1.28)
+                                                  2
+Rearranging the previous equation as a ﬁnite diﬀerence, as in
+                         P (x,t+∆t)−P (x,t)        (∆x)2       P (x+∆x,t)+P (x−∆x,t)−2P (x,t)
+                                ∆t            =     2∆t    ·              (∆x)2
+                                                                                                     (1.29)
+
+and taking the limits ∆x → 0, ∆t → 0, we arrive at the following diﬀerential equation:
+
+                                         ∂              ∂2
+                                            P (x, t) = D 2 P (x, t)                                  (1.30)
+                                         ∂t             ∂x
+                 2
+where D = (∆x)2∆t . This diﬀerential equation is called a diﬀusion equation with diﬀusion constant
+D, and it is a special case of the Fokker-Planck equation, which we will introduce shortly. The most
+straightforward route to the solution of the diﬀusion equation is via spatial Fourier transformation,
+                                                  ∫ ∞
+                                      P˜ (k, t) =     P (x, t)eikx dx                          (1.31)
+                                                        −∞
+
+In Fourier space, the diﬀusion equation reads
+
+                                         ∂ ˜
+                                            P (k, t) = −Dk 2 P˜ (k, t)                               (1.32)
+                                         ∂t
+
+5.72, Spring 2008                                                                                   J. Cao
+
+Chapter 1. Stochastic Processes and Brownian Motion                                                   13
+
+
+and its solution is
+
+                                       P˜ (k, t) = P˜ (k, 0)e	−Dk t
+                                                                 2
+                                                                                                  (1.33)
+If we take a delta function P (x, 0) = δ(x − x0 ) centered at x0 as the initial condition, the solution
+in x-space is
+                                                    1     (x−x0 )2
+                                      P (x, t) = √      e− 4Dt                                   (1.34)
+                                                  4πDt
+Thus the probability distribution is a Gaussian in x that spreads with time. Notice that this so­
+lution is essentially the same as the long-time solution to the spatially discretized version of the
+problem presented in the previous example.
+
+We are now in a position to consider a generalization of the diﬀusion equation known as the
+                                                                ζ2
+Fokker-Planck equation. In addition to the diﬀusion term D ζx     2 , we introduce a term linear in the
+ﬁrst derivative with respect to x, which accounts for drift of the center of the Gaussian distribution
+over time.
+
+Consider a diﬀusion process on a three-dimensional potential energy surface U (r). Conservation of
+probability requires that
+                                         P˙ (r, t) = −∇ · J	                                (1.35)
+where J is the probability current, J = −D∇P +JU , and JU is the current due to the potential U (r).
+At equilibrium, we know that the probability current J = 0 and that the probability distribution
+should be Boltzmann-weighted according to energy, Peq (r) ∝ e−[U (r) . Therefore, at equilibrium,
+                                     −Dβ∇U (r)P (r)eq + JU = 0	                                   (1.36)
+Solving Eq.(1.36) for JU and plugging the result into Eq.(1.35) yields the Fokker-Planck equation,
+                              P˙ (r, t) = D∇ [∇P (r, t) + β∇U (r)P (r, t)]	                       (1.37)
+
+1.3.2    Properties of Fokker-Planck Equations
+Let’s return to one dimension to discuss some salient features of the Fokker-Planck equation.
+   •	 First, the Fokker-Planck equation gives the expected results in the long-time limit:
+                                        lim P = Peq      with P˙ = 0	                             (1.38)
+                                        t→∞
+                                                 ∫∞
+   •	 Also, if we deﬁne the average position x
+                                             ¯ = −∞ xP (x) dx, then the diﬀerential form of the
+      Fokker-Planck equation can be used to verify that
+                                                (         )
+                                                     ∂
+                                         ¯ = Dβ − U (x)	
+                                         ˙x                                              (1.39)
+                                                    ∂x
+      Since the quantity in parentheses is just the average force F¯ , Eq.(1.39) can be combined with
+      the Einstein relation Dβζ = 1 (see section 1.4) to justify that ζv¯ = F¯ ; the meaning and
+      signiﬁcance of this equation, including the deﬁnition of ζ, will be discussed in section 1.4.
+   •	 The Fokker-Planck equation is linear in the ﬁrst and second derivatives of P with respect to
+                                                                                ζ      ζ        ζ2
+      x; it turns out that any spatial operator that is a linear combination of ζx , x ζx , and ζx 2 will
+      deﬁne a Gaussian process when used to describe the time evolution of a probability density.
+      Thus, both the diﬀusion equation and the more general Fokker-Planck equation will generally
+      always describe a Gaussian process.
+
+5.72, Spring 2008	                                                                               J. Cao
+
+Chapter 1. Stochastic Processes and Brownian Motion                                                            14
+
+
+   •	 One ﬁnal observation about the Fokker-Planck equation is that it is only analytically solvable
+      in a small number of special cases. This situation is exacerbated by the fact that it is not of
+                                                                                                (U
+      Hermitian (self-adjoint) form. However, we can introduce the change of variable P = e− 2 Φ;
+      in terms of Φ, the Fokker-Planck equation is Hermitian,
+                                              ∂Φ    [            ]
+                                                 = D ∇2 Φ − Ueﬀ Φ	                                         (1.40)
+                                              ∂t
+                            2       2
+      where Ueﬀ = ([∇U 4
+                         )
+                           − [∇2 U . This transformed Fokker-Planck equation now bears the same
+      functional form as the time-dependent Schr¨odinger equation, so all of the techniques associ­
+      ated with its solution can likewise be applied to Eq.(1.40).
+Example: One of the simplest, yet most useful, applications of the Fokker-Planck equation is the description
+of the diﬀusive harmonic oscillator, which can be treated analytically. Here we solve the Fokker-Planck
+equation for the one-dimensional diﬀusive oscillator with frequency ω. The diﬀerential equation is
+
+                                          ∂P    ∂2      ∂
+                                             = D 2 P + γ (xP )
+                                          ∂t    ∂x      ∂x
+where γ = mω 2 Dβ. We can solve this equation in two steps: ﬁrst, solve for the average position using
+Eq.(1.39),
+                                             ¯˙ = −γx
+                                             x      ¯
+Given the usual delta function initial condition P (x, 0) = δ(x − x0 ), the average position is given by
+
+                                                 ¯(t) = x0 e−it
+                                                 x
+
+Thus, memory of the initial conditions decays exponentially for the diﬀusive oscillator.
+
+                                                                                     γ
+Then, since the Fokker-Planck equation is linear in P and bilinear in x and          γx ,   the full solution must
+take the form of a Gaussian, so we can write
+                                                           [              ]
+                                                  1           (x − x
+                                                                   ¯(t))2
+                                P (x0 , x, t) = √       exp −
+                                                 2πα(t)          2α(t)
+
+where x¯(t) is the time-dependent mean position and α(t) is the time-dependent standard deviation of the
+distribution. But we’ve already found x ¯(t), so we can substitute it into the solution,
+                                                           [                   ]
+                                                  1            (x − x0 e−it )2
+                               P (x0 , x, t) = √        exp −
+                                                 2πα(t)             2α(t)
+
+Finally, from knowledge that the equilibrium distribution must satisfy the stationary condition
+                                             ∫ o
+                                   Peq (x) =      P (x0 , x, t)Peq (x0 ) dx0
+                                                −o
+
+we can determine that
+                                                        1 − e−2it
+                                               α(t) =
+                                                          mω 2 β
+Thus the motion of the diﬀusive oscillator is fully described.
+
+
+The long and short-time limits of P (x0 , x, t) are both of interest to us. At short times,
+
+                                                    √            [              ]
+                                                        1            (x − x0 )2
+                                lim P (x0 , x, t) =          exp −
+                               t-0                    4πDt              4Dt
+
+5.72, Spring 2008	                                                                                         J. Cao
+
+Chapter 1. Stochastic Processes and Brownian Motion                                                     15
+
+
+and the evolution of the probability looks like that of a random walk. In the long-time limit, on the other
+hand, we ﬁnd the equilibrium probability distribution
+                                                   √           [           ]
+                                                     mω 2 β      1
+                               lim P (x0 , x, t) =          exp − mω 2 βx2
+                              t-o	                    2π         2
+which is Gaussian with no mean displacement and with variance determined by a thermal parameter and a
+parameter describing the shape of the potential. A Gaussian, Markovian process that exhibits exponential
+memory decay, such as this diﬀusive oscillator, is called an Ornstein-Uhlenbeck process.
+
+
+1.4     The Langevin Equation
+Our focus in this chapter has been on the description of purely stochastic processes. However, a
+variety of interesting and important phenomena are subject to combinations of deterministic and
+stochastic processes. We concern ourselves now with a particular class of such phenomena which
+are described by Langevin equations. In its simplest form, a Langevin equation is an equation of
+motion for a system that experiences a particular type of random force. The archetypal system
+governed by a Langevin equation is a Brownian particle, that is, a particle undergoing Brownian
+motion. (For a brief description of the nature and discovery of Brownian motion, see the Appendix).
+
+The Langevin equation for a Brownian particle in a one-dimensional ﬂuid bath is
+                                             mv˙(t) + ζv(t) = f (t)	                                (1.41)
+where v(t) = x˙ (t) is the velocity of the Brownian particle, ζ is a coeﬃcient describing friction
+between the particle and the bath, m is the mass of the Brownian particle, and f (t) is a random
+force. Though it is random, we can make a couple of useful assumptions about f (t):
+   •	 The random force is equally likely to push in one direction as it is in the other, so the average
+      over all realizations of the force is zero,
+                                                       ⟨f (t)⟩f = 0
+
+   •	 The random force exhibits no time correlation but has a characteristic strength factor g that
+      does not change over time,
+
+                                      ⟨f (t1 )f (t2 )⟩f = gδ(t1 − t2 )
+
+
+Random forces that obey these assumptions are called white noise, or more precisely, Gaussian
+white noise. In this case, all odd moments of f will vanish, and all even moments can be expressed
+in terms of two-time correlation functions: for example, the fourth moment is given by
+                         ⟨f (t1 )f (t2 )f (t3 )f (t4 )⟩f =⟨f (t1 )f (t2 )⟩f ⟨f (t3 )f (t4 )⟩f
+                                                        +⟨f (t1 )f (t3 )⟩f ⟨f (t2 )f (t4 )⟩f
+                                                        +⟨f (t1 )f (t4 )⟩f ⟨f (t2 )f (t3 )⟩f
+In general, complex systems may exhibit time-dependent strength factors g(t), but we will work
+with the more mathematically tractable white noise assumption for the random force.
+
+The formal solution to the Langevin equation Eq.(1.41) is
+                                                  ∫
+                                        −m(
+                                            t   1
+ t − ( (t−β )
+                            v(t) = v(0)e
+     +     e m         f (τ ) dτ                           (1.42)
+
+                                                m 0
+
+5.72, Spring 2008	                                                                                 J. Cao
+
+Chapter 1. Stochastic Processes and Brownian Motion                                                 16
+
+
+In computing the average velocity under the white noise assumption, the second term of Eq.(1.42)
+vanishes thanks to the condition ⟨f (t)⟩f = 0. So the average velocity is simply
+                                                                (
+                                               ⟨v(t)⟩f = v(0)e− m t                             (1.43)
+
+
+Of special interest is the velocity-velocity correlation function
+
+                                         C(t1 − t2 ) = ⟨v(t1 )v(t2 )⟩f                          (1.44)
+
+which can also be computed from Eq.(1.42). Invoking the white noise condition for ⟨f (t1 )f (t2 )⟩f ,
+we ﬁnd that                         (            )
+                                              g        (               g
+ − ( (t2 −t1 )
+                  ⟨v(t1 )v(t2 )⟩f =
+ v(0)2 −       e
+− m (t1 +t2 ) +
+     e
+ m              (1.45)
+
+                                             2mζ                      2mζ
+
+So far, we have only performed an average over realizations of the random force, denoted by ⟨. . . ⟩f ;
+to proceed, we may also take a thermal average ⟨. . . ⟩[ , that is, the average over realizations of
+diﬀerent initial velocities at inverse temperature β. Equipartition tells us that ⟨v02 ⟩[ = m[
+                                                                                             1
+                                                                                               ; if we
+use Eq.(1.45) to write down an expression for ⟨⟨v(t1 )v(t2 )⟩f ⟩[ and apply equipartition, we arrive
+at the conclusion that
+                                                   2ζ
+                                               g=                                               (1.46)
+                                                    β
+which is a manifestation of the ﬂuctuation-dissipation theorem (the ﬂuctuations in the random
+force, described by g, are proportional to the dissipation of energy via friction, described by ζ).
+
+The properties of the velocity variable v enumerated above imply that the distribution of velocities
+is Gaussian with exponential memory decay, like the diﬀusive oscillator in section 1.3, and so we
+can also think of this type of Brownian motion as an Ornstein-Uhlenbeck process. In particular,
+the probability distribution for the velocity is
+                                         √                     [                    ]
+                                                  mβ              mβ(v − v0 e− t )2
+                       P (v0 , v, t) =                      exp −                               (1.47)
+                                             2π(1 − e−2 t )        2(1 − e−2 t )
+
+We now have a thorough description of the Brownian particle’s velocity, but what about the parti­
+cle’s diﬀusion? We’d like to know how far away the Brownian particle can be expected to be found
+from its initial position as time passes. To proceed, we calculate the mean square displacement of
+the particle from its initial position,
+
+                                   R2 (t) = ⟨(x(t) − x(0))2 ⟩                                   (1.48)
+                                            ∫ t∫ t
+                                          =         ⟨v(τ1 )v(τ2 )⟩ dτ2 dτ1                      (1.49)
+                                             0    0
+                                              ∫ t
+                                          = 2 (t − τ )C(τ ) dτ                                  (1.50)
+                                                   0
+
+At long times, the mean square displacement behaves as
+                                                ∫ ∞
+                                       2
+                                     R (t) = 2t     C(t) dt                                     (1.51)
+                                                          0
+
+5.72, Spring 2008                                                                               J. Cao
+
+Chapter 1. Stochastic Processes and Brownian Motion                                                17
+
+
+This linear scaling with time is the experimentally observed behavior of Brownian particles, where
+the proportionality constant is called the diﬀusion constant D; hence, we have found an expression
+for the macroscopic diﬀusion constant D in terms of the correlation function,
+                                               ∫ ∞
+                                          D=        C(t) dt	                                 (1.52)
+                                                 0
+
+Eq.(1.52) is known as the Green-Kubo relation, and it implies that the mean square displacement
+at long times is simply
+                                       lim R2 (t) = 2Dt	                                  (1.53)
+                                           t≫1
+
+This result for the mean square displacement also scales linearly with the dimensionality of the
+system (i.e. in three dimensions, R2 (t) = 6Dt).
+
+To determine the behavior of R2 (t) at short times, note that v(t) ≈ v(0) for short times, so
+              (∫        )2
+that R2 (t) =    v(t) dt ≈ ⟨v02 ⟩t2 . Therefore, the short-time limit of the mean square displacement
+is
+                                                         1 2
+                                           lim R2 (t) =      t	                                 (1.54)
+                                            t≪1         mβ
+For times in between these extremes, the formal solution to the Langevin equation for the velocity
+would have to be integrated. This can be done; sparing the details, the result after thermal
+averaging is                                 [                   ]
+                                           2      1(       −	 t
+                                                                )
+                                  2
+                                 R (t) =       t−     1 − e	                                (1.55)
+                                          βζ      γ
+            �
+where γ =   m.
+
+As a ﬁnal note, the Langevin equation as presented in this section is often modiﬁed to describe
+more complex systems. The most common modiﬁcations to the Langevin equation are:
+
+   •	 The replacement of the friction coeﬃcient ζ with a memory kernel γ(t) that allows the system
+      to have some memory of previous interactions.
+
+   •	 The addition of a deterministic mean force F = −∇U , which permits the system to respond
+      to forces beyond those due to interactions with the bath.
+
+Such modiﬁed Langevin equations, also known as Generalized Langevin equations or GLEs, will be
+explored in further detail in Chapter 4. The Langevin equation and its generalized counterparts
+provide the basis for a number of successful models of stochastic processes in chemical physics.[3]
+
+
+
+
+5.72, Spring 2008	                                                                             J. Cao
+
+Chapter 1. Stochastic Processes and Brownian Motion                                               18
+
+
+1.5    Appendix: Applications to Brownian Motion
+Brownian motion is one of the simplest physical examples of a system whose description necessi­
+tates a nonequilibrium statistical description. As such, it is the token example that uniﬁes all of
+the topics in this course, from Markov processes (Ch. 1) and response functions (Ch. 2) to diﬀu­
+sion constants (Ch. 3) and generalized Langevin equations (Ch. 4). In this appendix, the salient
+features of Brownian motion and the key results about Brownian motion that will be developed
+during the course are exposited together as a handy reference. Some basic properties of relevant
+integral transformations are also included in this Appendix.
+
+The discovery of Brownian motion predates the development of statistical mechanics and pro­
+vided important insight to physicists of the early twentieth century in their ﬁrst formulations of
+an atomic description of matter. A ﬁne example of the importance of keeping an eye open for the
+unexpected in experimental science, Brownian motion was discovered somewhat serendipitously in
+1828 by botanist Robert Brown while he was studying pollen under a microscope. Though many
+others before him had observed the jittery, random motion of ﬁne particles in a ﬂuid, Brown was the
+ﬁrst to catalogue his observations[4] and use them to test hypotheses about the nature of the motion.
+
+Interest in the phenomenon was revived in 1905 by Albert Einstein, who successfully related ob­
+servations about Brownian motion to underlying atomic properties. Einstein’s work on Brownian
+motion[5] is perhaps the least well known of the four paradigm-shifting papers he published in his
+“Miracle Year” of 1905, which goes to show just how extraordinary his early accomplishments were
+(the other three papers described the photoelectric eﬀect, special relativity, and mass-energy equiv­
+alence)! Einstein determined that the diﬀusion of a Brownian particle in a ﬂuid is proportional to
+the system temperature and inversely related to a coeﬃcient of friction ζ characteristic of the ﬂuid,
+                                                    1
+                                              D=
+                                                   βζ
+Any physical description of Brownian motion will boil down to an equation of motion for the
+Brownian particle. The simplest way, conceptually, to model the system is to perform Newtonian
+dynamics on the Brownian particle and N particles comprising the ﬂuid, with random initial con­
+ditions (positions and velocities) for the ﬂuid particles. By performing such calculations for all
+possible initial conﬁgurations of the ﬂuid and averaging the results, we can obtain the correct pic­
+ture of the stochastic dynamics. This procedure, however, is impossibly time-consuming in practice,
+and so a number of statistical techniques, such as Monte Carlo simulation, have been developed to
+make such calculations more practical.
+
+Alternatively, we can gain qualitative insight into Brownian dynamics by mean-ﬁeld methods; that
+is, instead of treating each particle in the ﬂuid explicitly, we can devise a means to describe their
+average inﬂuence on the Brownian particle, circumventing the tedium of tracking each particle’s
+trajectory independently. This approach gives rise to the Langevin equation of section 1.4, under
+the assumption that the ﬂuid exerts a random force f (t) on the Brownian particle that obeys the
+conditions of Gaussian white noise.
+
+For instantaneous (gas-phase) collisions of the ﬂuid and Brownian particle, a Langevin equation
+with constant frictional coeﬃcient ζ suﬃces,
+
+                                       mv˙(t) + ζv(t) = f (t)
+
+5.72, Spring 2008                                                                             J. Cao
+
+Chapter 1. Stochastic Processes and Brownian Motion                                                19
+
+
+However, if ﬂuid-particle collisions are correlated, which is the case for any condensed-phase system,
+this correlation must be taken into account by imbuing the Brownian particle with memory of its
+previous interactions, embodied by a memory kernel γ,
+                                             ∫	 t
+                                mv˙(t) + m          γ(t − τ )v(τ ) dτ = f (t)
+                                              0
+
+where γ(t) → ζδ(t) in the limit of uncorrelated collisions.
+
+We now present some of the key features of Brownian motion. Some of these results are de­
+rived in section 1.4; others are presented here for reference. Please consult the references at the
+end of this chapter for further details about the derivation of these properties.
+
+
+   •	 Fick’s Law: The spreading of the Brownian particle’s spatial probability distribution over
+      time is governed by Fick’s Law,
+
+                                         ∂
+                                            P (r, t) = −D∇2 P (r, t)
+                                         ∂t
+
+
+
+
+   •	 Green-Kubo relation: The diﬀusion constant D is tied to the particle’s velocity-velocity
+      correlation function C(t) by the Green-Kubo relation,
+                                               ∫ ∞
+                                           D=       C(t) dt
+                                                         0
+
+     This essentially means that the diﬀusion constant is the area under the velocity-velocity cor­
+     relation curve across all times t > 0.
+
+
+   •	 Solution of the Langevin Equation: All of the information we require from the Langevin
+      equation is contained in the correlation function. Multiplication of the Langevin equation for
+      v(t1 ) by the velocity v(t2 ) yields a diﬀerential equation for the correlation function,
+                                              ∫	 t
+                                       C˙ +          γ(t − τ )C(τ ) dτ = 0
+                                               0
+
+     The Laplace transform of this equation,
+
+                                      sCˆ (s) − C(0) + γˆ (s)Cˆ (s) = 0
+
+     has as its solution
+                                               ˆ               C(0)
+                                               C(s) =
+                                                             s + γˆ (s)
+     where C(0) is the non-transformed velocity-velocity correlation function at t = 0 and s is the
+     Laplace variable.
+
+
+5.72, Spring 2008	                                                                             J. Cao
+
+Chapter 1. Stochastic Processes and Brownian Motion                                                20
+
+
+   •	 Einstein relation: The solution to the Langevin equation tells us that
+
+                                               ˆ      C(0)
+                                               C(0) =
+                                                      γˆ (0)
+     Additionally, a comparison of the Green-Kubo relation to the formula for the Laplace trans­
+                         ˆ
+     form indicates that C(0) = D. Finally, we can conclude from the equipartition theorem that
+              1
+     C(0) = m[ . Combining this information together, we arrive at Einstein’s relation,
+
+                                                         1
+                                               D=
+                                                       mβγˆ (0)
+
+
+
+In Chapter 4, the behavior of the velocity-velocity correlation function is explored for the cases in
+which the ﬂuid is a bath of harmonic oscillators, a simple liquid, and an elastic solid. Their general
+functional forms are summarized here; further details can be found in Chapter 4.
+   •	 Harmonic oscillators: C(t) is periodic with amplitude C(0) and frequency Ω0 (the Einstein
+      frequency), where Ω20 = γ(0).
+
+   •	 Liquids: C(t) exhibits a few oscillations while decaying, eventually leveling out to zero.
+
+   •	 Solids: Like a liquid, C(t) will be damped, but like the harmonic oscillator model, the
+      periodic structure of the solid will prevent C(t) from decaying to zero; some oscillation at the
+      Einstein frequency will continue indeﬁnitely.
+Finally, we summarize the response of a Brownian particle to an external force F . The modiﬁed
+Langevin equation for this situation is
+                                                       f (t) F (t)
+                                     v˙(t) + γv(t) =        +
+                                                        m     m
+In general, this Langevin equation is diﬃcult to work with, but many forces of interest (such as
+EM ﬁelds) are oscillatory, so we assume an oscillatory form for the external force,
+
+                                           F (t) = Fγ e−iγt
+
+Then we can use the techniques developed in Chapter 2 to determine that the velocity in Fourier
+space is given by
+                                      v˜(ω) = χ(ω)F˜ (ω)
+Finally, from this information it can be determined that the response function K(t) is (see Chapter
+2)
+                                           ∫ ∞ −iγt
+                                         1       e
+                                K(t) =                  dω = e t θ(t)
+                                        2π 0 −iω + γ
+These formulas are the basis for the Debye theory of dipole reorganization in a solvent, in the case
+where F corresponds to the force due to the electric ﬁeld E(ω) generated by the oscillating dipoles.
+
+Integral Transformations: We conclude with a summary of the Laplace and Fourier transforms,
+which are used regularly in this course and in chemical physics generally to solve and analyze
+diﬀerential equations.
+
+5.72, Spring 2008	                                                                             J. Cao
+
+Chapter 1. Stochastic Processes and Brownian Motion                                                21
+
+
+  1. Laplace transform: The Laplace transform of an arbitrary function f (t) is
+                                              ∫ ∞
+                                       ˆ
+                                      f (s) =     e−st f (t) dt
+                                                         0
+
+     Both the Laplace and Fourier transforms convert certain types of diﬀerential equations into
+     algebraic equations, hence their utility in solving diﬀerential equations. Consequently, it is
+     often useful to have expressions for the ﬁrst and second derivatives of fˆ(s) on hand:
+
+                                         fˆ(1) (s) = sfˆ(s) − f (0)
+
+                                  fˆ(2) (s) = s2 fˆ(s) − sf (0) − fˆ(1) (0)
+     A convolution of two functions
+                                                 ∫       t
+                                       F (t) =               f (t)g(t − τ ) dτ
+                                                     0
+
+     is also simpliﬁed by Laplace transformation; in Laplace space, it is just a simple product,
+
+                                            Fˆ (s) = fˆ(s)ˆ
+                                                          g (s)
+
+  2. Fourier transform: The Fourier transform of an arbitrary function f (t) is
+                                               ∫ ∞
+                                       ˜
+                                       f (ω) =     eiγt f (t) dt
+                                                             −∞
+
+     Its derivatives are even simpler in structure than those of the Laplace transform:
+
+                                           f˜(1) (ω) = −iωf˜(ω)
+
+                                          f˜(2) (ω) = −ω 2 f˜(ω)
+     For an even function f (t), the relationship between the Fourier and Laplace transforms can
+     be determined by taking a Laplace transform of f at s = iω, from which we discover that
+
+                                          f˜(ω) = 2 Re fˆ(−iω)
+
+
+
+
+5.72, Spring 2008                                                                           J. Cao
+
+References
+
+[1] The American Chemical Society.	 Undergraduate Professional Education in Chemistry: ACS
+    Guidelines and Evaluation Procedures for Bachelor’s Degree Programs. ACS Committee on
+    Professional Training, Spring 2008.
+
+[2] S. R. De Groot and P. Mazur. Non-Equilibrium Thermodynamics. New York: Dover, 1984.
+
+[3] N. G. van Kampen. Stochastic Processes in Physics and Chemistry. North Holland, 2007.
+
+[4] Robert Brown. A brief account of microscopical observations made in the months of june, july
+    and august, 1827, on the particles contained in the pollen of plants; and on the general existence
+    of active molecules in organic and inorganic bodies. Philosophical Magazine, 4:161–173, 1828.
+
+[5] Albert Einstein. Uber die von der molekularkinetischen theorie der w¨arme geforderte bewegung
+    von in ruhenden ﬂ¨ussigkeiten suspendierten teilchen. Annalen der Physik, 17:549–560, 1905.
+
+
+
+
+                                                 22
+
+MIT OpenCourseWare
+http://ocw.mit.edu
+
+
+
+5.72 Statistical Mechanics
+Spring 2012
+
+
+
+
+For information about citing these materials or our Terms of Use, visit: http://ocw.mit.edu/terms.
+
