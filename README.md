@@ -77,9 +77,9 @@ _TODO_
 ## Authors
 
 * **Felicia Burtscher** -- [burfel](https://github.com/burfel)
-* **Lucas Ducrot**
+* **Lucas Ducrot** [lucasducrot](https://github.com/lucasducrot)
 * **Madeleine Hall**
-* **Luis Torada** -- wyj
+* **Luis Torada** 
 
 See also the list of [contributors](https://github.com/waddle-project/contributors) who participated in this project.
 
