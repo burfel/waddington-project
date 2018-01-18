@@ -1,8 +1,8 @@
 # waddington-project
 
-The _Waddington_ or _epigenetic landscape_ provides a theoretical framework for cell development and differentiation. 
+The _Waddington_ or _epigenetic landscape_ provides a theoretical framework for cell development and differentiation.
 
-This project aimso to develop a set of _Julia_ tools to determine the structure of such landscapes for a given dynamical system. 
+This project aimso to develop a set of _Julia_ tools to determine the structure of such landscapes for a given dynamical system.
 
 
 ## Getting Started
@@ -79,7 +79,7 @@ _TODO_
 * **Felicia Burtscher** -- [burfel](https://github.com/burfel)
 * **Lucas Ducrot**
 * **Madeleine Hall**
-* **Luis Torada**
+* **Luis Torada** -- wyj
 
 See also the list of [contributors](https://github.com/waddle-project/contributors) who participated in this project.
 
@@ -91,5 +91,3 @@ _TODO_
 * Hat tip to anyone who's code was used
 * Inspiration
 * etc
-
-
