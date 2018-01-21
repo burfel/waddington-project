@@ -78,7 +78,7 @@ _TODO_
 
 * **Felicia Burtscher** -- [burfel](https://github.com/burfel)
 * **Lucas Ducrot** [lucasducrot](https://github.com/lucasducrot)
-* **Madeleine Hall**
+* **Madeleine Hall** [lt2216] (https://github.com/lt2216)
 * **Luis Torada** 
 
 See also the list of [contributors](https://github.com/waddle-project/contributors) who participated in this project.
