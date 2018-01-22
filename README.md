@@ -88,6 +88,9 @@ _TODO_
 
 ## Acknowledgments
 _TODO_
-* Hat tip to anyone who's code was used
+* Special thanks go to [ChrisRackauckas](https://github.com/ChrisRackauckas) for contributing vastly to the Julia community
+* [JuliaDiffEq](https://github.com/JuliaDiffEq) and its contributors
+* [JuliaPlots](https://github.com/JuliaPlots) and its contributors
+* Hat tip to anyone whose code was used
 * Inspiration
 * etc
