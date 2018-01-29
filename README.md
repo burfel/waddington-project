@@ -77,9 +77,9 @@ _TODO_
 ## Authors
 
 * **Felicia Burtscher** -- [burfel](https://github.com/burfel)
-* **Lucas Ducrot**
-* **Madeleine Hall**
-* **Luis Torada** -- wyj
+* **Lucas Ducrot** -- [lucasducrot](https://github.com/lucasducrot)
+* **Madeleine Hall**  -- [lt2216](https://github.com/lt2216)
+* **Luis Torada** 
 
 See also the list of [contributors](https://github.com/waddle-project/contributors) who participated in this project.
 
@@ -88,6 +88,9 @@ _TODO_
 
 ## Acknowledgments
 _TODO_
-* Hat tip to anyone who's code was used
+* Special thanks go to [ChrisRackauckas](https://github.com/ChrisRackauckas) for contributing vastly to the Julia community
+* [JuliaDiffEq](https://github.com/JuliaDiffEq) and its contributors
+* [JuliaPlots](https://github.com/JuliaPlots) and its contributors
+* Hat tip to anyone whose code was used
 * Inspiration
 * etc

@@ -1,0 +1,6 @@
+﻿  SDE_solver_v2.vcxproj -> C:\Users\lucas\Documents\Visual Studio 2017\Projects\SDE_solver_v2\x64\Debug\SDE_solver_v2.exe
+  SDE_solver_v2.vcxproj -> C:\Users\lucas\Documents\Visual Studio 2017\Projects\SDE_solver_v2\x64\Debug\SDE_solver_v2.pdb (Partial PDB)
+  copy "C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v9.1\bin\cudart*.dll" "C:\Users\lucas\Documents\Visual Studio 2017\Projects\SDE_solver_v2\x64\Debug\"
+  C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v9.1\bin\cudart32_91.dll
+  C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v9.1\bin\cudart64_91.dll
+          2 fichier(s) copié(s).
