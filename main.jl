@@ -1,16 +1,30 @@
-using Distributions, Plots, DifferentialEquations
+using Distributions
+using Plots
+using DifferentialEquations
 
 
-##### DEFINITION OF THE PROBLEM
-dim=2 #dimension of the network
-boundaries=[[0.0, 3.0] [0.0 ,3.0]] #boundaries for each dimension
-nb_bin=20 #discretization of the space in each dimension for the frequency matrix
-tuple_dim=(nb_bin,nb_bin) #tuple of dimension of the discretized space
-nb_sim=10000 #number of simmulations
-end_time= 10.0 #end time for each simulation
+#------DEFINITION OF THE PROBLEM
+
+# dimension of the network
+dim=2 
+
+# boundaries for each dimension
+boundaries=[[0.0, 3.0] [0.0 ,3.0]] 
+
+# discretisation of the space in each dimension for the frequency matrix
+nb_bin=20 
+
+# tuple of dimension of the discretised space
+tuple_dim=(nb_bin,nb_bin) 
+
+# number of simulations
+nb_sim=10000 
+
+# end time for each simulation
+end_time= 10.0 
 
 
-##### DEFINITION OF THE MODEL
+#------DEFINITION OF THE MODEL
 a1=1
 a2=1
 b1=1
@@ -32,16 +46,16 @@ function sig_model(du,u,p,t)
 end
 
 
-##### SIMULATIONS
+#------SIMULATIONS
 state=simulations_CPU(nb_sim,boundaries,end_time,model,sig_model,dim)
 
 
-##### PFM
+#------Probability flux method (PFM)
 U=Prob_Flux_Method(state,boundaries,tuple_dim)
 span=Span(boundaries,nb_bin,dim)
 
 
-##### PFM reduction 2D
+#------PFM reduction 2D
 U_2D=PFM_reduction_2D(state,boundaries,nb_bin,1,2)
 span_2D=Span_2D(boundaries,nb_bin,1,2)
 
