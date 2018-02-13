@@ -1,3 +1,5 @@
+% still in matlab
+
 function B =  jadeR(X,m)
 %   B = jadeR(X, m) is an m*n matrix such that Y=B*X are separated sources
 %    extracted from the n*T data matrix X.

@@ -1,4 +1,4 @@
-Pkg.clone("https://github.com/zhmz90/BHTsne.jl.git")# installation
+#Pkg.clone("https://github.com/zhmz90/BHTsne.jl.git")# installation
 
 using BHTsne
 using RDatasets
