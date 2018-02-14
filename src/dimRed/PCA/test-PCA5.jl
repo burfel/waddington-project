@@ -1,6 +1,7 @@
 using StatPlots
 using DataArrays
 using Plots, GR
+using PyPlot
 gr()
 
 sim = rand(5, 1000)
@@ -14,8 +15,8 @@ f(x,y) = begin
 X = repmat(x',length(y),1)
 Y = repmat(y,1,length(x))
 Z = map(f,X,Y)
-p1 = contour(x,y,f,fill=true)
-p2 = contour(x,y,Z)
+p1 = PyPlot.contour(x,y,f,fill=true)
+p2 = PyPlot.contour(x,y,Z)
 plot(p1,p2)
 
 
