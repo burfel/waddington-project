@@ -1,5 +1,6 @@
 #=
-The following program tries to implement the dimentionalisty reduction functions
+The following program tries to implement the dimentionality reduction functions
+available in the packages MultivariateStats.jl and ManifoldLearning.jl
 =#
 using DataStructures
 using MultivariateStats
@@ -11,7 +12,7 @@ data_array = convert(Array, data)
 data_array = reshape(data_array, (547,96))
 
 
-# ----LINEAR DIMENSIONALITY REDUCTION
+# ----MultivariateStats.jl DIMENSIONALITY REDUCTION
 
 # Principal Components Analysis (PCA)
 M1 = fit(PCA, data_array; maxoutdim=2)
@@ -84,7 +85,7 @@ scatter(Y12,title="Y12 - ICA transform")
 #scatter(X_ICA,title="X_ICA - ICA reconstruct")
 
 
-# ----NONLINEAR DIMENSIONALITY REDUCTION
+# ----ManifoldLearnin.jl DIMENSIONALITY REDUCTION
 
 # Isomap
 Y_Isomap = transform(Isomap,data_array; k=12,d=2)
