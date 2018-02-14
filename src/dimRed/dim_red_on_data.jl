@@ -41,13 +41,14 @@ Independent Component Analysis (ICA) is a computational technique for separating
 into additive subcomponents, with the assumption that the subcomponents are non-Gaussian and independent
 from each other.
 =#
-M12 = fit(ICA, data_array, 3)
+M12 = fit(ICA, data_array, 2)
 Y12 = transform(M12, data_array)
 X_ICA = reconstruct(M12, Y12)
 
 # Probabilistic PCA
 M2 = fit(PPCA, data_array; maxoutdim=2)
 Y2 = transform(M2, data_array)
+#PrincComp2 = projection(data_array)
 X_PPCA = reconstruct(M2, Y2)
 
 # Factor Analysis
