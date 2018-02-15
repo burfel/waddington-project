@@ -1,6 +1,7 @@
 #=
 The following program tries to implement the dimentionality reduction functions
 available in the packages MultivariateStats.jl and ManifoldLearning.jl
+Note: You have to run topCorr.jl first (dataframe data needed).
 =#
 using DataStructures
 using MultivariateStats
@@ -18,6 +19,13 @@ data_array = reshape(data_array, (547,96))
 M1 = fit(PCA, data_array; maxoutdim=2)
 Y1 = transform(M1, data_array)
 X_PCA = reconstruct(M1, Y1)
+
+#= not trunning:
+using LowRankModels
+import ScikitLearnBase
+
+ScikitLearnBase.fit_transform!(LowRankModels.PCA(k=3, max_iter=500), data_array)
+=#
 
 # Classical Multidimensional Scaling (MDS)
 #distance_matrix = gram2dmat(gram_matrix)
