@@ -1,5 +1,5 @@
 #=
-The following program tries to implement the dimentionality reduction functions
+The following program tries to implement the dimensionality reduction functions
 available in the packages MultivariateStats.jl and ManifoldLearning.jl
 Note: You have to run topCorr.jl first (dataframe data needed).
 =#
@@ -19,6 +19,7 @@ data_array = reshape(data_array, (547,96))
 M1 = fit(PCA, data_array; maxoutdim=2)
 Y1 = transform(M1, data_array)
 X_PCA = reconstruct(M1, Y1)
+projection(X_PCA)
 
 #= not trunning:
 using LowRankModels
