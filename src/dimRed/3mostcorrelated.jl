@@ -1,11 +1,12 @@
 # 547 cells, 96 genes
 using DataFrames
 
-function top3correlated(data)
+function top3correlated(dataset)
     # Convert the data if required
-    if data isa DataFrame
-        data = convert(Array,data)
-    elseif data isa Array
+    if dataset isa DataFrame
+        data = convert(Array,dataset)
+    elseif dataset isa Array
+        data = dataset
 
     else
         print("Data neither of type DataFrame or Array")
@@ -34,6 +35,11 @@ function top3correlated(data)
     end
 
     print(most_correlated1)
+    index1 = most_correlated1[1]
+    index2 = most_correlated1[2]
+    first = convert(String, names(dataset)[index1])
+    second = convert(String, names(dataset)[index2])
+    print(" ", first, " and ", second, "\n")
 
     CorMatrix[most_correlated1[1],most_correlated1[2]] = 0.0
 
@@ -51,12 +57,12 @@ function top3correlated(data)
     end
 
     print(most_correlated2)
-
-
-
-
+    index1 = most_correlated2[1]
+    index2 = most_correlated2[2]
+    first = convert(String, names(dataset)[index1])
+    second = convert(String, names(dataset)[index2])
+    print(" ", first, " and ", second)
 end
-
 
 top3correlated(data)
 top3correlated(t24_only)
