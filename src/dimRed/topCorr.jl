@@ -5,7 +5,7 @@ using DataFrames
 Note: -
 
 Args:
-    data: data (cells | genes) as a csv file
+    data: data (cells | genes) as a csv file; here: 547 cells, 96 genes
     amount (optional): number of top genes one wants to get, default: 3
 
 Returns:
