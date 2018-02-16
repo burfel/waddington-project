@@ -1,4 +1,8 @@
 using DataFrames
+using MultivariateStats
+using RDatasets
+using Plots
+plotly() # using plotly for 3D-interacive graphing
 
 # Some example data
 data2 = convert(DataFrame, [10  10  10  8   8.04   9.14  7.46   6.58;
@@ -23,27 +27,15 @@ present = [true, true, false, false, true, true, true, false]
 data2[names(data2)[present]]
 
 
-#-----------
-
-"""
-An Array{Bool} stores each true/false value as a Bool, which is represented internally as a UInt8. So if your array has N elements, it will take N bytes to store it.
-
-A BitArray stores each true/false value as a single bit, with (conceptually) 8 of them packed into a single UInt8. Consequently, it takes only N/8 bytes to store the array. A BitArray also has methods defined that handle all the required bit-twiddling operations for you.
-"""
-
 # linear DR algorithms
 
 ##PCA
-
-using MultivariateStats
 
 # suppose Xtr and Xte are training and testing data matrix,# with each observation in a column
 # train a PCA modelM = fit(PCA, Xtr; maxoutdim=100)
 # apply PCA model to testing setYte = transform(M, Xte)
 # reconstruct testing observations (approximately)Xr = reconstruct(M, Yte)
 
-using MultivariateStats, RDatasets, Plots
-plotly() # using plotly for 3D-interacive graphing
 
 # load iris dataset
 iris = dataset("datasets", "iris")
@@ -84,16 +76,8 @@ virginica = data[names(data)[rel_virginica[:,1]]]
 
 
 #####--- runs till here
-"""
-# visualize first 3 principal components in 3D interacive plot
-p = scatter(setosa[1,:],setosa[2,:],setosa[3,:],marker=:circle,linewidth=0)
-scatter!(versicolor[1,:],versicolor[2,:],versicolor[3,:],marker=:circle,linewidth=0)
-scatter!(virginica[1,:],virginica[2,:],virginica[3,:],marker=:circle,linewidth=0)
-plot!(p,xlabel="PC1",ylabel="PC2",zlabel="PC3")
 
-@df setosa scatter([1,:], [2])
-"""
-"""
+
 ###PPCA
 #using MultivariateStats
 
@@ -129,8 +113,6 @@ Xr = MultivariateStats.reconstruct(M, Yte)
 #---------
 
 # FA
-
-using MultivariateStats
 
 # suppose Xtr and Xte are training and testing data matrix,
 # with each observation in a column
@@ -192,11 +174,3 @@ Y = ManifoldLearning.transform(HLLE, X; k = 12, d = 2)
 # suppose X is a data matrix, with each observation in a column
 # apply LTSA transformation to the dataset
 Y = ManifoldLearning.transform(LTSA, X; k = 12, d = 2)
-"""
-"""
-potential things to do:
-- ICA with other algorithm
-- topslam in python --> call in Julia
-- embed skikit functions in julia
-- (BGLPVM too much)
-"""
