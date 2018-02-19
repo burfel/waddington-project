@@ -75,7 +75,7 @@ X_FactorAna = reconstruct(M22, Y22)
 
 # Kernel PCA
 # train a kernel PCA model
-M3 = fit(KernelPCA, data_array; maxoutdim=100, inverse=true)
+M3 = fit(KernelPCA, data_array; maxoutdim=2, inverse=true)
 # apply kernel PCA model to testing set
 Y3 = transform(M3, data_array)
 # reconstruct testing observations (approximately)
