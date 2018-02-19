@@ -52,7 +52,16 @@ pyplot() # Switch to using the PyPlot.jl backend
 # Todo: PLOT DOES NOT MAKE SENSE, VALUES SHOULD BE MONOTONIC DECREASING
 Plots.plot(singular_values, linewidth=2, xlabel = "principal components", ylabel = "Singular_values", title="Singular values")
 Plots.bar!(singular_values, linewidth=1, xlim = [0, Inf], ylim=[0,2000], xlabel = "principal components", ylabel = "Singular_values", title="Singular values")
+legend()
+title("Singular values")
+savefig("singular_values_of_resp_PCs")
 Plots.bar(normalisedSVs, linewidth=1, xlim = [0, Inf], ylim=[0,1], xlabel = "principal components", ylabel = "Explained variance", title="Singular values")
+legend()
+title("Explained variance of PCs")
+savefig("singular_values_of_resp_PCs_normed")
+
+# Todo: maybe cumulative distrib of explained variance here
+
 #=
 # alternatively using Plots
 using Plots
@@ -81,3 +90,5 @@ centroid = (sum(x) / length(x), sum(y) / length(y))
 print(centroid)
 
 print(F[:S])
+#principal_components[1,1].*data_array[:,1]
+transpose(data_array) * principal_components
