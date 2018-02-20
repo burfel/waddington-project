@@ -130,3 +130,15 @@ plot(p3)
 plot(p1)
 plot(p2)
 plot(p3)
+
+#most correlated - good
+(Fgf4_Gdf3_p1,Fgf4_Gdf3_p2,Fgf4_Gdf3_p3) = two_genes(data)
+#most entropy - rubbish
+(Actb_Gapdh_p1,Actb_Gapdh_p2,Actb_Gapdh_p3) = two_genes(data)
+#most mutual information - good
+(Fgf4_Pou5f1_p1,Fgf4_Pou5f1_p2,Fgf4_Pou5f1_p3) = two_genes(data)
+
+#Nanog and Gata6 were plotted in RDB presentation
+(Nanog_Gata6_p1,Nanog_Gata6_p2,Nanog_Gata6_p3) = two_genes(data)
+
+plot(Nanog_Gata6_p3)
