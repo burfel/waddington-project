@@ -116,3 +116,25 @@ function maxinteractioninformation(dataframe)
 end
 
 maxinteractioninformation(data)
+
+function mostvaried(dataframe)
+       data_array = df2array(dataframe)
+       (cells,genes) = size(data_array)
+       CovMat = zeros(genes,genes)
+       maxcov = 0.0
+       index1 = 1
+       index2 = 1
+       for i = 1:genes
+              for j = i+1:genes
+                     CovMat[i,j] = cov(data_array[:,i],data_array[:,j])
+                     if CovMat[i,j]>maxcov
+                            maxcov = CovMat[i,j]
+                            index1 = i
+                            index2 = j
+                     end
+              end
+       end
+       return maxcov, names(dataframe)[index1], names(dataframe)[index2]
+end
+
+mostvaried(data)
