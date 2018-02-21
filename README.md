@@ -1,71 +1,17 @@
-# waddington-project
+# Waddle -- Waddington's epigenetic landscape
 
 The _Waddington_ or _epigenetic landscape_ provides a theoretical framework for cell development and differentiation.
 
-This project aimso to develop a set of _Julia_ tools to determine the structure of such landscapes for a given dynamical system.
+This project aimso to develop a set of _Julia_ tools to explore the structure of such landscapes for a given model. We use single-cell data as well as simulated data.
 
+## Structure
 
-## Getting Started
+### Simulations
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+### Stability Analysis
 
-### Prerequisites
-
-_TODO_
-What things you need to install the software and how to install them
-
-```
-Give examples
-```
-
-### Installing
-
-_TODO_
-A step by step series of examples that tell you have to get a development env running
-
-Say what the step will be
-
-```
-Give the example
-```
-
-And repeat
-
-```
-until finished
-```
-
-End with an example of getting some data out of the system or using it for a little demo
-
-## Running the tests
-
-_TODO_
-Explain how to run the automated tests for this system
-
-### Break down into end to end tests
-
-_TODO_
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-### And coding style tests
-
-_TODO_
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-## Deployment
-_TODO_
-Add additional notes about how to deploy this on a live system
-
-## Built With
-_TODO_
+### Dimensionality Reduction
+Different dimensionality reduction methods are used, ia linear methods such as PCA, SVD, PPCA as well as non-linear methods such as kernelPCA, MDS, ICA and tSNE.
 
 ## Contributing
 _TODO_
@@ -88,7 +34,6 @@ _TODO_
 
 ## Acknowledgments
 _TODO_
-* Special thanks go to [ChrisRackauckas](https://github.com/ChrisRackauckas) for contributing vastly to the Julia community
 * [JuliaDiffEq](https://github.com/JuliaDiffEq) and its contributors
 * [JuliaPlots](https://github.com/JuliaPlots) and its contributors
 * Hat tip to anyone whose code was used
