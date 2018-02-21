@@ -30,3 +30,9 @@ ESC_only = data[ann[:ThreeST] .== "ESC", :]
 
 # ... or only data sampled at 24 hours
 t24_only = data[ann[:Time] .== 24, :]
+
+t48_only = data[ann[:Time] .== 48, :]
+
+t72_only = data[ann[:Time] .== 72, :]
+
+t168_only = data[ann[:Time] .== 168, :]

@@ -1,7 +1,5 @@
 
-
 function Span_2D(boundaries, nb_bin, dim1, dim2)
-
     xspan=zeros(2,nb_bin)
     span_dim1=linspace(boundaries[1,dim1],boundaries[2,dim1],nb_bin)
     span_dim2=linspace(boundaries[1,dim2],boundaries[2,dim2],nb_bin)

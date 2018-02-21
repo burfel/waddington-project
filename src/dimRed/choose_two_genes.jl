@@ -3,6 +3,7 @@
 
 using Plots, DataStructures, DataFrames
 function two_genes(dataframe)
+           plotly()
 
            data_array = convert(Array,dataframe)
 
@@ -140,5 +141,16 @@ plot(p3)
 
 #Nanog and Gata6 were plotted in RDB presentation
 (Nanog_Gata6_p1,Nanog_Gata6_p2,Nanog_Gata6_p3) = two_genes(data)
-
 plot(Nanog_Gata6_p3)
+
+(x,y,z1) = two_genes(t24_only)
+plot(z1, title = "24 hours")
+
+(x,y,z2) = two_genes(t48_only)
+plot(z2, title = "48 hours")
+
+(x,y,z3) = two_genes(t72_only)
+plot(z3, title = "72 hours")
+
+(x,y,z4) = two_genes(t168_only)
+plot(z4,title = "168 hours")

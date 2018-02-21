@@ -8,6 +8,11 @@ using MultivariateStats
 using ManifoldLearning
 using Plots
 
+#=
+Base.compilecache("MultivariateStats")
+Pkg.checkout("MultivariateStats")
+=#
+
 data_array = convert(Array, data)
 #data_array = collect(skipmissing(data_array))
 data_array = reshape(data_array, (547,96))
@@ -29,8 +34,14 @@ ScikitLearnBase.fit_transform!(LowRankModels.PCA(k=3, max_iter=500), data_array)
 =#
 
 # Classical Multidimensional Scaling (MDS)
-#distance_matrix = gram2dmat(gram_matrix)
-#classical_mds(distance_matrix, 2[, dowarn=true])
+# This function derives a p-dimensional embedding based on a given distance_matrix.
+# It returns a coordinate matrix of size (p, n), where each column is the coordinates for an observation.
+# gram matrix  = X * X_transpose
+gram_matrix = data_array * transpose(data_array)
+# compute the distance matrix
+distance_matrix = gram2dmat(gram_matrix)
+MDS = classical_mds(distance_matrix, 96, dowarn=true)
+MDSt = transpose(MDS)
 #Todo: compute gram_matrix
 
 # Linear Discriminant Analysis (LDA)
@@ -67,7 +78,7 @@ of conditional distribution of the observed variable given the latent variable i
 diagonal rather than isotropic.
 =#
 # train a FactorAnalysis model
-M22 = fit(FactorAnalysis, Xtr; maxoutdim=100)
+M22 = fit(FactorAnalysis, data_array; maxoutdim=100)
 # apply FactorAnalysis model to testing set
 Y22 = transform(M22, data_array)
 # reconstruct testing observations (approximately)
