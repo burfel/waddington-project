@@ -1,6 +1,6 @@
 #=
 The following program computes a generalised PCA (SVD).
-It plots the explained variance of the data points in the input data set
+It plots the explained variance of the data points in the input data set.
 
 Note: You have to run topCorr.jl first (dataframe data needed).
 =#
@@ -16,7 +16,7 @@ using ScikitLearn.Pipelines: Pipeline, named_steps
 @sk_import linear_model: LogisticRegression
 
 
-function generalPCAgener[data_array]
+function generalPCA(data_array)
 
 # SVD without ScikitLearn:
     F = svdfact(data_array)
@@ -85,4 +85,6 @@ function generalPCAgener[data_array]
     # to get transformed data, we multiply by V; this equals the principal components U*S
     output = principal_components
 
-return output
+    return output
+
+end
