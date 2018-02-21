@@ -1,4 +1,4 @@
-#=
+#=latest version
 The following program plots the explained variance of the data points in data_array
 Note: You have to run topCorr.jl first (dataframe data needed).
 =#
@@ -89,6 +89,7 @@ y = principal_components[2,:]
 centroid = (sum(x) / length(x), sum(y) / length(y))
 print(centroid)
 
-print(F[:S])
-#principal_components[1,1].*data_array[:,1]
-transpose(data_array) * principal_components
+# to get transformed data, we multiply by V; this equals the principal components U*S
+output = principal_components
+
+return output
