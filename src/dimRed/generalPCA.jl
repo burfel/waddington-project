@@ -15,6 +15,33 @@ using ScikitLearn.Pipelines: Pipeline, named_steps
 @sk_import datasets: load_digits
 @sk_import linear_model: LogisticRegression
 
+function plotStatistics(data_array)
+    means = []
+    variance = []
+    for col in 1:last(size(data_array))
+        push!(means, mean(data_array[:, col]))
+        push!(variance, var(data_array[:, col]))
+    end
+    Plots.scatter(means)
+    return (means, variance)
+end
+statistics = plotStatistics(data_array)
+#Plots.scatter(statistics)
+describe(data)
+
+println("Column\tMean\tMedian\tVariance\tStdDev\tCovariance\tCorrelation\t")
+
+map(xcol -> println(
+    xcol,                   "\t",
+    mean(data[xcol]),   "\t",
+    median(data[xcol]), "\t",
+    var(data[xcol]), "\t",
+    std(data[xcol]),    "\t",
+    cov(data[xcol]),    "\t",
+    cor(data[xcol], data[xcol]),
+
+    [names(data)];
+
 
 function generalPCA(data_array)
 

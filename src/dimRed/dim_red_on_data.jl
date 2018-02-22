@@ -8,17 +8,17 @@ using MultivariateStats
 using ManifoldLearning
 using Plots
 
-#=
+
 Base.compilecache("MultivariateStats")
 Pkg.checkout("MultivariateStats")
-=#
 
+#=
 data_array = convert(Array, data)
 #data_array = collect(skipmissing(data_array))
 data_array = reshape(data_array, (547,96))
+=#
 
-
-# ----MultivariateStats.jl DIMENSIONALITY REDUCTION
+# ---- DIMENSIONALITY REDUCTION using MultivariateStats.jl
 
 # Principal Components Analysis (PCA)
 M1 = fit(PCA, data_array; maxoutdim=2)
@@ -26,7 +26,7 @@ Y1 = transform(M1, data_array)
 X_PCA = reconstruct(M1, Y1)
 projection(X_PCA)
 
-#= not trunning:
+#= not running:
 using LowRankModels
 import ScikitLearnBase
 
@@ -42,7 +42,6 @@ gram_matrix = data_array * transpose(data_array)
 distance_matrix = gram2dmat(gram_matrix)
 MDS = classical_mds(distance_matrix, 96, dowarn=true)
 MDSt = transpose(MDS)
-#Todo: compute gram_matrix
 
 # Linear Discriminant Analysis (LDA)
 
@@ -60,6 +59,7 @@ separating observations in n classes.
 Independent Component Analysis (ICA) is a computational technique for separating a multivariate signal
 into additive subcomponents, with the assumption that the subcomponents are non-Gaussian and independent
 from each other.
+NOT RUNNING
 =#
 M12 = fit(ICA, data_array, 2)
 Y12 = transform(M12, data_array)
