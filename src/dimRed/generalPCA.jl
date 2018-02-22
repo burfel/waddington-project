@@ -5,16 +5,20 @@ It plots the explained variance of the data points in the input data set.
 Note: You have to run topCorr.jl first (dataframe data needed).
 =#
 
-using ScikitLearn
+#using ScikitLearn
+# NOT GOOD: LOADING MULTIPLE PLOTTING PACKAGES
 using Plots
 using PyPlot
-using ScikitLearn.GridSearch: GridSearchCV
-using ScikitLearn.Pipelines: Pipeline, named_steps
+using StatPlots
+using DataFrames
+#using ScikitLearn.GridSearch: GridSearchCV
+#using ScikitLearn.Pipelines: Pipeline, named_steps
 
-@sk_import decomposition: PCA
-@sk_import datasets: load_digits
-@sk_import linear_model: LogisticRegression
+#@sk_import decomposition: PCA
+#@sk_import datasets: load_digits
+#@sk_import linear_model: LogisticRegression
 
+# COMPUTES THE MEANS AND VARIANCES OF THE GENES IN DATA
 function plotStatistics(data_array)
     means = []
     variance = []
@@ -23,24 +27,75 @@ function plotStatistics(data_array)
         push!(variance, var(data_array[:, col]))
     end
     Plots.scatter(means)
-    return (means, variance)
+    return means, variance
 end
-statistics = plotStatistics(data_array)
-#Plots.scatter(statistics)
-describe(data)
 
+@time plotStatistics(data_array)
+
+statistics = plotStatistics(data_array)
+print("mean: ", statistics[1], "\n variance:", statistics[2])
+# Todo: PRINT THAT NICER IN A DATAFRAME
+
+
+# PLOTS MEAN AND VARIANCES OF THE GENES IN DATA
+Plots.plot(statistics[2], ylabel = "gene expression level", xlabel = "genes (1-96)", title = "mean/ variance of gene expression level", label = "mean", legend=true)
+Plots.plot!(statistics[1], label = "variance", legend = true)
+#Plots.scatter(statistics)
+
+meansF = Array{Float64}(statistics[1])
+varsF = Array{Float64}(statistics[2])
+# not working:
+#convert(DataFrame, meansF)
+# Todo: convert to dataframe, sort, plot
+
+#showcols(data)
+
+# GIVES HANDY DESCRIPTION / STATISTICS ON DATA FRAME
+description = DataFrames.describe(data)
+#description[:Wnt5a]
+
+#names = names(data)
+
+data[:Zfp281]
+
+# SELECT WHICH GENES YOU WANT TO HAVE PLOT
+# GENERALISE
+genes = DataFrames.names(data)
+genes[1]
+data[1]
+gene1 = names[1]
+gene2 = names[2]
+@df data StatPlots.plot(1:1:547, :Actb, title="Expression of ")
+#first(size(data_array)) # = 547
+
+#=
+println("Column\tMeanX\tMedianX\tStdDev X\tMeanY\t\t\tStdDev Y\t\tCorr\t")
+map(xcol -> println(
+        xcol,                   "\t",
+        mean(anscombe[xcol]),   "\t",
+        median(anscombe[xcol]), "\t",
+        std(anscombe[xcol]),    "\t",
+        mean(anscombe[xcol]),   "\t",
+        std(anscombe[xcol]),    "\t",
+        cor(anscombe[xcol], anscombe[xcol])),
+
+    [:X1, :X2, :X3, :X4],
+    [:Y1, :Y2, :Y3, :Y4]);
+=#
+#=
 println("Column\tMean\tMedian\tVariance\tStdDev\tCovariance\tCorrelation\t")
 
 map(xcol -> println(
-    xcol,                   "\t",
+    xcol,               "\t",
     mean(data[xcol]),   "\t",
     median(data[xcol]), "\t",
-    var(data[xcol]), "\t",
+    var(data[xcol]),    "\t",
     std(data[xcol]),    "\t",
     cov(data[xcol]),    "\t",
-    cor(data[xcol], data[xcol]),
+    cor(data[xcol]),
 
-    [names(data)];
+    [names];
+=#
 
 
 function generalPCA(data_array)
