@@ -11,6 +11,7 @@ using Plots
 using PyPlot
 using StatPlots
 using DataFrames
+using StatsBase
 #using ScikitLearn.GridSearch: GridSearchCV
 #using ScikitLearn.Pipelines: Pipeline, named_steps
 
@@ -26,32 +27,91 @@ function plotStatistics(data_array)
         push!(means, mean(data_array[:, col]))
         push!(variance, var(data_array[:, col]))
     end
-    Plots.scatter(means)
+    #Plots.scatter(means)
     return means, variance
 end
 
-@time plotStatistics(data_array)
-
-statistics = plotStatistics(data_array)
+statistics = @time plotStatistics(data_array)
 print("mean: ", statistics[1], "\n variance:", statistics[2])
 # Todo: PRINT THAT NICER IN A DATAFRAME
 
-
 # PLOTS MEAN AND VARIANCES OF THE GENES IN DATA
-Plots.plot(statistics[2], ylabel = "gene expression level", xlabel = "genes (1-96)", title = "mean/ variance of gene expression level", label = "mean", legend=true)
-Plots.plot!(statistics[1], label = "variance", legend = true)
-#Plots.scatter(statistics)
+#Plots.plot(statistics[2], ylabel = "gene expression level", xlabel = "genes (1-96)", title = "mean/ variance of gene expression level", label = "mean", legend=true)
+#Plots.plot!(statistics[1], label = "variance", legend = true)
+Plots.bar(statistics[2], ylabel = "gene expression level", xlabel = "genes (1-96)", title = "mean/ variance of gene expression levels", label = "mean", legend=true)
+Plots.bar!(statistics[1], label = "variance", legend = true)
+#Plots.scatter(statistics[1])
+#Plots.scatter(statistics[2])
+legend()
+title("Mean / variance of data")
+savefig("MeanVar_data")
 
 meansF = Array{Float64}(statistics[1])
 varsF = Array{Float64}(statistics[2])
-# not working:
-#convert(DataFrame, meansF)
-# Todo: convert to dataframe, sort, plot
 
-#showcols(data)
+names = DataFrames.names(data)
+df_stats = DataFrame(gene_name = names, mean = statistics[1], variance = statistics[2])
+sort!(iris, cols = (:Species, :SepalLength, :SepalWidth),
+                    rev = (true, false, false));
+# GENES SORTED BY DECREASING MEAN OF GENE EXPRESSION LEVEL
+df_stats_Msort = sort(df_stats, cols = (:mean),
+                    rev = (true));
+# GENES SORTED by INCREASING VARIANCE, IE UNCERTAINTY
+df_stats_Vsort = sort(df_stats, cols = cols = (:variance),
+                    rev = (false));
+# PLOTS
+@df df_stats_Msort plot(1:96, [:mean :variance], colour = [:blue :red], xlabel = "genes (1-96)", title = "mean/ variance of gene expression levels, sorted by mean", legend=true)
+@df df_stats_Vsort plot(1:96, [:mean :variance], colour = [:blue :red], xlabel = "genes (1-96)", title = "mean/ variance of gene expression levels, sorted by variance", legend=true)
+#@df df_stats_Msort bar(1:96, [:mean], colour = [:blue], xlabel = "genes (1-96)", title = "mean/ variance of gene expression levels", legend=true)
+#@df df_stats_Msort bar!(1:96, [:variance], colour = [:red], xlabel = "genes (1-96)", title = "mean/ variance of gene expression levels", legend=true)
+
+# TODO: BOXPLOTS
+#@df df_stats_Msort violin(:mean,:variance,marker=(0.2,:blue,stroke(0)))
+@df df_stats_Msort plot(violin(:mean, :value))
+#@df df_stats_Msort violin(:mean, :gene_name)
+#@df singers boxplot!(:VoicePart,:Height,marker=(0.3,:orange,stroke(2)))
+#violin(df_stats[findin(df_stats[:gene_name],names[1:12]),:],:gene_names,:value, xlabel="", title="ViolinPlot of the gene expression data")
+
+#=
+using Plotly
+
+x = (["day 1", "day 1", "day 1", "day 1", "day 1", "day 1",
+      "day 2", "day 2", "day 2", "day 2", "day 2", "day 2"])
+
+
+trace1 = [
+  "y" => [0.2, 0.2, 0.6, 1.0, 0.5, 0.4, 0.2, 0.7, 0.9, 0.1, 0.5, 0.3],
+  "x" => x,
+  "name" => "kale",
+  "marker" => ["color" => "#3D9970"],
+  "type" => "box"]
+trace2 = [
+  "y" => [0.6, 0.7, 0.3, 0.6, 0.0, 0.5, 0.7, 0.9, 0.5, 0.8, 0.7, 0.2],
+  "x" => x,
+  "name" => "radishes",
+  "marker" => ["color" => "#FF4136"],
+  "type" => "box"]
+trace3 = [
+  "y" => [0.1, 0.3, 0.1, 0.9, 0.6, 0.6, 0.9, 1.0, 0.3, 0.6, 0.8, 0.5],
+  "x" => x,
+  "name" => "carrots",
+  "marker" => ["color" => "#FF851B"],
+  "type" => "box"]
+data = [trace1, trace2, trace3]
+layout = [
+  "yaxis" => [
+    "title" => "normalized moisture",
+    "zeroline" => false
+  ],
+  "boxmode" => "group"]
+response = Plotly.plot(data, ["layout" => layout, "filename" => "box-grouped", "fileopt" => "overwrite"])
+plot_url = response["url"]
+=#
+
 
 # GIVES HANDY DESCRIPTION / STATISTICS ON DATA FRAME
-description = DataFrames.describe(data)
+#description = DataFrames.describe(data)
+description = StatsBase.describe(data)
 #description[:Wnt5a]
 
 #names = names(data)
