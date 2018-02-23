@@ -1,11 +1,14 @@
-#=Function that identifies and plots the 2 most correlated gene pairs given data.
+#=
+
+Function that prints and plots the 2 most correlated gene pairs given data.
 Note: -
 
 Args:
     dataset: data in the form of a dataframe or an array; here: 547 cells, 96 genes
 
 Returns:
-    The two most correlated gene pairs.
+    - 
+
 =#
 
 using DataFrames
@@ -24,7 +27,7 @@ function top3correlated(dataset)
 
     (cells,genes) = size(data)
 
-    # FIND THE MOST CORRELATED GENE PAIR
+    # 1. FIND THE MOST CORRELATED GENE PAIR
     CorMatrix = cor(data)
     for i=1:genes
         CorMatrix[i,i] = .0
@@ -53,7 +56,7 @@ function top3correlated(dataset)
     print(" ", first, " and ", second, "\n")
 
 
-    # FIND THE SECOND MOST CORRELATED GENE PAIR:
+    # 2. FIND THE SECOND MOST CORRELATED GENE PAIR:
 
     # setting the most correlated genes to 0
     CorMatrix[most_correlated1[1],most_correlated1[2]] = .0
@@ -91,7 +94,7 @@ top3correlated(t24_only)
 top3correlated(ESC_only)
 
 
-# PLOTS
+# 3. PLOTS
 using Plots
 scatter(data[:,22],data[:,31],data[:,67],xlabel=names(data)[22],ylabel=names(data)[31],zlabel=names(data)[67])
 scatter(t24_only[:,67],t24_only[:,88],t24_only[:,90],xlabel=names(data)[67],ylabel=names(data)[88],zlabel=names(data)[90])

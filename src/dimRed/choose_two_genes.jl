@@ -1,8 +1,22 @@
-# run reading_in_example.jl first
-# 3mostcorrelated.jl gives pairs of correlated genes which are plotted
+#=
+
+Function that plots the landscape of a given data set.
+
+Note:  - run Single_cell_data/reading_in_example.jl first
+       - 3mostcorrelated.jl gives pairs of correlated genes which are plotted
+
+Args:
+    dataframe: data in the form of a dataframe or an array; here: 547 cells, 96 genes
+
+Returns:
+    -
+=#
+
 
 using Plots, DataStructures, DataFrames
+
 function two_genes(dataframe)
+           
            plotly()
 
            data_array = convert(Array,dataframe)
@@ -10,6 +24,8 @@ function two_genes(dataframe)
            data_array = collect(skipmissing(data_array))
            data_array = reshape(data_array,(nrow(dataframe),ncol(dataframe)))
            data_array = data_array'
+
+           # TAKES INPUT (2 genes that should be plottet)
            (no_genes,no_cells) = size(data_array)
            gene1 = input("Gene 1: ")
            gene2 = input("Gene 2: ")
@@ -69,6 +85,8 @@ function two_genes(dataframe)
            p1 = scatter(data[:,gene1index],data[:,gene2index],xlabel=names(data)[gene1index],ylabel=names(data)[gene2index])
 
            p2 = surface(xspan,xspan,U,xlabel=names(data)[gene1index],ylabel=names(data)[gene2index])
+
+
            ####################################### Kernel Density Estimation method ############################################
 
 
@@ -109,6 +127,7 @@ function two_genes(dataframe)
            end
 
 
+           ########################################################################################################################
 
 
            p3 = surface(xspan,xspan,Results,xlabel=names(data)[gene1index],ylabel=names(data)[gene2index])
@@ -117,16 +136,21 @@ function two_genes(dataframe)
 end
 
 
+# CALL THE FUNCTION
+
+# ...on the whole data set
 (p1,p2,p3) = two_genes(data) # Fgf4 and Gdf3
 plot(p1)
 plot(p2)
 plot(p3)
 
+# ...on t24 only
 (p1,p2,p3) = two_genes(t24_only) # Pou5f1 and Trp53
 plot(p1)
 plot(p2)
 plot(p3)
 
+# ...on embryonic stem cells only
 (p1,p2,p3) = two_genes(ESC_only) # Dnmt3b and Prmt7
 plot(p1)
 plot(p2)
