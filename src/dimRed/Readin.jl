@@ -51,6 +51,10 @@ function readin(loc, df=false)
         return data
     else
         return data_array
+    end
 end
 
-readin("../Single_cell_data/", true)
+#=
+using Readin
+Readin.readin("../Single_cell_data/", true)
+=#
