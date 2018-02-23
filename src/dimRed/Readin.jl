@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
-using DataFrames
+#=
 
-#=Function that reads in the data set given as a csv file and returns it as a dataframe or as an array.
+Function that reads in the data set given as a csv file and returns it as a dataframe or as an array.
 Note: -
 
 Args:
@@ -10,7 +10,10 @@ Args:
 
 Returns:
     The data as a dataframe or data array, depending on df.
+
 =#
+
+using DataFrames
 
 function readin(loc, df=false)
 

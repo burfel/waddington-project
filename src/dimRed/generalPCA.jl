@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 #=
 The following program computes a generalised PCA (SVD).
 It plots the explained variance of the data points in the input data set.

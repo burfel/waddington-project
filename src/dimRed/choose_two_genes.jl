@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 #=
 
 Function that plots the landscape of a given data set.

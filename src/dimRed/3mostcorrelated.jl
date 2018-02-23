@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 #=
 
 Function that prints and plots the 2 most correlated gene pairs given data.
