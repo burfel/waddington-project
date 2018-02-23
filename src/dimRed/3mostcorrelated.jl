@@ -1,13 +1,14 @@
 #=
 
 Function that prints and plots the 2 most correlated gene pairs given data.
+
 Note: -
 
 Args:
     dataset: data in the form of a dataframe or an array; here: 547 cells, 96 genes
 
 Returns:
-    - 
+    -
 
 =#
 
@@ -82,7 +83,7 @@ function top3correlated(dataset)
     print(" ", first, " and ", second)
 end
 
-# RUN THE FUNCTION ...
+# CALL THE FUNCTION ...
 
 # ...on the whole data set
 top3correlated(data)

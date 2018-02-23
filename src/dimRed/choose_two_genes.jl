@@ -16,7 +16,7 @@ Returns:
 using Plots, DataStructures, DataFrames
 
 function two_genes(dataframe)
-           
+
            plotly()
 
            data_array = convert(Array,dataframe)
