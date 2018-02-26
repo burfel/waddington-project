@@ -1,3 +1,12 @@
+# -*- coding: utf-8 -*-
+#=
+
+Function that reads in the data set ND-data.txt and stores it in a dataframe.
+Note: You can modify the program  so that only selected data is read in;
+      annotation.txt may also be modified to provide extra information.
+
+=#
+
 using DataFrames
 
 # Reading in the data from the ND-data text file to a dataframe
@@ -22,7 +31,6 @@ data = delete!(df1, :variable)
 
 # Extra information provided by the annotation.txt file
 ann=readtable("annotation.txt",header=true,separator=' ');
-
 
 
 # Then you can do things like get only ESC data
