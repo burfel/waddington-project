@@ -29,11 +29,12 @@ function generalPCA(data_array)
     #F[:S]
     #F[:V]
     singular_values = F[:S]
-    print(singular_values)
+    print("Singular values: ", singular_values)
+
     normCon = sum(singular_values)
     normalise(x) = x/normCon
     normalisedSVs = normalise.(singular_values)
-    print(normalisedSVs)
+    print("Normalised singular values: ", normalisedSVs)
     principal_components = F[:U] * diagm(F[:S])
     #=
     #figure(1, figsize=(4, 3))
@@ -45,6 +46,7 @@ function generalPCA(data_array)
     ylabel("explained variance")
     =#
 
+    #  PLOTS
     pyplot() # Switch to using the PyPlot.jl backend
     #plotly() # alternatively, for backend for web interactivity
     # Todo: PLOT DOES NOT MAKE SENSE, VALUES SHOULD BE MONOTONIC DECREASING
@@ -69,11 +71,11 @@ function generalPCA(data_array)
     pyplot() # Switch to using the PyPlot.jl backend
     Plots.scatter(principal_components, linewidth=2, xlabel = "cells", ylabel ="gene expression of particular gene combination", title="Principal components")
     # .. shows that the first PC (blue) is very distinctive to the rest of the PCs
-    print(minimum(principal_components[1,:]))
-    print(minimum(principal_components[1,2:end])) # second smalles value in first Pc
-    print(maximum(principal_components[1,:]))
-    print(minimum(principal_components[2,:]))
-    print(maximum(principal_components[2,:]))
+    #print(minimum(principal_components[1,:]))
+    #print(minimum(principal_components[1,2:end])) # second smalles value in first Pc
+    #print(maximum(principal_components[1,:]))
+    #print(minimum(principal_components[2,:]))
+    #print(maximum(principal_components[2,:]))
 
     Plots.scatter(principal_components[1,:], principal_components[2,:], linewidth=2, xlabel = "PC1", ylabel = "PC2", title="Projection onto 2 PCs")
     Plots.scatter(principal_components[1, 2:end], principal_components[2, 2:end], linewidth=2, xlabel = "PC1", ylabel = "PC2", title="Projection onto 2 PCs")
@@ -81,11 +83,11 @@ function generalPCA(data_array)
     title("Projection onto 2 PCs")
     savefig("Projection_2PCs")
 
-    # compute the centroid of the data points
+    # COMPUTE THE CENTROID OF THE DATA POINTS
     x = principal_components[1,:]
     y = principal_components[2,:]
     centroid = (sum(x) / length(x), sum(y) / length(y))
-    print(centroid)
+    print("Centroid: ", centroid)
 
     # to get transformed data, we multiply by V; this equals the principal components U*S
     output = principal_components
