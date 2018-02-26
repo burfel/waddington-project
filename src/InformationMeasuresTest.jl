@@ -21,6 +21,8 @@ cmi_12_on_3 = get_conditional_mutual_information(data_1, data_2, data_3)
 5. Interaction information
 ii_123 = get_interaction_information(data_1, data_2, data_3)
 
+6. Highest covariance
+
 6. Total correlation
 tc_123 = get_total_correlation(data_1, data_2, data_3)
 
@@ -205,7 +207,7 @@ maxInteractionInfo = @time maxinteractioninformation(data)
 print("maximal interaction information: ", maxInteractionInfo)
 
 
-# returns genes with HIGHEST VARIANCE
+# 6. returns genes with HIGHEST VARIANCE
 # TODO: maybe renaming function since name misleading....
 function mostvaried(dataframe)
        data_array = df2array(dataframe)
@@ -234,7 +236,7 @@ print("highest covariance: ", highCov)
 
 
 
-# returns TOTAL CORRELATION --------------DOES NOT TERMINATE!
+# 7. returns TOTAL CORRELATION --------------DOES NOT TERMINATE!
 function totalCorrelation(dataframe)
        data_array = df2array(dataframe)
 
@@ -266,7 +268,7 @@ print("total correlation: ", totalCorr)
 
 
 
-# returns PARTIAL INFORMATION DECOMPOSITION -------------DOES NOT TERMINATE!
+# 8. returns PARTIAL INFORMATION DECOMPOSITION -------------DOES NOT TERMINATE!
 function partialInformationDecomp(dataframe)
        data_array = df2array(dataframe)
 
