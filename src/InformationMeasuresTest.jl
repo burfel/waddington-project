@@ -23,10 +23,10 @@ ii_123 = get_interaction_information(data_1, data_2, data_3)
 
 6. Highest covariance
 
-6. Total correlation
+7. Total correlation
 tc_123 = get_total_correlation(data_1, data_2, data_3)
 
-7. Partial information decomposition
+8. Partial information decomposition
 pid_123 = get_partial_information_decomposition(data_1, data_2, data_3)
 
 

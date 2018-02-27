@@ -1,10 +1,19 @@
+# -*- coding: utf-8 -*-
 #=
+
 The following program visualises the data set.
 It computes and plots the mean and variance of expression levels of the 96 genes over the 547 cells;
 it also computes the correlation matrix for two genes.
 
-Note: You have to run topCorr.jl first (dataframe data needed).
+Note: You have to run Readin.jl first (dataframe data needed).
+
+Args:
+    -
+
+Returns:
+    -
 =#
+
 
 #using ScikitLearn
 # NOT GOOD: LOADING MULTIPLE PLOTTING PACKAGES
@@ -72,8 +81,22 @@ df_stats_Vsort = sort(df_stats, cols = cols = (:variance),
 ###################
 # TODO: BOXPLOTS
 ##################
+#=
 #@df df_stats_Msort violin(:mean,:variance,marker=(0.2,:blue,stroke(0)))
 @df df_stats_Msort plot(violin(:mean, :value))
+@df data boxplot(group=:names)
+    @df data boxplot(:n)
+=#
+# maybe iterate over list of symbols
+# THIS SHOULD BE WORKING!
+#@df data boxplot(df_stats_Msort[1:3,1])
+@df data boxplot(:Gapdh)
+#@df data boxplot(:Actb, :Gapdh)
+@df data boxplot!(:Actb)
+@df data boxplot!(:Kdm1a, legend = true)
+
+
+
 #@df df_stats_Msort violin(:mean, :gene_name)
 #@df singers boxplot!(:VoicePart,:Height,marker=(0.3,:orange,stroke(2)))
 #violin(df_stats[findin(df_stats[:gene_name],names[1:12]),:],:gene_names,:value, xlabel="", title="ViolinPlot of the gene expression data")

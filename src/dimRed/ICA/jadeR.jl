@@ -1,6 +1,8 @@
 # ICA based on JADE algorithm
 
-function B =  jadeR[X,m]
+X = rand(100, 200)
+m=100
+function B =  jadeR(X,m)
 #   B = jadeR[X, m] is an m*n matrix such that Y=B*X are separated sources
 #    extracted from the n*T data matrix X.
 #   If m is omitted,  B=jadeR[X]  is a square n*n matrix [as many sources as sensors]
@@ -74,18 +76,27 @@ function B =  jadeR[X,m]
 verbose	= 1 ;	# Set to 0 for quiet operation
 
 # Finding the number of sources
-[n,T]	= size(X)
-if nargin==1, m=n ; end; 	# Number of sources defaults to # of sensors
-if m>n ,    @sprintf("jade -> Do not ask more sources than sensors here!!!\n"), return(),end
-if verbose, @sprintf("jade -> Looking for %d sources\n",m); end
+(n,T)	= size(X)
+if nargin==1
+    m=n
+end 	# Number of sources defaults to # of sensors
+if m>n
+    @sprintf("jade -> Do not ask more sources than sensors here!!!\n")
+    return()
+end
+if verbose
+    @sprintf("jade -> Looking for %d sources\n",m)
+end
 
 
 # to do: add a warning about complex signals
 
 # Mean removal
-#=============
-if verbose, @sprintf("jade -> Removing the mean value\n"); end
-X	= X - mean(X')' * ones(1,T)
+# =============
+if verbose
+    @sprintf("jade -> Removing the mean value\n")
+end
+X	= X - transpose(mean(transpose(X))) * ones(1,T)
 
 
 ### whitening & projection onto signal subspace()

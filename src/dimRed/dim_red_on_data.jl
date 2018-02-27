@@ -1,8 +1,17 @@
+# -*- coding: utf-8 -*-
 #=
 The following program tries to implement the dimensionality reduction functions
 available in the packages MultivariateStats.jl and ManifoldLearning.jl
-Note: You have to run Readin.jl first (dataframe data needed).
+
+Note: You have to run Read.jl first (dataframe data needed).
+
+Args:
+    -
+
+Returns:
+    -
 =#
+
 using DataStructures
 using MultivariateStats
 using ManifoldLearning
