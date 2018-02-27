@@ -1,10 +1,18 @@
 # -*- coding: utf-8 -*-
 #=
-The following program computes a generalised PCA (SVD).
-It plots the explained variance of the data points in the input data set.
 
-Note: You have to run topCorr.jl first (dataframe data needed).
+Function that computes a generalised PCA (SVD).
+It plots the explained variance of the data points in the input data set.
+Note: You have to run Readin.jl first (dataframe data needed).
+
+Args:
+    data_array: data in form of an array, here: 547 x 96 matrix
+
+Returns:
+    The principal compnent matrix.
+
 =#
+
 
 #using ScikitLearn
 # NOT GOOD: LOADING MULTIPLE PLOTTING PACKAGES
