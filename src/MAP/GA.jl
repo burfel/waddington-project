@@ -2,7 +2,6 @@ using Distributions
 using Plots
 
 
-
 type Trajectory
     space::Array{Float64}
     fitness::Float64
@@ -27,7 +26,7 @@ end
 function random_traj(non_rand_traj)#,ID)
     #srand(ID)
     (Nsize,dim)=size(non_rand_traj)
-    rand_traj=rand(Normal(0.0,0.2),Nsize,dim)
+    rand_traj=rand(Normal(0.0,0.5),Nsize,dim)
     for i=1:dim
         rand_traj[1,i]=0.0
         rand_traj[Nsize,i]=0.0
@@ -40,11 +39,17 @@ end
 function pop_init(pop_size,pointA,pointB, Nsize,dim,f_func,g_func)
     new_pop=Array{Trajectory}(pop_size)
     non_rand_traj=non_random_traj(pointA,pointB,Nsize,dim)
-    for i = 1:pop_size
-        traj=random_traj(non_rand_traj,i)
+
+    fit=fitness(non_rand_traj,f_func,g_func)
+    new_pop[1]=Trajectory(non_rand_traj,fit,Nsize)
+
+    for i = 2:pop_size-1
+        traj=random_traj(non_rand_traj)#,i)
         fit=fitness(traj,f_func,g_func)
         new_pop[i]=Trajectory(traj,fit,Nsize)
     end
+    new_pop[pop_size]=smooth_traj(new_pop[1:pop_size-1],f_func,g_func)
+
     return new_pop
 end
 
@@ -85,7 +90,7 @@ function fitness(path,f_func,g_func)
         if temp2==0
             fitness=fitness+temp1
         elseif !(temp1==0)
-            fitness=fitness+temp1*(1-temp3/(temp1*temp2))*ds_length
+            fitness=fitness+abs(temp1*(1-temp3/(temp1*temp2))*ds_length)
         end
     end
     return 2*fitness
@@ -177,24 +182,64 @@ function selection(parents,children)
 end
 
 
-function GA(Nb_gen,pop_size,pointA,pointB,Nsize,dim,f_func,g_func)
-    pop=pop_init(pop_size,pointA,pointB,Nsize,dim,f_func,g_func)
 
-    gen=0
 
-    while gen<Nb_gen
-        new_pop=Array{Trajectory}(pop_size)
+function smooth_traj(pop,f_func,g_func)
+    (Nsize,dim)=size(pop[1].space)
+    size_pop=size(pop)[1]
+    mean_traj=zeros(Nsize,dim)
 
-        for i = 1:pop_size
-            parents=parents_selection(pop)
-            new_pop[i]=mating(parents[1],parents[2],f_func,g_func)
+    for i=1:Nsize
+        for j=1:dim
+            for u=1:size_pop
+                mean_traj[i,j]=mean_traj[i,j]+pop[u].space[i,j]
+            end
+            mean_traj[i,j]=mean_traj[i,j]/size_pop
         end
-
-        pop=selection(pop,new_pop)
-        gen=gen+1
     end
 
-    return pop
+    new_traj=Trajectory(mean_traj,fitness(mean_traj,f_func,g_func),Nsize)
+    return new_traj
+end
+
+function GA(RepeatGA,Nb_gen,pop_size,pointA,pointB,Nsize,dim,f_func,g_func)
+    repeatpop=pop_init(pop_size,pointA,pointB,Nsize,dim,f_func,g_func)
+    r=0
+    while r<RepeatGA
+        pop=pop_init(pop_size,pointA,pointB,Nsize,dim,f_func,g_func)
+
+        gen=0
+        srand()
+        while gen<Nb_gen
+            new_pop=Array{Trajectory}(pop_size)
+
+            for i = 1:pop_size-1
+                parents=parents_selection(pop)
+                new_pop[i]=mating(parents[1],parents[2],f_func,g_func)
+            end
+            new_pop[pop_size]=smooth_traj(new_pop[1:pop_size-1],f_func,g_func)
+
+            pop=selection(pop,new_pop)
+            gen=gen+1
+        end
+        repeatpop=selection(repeatpop,pop)
+        r=r+1
+    end
+
+    gen2=0
+    while gen2<Nb_gen
+        new_pop=Array{Trajectory}(size(repeatpop)[1])
+
+        for i = 1:pop_size-1
+            parents=parents_selection(repeatpop)
+            new_pop[i]=mating(parents[1],parents[2],f_func,g_func)
+        end
+        new_pop[size(repeatpop)[1]]=smooth_traj(new_pop[1:size(repeatpop)[1]-1],f_func,g_func)
+        repeatpop=selection(repeatpop,new_pop)
+        gen2=gen2+1
+    end
+
+    return repeatpop
 end
 #function mutation()
 
