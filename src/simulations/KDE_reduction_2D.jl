@@ -29,23 +29,23 @@ function KDE_reduction_2D(end_state, boundaries, nb_bin, dim1,dim2)
     hps=1.06*1000^(-1/5)
 
     # defines the kernel density function from the end_state
-    function KDE(kernel="gaussian", x1,x2)
+    function KDE(x1,x2,kernel="gaussian")
         sum = 0
 
         # uses the squared exponential, ie gaussian kernel
-        if kernel="gaussian"
+        if kernel=="gaussian"
             for i = 1:nb_sim
                 sum=sum+exp(-((x1-end_state[i,dim1])^2+(x2-end_state[i,dim2])^2)/(2*hps^2))
             end
 
         # uses the exponential kernel
-        elseif kernel="exponential"
+        elseif kernel=="exponential"
             for i = 1:nb_sim
                 sum=sum+exp(-((x1-end_state[i,dim1])+(x2-end_state[i,dim2]))/hps)
             end
 
         # uses the linear kernel
-        elseif kernel="linear"
+        elseif kernel=="linear"
             for i = 1:nb_sim
                 if ((x1-end_state[i,dim1]) < hps) && ((x2-end_state[i,dim2]) < hps)
                     sum=sum+ (1 - ((x1-end_state[i,dim1])+(x2-end_state[i,dim2]))/hps)
@@ -55,7 +55,7 @@ function KDE_reduction_2D(end_state, boundaries, nb_bin, dim1,dim2)
             end
 
         # uses the cosine kernel
-        elseif kernel="cosine"
+        elseif kernel=="cosine"
             for i = 1:nb_sim
                 if ((x1-end_state[i,dim1]) < hps) && ((x2-end_state[i,dim2]) < hps)
                     sum=sum+ cos( (pi* ((x1-end_state[i,dim1]) + (x2-end_state[i,dim2])) ) / 2*hps )
@@ -65,7 +65,7 @@ function KDE_reduction_2D(end_state, boundaries, nb_bin, dim1,dim2)
             end
 
         # uses the tophat kernel
-        elseif kernel="tophat"
+        elseif kernel=="tophat"
             for i = 1:nb_sim
                 if ((x1-end_state[i,dim1]) < hps) && ((x2-end_state[i,dim2]) < hps)
                     sum = sum + 1
@@ -75,9 +75,9 @@ function KDE_reduction_2D(end_state, boundaries, nb_bin, dim1,dim2)
             end
 
         # uses the epanechikov kernel
-        elseif kernel="epanechnikov"
+        elseif kernel=="epanechnikov"
             for i = 1:nb_sim
-                sum=sum+(1 - (x1-end_state[i,dim1])^2+(x2-end_state[i,dim2])^2)/(hps^2))
+                sum=sum+(1 - (x1-end_state[i,dim1])^2+(x2-end_state[i,dim2])^2)/(hps^2)
             end
         else
             print("Please enter a valid kernel function!")
