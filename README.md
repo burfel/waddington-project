@@ -2,7 +2,7 @@
 
 The _Waddington_ or _epigenetic landscape_ provides a theoretical framework for cell development and differentiation.
 
-This project aimso to develop a set of _Julia_ tools to explore the structure of such landscapes for a given model. We use single-cell data as well as simulated data.
+This project aim to develop a set of _Julia_ tools to explore the structure of such landscapes for a given model. We use single-cell data as well as simulated data.
 
 ## Structure
 
