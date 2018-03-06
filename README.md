@@ -7,6 +7,9 @@ This project aim to develop a set of _Julia_ tools to explore the structure of s
 ## Structure
 
 ### Simulations
+#### Single-cell data
+#### GPU
+#### Optimisation: MAP
 
 ### Stability Analysis
 
