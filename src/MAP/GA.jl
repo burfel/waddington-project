@@ -1,7 +1,20 @@
+# -*- coding: utf-8 -*-
+#=
+
+The following program uses a genetic algorithm to approximate the mimimum action path (MAP).
+
+Note: Call the functions by running f_g_functions_for_GA.jl
+
+Args:
+    -
+
+Returns:
+    -
+=#
+
 using Distributions, Plots, Bridge
 
-
-#class trajectory which contains the trajectory through space,
+# Defines a class Trajectory which contains the trajectory through space,
 #the fitness of the path considering f and g, and the size of the path (ie number of points in it)
 type Trajectory
     space::Array{Float64}
@@ -228,6 +241,7 @@ end
 
 #run the GA
 #must be discussed because I tried a lot of things to converge and smooth the results that might not be good in term of GA implementation
+# TODO: look into cubic splines and other interpolation methods to smooth the line integral
 function GA(RepeatGA,Nb_gen,pop_size,pointA,pointB,Nsize,dim,f_func,g_func)
     repeatpop=pop_init(RepeatGA,pointA,pointB,Nsize,dim,f_func,g_func)
     r=0

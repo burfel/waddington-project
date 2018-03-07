@@ -1,5 +1,6 @@
 
 # 2D basic model functions
+# see f in SDE
 function f_test(vector)
     results=zeros(2)
 
@@ -8,6 +9,7 @@ function f_test(vector)
 
     return results
 end
+# see g in SDE
 function g_test(vector)
     results=zeros(2)
 
