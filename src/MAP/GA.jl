@@ -14,8 +14,10 @@ Returns:
 
 using Distributions, Plots, Bridge
 
-# Defines a class Trajectory which contains the trajectory through space,
-#the fitness of the path considering f and g, and the size of the path (ie number of points in it)
+# Defines a class Trajectory which contains
+# - space::Array{Float64} -- the path through space
+# - fitness::Float64 -- the fitess of the path depending on f and g
+# - Nsize::Int64 -- the number of points that define the paths
 type Trajectory
     space::Array{Float64}
     fitness::Float64
@@ -23,7 +25,8 @@ type Trajectory
 end
 
 
-#return a trajectory, strait between two points in space with Nsize number of points
+# Returns a straight line between two points given these two points and
+# number of of points that define the path
 function non_random_traj(pointA, pointB,Nsize,dim)
     non_rand_traj=zeros(Nsize,dim)
     for i = 1:dim
@@ -36,7 +39,8 @@ function non_random_traj(pointA, pointB,Nsize,dim)
 end
 
 
-#take the non random traj and add random value to each point to create a random path
+# Returns a random path given a non_random_trajectory (see above)
+# by adding a random value drawn from a normal distribution to each point
 function random_traj(non_rand_traj)#,ID)
     #srand(ID)
     (Nsize,dim)=size(non_rand_traj)
@@ -53,12 +57,15 @@ function random_traj(non_rand_traj)#,ID)
 end
 
 
-#initialize the population of trajectory for the GA
+# Initialises the population of trajectories for the GA
 function pop_init(pop_size,pointA,pointB, Nsize,dim,f_func,g_func)
+    # Initialises a new population array of data type Trajectory
     new_pop=Array{Trajectory}(pop_size)
+    # Starting off with a straight line
     non_rand_traj=non_random_traj(pointA,pointB,Nsize,dim)
-
+    # Computes the fitness of the straight line using f and g
     fit=fitness(non_rand_traj,f_func,g_func)
+    # Creates an initial population
     new_pop[1]=Trajectory(non_rand_traj,fit,Nsize)
 
     for i = 2:pop_size-1
