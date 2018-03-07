@@ -65,22 +65,25 @@ function pop_init(pop_size,pointA,pointB, Nsize,dim,f_func,g_func)
     non_rand_traj=non_random_traj(pointA,pointB,Nsize,dim)
     # Computes the fitness of the straight line using f and g
     fit=fitness(non_rand_traj,f_func,g_func)
-    # Creates an initial population
+    # Creates first trajectory of initial population (a straight line)
+    # TODO: vary the number of straight lines in initial poulation...
     new_pop[1]=Trajectory(non_rand_traj,fit,Nsize)
-
+    # Creates the rest of the poulation by generating non random trajectories
     for i = 2:pop_size-1
         traj=random_traj(non_rand_traj)#,i)
         fit=fitness(traj,f_func,g_func)
         new_pop[i]=Trajectory(traj,fit,Nsize)
     end
+    # smoothes the trajectories
+    # TODO: try out different interpolation functions, eg cubic splines etc, see Interpolations.jl
     new_pop[pop_size]=smooth_traj(new_pop[1:pop_size-1],f_func,g_func)
 
     return new_pop
 end
 
 
-
-
+# Refines the path wrt f and g with a smoothing
+# TODO: Specify smoothing...........
 function refined_fitness(path,f_func,g_func,smoothing)
     (Nsize,dim)=size(path)
     new_path=zeros((Nsize-1)*smoothing+1,dim)
@@ -94,8 +97,7 @@ function refined_fitness(path,f_func,g_func,smoothing)
 end
 
 
-
-#calculate the fitness (=action) of a path considering f and g
+# Computes the fitness, ie action of a path wrt to f and g
 function fitness(path,f_func,g_func)
     fitness = 0.0
     (Nsize,dim)=size(path)
@@ -138,9 +140,7 @@ function fitness(path,f_func,g_func)
 end
 
 
-
-
-#return the child trajectory of two parent trajectories
+# Returns the child trajectory of two parent trajectories given f and g
 function mating(parent1,parent2,f_func,g_func)
     (Nsize,dim)=size(parent1.space)
     new_traj=zeros(Nsize,dim)
@@ -161,8 +161,10 @@ function mating(parent1,parent2,f_func,g_func)
 end
 
 
-#sorted in term of fitness a population and return a new population (sorted) of size "sorted_pop_size"
-#which must be <= pop_size
+# Returns the sorted population of a given size sorted_pop_size according to the indiviuals' fitness
+# Note: sorted_pop_size must be <= pop_size
+# TODO: Maybe add exception to test that requirement
+# TODO: We could just use an implemented sort function...
 function sorting(pop,sorted_pop_size)
     sorted_pop=Array{Trajectory}(sorted_pop_size)
     pop_size=size(pop)[1]
@@ -172,7 +174,7 @@ function sorting(pop,sorted_pop_size)
         min=1000000000000000000000000000 #change this constant to the max possible
         k=0
         for j=1:pop_size
-            if !(j in l)
+            if !(j in l) # if (j in l) or else noting
                 if pop[j].fitness<min
                     min=pop[j].fitness
                     k=j
@@ -193,7 +195,7 @@ function sorting(pop,sorted_pop_size)
 end
 
 
-#select randomly two parents for the mating
+# Randomly selects two parents for the mating
 function parents_selection(pop)
     p1=rand(1:size(pop)[1])
     p2=rand(1:size(pop)[1])
@@ -207,7 +209,8 @@ function parents_selection(pop)
 end
 
 
-#select the new population from parents and children, sorting the two pop together and taking the best individuals
+# Selects the new population from parents and children:
+# pools the populations and selects the best ones
 function selection(parents,children)
     parents_size=size(parents)[1]
     children_size=size(children)[1]
@@ -224,8 +227,8 @@ function selection(parents,children)
 end
 
 
-
-
+# Smoothes out the trajectories
+# TODO: different methods of smooting, eg cubic splines etc
 function smooth_traj(pop,f_func,g_func)
     (Nsize,dim)=size(pop[1].space)
     size_pop=size(pop)[1]
@@ -245,9 +248,11 @@ function smooth_traj(pop,f_func,g_func)
 end
 
 
-
-#run the GA
-#must be discussed because I tried a lot of things to converge and smooth the results that might not be good in term of GA implementation
+# Performs the GA
+# TODO: to be discussed:
+# - convergence
+# - smoothing
+# depending on initial population, mating (?)
 # TODO: look into cubic splines and other interpolation methods to smooth the line integral
 function GA(RepeatGA,Nb_gen,pop_size,pointA,pointB,Nsize,dim,f_func,g_func)
     repeatpop=pop_init(RepeatGA,pointA,pointB,Nsize,dim,f_func,g_func)
@@ -256,7 +261,7 @@ function GA(RepeatGA,Nb_gen,pop_size,pointA,pointB,Nsize,dim,f_func,g_func)
         pop=pop_init(pop_size,pointA,pointB,Nsize,dim,f_func,g_func)
 
         gen=0
-        srand()
+        srand() # to set a random set to make results reproducible
         while gen<Nb_gen
             new_pop=Array{Trajectory}(pop_size)
 
@@ -274,7 +279,7 @@ function GA(RepeatGA,Nb_gen,pop_size,pointA,pointB,Nsize,dim,f_func,g_func)
     end
 
 
-    #new GA with the best individuals of previous GA
+    # Another GA with the best individuals of previous GA
     gen2=0
     while gen2<Nb_gen
         new_pop=Array{Trajectory}(size(repeatpop)[1])
@@ -297,6 +302,8 @@ end
 #function mutation()
 
 #end
+# Another GA
+# TODO: What are the differences? What are the results
 function GA2(Nb_gen,pop_size,pointA,pointB,Nsize,dim,f_func,g_func)
 
     pop=pop_init(pop_size,pointA,pointB,Nsize,dim,f_func,g_func)
@@ -321,7 +328,8 @@ end
 
 
 
-
+# Another GA
+# What are the differences? What are the results?
 function GA_mean(RepeatGA,Nb_gen,pop_size,pointA,pointB,Nsize,dim,f_func,g_func)
     #repeatpop=Array{Trajectory}(RepeatGA)
     repeatpop=pop_init(RepeatGA,pointA,pointB,Nsize,dim,f_func,g_func)
