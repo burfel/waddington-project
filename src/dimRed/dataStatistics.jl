@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 #=
 
-The following program visualises the data set.
+The following program visualises the given dataset.
 It computes and plots the mean and variance of expression levels of the 96 genes over the 547 cells;
 it also computes the correlation matrix for two genes.
 
@@ -29,6 +29,9 @@ using StatsBase
 #@sk_import datasets: load_digits
 #@sk_import linear_model: LogisticRegression
 
+# data_array can be a dataframe too
+# TODO: maybe rename data_array
+data_array = data
 # COMPUTES THE MEANS AND VARIANCES OF THE GENES IN DATA
 function plotStatistics(data_array)
     means = []
@@ -59,7 +62,7 @@ meansF = Array{Float64}(statistics[1]);
 varsF = Array{Float64}(statistics[2]);
 
 names = DataFrames.names(data);
-df_stats = DataFrame(gene_name = names, mean = statistics[1], variance = statistics[2])
+df_stats = DataFrame(gene_name = names, mean = statistics[1], variance = statistics[2]);
 print("Data statistics summary", df_stats)
 
 # GENES SORTED BY DECREASING MEAN OF GENE EXPRESSION LEVEL
@@ -67,11 +70,11 @@ df_stats_Msort = sort(df_stats, cols = (:mean),
                     rev = (true));
 # GENES SORTED by INCREASING VARIANCE, IE UNCERTAINTY
 df_stats_Vsort = sort(df_stats, cols = cols = (:variance),
-                    rev = (false));
+                    rev = (true));
 # PLOTS
 #@df data plot(1:548, [names], xlabel = "genes (1-96)", title = "mean/ variance of gene expression levels, sorted by mean", legend=true)
-@df df_stats_Msort plot(1:96, [:mean :variance], colour = [:blue :red], xlabel = "genes (1-96)", title = "mean/ variance of gene expression levels, sorted by mean", legend=true)
-@df df_stats_Vsort plot(1:96, [:mean :variance], colour = [:blue :red], xlabel = "genes (1-96)", title = "mean/ variance of gene expression levels, sorted by variance", legend=true)
+@df df_stats_Msort Plots.plot(1:96, [:mean :variance], colour = [:blue :red], xlabel = "genes (1-96)", title = "mean/ variance of gene expression levels, sorted by mean", legend=true)
+@df df_stats_Vsort Plots.plot(1:96, [:mean :variance], colour = [:blue :red], xlabel = "genes (1-96)", title = "mean/ variance of gene expression levels, sorted by variance", legend=true)
 #@df df_stats_Msort bar(1:96, [:mean], colour = [:blue], xlabel = "genes (1-96)", title = "mean/ variance of gene expression levels", legend=true)
 #@df df_stats_Msort bar!(1:96, [:variance], colour = [:red], xlabel = "genes (1-96)", title = "mean/ variance of gene expression levels", legend=true)
 
@@ -88,13 +91,49 @@ df_stats_Vsort = sort(df_stats, cols = cols = (:variance),
     @df data boxplot(:n)
 =#
 # maybe iterate over list of symbols
-# THIS SHOULD BE WORKING!
-#@df data boxplot(df_stats_Msort[1:3,1])
-@df data boxplot(:Gapdh)
-#@df data boxplot(:Actb, :Gapdh)
-@df data boxplot!(:Actb)
-@df data boxplot!(:Kdm1a, legend = true)
 
+
+# PLOTS THE TOP 5 HIGHEST MEAN
+#@df data boxplot(df_stats_Msort[1:3,1])
+@df data Plots.boxplot(:Gapdh, label="Gapdh")
+@df data Plots.boxplot!(:Actb, label="Actb")
+@df data Plots.boxplot!(:Kdm1a, label="Kdm1a")
+@df data Plots.boxplot!(:Ctnnb1, label="Ctnnb1")
+@df data Plots.boxplot!(:Hdac1, label="Hdac1")
+#PyPlot.legend()
+PyPlot.title("Boxplot of top 5 genes with highest mean")
+PyPlot.savefig("top5_mean")
+
+# PLOTS THE TOP 5 HIGHEST VARIANCE
+@df data Plots.boxplot(:Gdf3, label="Gdf3")
+@df data Plots.boxplot!(:Fgf4, label="Fgf4")
+@df data Plots.boxplot!(:Cldn6, label="Cldn6")
+@df data Plots.boxplot!(:Fbxo15, label="Fbxo15")
+@df data Plots.boxplot!(:Cdh2, label="Cdh2")
+#PyPlot.legend()
+PyPlot.title("Boxplot of top 5 genes with highest variance")
+PyPlot.savefig("top5_var")
+
+
+# PLOTS THE TOP 5 LOWEST MEAN
+@df data Plots.boxplot(:Smarca4, label="Smarca4")
+@df data Plots.boxplot!(:MBP, label="MBP")
+@df data Plots.boxplot!(:T, label="T")
+@df data Plots.boxplot!(:Ncam1, label="Ncam1")
+@df data Plots.boxplot!(:Mixl1, label="Mixl1")
+#PyPlot.legend()
+PyPlot.title("Boxplot of top 5 genes with lowest mean")
+PyPlot.savefig("top5_Lmean")
+
+# PLOTS THE TOP 5 LOWEST VARIANCE
+@df data Plots.boxplot(:Smarca4, label="Smarca4")
+@df data Plots.boxplot!(:MBP, label="MBP")
+@df data Plots.boxplot!(:T, label="T")
+@df data Plots.boxplot!(:Ncam1, label="NCam1")
+@df data Plots.boxplot!(:Sox1, label="Sox1")
+#PyPlot.legend()
+PyPlot.title("Boxplot of top 5 genes with lowest variance")
+PyPlot.savefig("top5_Lvariance")
 
 
 #@df df_stats_Msort violin(:mean, :gene_name)
@@ -111,19 +150,19 @@ x = (["day 1", "day 1", "day 1", "day 1", "day 1", "day 1",
 trace1 = [
   "y" => [0.2, 0.2, 0.6, 1.0, 0.5, 0.4, 0.2, 0.7, 0.9, 0.1, 0.5, 0.3],
   "x" => x,
-  "name" => "kale",
+  "name" => "Actb",
   "marker" => ["color" => "#3D9970"],
   "type" => "box"]
 trace2 = [
   "y" => [0.6, 0.7, 0.3, 0.6, 0.0, 0.5, 0.7, 0.9, 0.5, 0.8, 0.7, 0.2],
   "x" => x,
-  "name" => "radishes",
+  "name" => "Kdmla",
   "marker" => ["color" => "#FF4136"],
   "type" => "box"]
 trace3 = [
   "y" => [0.1, 0.3, 0.1, 0.9, 0.6, 0.6, 0.9, 1.0, 0.3, 0.6, 0.8, 0.5],
   "x" => x,
-  "name" => "carrots",
+  "name" => "Gapdh",
   "marker" => ["color" => "#FF851B"],
   "type" => "box"]
 data = [trace1, trace2, trace3]
@@ -145,8 +184,6 @@ description = StatsBase.describe(data)
 #description[:Wnt5a]
 
 #names = names(data)
-
-data[:Zfp281]
 
 #=
 # SELECT WHICH GENES YOU WANT TO HAVE PLOT

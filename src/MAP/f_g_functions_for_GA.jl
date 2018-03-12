@@ -1,4 +1,5 @@
-
+using Plots
+using PyPlot
 # 2D basic model functions
 # see f in SDE
 function f_test(vector)
@@ -56,16 +57,18 @@ function return_paths_from_pop(pop,id)
     return results
 end
 
-#not useful currently
+#=#not useful currently
 for i=1:size(pop)[1]
     paths=return_paths_from_pop(pop,i)
     plot(paths[:,1],paths[:,3])
 end
+=#
 
 #run the GA, return the paths, plot the best path
 pop=GA(20,200,100,pointA,pointB,Nsize,2,f_test,g_test)
 paths=return_paths_from_pop(pop,1)
-plot(paths[:,1],paths[:,2],xlims=[0.0,3.0],ylims=[0.0,3.0],aspect_ratio=:equal)
+pyplot()
+Plots.plot(paths[:,1],paths[:,2],xlims=[0.0,3.0],ylims=[0.0,3.0],aspect_ratio=:equal)
 
 #test another GA implementation
 pop=GA_mean(50,800,200,pointA,pointB,Nsize,2,f,g)
@@ -99,5 +102,7 @@ pointB=[1.5,2.0,0.0]
 pop=pop_init(10,pointA,pointB,Nsize,3,f_3Dtest,g_3Dtest)
 pop=GA(20,100,100,pointA,pointB,Nsize,3,f_3Dtest,g_3Dtest)
 paths=return_paths_from_pop(pop,9)
-plotly()
-plot(paths[:,1],paths[:,2],paths[:,3],xlims=[0.0,2.0],ylims=[0.0,2.0],zlims=[0.0,1.8])
+#plotly()
+pyplot()
+Plots.plot(paths[:,1],paths[:,2],paths[:,3],xlims=[0.0,2.0],ylims=[0.0,2.0],zlims=[0.0,1.8])
+#print(pop[end].fitness)

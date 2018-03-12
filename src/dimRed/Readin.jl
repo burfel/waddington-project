@@ -31,8 +31,8 @@ function readin(loc, df=false)
         end
     end
     names!(df1,[Symbol(X) for X in cellnames]);
-    df1=stack(df1,DataFrames.names(df1)[2:end]);
-    df1=unstack(df1,:variable,:Names,:value)
+    df1=DataFrames.stack(df1,DataFrames.names(df1)[2:end]);
+    df1=DataFrames.unstack(df1,:variable,:Names,:value)
 
     # Delete the column containing the cell name.
     data = delete!(df1, :variable)

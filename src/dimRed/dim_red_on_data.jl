@@ -29,9 +29,21 @@ data_array = reshape(data_array, (547,96))
 
 # ---- DIMENSIONALITY REDUCTION using MultivariateStats.jl
 
-# Principal Components Analysis (PCA)
-M1 = fit(PCA, data_array; maxoutdim=2)
-Y1 = transform(M1, data_array)
+# 1. Principal Components Analysis (PCA)
+
+# observations have to equal columns, ie we need to transpose data_array
+data_arrayT = transpose(data_array)
+
+# Perform PCA over the data given in a matrix data_array. Each column of data_array is an observation.
+# Returns an instance of PCA.
+M1_max = fit(PCA, data_arrayT; maxoutdim=96)
+M1 = fit(PCA, data_arrayT; maxoutdim=2)
+
+# transforms observations data_array into PCs
+Y1_max = transform(M1_max, data_arrayT)
+Y1 = transform(M1, data_arrayT)
+
+X_PCA_max = reconstruct(M1_max, Y1_max)
 X_PCA = reconstruct(M1, Y1)
 #projection(X_PCA)
 
@@ -107,19 +119,24 @@ Y3 = transform(M3, data_array)
 X_kernel = reconstruct(M3, Y3)
 
 
+###--------------------------------------------------------------------------------
+
 # PLOTTING linear methods
-scatter(data_array)
+Plots.scatter(data_array, legend=false)
+#PyPlots.title("Data set")
+#PyPlots.savefig("plots/data_set")
 
-scatter(Y1,title="Y1 - PCA transform")
-scatter(X_PCA,title="X_PCA - PCA reconstruct")
+# PCA transform
+Plots.scatter(Y1_max,title="PCA transform", legend=false) # compare it to own function
+Plots.scatter(X_PCA,title="PCA reconstruct")
 
-scatter(MDSt,title="MDS")
+Plots.scatter(MDSt,title="MDS")
 
-scatter(Y2,title="Y2 - PPCA transform")
-scatter(X_PPCA,title="X_PPCA - PPCA reconstruct")
+Plots.scatter(Y2,title="Y2 - PPCA transform")
+Plots.scatter(X_PPCA,title="X_PPCA - PPCA reconstruct")
 
-scatter(Y3,title="Y3 - kernelPCA transform")
-scatter(X_kernel,title="X_kernelPCA - kernelPCA reconstruct")
+Plots.scatter(Y3,title="Y3 - kernelPCA transform")
+Plots.scatter(X_kernel,title="X_kernelPCA - kernelPCA reconstruct")
 
 #scatter(Y12,title="Y12 - ICA transform")
 #scatter(X_ICA,title="X_ICA - ICA reconstruct")
@@ -147,9 +164,9 @@ Y_LTSA = transform(LTSA, data_array; k = 12, d = 2)
 
 
 # PLOTTING nonlinear methods
-scatter(Y_LEM, title="LEM - ManifoldLearning")
+Plots.scatter(Y_LEM, title="LEM - ManifoldLearning")
 
-scatter(Y_LTSA, title="LTSA - ManifoldLearning")
+Plots.scatter(Y_LTSA, title="LTSA - ManifoldLearning")
 
 
 #--------other useful methods
