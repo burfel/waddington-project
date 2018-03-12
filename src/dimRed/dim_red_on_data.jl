@@ -28,9 +28,9 @@ data_array = convert(Array, data)
 data_array = reshape(data_array, (547,96))
 
 
-# ---- DIMENSIONALITY REDUCTION using MultivariateStats.jl
+# ---- DIMENSIONALITY REDUCTION using MultivariateStats.jl-----------------------
 
-# 1. PRINCIPAL COMPONENT ANALYSIS (PCA)
+#----- 1. PRINCIPAL COMPONENT ANALYSIS (PCA)-------------------------------------
 
 # Observations have to equal columns, ie we need to transpose data_array
 data_arrayT = transpose(data_array)
@@ -85,101 +85,22 @@ tvar(M1)
 principalratio(M1_max)
 principalratio(M1)
 
-
-#= not running:
-using LowRankModels
-import ScikitLearnBase
-
-ScikitLearnBase.fit_transform!(LowRankModels.PCA(k=3, max_iter=500), data_array)
-=#
-
-#= Classical Multidimensional Scaling (MDS)
-# This function derives a p-dimensional embedding based on a given distance_matrix.
-# It returns a coordinate matrix of size (p, n), where each column is the coordinates for an observation.
-=#
-# gram matrix  = X * X_transpose
-gram_matrix = data_array * transpose(data_array)
-# compute the distance matrix
-distance_matrix = gram2dmat(gram_matrix)
-MDS = classical_mds(distance_matrix, 96, dowarn=true)
-MDSt = transpose(MDS)
-
-# Linear Discriminant Analysis (LDA)
-
-# Multiclass LDA (Linear Discriminant Analysis)
-#=
-Multi-class LDA is a generalization of standard two-class LDA that can handle arbitrary number of classes.
-Linear Discriminant Analysis are statistical analysis methods to find a linear combination of features for
-separating observations in n classes.
-=#
-#fit(MulticlassLDA, number_of_classes, data_array, vector_of_class_labels; ...)
-#Todo: define number_of_classes, vector_of_class_labels
-
-# Independent Component Analysis (ICA), FastICA
-#=
-Independent Component Analysis (ICA) is a computational technique for separating a multivariate signal
-into additive subcomponents, with the assumption that the subcomponents are non-Gaussian and independent
-from each other.
-----DOES NOT RUN-----FAILS TO CONVERGE---------
-=#
-M12 = fit(ICA, data_array, 2)
-Y12 = transform(M12, data_array)
-X_ICA = reconstruct(M12, Y12)
-#------------------------------------------------
-
-
-# Probabilistic PCA
-M2 = fit(PPCA, data_array; maxoutdim=96)
-Y2 = transform(M2, data_array)
-#PrincComp2 = projection(data_array)
-X_PPCA = reconstruct(M2, Y2)
-
-# Factor Analysis
-#=Factor Analysis (FA) is a linear-Gaussian latent variable model that is closely
-related to probabilistic PCA. In contrast to the probabilistic PCA model, the covariance
-of conditional distribution of the observed variable given the latent variable is
-diagonal rather than isotropic.
-----DOES NOT RUN-----DOES NOT TERMINATE---------
-=#
-# train a FactorAnalysis model
-M22 = fit(FactorAnalysis, data_array; maxoutdim=2)
-# apply FactorAnalysis model to testing set
-Y22 = transform(M22, data_array)
-# reconstruct testing observations (approximately)
-X_FactorAna = reconstruct(M22, Y22)
-#------------------------------------------------
-
-# Kernel PCA
-# train a kernel PCA model
-M3 = fit(KernelPCA, data_array; maxoutdim=2, inverse=true)
-# apply kernel PCA model to testing set
-Y3 = transform(M3, data_array)
-# reconstruct testing observations (approximately)
-X_kernel = reconstruct(M3, Y3)
-
-
-###--------------------------------------------------------------------------------
-
-# PLOTTING linear methods
+# PLOTS
 Plots.scatter(data_array, legend=false)
 #PyPlot.title("Data set")
 #PyPlot.savefig("../Single_cell_data/plots/data_set")
 
 # PCA transform
 Plots.scatter(Y1_max,title="PCA transform", legend=false)
-#PyPlot.title("PCA transform")
 #PyPlot.savefig("../Single_cell_data/plots/PCA/PCA_transform_max")
 
 Plots.scatter(Y1,title="PCA transform", legend=false) # compare it to own function
-#PyPlot.title("PCA transform")
 #PyPlot.savefig("../Single_cell_data/plots/PCA/PCA_transform")
 
 Plots.scatter(X_PCA_max,title="PCA reconstruct", legend=false)# compare it to own function
-#PyPlot.title("PCA reconstruct")
 #PyPlot.savefig("../Single_cell_data/plots/PCA/PCA_reconstruct_max")
 
 Plots.scatter(X_PCA,title="PCA reconstruct", legend=false)
-#PyPlot.title("PCA reconstruct")
 #PyPlot.savefig("../Single_cell_data/plots/PCA/PCA_reconstruct")
 
 #=
@@ -198,24 +119,121 @@ Plots.scatter(M1_proj,title="PCs")("PCA reconstruct")
 Plots.scatter(M1_proj,title="PCs")
 =#
 
-####------------
+####-------------
+
+#= not running:
+using LowRankModels
+import ScikitLearnBase
+
+ScikitLearnBase.fit_transform!(LowRankModels.PCA(k=3, max_iter=500), data_array)
+=#
+
+#----- 2. Classical Multidimensional Scaling (MDS)-------------------------------
+# This function derives a p-dimensional embedding based on a given distance_matrix.
+# It returns a coordinate matrix of size (p, n), where each column is the coordinates for an observation.
+
+# gram matrix  = X * X_transpose
+gram_matrix = data_array * transpose(data_array)
+# compute the distance matrix
+distance_matrix = gram2dmat(gram_matrix)
+MDS = classical_mds(distance_matrix, 96, dowarn=true)
+MDSt = transpose(MDS)
+
+Plots.scatter(MDSt,title="Multidimensional scaling", legend=false)
+PyPlot.savefig("../Single_cell_data/plots/MDS/mds")
 
 
-Plots.scatter(MDSt,title="MDS")
-PyPlot.title("MDSt")
-PyPlot.savefig("../Single_cell_data/plots/MDSt")
-
-Plots.scatter(Y2,title="Y2 - PPCA transform")
-Plots.scatter(X_PPCA,title="X_PPCA - PPCA reconstruct")
-
-Plots.scatter(Y3,title="Y3 - kernelPCA transform")
-Plots.scatter(X_kernel,title="X_kernelPCA - kernelPCA reconstruct")
-
-#scatter(Y12,title="Y12 - ICA transform")
-#scatter(X_ICA,title="X_ICA - ICA reconstruct")
+#----- 3. Linear Discriminant Analysis (LDA)-------------------------------------
+# Multiclass LDA (Linear Discriminant Analysis)
+#=
+Multi-class LDA is a generalization of standard two-class LDA that can handle arbitrary number of classes.
+Linear Discriminant Analysis are statistical analysis methods to find a linear combination of features for
+separating observations in n classes.
+=#
+#fit(MulticlassLDA, number_of_classes, data_array, vector_of_class_labels; ...)
+#Todo: define number_of_classes, vector_of_class_labels
 
 
-# ----ManifoldLearnin.jl DIMENSIONALITY REDUCTION
+#----- 3. Linear Discriminant Analysis (LDA)-------------------------------------
+# Independent Component Analysis (ICA), FastICA
+#=
+Independent Component Analysis (ICA) is a computational technique for separating a multivariate signal
+into additive subcomponents, with the assumption that the subcomponents are non-Gaussian and independent
+from each other.
+----DOES NOT RUN-----FAILS TO CONVERGE after 100 iterations-----------------------
+=#
+M12 = fit(ICA, data_array, 2)
+Y12 = transform(M12, data_array)
+X_ICA = reconstruct(M12, Y12)
+
+#scatter(Y12, title="ICA transform")
+#scatter(X_ICA, title="ICA reconstruct")
+
+
+#----- 4. Probabilistic PCA (PPCA)-----------------------------------------------
+M2 = fit(PPCA, data_array; maxoutdim=96)
+Y2 = transform(M2, data_array)
+#PrincComp2 = projection(data_array)
+X_PPCA = reconstruct(M2, Y2)
+
+# PLOTS
+Plots.scatter(Y2,title="PPCA transform", legend=false)
+#PyPlot.title("PPCA transform")
+#PyPlot.savefig("../Single_cell_data/plots/PPCA/PPCA_transform")
+
+Plots.scatter(X_PPCA,title="PPCA reconstruct", legend=false)
+#PyPlot.title("PPCA reconstruct")
+#PyPlot.savefig("../Single_cell_data/plots/PPCA/PPCA_reconstruct")
+
+
+#----- 5. Factor Analysis -------------------------------------------------------
+#=Factor Analysis (FA) is a linear-Gaussian latent variable model that is closely
+related to probabilistic PCA. In contrast to the probabilistic PCA model, the covariance
+of conditional distribution of the observed variable given the latent variable is
+diagonal rather than isotropic.
+----DOES NOT RUN----- DOES NOT TERMINATE (within a considerable amount of time)
+=#
+# train a FactorAnalysis model
+M22 = fit(FactorAnalysis, data_array; maxoutdim=2)
+
+# apply FactorAnalysis model to testing set
+Y22 = transform(M22, data_array)
+
+# reconstruct testing observations (approximately)
+X_FactorAna = reconstruct(M22, Y22)
+
+
+#----- 6. Kernel PCA ------------------------------------------------------------
+
+# train a kernel PCA model
+M3_max = fit(KernelPCA, data_array; maxoutdim=96, inverse=true)
+M3 = fit(KernelPCA, data_array; maxoutdim=2, inverse=true)
+
+# apply kernel PCA model to testing set
+Y3_max = transform(M3_max, data_array)
+Y3 = transform(M3, data_array)
+
+# reconstruct testing observations (approximately)
+X_kernel_max = reconstruct(M3_max, Y3_max)
+X_kernel = reconstruct(M3, Y3)
+
+# PLOTS
+Plots.scatter(Y3_max, title="kernelPCA transform (max)", legend=false)
+PyPlot.savefig("../Single_cell_data/plots/kernelPCA/kernelPCAm_transform")
+
+Plots.scatter(X_kernel_max, title="kernelPCA reconstruct (max)", legend=false)
+PyPlot.savefig("../Single_cell_data/plots/kernelPCA/kernelPCAm_reconstruct")
+
+Plots.scatter(Y3, title="kernelPCA transform", legend=false)
+PyPlot.savefig("../Single_cell_data/plots/kernelPCA/kernelPCA_transform")
+
+Plots.scatter(X_kernel, title="kernelPCA reconstruct", legend=false)
+PyPlot.savefig("../Single_cell_data/plots/kernelPCA/kernelPCA_reconstruct")
+
+
+###--------------------------------------------------------------------------------
+
+# ---- DIMENSIONALITY REDUCTION using ManifoldLearning.jl-------------------------
 
 # Isomap
 Y_Isomap = transform(Isomap,data_array; k=12,d=2)
@@ -225,6 +243,8 @@ Y_DiffMap = transform(DiffMap, data_array; d=2, t=1, ɛ=1.0)
 
 # Laplacian Eigenmaps -- working
 Y_LEM = transform(LEM,data_array; k=12, d=2, t=1.0)
+Plots.scatter(Y_LEM, title="ManifoldLearning: Laplacian Eigenmaps")
+#PyPlot.savefig("../Single_cell_data/plots/manifold-learning/lem")
 
 # Local linear embedding
 Y_LLE = transform(LLE, data_array; k = 12, d = 2)
@@ -234,12 +254,8 @@ Y_HLLE = transform(HLLE, data_array; k = 12, d = 2)
 
 # Local tangent space alignment -- working
 Y_LTSA = transform(LTSA, data_array; k = 12, d = 2)
-
-
-# PLOTTING nonlinear methods
-Plots.scatter(Y_LEM, title="LEM - ManifoldLearning")
-
-Plots.scatter(Y_LTSA, title="LTSA - ManifoldLearning")
+Plots.scatter(Y_LTSA, title="ManifoldLearning: Local tangent space alignment")
+#PyPlot.savefig("../Single_cell_data/plots/manifold-learning/ltsa")
 
 
 #--------other useful methods
