@@ -1,3 +1,5 @@
+## DEPRECATED -- TO BE DELETED!
+
 # function that computes the action potential to its predecessor
 
 #
@@ -19,11 +21,13 @@ for el in 1:length(pop)
 end
 
 #=
-plot(action[:,1])
+plot(actioProjection_2PCsn[:,1])
 for i in length(pop)
     plot!(action[:,i])
 end
 =#
+
+##-------------------------------------
 
 traj = pop[1]
 action = zeros(traj.Nsize)
@@ -40,8 +44,6 @@ end
 
 # plot the potential in 2D
 plot(action)
-
-
 
 
 
