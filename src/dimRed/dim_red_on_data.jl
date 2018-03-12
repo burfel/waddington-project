@@ -16,6 +16,7 @@ using DataStructures
 using MultivariateStats
 using ManifoldLearning
 using Plots
+using PyPlot
 
 
 Base.compilecache("MultivariateStats")
@@ -29,9 +30,9 @@ data_array = reshape(data_array, (547,96))
 
 # ---- DIMENSIONALITY REDUCTION using MultivariateStats.jl
 
-# 1. Principal Components Analysis (PCA)
+# 1. PRINCIPAL COMPONENT ANALYSIS (PCA)
 
-# observations have to equal columns, ie we need to transpose data_array
+# Observations have to equal columns, ie we need to transpose data_array
 data_arrayT = transpose(data_array)
 
 # Perform PCA over the data given in a matrix data_array. Each column of data_array is an observation.
@@ -45,7 +46,45 @@ Y1 = transform(M1, data_arrayT)
 
 X_PCA_max = reconstruct(M1_max, Y1_max)
 X_PCA = reconstruct(M1, Y1)
-#projection(X_PCA)
+
+# Get the projection matrix (of size (d, p)).
+# Each column of the projection matrix corresponds to a principal component.
+# The principal components are arranged in descending order of the corresponding variances.
+M1_proj_max = projection(M1_max)
+M1_proj = projection(M1)
+#indim(M1_max)
+#outdim(M1_max)
+#indim(M1)
+#outdim(M1)
+
+# Get the input dimension d, i.e the dimension of the observation space.
+indim(M1_max)
+indim(M1)
+
+# Get the output dimension p, i.e the dimension of the principal subspace.
+outdim(M1_max)
+outdim(M1)
+
+# The variances of principal components.
+principalvars(M1_max)
+principalvars(M1)
+
+# The total variance of principal components, which is equal to sum(principalvars(M)).
+tprincipalvar(M1_max)
+tprincipalvar(M1)
+
+# The total residual variance.
+tresidualvar(M1_max)
+tprincipalvar(M1)
+
+# The total observation variance, which is equal to tprincipalvar(M) + tresidualvar(M).
+tvar(M1_max)
+tvar(M1)
+
+# The ratio of variance preserved in the principal subspace, which is equal to tprincipalvar(M) / tvar(M).
+principalratio(M1_max)
+principalratio(M1)
+
 
 #= not running:
 using LowRankModels
@@ -123,14 +162,48 @@ X_kernel = reconstruct(M3, Y3)
 
 # PLOTTING linear methods
 Plots.scatter(data_array, legend=false)
-#PyPlots.title("Data set")
-#PyPlots.savefig("plots/data_set")
+#PyPlot.title("Data set")
+#PyPlot.savefig("../Single_cell_data/plots/data_set")
 
 # PCA transform
-Plots.scatter(Y1_max,title="PCA transform", legend=false) # compare it to own function
-Plots.scatter(X_PCA,title="PCA reconstruct")
+Plots.scatter(Y1_max,title="PCA transform", legend=false)
+#PyPlot.title("PCA transform")
+#PyPlot.savefig("../Single_cell_data/plots/PCA/PCA_transform_max")
+
+Plots.scatter(Y1,title="PCA transform", legend=false) # compare it to own function
+#PyPlot.title("PCA transform")
+#PyPlot.savefig("../Single_cell_data/plots/PCA/PCA_transform")
+
+Plots.scatter(X_PCA_max,title="PCA reconstruct", legend=false)# compare it to own function
+#PyPlot.title("PCA reconstruct")
+#PyPlot.savefig("../Single_cell_data/plots/PCA/PCA_reconstruct_max")
+
+Plots.scatter(X_PCA,title="PCA reconstruct", legend=false)
+#PyPlot.title("PCA reconstruct")
+#PyPlot.savefig("../Single_cell_data/plots/PCA/PCA_reconstruct")
+
+#=
+# projected onto 75 PCs
+Plots.scatter(M1_proj_max,title="PCs")
+#PyPlot.title# projected onto 75 PCs
+Plots.scatter(M1_proj_max,title="PCs")
+#PyPlot.title("PCA reconstruct")
+#PyPlot.savefig("../Single_cell_data/plots/PCA/PCA_reconstruct")
+
+# projected onto 2 PCs
+Plots.scatter(M1_proj,title="PCs")("PCA reconstruct")
+#PyPlot.savefig("../Single_cell_data/plots/PCA/PCA_reconstruct")
+
+# projected onto 2 PCs
+Plots.scatter(M1_proj,title="PCs")
+=#
+
+####------------
+
 
 Plots.scatter(MDSt,title="MDS")
+PyPlot.title("MDSt")
+PyPlot.savefig("../Single_cell_data/plots/MDSt")
 
 Plots.scatter(Y2,title="Y2 - PPCA transform")
 Plots.scatter(X_PPCA,title="X_PPCA - PPCA reconstruct")
