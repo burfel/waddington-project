@@ -154,7 +154,7 @@ separating observations in n classes.
 #Todo: define number_of_classes, vector_of_class_labels
 
 
-#----- 3. Linear Discriminant Analysis (LDA)-------------------------------------
+#----- 3. Independent Component Analysis (ICA)-------------------------------------
 # Independent Component Analysis (ICA), FastICA
 #=
 Independent Component Analysis (ICA) is a computational technique for separating a multivariate signal
