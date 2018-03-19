@@ -19,7 +19,7 @@ Returns:
 
 
 using Plots, DataStructures, DataFrames
-
+plotlyjs()
 function two_genes(dataframe)
            data_array = convert(Array,dataframe)
            data_array = collect(skipmissing(data_array))
@@ -42,7 +42,7 @@ function two_genes(dataframe)
 
            end_state = [data_array[:,gene1index] data_array[:,gene2index]]
            boundaries = [0.0001 0.0001; 20.0 20.0]
-           nb_bin = 20
+           nb_bin = 10
            dim1 = 1
            dim2 = 2
 
@@ -96,6 +96,106 @@ function two_genes_terminal(dataframe)
            return(p1,p2,p3)
 end
 
+function two_genes_input(dataframe,gene1,gene2)
+
+           data_array = convert(Array,dataframe)
+           data_array = collect(skipmissing(data_array))
+           data_array = reshape(data_array,(nrow(dataframe),ncol(dataframe)))
+
+           # TAKES INPUT (2 genes that should be plotted)
+           (no_genes,no_cells) = size(data_array)
+           #gene1 = input("Gene 1: ")
+           #gene2 = input("Gene 2: ")
+
+           gene1 = convert(Symbol,gene1)
+           gene2 = convert(Symbol,gene2)
+
+           gene1index = find(names(data).==gene1)[1]
+           gene2index = find(names(data).==gene2)[1]
+
+           p1 = scatter(data[:,gene1index],data[:,gene2index],xlabel=names(data)[gene1index],ylabel=names(data)[gene2index])
+
+           ###
+
+           end_state = [data_array[:,gene1index] data_array[:,gene2index]]
+
+           boundaries = [0.0001 0.0001; 20.0 20.0]
+           nb_bin = 20
+           dim1 = 1
+           dim2 = 2
+
+           xspan = Span_2D(boundaries,nb_bin,dim1,dim2)
+
+           U = PFM_reduction_2D(end_state,boundaries,nb_bin,dim1,dim2)
+           p2 = surface(xspan[1,:],xspan[2,:],U,xlabel=names(data)[gene1index],ylabel=names(data)[gene2index])
+
+           U_kde = KDE_reduction_2D(end_state, boundaries, nb_bin, dim1,dim2)
+           p3 = surface(xspan[1,:],xspan[2,:],U_kde,xlabel=names(data)[gene1index],ylabel=names(data)[gene2index])
+
+           return(p1,p2,p3)
+end
+
+function two_genes_skip_zeros(dataframe,gene1,gene2)
+
+           data_array = convert(Array,dataframe)
+           data_array = collect(skipmissing(data_array))
+           data_array = reshape(data_array,(nrow(dataframe),ncol(dataframe)))
+
+           # TAKES INPUT (2 genes that should be plotted)
+           (no_genes,no_cells) = size(data_array)
+           #gene1 = input("Gene 1: ")
+           #gene2 = input("Gene 2: ")
+
+           gene1 = convert(Symbol,gene1)
+           gene2 = convert(Symbol,gene2)
+
+           gene1index = find(names(data).==gene1)[1]
+           gene2index = find(names(data).==gene2)[1]
+
+           p1 = scatter(data[:,gene1index],data[:,gene2index],xlabel=names(data)[gene1index],ylabel=names(data)[gene2index])
+
+           ###
+
+           end_state = [data_array[:,gene1index] data_array[:,gene2index]]
+
+           ### SKIP ZEROS
+           (rows,cols)=size(end_state)
+           nzs=[]
+           count=1
+           for n=1:rows
+                      (i,j) = end_state[n,:]
+                      if !(i==0.00 || j==0.00)
+                                 push!(nzs,end_state[n,:])
+                                 count+=1
+                      end
+           end
+           nonzeros= zeros(length(nzs),2)
+           count=1
+           for n=1:rows
+                      (i,j) = end_state[n,:]
+                      if !(i==0.00 || j==0.00)
+                                 nonzeros[count,:]=end_state[n,:]
+                                 count+=1
+                      end
+           end
+
+           boundaries = [0.0001 0.0001; 20.0 20.0]
+           nb_bin = 20
+           dim1 = 1
+           dim2 = 2
+
+           xspan = Span_2D(boundaries,nb_bin,dim1,dim2)
+
+           U = PFM_reduction_2D(nonzeros,boundaries,nb_bin,dim1,dim2)
+           p2 = surface(xspan[1,:],xspan[2,:],U,xlabel=names(data)[gene1index],ylabel=names(data)[gene2index])
+
+           U_kde = KDE_reduction_2D(nonzeros, boundaries, nb_bin, dim1,dim2)
+           p3 = surface(xspan[1,:],xspan[2,:],U_kde,xlabel=names(data)[gene1index],ylabel=names(data)[gene2index])
+
+           return(p1,p2,p3)
+end
+
+
 ## CHOOSE BACKEND
 
 ## CALL THE FUNCTION
@@ -141,4 +241,3 @@ end
 # (x,y,z4) = two_genes(t168_only)
 #  plot(z4,title = "168 hours")
 #  #
-#(x,y,z4) = two_genes_terminal(t168_only)
