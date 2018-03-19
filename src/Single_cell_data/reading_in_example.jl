@@ -36,6 +36,9 @@ ann=readtable("annotation.txt",header=true,separator=' ');
 # Then you can do things like get only ESC data
 ESC_only = data[ann[:ThreeST] .== "ESC", :]
 
+EPI_only = data[ann[:ThreeST] .== "EPI", :]
+
+NPC_only = data[ann[:ThreeST] .== "NPC", :]
 # ... or only data sampled at 24 hours
 t24_only = data[ann[:Time] .== 24, :]
 
@@ -43,4 +46,12 @@ t48_only = data[ann[:Time] .== 48, :]
 
 t72_only = data[ann[:Time] .== 72, :]
 
+t96_only = data[ann[:Time] .== 96, :]
+
+t120_only = data[ann[:Time] .== 120, :]
+
+t144_only = data[ann[:Time] .== 144, :]
+
 t168_only = data[ann[:Time] .== 168, :]
+
+t0_only = data[ann[:Time] .== 0, :]
