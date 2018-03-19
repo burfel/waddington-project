@@ -45,7 +45,7 @@ using InformationMeasures
 # converts dataframe to array
 function df2array(dataframe)
        data_array = convert(Array,dataframe)
-       #data_array = collect(skipmissing(data_array))
+       data_array = collect(skipmissing(data_array))
        data_array = reshape(data_array,(nrow(dataframe),ncol(dataframe)))
        return data_array
 end
