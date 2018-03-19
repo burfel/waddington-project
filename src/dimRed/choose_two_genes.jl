@@ -36,7 +36,7 @@ function two_genes(dataframe)
            gene1index = find(names(data).==gene1)[1]
            gene2index = find(names(data).==gene2)[1]
 
-           p1 = scatter(data[:,gene1index],data[:,gene2index],xlabel=names(data)[gene1index],ylabel=names(data)[gene2index])
+           s = scatter(data[:,gene1index],data[:,gene2index],xlabel=names(data)[gene1index],ylabel=names(data)[gene2index])
 
            ###
 
@@ -48,13 +48,13 @@ function two_genes(dataframe)
 
            xspan = Span_2D(boundaries,nb_bin,dim1,dim2)
 
-           U = PFM_reduction_2D(end_state,boundaries,nb_bin,dim1,dim2)
-           p2 = surface(xspan[1,:],xspan[2,:],U,xlabel=names(data)[gene1index],ylabel=names(data)[gene2index])
+           #U = PFM_reduction_2D(end_state,boundaries,nb_bin,dim1,dim2)
+           #p2 = surface(xspan[1,:],xspan[2,:],U,xlabel=names(data)[gene1index],ylabel=names(data)[gene2index])
 
            U_kde = KDE_reduction_2D(end_state, boundaries, nb_bin, dim1,dim2)
-           p3 = surface(xspan[1,:],xspan[2,:],U_kde,xlabel=names(data)[gene1index],ylabel=names(data)[gene2index])
+           U = surface(xspan[1,:],xspan[2,:],U_kde,xlabel=names(data)[gene1index],ylabel=names(data)[gene2index])
 
-           return(p1,p2,p3)
+           return(s,U)
 end
 
 function two_genes_terminal(dataframe)
@@ -75,7 +75,7 @@ function two_genes_terminal(dataframe)
            gene1index = find(names(data).==gene1)[1]
            gene2index = find(names(data).==gene2)[1]
 
-           p1 = scatter(data[:,gene1index],data[:,gene2index],xlabel=names(data)[gene1index],ylabel=names(data)[gene2index])
+           s = scatter(data[:,gene1index],data[:,gene2index],xlabel=names(data)[gene1index],ylabel=names(data)[gene2index])
 
            ###
 
@@ -87,13 +87,13 @@ function two_genes_terminal(dataframe)
 
            xspan = Span_2D(boundaries,nb_bin,dim1,dim2)
 
-           U = PFM_reduction_2D(end_state,boundaries,nb_bin,dim1,dim2)
-           p2 = surface(xspan[1,:],xspan[2,:],U,xlabel=names(data)[gene1index],ylabel=names(data)[gene2index])
+           #U = PFM_reduction_2D(end_state,boundaries,nb_bin,dim1,dim2)
+           #p2 = surface(xspan[1,:],xspan[2,:],U,xlabel=names(data)[gene1index],ylabel=names(data)[gene2index])
 
            U_kde = KDE_reduction_2D(end_state, boundaries, nb_bin, dim1,dim2)
-           p3 = surface(xspan[1,:],xspan[2,:],U_kde,xlabel=names(data)[gene1index],ylabel=names(data)[gene2index])
+           U = surface(xspan[1,:],xspan[2,:],U_kde,xlabel=names(data)[gene1index],ylabel=names(data)[gene2index])
 
-           return(p1,p2,p3)
+           return(s,U)
 end
 
 function two_genes_input(dataframe,gene1,gene2)
@@ -113,7 +113,7 @@ function two_genes_input(dataframe,gene1,gene2)
            gene1index = find(names(data).==gene1)[1]
            gene2index = find(names(data).==gene2)[1]
 
-           p1 = scatter(data[:,gene1index],data[:,gene2index],xlabel=names(data)[gene1index],ylabel=names(data)[gene2index])
+           s = scatter(data[:,gene1index],data[:,gene2index],xlabel=names(data)[gene1index],ylabel=names(data)[gene2index])
 
            ###
 
@@ -126,13 +126,13 @@ function two_genes_input(dataframe,gene1,gene2)
 
            xspan = Span_2D(boundaries,nb_bin,dim1,dim2)
 
-           U = PFM_reduction_2D(end_state,boundaries,nb_bin,dim1,dim2)
-           p2 = surface(xspan[1,:],xspan[2,:],U,xlabel=names(data)[gene1index],ylabel=names(data)[gene2index])
+           #U = PFM_reduction_2D(end_state,boundaries,nb_bin,dim1,dim2)
+           #p2 = surface(xspan[1,:],xspan[2,:],U,xlabel=names(data)[gene1index],ylabel=names(data)[gene2index])
 
            U_kde = KDE_reduction_2D(end_state, boundaries, nb_bin, dim1,dim2)
-           p3 = surface(xspan[1,:],xspan[2,:],U_kde,xlabel=names(data)[gene1index],ylabel=names(data)[gene2index])
+           U = surface(xspan[1,:],xspan[2,:],U_kde,xlabel=names(data)[gene1index],ylabel=names(data)[gene2index])
 
-           return(p1,p2,p3)
+           return(s,U)
 end
 
 function two_genes_skip_zeros(dataframe,gene1,gene2)
@@ -152,7 +152,7 @@ function two_genes_skip_zeros(dataframe,gene1,gene2)
            gene1index = find(names(data).==gene1)[1]
            gene2index = find(names(data).==gene2)[1]
 
-           p1 = scatter(data[:,gene1index],data[:,gene2index],xlabel=names(data)[gene1index],ylabel=names(data)[gene2index])
+           s = scatter(data[:,gene1index],data[:,gene2index],xlabel=names(data)[gene1index],ylabel=names(data)[gene2index])
 
            ###
 
@@ -186,13 +186,13 @@ function two_genes_skip_zeros(dataframe,gene1,gene2)
 
            xspan = Span_2D(boundaries,nb_bin,dim1,dim2)
 
-           U = PFM_reduction_2D(nonzeros,boundaries,nb_bin,dim1,dim2)
-           p2 = surface(xspan[1,:],xspan[2,:],U,xlabel=names(data)[gene1index],ylabel=names(data)[gene2index])
+           #U = PFM_reduction_2D(nonzeros,boundaries,nb_bin,dim1,dim2)
+           #p2 = surface(xspan[1,:],xspan[2,:],U,xlabel=names(data)[gene1index],ylabel=names(data)[gene2index])
 
            U_kde = KDE_reduction_2D(nonzeros, boundaries, nb_bin, dim1,dim2)
-           p3 = surface(xspan[1,:],xspan[2,:],U_kde,xlabel=names(data)[gene1index],ylabel=names(data)[gene2index])
+           U = surface(xspan[1,:],xspan[2,:],U_kde,xlabel=names(data)[gene1index],ylabel=names(data)[gene2index])
 
-           return(p1,p2,p3)
+           return(s,U)
 end
 
 
