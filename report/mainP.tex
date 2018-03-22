@@ -169,7 +169,7 @@ Reasonable results could be yield for the 2-dimensional KDE as well as the PFM o
 \end{abstract}
 
 \section{Preface}
-The following report will focus on different methods of dimensionality reduction and literature research as this was my main focus during the project. 
+The following report will focus on different methods of dimensionality reduction (DR) and literature research as this was my main focus during the project and the part that has not given enough credit in the group report as it went beyond the scope adn goal of our project to simulate the epigenetic landscape.
 % The theory can be found in the group report
 % also time on Bayesian Gaussian Latent variabel model and Hopfland, discovered together with MH
 Other parts I contributed to was the Genetic Algorithm (GA) to approximate the MAP, converting the MAP between two points into a quasi-potential, implementing different kernel methods for the kernel density estimation (KDE) as well as different information theory approaches to the given sample data set. However, this will not be the subject of the following report to avoid overlap with the other reports and due to the restrictive word count. For an overview we refer to the group project report, for the information theory approaches we refer to Madeleine Hall's report, for the GA we refer to Lucas Ducrot's report. The final code can be found on \begin{verbatim}
@@ -823,10 +823,42 @@ see \texttt{KDE\_reduction\_2D.jl}
 
 
 
-\section{Personal challenges}
 
-- motivation/ no question at hand
-- Julia and its volatility
+\section{(Personal) challenges}
+
+\subsection{Motivation}
+As already outlined, one of the main challenges for me was the fact that we were lacking a clear motivation for the project; there was no specific (biological) question at hand. We did achieve to accomodate our work and suitate it in the wider literature. 
+
+\subsection{Julia}
+Unfortunately, Julia was a major drawback to our work, and to my part especially.
+
+\subsubsection{High volatility}
+Julia is still a very young and unstable language. The volatility, especially in light of the soon to be published version ....
+caused methods in packages to run at some points of the project; eg out of the six methods in \textit{ManifoldLearning.jl} only one actually worked. 
+Also the Julia community, even though very responsive especially on \textit{https://discourse.julialang.org/} including developers, refer to the instability of the packages themselves and could therefore be of limited help. %to which they weren't able to be much of help to me/us either. 
+This meant, I had to redefine my initial goal of comparing differnent DR methods on the data set.
+In another programming language such as Python this would have been not the case, as eg [REERENCE PACKAGE SCIKITLEARN] contains ready-to-be-used stable functions of most of the major DR algorithms; however, using these would have been contrary to our actual goal to develop something in Julia.
+
+\subsubsection{Conflicts between packages}
+Conflicts between packages like ...... to only name a few was probably the biggest time-consuming aspect; packages needed to be checked out, added, pulled from the master, cleared from the cache over and over again; workarounds needed to be found. This was a very big prize to pay for having Julia's good performance. 
+% and one could develop an expertise just in that to an extent that it wasn't much fun to work with anymore. 
+However, here the julia community could sometimes help out.
+
+\subsubsection{Documentation}
+% documentation
+As the documentation of specific packages including \textit{MultivariateStats.jl} and \textit{ManifolsLearning.jl} are very sparse and to large extent deprecated, it was a challenging to not only get things running but also to understand the implementation including accessible properties of the methods.
+%FUTURE WORK: good documentation
+
+%loading packages did take a while
+% left me frustrated, motivation down.
+
+%To draw a conclusion to that, 
+Having said all that, Julia definitely has potential and is an exciting and promising language to contribute to and can even be fun to code in, once all necessary packages have been installed. Also, for developing single packages/ functionalities it is suitable. However, for a rather big research project that depends on multiple (unstable) packages, I question its practicability.
+
+
+%see methods that have been implemented in Python, scilearn.
+
+
 - communication with other team members, certainly developed project management skills, 
 pushing code on github, commenting especially in a group project,
 regular meetings to keep everyone in the loop
