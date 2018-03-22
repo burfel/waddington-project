@@ -158,9 +158,14 @@
 
 % Write abstract here
 \begin{abstract}
-The \textit{Waddington} or \textit{epigenetic landscape} concept has become an important framework to reason about developmental processes. This project develops a set of Julia tools to determine the structure of such landscapes for a given dynamical system, as well as single cell data. We implement the probability flux method of constructing a landscape, additionally applying kernel density estimation. Stability analysis is conducted on dynamical systems and their corresponding landscapes. In conjunction to that a second, more accurate approach %REALLY??
-of the landscape is performed: Minimal Action Path (MAP). The latter one has a direct interpretation to the force that would need to be applied to cross the landscape between two chosen points. Due to computational complexity, we limited our approach to only simulate the quasipotential given two points in space. 
+The \textit{Waddington} or \textit{epigenetic landscape} concept has become an important framework to reason about developmental processes. This project develops a set of Julia tools to determine the structure of such landscapes for a given dynamical system, as well as single cell data. We implement the probability flux method (PFM) of constructing a landscape, additionally applying kernel density estimation (KDE). Stability analysis is conducted on dynamical systems and their corresponding landscapes. In conjunction to that a second, more accurate approach %REALLY??
+of the landscape is performed: Minimal Action Path (MAP) method. The latter one has a direct interpretation to the force that would need to be applied to cross the landscape between two chosen points. Due to computational complexity, we limited our approach to only simulate the quasipotential given two points in space. %% IS THAT STILL TRUE?
 For high dimensional systems, the topic of dimensionality reduction is addressed, with corresponding tools developed to aid visualisation of these high dimensional systems. 
+Reasonable results could be yield for the 2-dimensional KDE as well as the PFM on the CPU; the PFM on the GPU posed a real challenge due to problems outlined in the group report and is still in progress.
+
+
+%SET SCIENTIFIC CONTEXT
+%METHODS, RESULTS, CONCLUSIONS CLEAR AND PRECISE
 \end{abstract}
 
 \section{Preface}
@@ -220,7 +225,16 @@ TODO:
 
 %%------------
 
+\section{Introduction}
+
+EXPLAIN TOPIC CLEARLY
+
 \section{Literature research}
+
+START WITH SUBSTANTIAL BACKGROUND READING
+
+EXPLAIN PREVIOUS WORK
+AIMS, ADVANCES CLEARLY DEFINED
 
 Before I started with anything (except some toy models) I did some extensive literature research on the work that has already been done regarding Waddington's landscape. This was necessary as there was no specific task given, and no underlying biological question that needed to be answered. This was probably one of the major challenges of the whole project: To find a (convincing) motivation of the project and to come up with a specific goal.
 It is challenging to synthesise the work that has been done as very different approaches have been taken. In order to situate our work within the wider literature, we are going to highlight the major state-of-the-art methods that have been developed by other groups:
@@ -228,12 +242,12 @@ It is challenging to synthesise the work that has been done as very different ap
 \subsection{Monocle}
 \subsection{Topslam}
 \subsection{Hopland}
-TALK ABOUT BGLVM here; too complicated/ involved approach that could not be achieved within the given time frame, but might be interesting to look into in the future --> MOVE TO OUTLOOK
+TALK ABOUT BGLPVM here; too complicated/ involved approach that could not be achieved within the given time frame, but might be interesting to look into in the future --> MOVE TO OUTLOOK
 \subsection{Hadoop}??
 \subsection{Wishbone}?
 \subsection{SCUBA}?
 
-As so much has been done already, and we did not want to reinvent the wheel, we defined our goal as follow: To develop a set of tools and methods to simulate (via the Probability Flux Method, Kernel Density Estimation and the Minimum-Action Path) and analyse the given landscape (including stability analysis); moreover, we want to provide the user with a certain methods to extract information from the given data set (statistical information, plots for visualisation) and based on this visualise specific genes or gene combinations after applying dimensionality reduction. 
+As so much has been done already, and we did not want to reinvent the wheel, we defined our goal as follow: To develop a set of tools and methods to simulate (via the Probability Flux Method, Kernel Density Estimation and the Minimum-Action Path) and analyse the given landscape (including stability analysis); moreover, we want to provide the user with various methods to read in the data (including from sbml files), extract information from the given data set (statistical information, plots for visualisation) and based on this visualise specific genes or gene combinations after applying dimensionality reduction. 
 
 
 \section{Exploratory data analysis}
@@ -246,6 +260,8 @@ The user can obtain statistics on the whole sample set, such as mean and varianc
 BUT: OF ANY VALUE AT ALL??!
 
 This can help the user to "get a feel" of the data set, discard outliers (COULD HAVE BEEN DONE HERE BUT WASN'T) and serve as a starting point for a subsequent more detailed analysis such as information-theoretic approaches including mutual information (MI). We will not discuss this any further here but refer to Madeleine Hall's individual report instead.
+
+%METHODS CLEAR, FOCUSED AND ROBUST.
 
 \section{Dimensionality reduction}
 
@@ -269,7 +285,8 @@ Dimensionality reduction (DR) reduces the number of features (here: genes) by cr
 In the following linear as well as non-linear, including manifold learning algorithms, are presented that have or can be applied to our given data set in order to tackle the challenges discussed above.
 
 %Different methods are compared, results of the implemented functions are presented and an overall conclusion is drawn. 
-Principal Component Analysis (PCA) and Singular Value Decomposition (SVD) will be explained in greater detail as they represent the simplest and most common, yet powerful, approaches to DR.
+Principal Component Analysis (PCA) as a linear method and kernel PCA (kPCA) as a non-linear method will be explained in greater detail as they represent the simplest and most common, yet powerful, approaches to DR.
+Additionally, an interesting manifold learning algorithm, Laplacian Eigenmaps (LEM), is presented and discussed in comparison to other non-linear methods.
 
 %\subsection{Linear methods}
 % theory and what implemented functions exactly do.
@@ -457,7 +474,8 @@ we assume that the subcomponents are (1) non-Gaussian signals and that (2) they 
 ICA:
 - finds independent components (ie factors, latent variables) by maximising the statistical independence of the estimated components
 - there are many ways to define a proxy for independence, eg minimisation of mutual information or maximation of non-gaussianity. The first one uses the Kullback-Leibler Divergence and maximum entropy; the second one is motivated by the central limit theorem %, and uses kurtosis and negentropy. %WHATS THAT???!!
-
+PCA:
+...
 
 % -- show results
 preprocessing steps in order to simplify/ reduce the complexity of the problem to the actual iterative algorithm
@@ -474,9 +492,9 @@ preprocessing steps in order to simplify/ reduce the complexity of the problem t
 
 \subsection{Kernel PCA (kPCA)}
 
-MOTIVATION: NOT LINEARLY SEPARABLE DATA....
+MOTIVATION: NOT LINEARLY SEPARABLE DATA...., to generalise PCA through kernel based tehcniques. does not rely on structure of the manifold on which the data may possibly reside. 
 
-KERNEL TRICK. COOL!!..: WE NEVER ACTUALLY WORK DIRECTLY IN THE FEATURE SPACE BUT ONLY VIA DOT PTORDUCT...
+KERNEL TRICK. COOL!!..: WE NEVER ACTUALLY WORK DIRECTLY IN THE FEATURE SPACE BUT ONLY VIA DOT PRODUCT...
 
 
 [MAYBE PROVIDE EXAMPLE BUT ON OTHER DATA SET?]
@@ -484,14 +502,30 @@ KERNEL TRICK. COOL!!..: WE NEVER ACTUALLY WORK DIRECTLY IN THE FEATURE SPACE BUT
 [NOT VERY USEFUL AS LINEAR DR PERFORMS WELL ENOUGH, EG WE HAVE NO CIRCULAR DATA SET.] 
 
 
+\subsubsection{Other approaches}
+
+Another classical approach includes Multidimensional Scaling. 
+
+
+
 
 \subsection{Manifold learning}
 
-Non-linear DR methods also include Manifold Learning Algorithms; this it the part where a little bit of differential geometry comes into play. These methods assume that the given data lies on an embedded non-linear manifold within the high-dimensional space. The data, assuming the manifold is of low enough dimension, can then be visualised in this lower-dimensional space.
+Non-linear DR methods also include Manifold Learning Algorithms; this it the part where a little bit of differential geometry comes into play.
+Unlike simple linear DR methods like PCA, manifold learning techniques consider the intrinsic geometry of the data; they are based on the assumption that the given data lies on an embedded non-linear manifold within the high-dimensional space. We can then think of DR trying to "unfold" this manifold (embedded in a high-dimensional space) so each data point is assigned a low dimensional representation.
+The data, assuming the manifold is of low enough dimension, can then be visualised in this lower-dimensional space.
+
+%https://pdfs.semanticscholar.org/333a/a1225a0364a46185aa19ec99c34b37555258.pdf
+One problem to which different methods suggest different solutions is: How to construct a representation for data lying on such a low dimensional manifold embedded in a high dimensional space? What are criteria for "good" and "bad" representations?
+%% We will refer to this in the following.
 
 %two groups: 
 %- those that provide a mapping (either from high-dimensional space to low-dimensional embedding or vv); in the context of ML often views as a preliminary feature extraction step after which pattern algorithms are applied
 %- those that just give a visualisation; often based on proximity data, ie distance measurements
+
+There are various methods that generate non-linear maps, ie an embedding map of the data points to a lower dimension. Most of them are self-organising or based on a neural network (see HOPFIELD); they usually fomalise it as a non-liner optimisation problem that can be solved by eg gradient descent. However, the latter only guarantees to return a local optimum; global optima are in general difficult to obtain efficiently. Also, we do not know whether the points actually lay on a manifold of lower dimension -- it's an assumption.
+Therefore, non-linear methods that do not rely on the assumption of a low-dimensional manifold structure, such as kernel PCA might be more useful in some cases. 
+
 
 \subsubsection{t-distributed stochastic neighbour embedding (t-SNE)}
 It is one of a family of stochastic neighbor embedding methods.
@@ -512,16 +546,93 @@ wasn't working in Julia. ..but the theory worth mentioning.
 %standardisation?
 
 
-\subsubsection{Laplacian eigenmaps}
+\subsubsection{Laplacian eigenmaps (LEM)}
 
-%See also: Manifold regularization
+% % IS THIS ANY MEANINGFUL TO ASSUME IN OUR CASE??
 
-%Laplacian Eigenmaps[21] uses spectral techniques to perform dimensionality reduction. This technique relies on the basic assumption that the data lies in a low-dimensional manifold in a high-dimensional space.[22] This algorithm cannot embed out of sample points, but techniques based on Reproducing kernel Hilbert space regularization exist for adding this capability.[23] Such techniques can be applied to other nonlinear dimensionality reduction algorithms as well.
-%
-%Traditional techniques like principal component analysis do not consider the intrinsic geometry of the data. Laplacian eigenmaps builds a graph from neighborhood information of the data set. Each data point serves as a node on the graph and connectivity between nodes is governed by the proximity of neighboring points (using e.g. the k-nearest neighbor algorithm). The graph thus generated can be considered as a discrete approximation of the low-dimensional manifold in the high-dimensional space. Minimization of a cost function based on the graph ensures that points close to each other on the manifold are mapped close to each other in the low-dimensional space, preserving local distances. The eigenfunctions of the Laplace–Beltrami operator on the manifold serve as the embedding dimensions, since under mild conditions this operator has a countable spectrum that is a basis for square integrable functions on the manifold (compare to Fourier series on the unit circle manifold). Attempts to place Laplacian eigenmaps on solid theoretical ground have met with some success, as under certain nonrestrictive assumptions, the graph Laplacian matrix has been shown to converge to the Laplace–Beltrami operator as the number of points goes to infinity.[24] Matlab code for Laplacian Eigenmaps can be found in algorithms[25] and the PhD thesis of Belkin can be found at the Ohio State University.[26]
+%Laplacian Eigenmaps (LEM) method uses spectral techniques to perform DR. 
+%LEM assumes that the data lies in a low-dimensional manifold in a high-dimensional space. 
+
+
+%MEASURE RUNNING TIME ON DIFFERENT DATA SETS
+%THOROUGHLY LOOK AT HOW IMPLEMENTED IN JULIA
+
+%This algorithm cannot embed out of sample points, but techniques based on Reproducing kernel Hilbert space (RKHS) regularisation exist for adding this capability. Also, such techniques can be applied to other non-linear DR algorithms as well.
+
+
+%Traditional techniques like principal component analysis do not consider the intrinsic geometry of the data.
+
+LEM proposes a geometrically motivated algorithm to non-linear DR; it has neighbourhood preserving properties and a natural connection to clustering [REFERENCE PHD THESIS]. \\
+
+It shares common properties with LLE, Spectral Clustering, Diffusion maps and other non-linear DR methods.
+
+As in the other manifold learing methods, LEM starts with the assumption that the data lie on or around a low-dimensional manifold in a (potentially) very high-dimensional space. 
+Usually, this submanifold is unknown except for finitely many points sampled form some probability distribution. [THESIS] shows that many problems of ML including classification, data representation and clustering can be approached naturally in this context. It also provides us with some theoretical quarantees including a proof of convergence. 
+
+
+
+% WHERE CAN THE READER LOOK THIS UP?
+
+1. proposes to build a graph incorporating neighbourhood information of the data set.
+
+
+Internally, LEM builds a graph using neighbourhood information of the data set. The data points represent the nodes of the graph and the edges between nodes and, therefore, the connectivity of the graph is determined by the closeness of neighbouring points usually using k-nearest neighbour algorithm (KNN). We might, therefore, think of this graph as a discrete approximation of the low-dimensional manifold in the high-dimensional space. 
+To make sure that points close to each other on the manifold are mapped close to each other in the low-dimensional space, ie local distances are preserved, we use a cost function based on the graph that is to be minimised, similar to ......
+
+It uses the correspondence between the graph Laplacian, the Laplace Beltrami operator on the manifold, and connections to the heat equation (see below). The graph Laplacian is a discrete approximation of the Laplace operator on manifolds and has been widely used for different clustering and partion problems [REFERENCE Shi and Malik, 2000, SIMON, 1991, NG et al, 2002]. (The eigenvectors of the Laplacian matrix are equivalent to eigenfunctions of the Laplace operator. The Laplace operator, in turn defines the inner-product on the tangent space for any point in the manifold. The inner product is used to define geometric notions such as length, angle, orthogonality.)
+
+In geometry and spectral graph theory, the connections between the Laplace Beltrami operator and the graph Laplacian have been known for long [REFERENCE Chung, 1997; Chung, Grigoryan and Yau, 1997]; however, LEM was the first DR method that exploited this relationship. 
+
+2. Using the notion of a Laplacian of the graph, we then compute a low-dimensional representation of the data set that optimally preserves local nieghbourhood information in a certain sense.
+
+The representation map generated by the algorithm can be thought of as a discrete aooroximation to a continuous map that naturally arises from the geometry of the manifold.
+
+Key aspects of the algorithms are the following [REFERENCE LAPLACIAN EIGENMAPS FOR DR, 2002]:
+- The core algorithm is very simple: There is one eigenvalue problem to solve and a few local computations. The solution reflects the instrinsic geometric structure of the manifold. However, we do need to search for nearest neighbouring points in the high-dimensional space; since there are several efficient approximate techniques for that available, this is no major drawback.
+- The algorithm's justification is based on the Laplace Beltrami operator being an optimal embedding for the manifold [see ....]. 
+While the manifold is approximated by the adjacency graph computed from the data points, the Laplace Beltrami operator is approximated by the weighted Laplacian of the adjacency graph with weights chosen appropriately. % see...
+Since the Laplace Beltrami plays a key role in the heat equation, we can use the heat kernel to choose the weight decay function. Therefore, the embedding maps for the data approximate the Eigenmaps of the Laplace Beltrami operator which are maps intrinsically defined on the entire manifold.
+
+The Laplacian of a graph is analogous to the Laplace Beltrami operator on manifolds; 
+
+- The locality preserving character of the LEM makes it relatively insensitive to outliers and noise. 
+PRESERVE LOCAL INFORMATION IN THE EMBEDDING, ie points that map....conneted points stay as close together as possible.
+Another consequence of preserving local structures  is that natural clusters in the data are "weighted" more and we can see a connectio to spectral clustering algorithms developed in learning and computer vision [REFERENCE LAPLACIAN EIGENMAPS FOR DR, 2002].
+In this sense, DR and clustering can be regarded as two sides of the same coin and this connection has been explored in greater detail in [REFERENCE LAPLACIAN EIGENMAPS FOR DR, 2002]. 
+This is in contrast to global methods, eg in ..LLE.... where pairwise geodesic distances between points are preserved.
+
+
+However, not all data sets necessarily have meaningful clusters; in these cases other methods such as Isomap or classic PCA might be more appropriate. 
+
+Steps of algorithms:
+
+1. Constructing the adjacency graph, eg based on \( \epsilon \)-neighbourhoods or \( n \) nearest neighbours.
+The first is geometrically intuitive; however, it often leads to graphs with several connected components and, as usual, it may be difficult to choose the right \( \epsilon \). \( N \) nearest neighbour on the other hand is easy to choose and does not tend to lead to disconnected graphs but is less geometrically intuitive.
+2. Choosing the weights for the edges, eg by using a heat kernel.
+3. Compute the eigenmaps (eigenvalues and eigenvectors for the generalised eigenvector problem)
+
+%WHY I LIKE IT PERSONALLY:
+- LEM uses these connections to interpret DR algorithms in a geometric way; we could reinterpret LLE [ROWEIS AND SAUL] within this framework. 
+
+
+
+%The eigenfunctions of the Laplace–Beltrami operator on the manifold serve as the embedding dimensions, since under mild conditions this operator has a countable spectrum that is a basis for square integrable functions on the manifold (compare to Fourier series on the unit circle manifold). 
+%Attempts to place Laplacian eigenmaps on solid theoretical ground have met with some success, as under certain nonrestrictive assumptions, the graph Laplacian matrix has been shown to converge to the Laplace–Beltrami operator as the number of points goes to infinity.[24] 
+
+In M Belkhin's PhD thesis [REFERENCE] the problem of learning a function on manifold given by data points is discussed in greater detail. The space of functions on a Riemann manifold has a family of smoothness functionals and a canonical basis associated to the Laplace-Beltrami operator. It can be shown, that the Laplace-Beltrami operator can be reconstructed with certain convergence guarantees when the manifold is only given by sampled data points [REFERENCE PHD THESIS]. This is very useful, as we can then apply techniques of regularisation and Fourier analysis to functions defined on data. 
+ 
+ %For more details on LEM we refer to [REFERENCE PHD THESIS BELKIN]; it also discusses illustrative examples and applications.
+ %% PHD THESIS: [http://web.cse.ohio-state.edu/~belkin.8/papers/PLM_UCTHESIS_03.pdf]
+ 
 %
 %In classification applications, low dimension manifolds can be used to model data classes which can be defined from sets of observed instances. Each observed instance can be described by two independent factors termed ’content’ and ’style’, where ’content’ is the invariant factor related to the essence of the class and ’style’ expresses variations in that class between instances.[27] Unfortunately, Laplacian Eigenmaps may fail to produce a coherent representation of a class of interest when training data consist of instances varying significantly in terms of style.[28] In the case of classes which are represented by multivariate sequences, Structural Laplacian Eigenmaps has been proposed to overcome this issue by adding additional constraints within the Laplacian Eigenmaps neighborhood information graph to better reflect the intrinsic structure of the class.[29] More specifically, the graph is used to encode both the sequential structure of the multivariate sequences and, to minimise stylistic variations, proximity between data points of different sequences or even within a sequence, if it contains repetitions. Using dynamic time warping, proximity is detected by finding correspondences between and within sections of the multivariate sequences that exhibit high similarity. Experiments conducted on vision-based activity recognition, object orientation classification and human 3D pose recovery applications have demonstrate the added value of Structural Laplacian Eigenmaps when dealing with multivariate sequence data.[29] An extension of Structural Laplacian Eigenmaps, Generalized Laplacian Eigenmaps led to the generation of manifolds where one of the dimensions specifically represents variations in style. This has proved particularly valuable in applications such as tracking of the human articulated body and silhouette extraction.[30]
 
+
+%See also: Manifold regularization
+
+The Julia implementation of the algorithm in the package \textit{ManifoldLearning.jl} provides a computationally efficient approach to non-linear DR that has locally preserving properties.
+
+[PLOTS]
 
 \subsubsection{Diffusion maps}
 
@@ -583,6 +694,15 @@ wasn't working in Julia. ..but the theory worth mentioning.
 
 \subsubsection{Locally-linear embedding (LLE)}
 
+See Roweis \& Saul, Roweis was Hoppfield's PhD student.
+
+Goal: find an embedding for the full D-dimensional input space into a d-dimensional space , d << D, such that the intrinsic geodesic structure of the data in the original space is preserved as much as possible.
+
+2 steps: 1. For each data point, we find a set of local weights that represent the point in a translation-, rotation- and scale-invariant way which can be formalised as an optimisation problem with two constraints [REFERECE http://www.cns.nyu.edu/~eorhan/notes/lle.pdf].
+
+[REFERENCE]
+%http://www.cns.nyu.edu/~eorhan/notes/lle.pdf
+
 %Locally-Linear Embedding (LLE)[20] was presented at approximately the same time as Isomap. It has several advantages over Isomap, including faster optimization when implemented to take advantage of sparse matrix algorithms, and better results with many problems. LLE also begins by finding a set of the nearest neighbors of each point. It then computes a set of weights for each point that best describes the point as a linear combination of its neighbors. Finally, it uses an eigenvector-based optimization technique to find the low-dimensional embedding of points, such that each point is still described with the same linear combination of its neighbors. LLE tends to handle non-uniform sample densities poorly because there is no fixed unit to prevent the weights from drifting as various regions differ in sample densities. LLE has no internal model.
 %
 %LLE computes the barycentric coordinates of a point Xi based on its neighbors Xj. The original point is reconstructed by a linear combination, given by the weight matrix Wij, of its neighbors. The reconstruction error is given by the cost function E(W).
@@ -626,21 +746,6 @@ Really meaningful?
 
 
 
-\subsection{Outlook: DR for feature selection}
-
-Variations of dimensionality reduction methods, especially manifold learning methods, are used for feature selection -- an active research area in machine learning (ML). % [REFERENCE] --> HOPE THAT FUNCTIONS ARE SOON TO BE FIXED.
-Feature selection deals with selecting a feature subset, given a set of initial features, that capture hidden insights in the data and is especially useful when the original number of features is large.
-Feature selection has a number of benefits, eg it makes ML algorithms train faster, and models easier to interpret. 
-%as the complexity of a model is reduced when the number of features decreases.
-%
-%
-It can improve the accuracy of a model and prevent overfitting. 
-%In many cases, selecting the most informative feature subset improves the accuracy of a model
-%- Feature selection can also cut down overfitting
-
-%-
-%-
-
 %%%------------
 %\section{Single Cell data}
 %- Relationship between genes
@@ -669,6 +774,9 @@ It can improve the accuracy of a model and prevent overfitting.
 %\section{Discussion and outlook}
 
 
+OPEN QUESTIONS, CONCLUSIONS.
+
+
 \section{Genetic algorithm for Kernel Density Estimation (KDE) in 2D}
 
 [REFER TO GROUP PROJECT]
@@ -678,6 +786,10 @@ It can improve the accuracy of a model and prevent overfitting.
 [IMPLEMENTATION DIFFERENT KERNEL METHODS, MAYBE COMPARE THEM? --> COULD GO IN GROUP REPORT AS WELL]
 
 see \texttt{KDE\_reduction\_2D.jl}
+
+\section{Discussion and conclusion}
+
+
 
 \section{Personal challenges}
 
@@ -703,6 +815,8 @@ table
 
 WANTED TO KEEP IT AS GENERAL AS POSSIBLE, USER FRIENDLY BUT CHALLENGE..
 
+NOT TO GET DRAGGED AWAY AND DEVIATE FROM PROJECT AS DIMRED IS A LARGE FIELD.
+
 
 % wichtig dass man nicht auf teufel komm raus irgwas produziert nur damit was gemacht, sondern mehr gedanken darueber machen. leute mehr hands-on approach [LD]
 
@@ -725,7 +839,7 @@ Julia brings me to the next point.
 Julia itself isn't the issue (apart from decypherings its error messages), it's the many packages that are conflicting each other.
 
 
-personal goal: to contribute to julia community 
+personal goal: to contribute to julia community, become better at Julia
 
 
 Many issues, Many things that need fixing.
@@ -763,13 +877,18 @@ and a pad was a convenient way for communication and sharing material.
 
 FIND IT IMPORTANT TO REFLECT FOR THE NEXT PROJECT
 
+MILESTONES NECESSARY
 
-
-\section{Conclusion}
 
 \section{Outlook}
 
 IMPLEMENT JADE ALGORITHM (WHICH I BEGAN) BUT STOPPED AS I FELT IT WAS OF NO USE FOR OUR PROJECT. 
+
+DISCUSSION AND CONLUSION, FUTURE WORK
+
+DISCUSS LITERATURE, WHY WOULD STDE BE USEFUL?
+
+CRITICALLY DISCUSS FUTURE WORK
 
 % Now we need a bibliography:
 \begin{thebibliography}{99}
@@ -786,7 +905,7 @@ IMPLEMENT JADE ALGORITHM (WHICH I BEGAN) BUT STOPPED AS I FELT IT WAS OF NO USE 
 	
 	
 	\bibitem{lala}
-	SEE PAPERS ON PAD.
+	SEE PAPERS ON PAD ADN GITHUB.
 	
 	
 \end{thebibliography}
