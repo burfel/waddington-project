@@ -41,29 +41,29 @@ M1_max = fit(PCA, data_arrayT; maxoutdim=96)
 M1 = fit(PCA, data_arrayT; maxoutdim=2)
 
 # transforms observations data_array into PCs
-Y1_max = transform(M1_max, data_arrayT)
-Y1 = transform(M1, data_arrayT)
+Y1_max = transform(M1_max, data_arrayT) # 75x547
+Y1 = transform(M1, data_arrayT) # 2x547
 
-X_PCA_max = reconstruct(M1_max, Y1_max)
-X_PCA = reconstruct(M1, Y1)
+X_PCA_max = reconstruct(M1_max, Y1_max) # 96x547
+X_PCA = reconstruct(M1, Y1) # 96x547
 
 # Get the projection matrix (of size (d, p)).
 # Each column of the projection matrix corresponds to a principal component.
 # The principal components are arranged in descending order of the corresponding variances.
-M1_proj_max = projection(M1_max)
-M1_proj = projection(M1)
+M1_proj_max = projection(M1_max) # 96x75
+M1_proj = projection(M1) # 96x2
 #indim(M1_max)
 #outdim(M1_max)
 #indim(M1)
 #outdim(M1)
 
 # Get the input dimension d, i.e the dimension of the observation space.
-indim(M1_max)
-indim(M1)
+indim(M1_max) #96
+indim(M1) #96
 
 # Get the output dimension p, i.e the dimension of the principal subspace.
 outdim(M1_max) #75
-outdim(M1)
+outdim(M1) #2
 
 # The variances of principal components.
 pca_var_max = principalvars(M1_max)
@@ -104,6 +104,12 @@ PyPlot.savefig("../Single_cell_data/plots/PCA/PCA_transform_max")
 
 Plots.scatter(Y1,title="PCA transform", legend=false) # compare it to own function
 #PyPlot.savefig("../Single_cell_data/plots/PCA/PCA_transform")
+
+Plots.scatter(M1_proj_max,title="PCA projection", legend=false) # compare it to own function
+#PyPlot.savefig("../Single_cell_data/plots/PCA/PCA_projection_max")
+
+Plots.scatter(M1_proj,title="PCA projection", legend=false) # compare it to own function
+#PyPlot.savefig("../Single_cell_data/plots/PCA/PCA_projection")
 
 Plots.scatter(X_PCA_max,title="PCA reconstruct", legend=false)# compare it to own function
 #PyPlot.savefig("../Single_cell_data/plots/PCA/PCA_reconstruct_max")
