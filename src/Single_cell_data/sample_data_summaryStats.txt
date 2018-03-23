@@ -1,0 +1,1246 @@
+Summary Stats:
+Mean:           16.690355
+Minimum:        14.138183
+1st Quartile:   16.059701
+Median:         16.722239
+3rd Quartile:   17.320265
+Maximum:        19.578672
+Length:         547
+Type:           Float64
+Number Missing: 0
+% Missing:      0.000000
+
+Bmi1
+Summary Stats:
+Mean:           7.747060
+Minimum:        0.000000
+1st Quartile:   3.791919
+Median:         9.663653
+3rd Quartile:   11.044525
+Maximum:        13.161776
+Length:         547
+Type:           Float64
+Number Missing: 0
+% Missing:      0.000000
+
+Bmp4
+Summary Stats:
+Mean:           4.748512
+Minimum:        0.000000
+1st Quartile:   0.000000
+Median:         0.000000
+3rd Quartile:   10.873493
+Maximum:        15.983576
+Length:         547
+Type:           Float64
+Number Missing: 0
+% Missing:      0.000000
+
+Bmp7
+Summary Stats:
+Mean:           2.617908
+Minimum:        0.000000
+1st Quartile:   0.000000
+Median:         0.000000
+3rd Quartile:   7.606052
+Maximum:        13.233693
+Length:         547
+Type:           Float64
+Number Missing: 0
+% Missing:      0.000000
+
+Bmpr1a
+Summary Stats:
+Mean:           8.720553
+Minimum:        0.000000
+1st Quartile:   8.495230
+Median:         10.923881
+3rd Quartile:   11.860496
+Maximum:        14.778796
+Length:         547
+Type:           Float64
+Number Missing: 0
+% Missing:      0.000000
+
+Cd34
+Summary Stats:
+Mean:           2.966858
+Minimum:        0.000000
+1st Quartile:   0.000000
+Median:         0.000000
+3rd Quartile:   9.149924
+Maximum:        13.660797
+Length:         547
+Type:           Float64
+Number Missing: 0
+% Missing:      0.000000
+
+Cdh1
+Summary Stats:
+Mean:           0.654674
+Minimum:        0.000000
+1st Quartile:   0.000000
+Median:         0.000000
+3rd Quartile:   0.000000
+Maximum:        13.945193
+Length:         547
+Type:           Float64
+Number Missing: 0
+% Missing:      0.000000
+
+Cdh2
+Summary Stats:
+Mean:           7.134433
+Minimum:        0.000000
+1st Quartile:   0.000000
+Median:         8.814498
+3rd Quartile:   12.327767
+Maximum:        17.637739
+Length:         547
+Type:           Float64
+Number Missing: 0
+% Missing:      0.000000
+
+Cdk2
+Summary Stats:
+Mean:           12.277124
+Minimum:        0.000000
+1st Quartile:   12.193559
+Median:         12.967599
+3rd Quartile:   13.647984
+Maximum:        15.891476
+Length:         547
+Type:           Float64
+Number Missing: 0
+% Missing:      0.000000
+
+Cdx2
+Summary Stats:
+Mean:           0.274599
+Minimum:        0.000000
+1st Quartile:   0.000000
+Median:         0.000000
+3rd Quartile:   0.000000
+Maximum:        12.889216
+Length:         547
+Type:           Float64
+Number Missing: 0
+% Missing:      0.000000
+
+Cldn6
+Summary Stats:
+Mean:           8.779445
+Minimum:        0.000000
+1st Quartile:   0.000000
+Median:         11.406924
+3rd Quartile:   13.993506
+Maximum:        19.424385
+Length:         547
+Type:           Float64
+Number Missing: 0
+% Missing:      0.000000
+
+Ctcf
+Summary Stats:
+Mean:           13.322833
+Minimum:        0.000000
+1st Quartile:   12.890234
+Median:         13.540881
+3rd Quartile:   14.166401
+Maximum:        16.088188
+Length:         547
+Type:           Float64
+Number Missing: 0
+% Missing:      0.000000
+
+Ctnnb1
+Summary Stats:
+Mean:           15.553575
+Minimum:        11.666831
+1st Quartile:   15.109595
+Median:         15.563029
+3rd Quartile:   16.101675
+Maximum:        17.962041
+Length:         547
+Type:           Float64
+Number Missing: 0
+% Missing:      0.000000
+
+Dnmt1
+Summary Stats:
+Mean:           14.842225
+Minimum:        0.000000
+1st Quartile:   14.373939
+Median:         15.099371
+3rd Quartile:   15.628128
+Maximum:        17.968303
+Length:         547
+Type:           Float64
+Number Missing: 0
+% Missing:      0.000000
+
+Dnmt3b
+Summary Stats:
+Mean:           14.532741
+Minimum:        0.000000
+1st Quartile:   14.036296
+Median:         15.498534
+3rd Quartile:   16.960606
+Maximum:        20.577338
+Length:         547
+Type:           Float64
+Number Missing: 0
+% Missing:      0.000000
+
+Dppa3
+Summary Stats:
+Mean:           0.888866
+Minimum:        0.000000
+1st Quartile:   0.000000
+Median:         0.000000
+3rd Quartile:   0.000000
+Maximum:        14.170012
+Length:         547
+Type:           Float64
+Number Missing: 0
+% Missing:      0.000000
+
+Dppa4
+Summary Stats:
+Mean:           7.340809
+Minimum:        0.000000
+1st Quartile:   0.000000
+Median:         9.795749
+3rd Quartile:   11.304383
+Maximum:        13.452914
+Length:         547
+Type:           Float64
+Number Missing: 0
+% Missing:      0.000000
+
+Eomes
+Summary Stats:
+Mean:           3.185768
+Minimum:        0.000000
+1st Quartile:   0.000000
+Median:         0.000000
+3rd Quartile:   9.692621
+Maximum:        14.601295
+Length:         547
+Type:           Float64
+Number Missing: 0
+% Missing:      0.000000
+
+Esrrb
+Summary Stats:
+Mean:           3.087479
+Minimum:        0.000000
+1st Quartile:   0.000000
+Median:         0.000000
+3rd Quartile:   4.528524
+Maximum:        14.429192
+Length:         547
+Type:           Float64
+Number Missing: 0
+% Missing:      0.000000
+
+Ezh2
+Summary Stats:
+Mean:           8.214194
+Minimum:        0.000000
+1st Quartile:   8.660966
+Median:         10.184008
+3rd Quartile:   11.072387
+Maximum:        13.521710
+Length:         547
+Type:           Float64
+Number Missing: 0
+% Missing:      0.000000
+
+Fbxo15
+Summary Stats:
+Mean:           6.982680
+Minimum:        0.000000
+1st Quartile:   0.000000
+Median:         9.796113
+3rd Quartile:   13.150339
+Maximum:        17.991455
+Length:         547
+Type:           Float64
+Number Missing: 0
+% Missing:      0.000000
+
+Fgf4
+Summary Stats:
+Mean:           6.794000
+Minimum:        0.000000
+1st Quartile:   0.000000
+Median:         9.040138
+3rd Quartile:   13.709351
+Maximum:        17.691710
+Length:         547
+Type:           Float64
+Number Missing: 0
+% Missing:      0.000000
+
+Fgf5
+Summary Stats:
+Mean:           3.668908
+Minimum:        0.000000
+1st Quartile:   0.000000
+Median:         0.000000
+3rd Quartile:   9.968791
+Maximum:        14.978779
+Length:         547
+Type:           Float64
+Number Missing: 0
+% Missing:      0.000000
+
+Fgfr2
+Summary Stats:
+Mean:           6.777783
+Minimum:        0.000000
+1st Quartile:   0.000000
+Median:         9.543067
+3rd Quartile:   11.578271
+Maximum:        15.623406
+Length:         547
+Type:           Float64
+Number Missing: 0
+% Missing:      0.000000
+
+Foxa2
+Summary Stats:
+Mean:           2.537997
+Minimum:        0.000000
+1st Quartile:   0.000000
+Median:         0.000000
+3rd Quartile:   1.679110
+Maximum:        16.303927
+Length:         547
+Type:           Float64
+Number Missing: 0
+% Missing:      0.000000
+
+GFAP
+Summary Stats:
+Mean:           0.165091
+Minimum:        0.000000
+1st Quartile:   0.000000
+Median:         0.000000
+3rd Quartile:   0.000000
+Maximum:        10.899757
+Length:         547
+Type:           Float64
+Number Missing: 0
+% Missing:      0.000000
+
+Gapdh
+Summary Stats:
+Mean:           19.798961
+Minimum:        15.763577
+1st Quartile:   19.349829
+Median:         19.931990
+3rd Quartile:   20.381541
+Maximum:        21.916701
+Length:         547
+Type:           Float64
+Number Missing: 0
+% Missing:      0.000000
+
+Gata1
+Summary Stats:
+Mean:           0.398581
+Minimum:        0.000000
+1st Quartile:   0.000000
+Median:         0.000000
+3rd Quartile:   0.000000
+Maximum:        11.582046
+Length:         547
+Type:           Float64
+Number Missing: 0
+% Missing:      0.000000
+
+Gata4
+Summary Stats:
+Mean:           1.667561
+Minimum:        0.000000
+1st Quartile:   0.000000
+Median:         0.000000
+3rd Quartile:   0.000000
+Maximum:        17.995176
+Length:         547
+Type:           Float64
+Number Missing: 0
+% Missing:      0.000000
+
+Gata6
+Summary Stats:
+Mean:           1.234375
+Minimum:        0.000000
+1st Quartile:   0.000000
+Median:         0.000000
+3rd Quartile:   0.000000
+Maximum:        16.310052
+Length:         547
+Type:           Float64
+Number Missing: 0
+% Missing:      0.000000
+
+Gdf3
+Summary Stats:
+Mean:           7.653818
+Minimum:        0.000000
+1st Quartile:   0.000000
+Median:         11.710757
+3rd Quartile:   14.008289
+Maximum:        16.904275
+Length:         547
+Type:           Float64
+Number Missing: 0
+% Missing:      0.000000
+
+Gli2
+Summary Stats:
+Mean:           3.338192
+Minimum:        0.000000
+1st Quartile:   0.000000
+Median:         0.000000
+3rd Quartile:   9.073915
+Maximum:        12.475195
+Length:         547
+Type:           Float64
+Number Missing: 0
+% Missing:      0.000000
+
+Grb2
+Summary Stats:
+Mean:           9.663960
+Minimum:        0.000000
+1st Quartile:   10.030349
+Median:         11.264016
+3rd Quartile:   12.069672
+Maximum:        15.219488
+Length:         547
+Type:           Float64
+Number Missing: 0
+% Missing:      0.000000
+
+Gsc
+Summary Stats:
+Mean:           0.387374
+Minimum:        0.000000
+1st Quartile:   0.000000
+Median:         0.000000
+3rd Quartile:   0.000000
+Maximum:        10.840811
+Length:         547
+Type:           Float64
+Number Missing: 0
+% Missing:      0.000000
+
+Gsk3b
+Summary Stats:
+Mean:           4.801974
+Minimum:        0.000000
+1st Quartile:   0.000000
+Median:         0.000000
+3rd Quartile:   9.897641
+Maximum:        12.521523
+Length:         547
+Type:           Float64
+Number Missing: 0
+% Missing:      0.000000
+
+Hand1
+Summary Stats:
+Mean:           0.195739
+Minimum:        0.000000
+1st Quartile:   0.000000
+Median:         0.000000
+3rd Quartile:   0.000000
+Maximum:        15.092846
+Length:         547
+Type:           Float64
+Number Missing: 0
+% Missing:      0.000000
+
+Hdac1
+Summary Stats:
+Mean:           15.424285
+Minimum:        0.000000
+1st Quartile:   14.899550
+Median:         15.518712
+3rd Quartile:   16.036059
+Maximum:        18.281493
+Length:         547
+Type:           Float64
+Number Missing: 0
+% Missing:      0.000000
+
+Hes1
+Summary Stats:
+Mean:           3.681372
+Minimum:        0.000000
+1st Quartile:   0.000000
+Median:         0.000000
+3rd Quartile:   8.139028
+Maximum:        12.125348
+Length:         547
+Type:           Float64
+Number Missing: 0
+% Missing:      0.000000
+
+Igf2
+Summary Stats:
+Mean:           4.132385
+Minimum:        0.000000
+1st Quartile:   0.000000
+Median:         0.000000
+3rd Quartile:   9.762460
+Maximum:        18.697605
+Length:         547
+Type:           Float64
+Number Missing: 0
+% Missing:      0.000000
+
+Isl1
+Summary Stats:
+Mean:           0.498593
+Minimum:        0.000000
+1st Quartile:   0.000000
+Median:         0.000000
+3rd Quartile:   0.000000
+Maximum:        14.776998
+Length:         547
+Type:           Float64
+Number Missing: 0
+% Missing:      0.000000
+
+Jag1
+Summary Stats:
+Mean:           5.084342
+Minimum:        0.000000
+1st Quartile:   0.000000
+Median:         0.000000
+3rd Quartile:   11.285811
+Maximum:        17.177552
+Length:         547
+Type:           Float64
+Number Missing: 0
+% Missing:      0.000000
+
+Jarid2
+Summary Stats:
+Mean:           12.426256
+Minimum:        0.000000
+1st Quartile:   12.068270
+Median:         13.033845
+3rd Quartile:   13.909877
+Maximum:        16.419584
+Length:         547
+Type:           Float64
+Number Missing: 0
+% Missing:      0.000000
+
+Kdm1a
+Summary Stats:
+Mean:           15.954806
+Minimum:        12.087446
+1st Quartile:   15.430962
+Median:         15.952754
+3rd Quartile:   16.477205
+Maximum:        18.252398
+Length:         547
+Type:           Float64
+Number Missing: 0
+% Missing:      0.000000
+
+Kdm4c
+Summary Stats:
+Mean:           10.750782
+Minimum:        0.000000
+1st Quartile:   11.042188
+Median:         12.029525
+3rd Quartile:   12.862487
+Maximum:        14.859090
+Length:         547
+Type:           Float64
+Number Missing: 0
+% Missing:      0.000000
+
+Klf4
+Summary Stats:
+Mean:           3.998474
+Minimum:        0.000000
+1st Quartile:   0.000000
+Median:         0.000000
+3rd Quartile:   10.402507
+Maximum:        16.632602
+Length:         547
+Type:           Float64
+Number Missing: 0
+% Missing:      0.000000
+
+Lif
+Summary Stats:
+Mean:           3.754368
+Minimum:        0.000000
+1st Quartile:   0.000000
+Median:         0.000000
+3rd Quartile:   8.893345
+Maximum:        14.490669
+Length:         547
+Type:           Float64
+Number Missing: 0
+% Missing:      0.000000
+
+Lifr
+Summary Stats:
+Mean:           8.522323
+Minimum:        0.000000
+1st Quartile:   8.219501
+Median:         10.285628
+3rd Quartile:   11.692944
+Maximum:        16.406127
+Length:         547
+Type:           Float64
+Number Missing: 0
+% Missing:      0.000000
+
+Lin28a
+Summary Stats:
+Mean:           13.125207
+Minimum:        0.000000
+1st Quartile:   12.497033
+Median:         13.559869
+3rd Quartile:   14.383384
+Maximum:        16.888523
+Length:         547
+Type:           Float64
+Number Missing: 0
+% Missing:      0.000000
+
+MBP
+Summary Stats:
+Mean:           0.000000
+Minimum:        0.000000
+1st Quartile:   0.000000
+Median:         0.000000
+3rd Quartile:   0.000000
+Maximum:        0.000000
+Length:         547
+Type:           Float64
+Number Missing: 0
+% Missing:      0.000000
+
+Mbd3
+Summary Stats:
+Mean:           13.932734
+Minimum:        0.000000
+1st Quartile:   13.316394
+Median:         14.112584
+3rd Quartile:   14.662207
+Maximum:        16.866480
+Length:         547
+Type:           Float64
+Number Missing: 0
+% Missing:      0.000000
+
+Mef2a
+Summary Stats:
+Mean:           6.398709
+Minimum:        0.000000
+1st Quartile:   0.000000
+Median:         9.902364
+3rd Quartile:   11.386257
+Maximum:        15.097485
+Length:         547
+Type:           Float64
+Number Missing: 0
+% Missing:      0.000000
+
+Mixl1
+Summary Stats:
+Mean:           0.060663
+Minimum:        0.000000
+1st Quartile:   0.000000
+Median:         0.000000
+3rd Quartile:   0.000000
+Maximum:        7.756795
+Length:         547
+Type:           Float64
+Number Missing: 0
+% Missing:      0.000000
+
+Mki67ip
+Summary Stats:
+Mean:           7.831640
+Minimum:        0.000000
+1st Quartile:   0.000000
+Median:         10.616824
+3rd Quartile:   11.635311
+Maximum:        14.277668
+Length:         547
+Type:           Float64
+Number Missing: 0
+% Missing:      0.000000
+
+Myc
+Summary Stats:
+Mean:           8.114448
+Minimum:        0.000000
+1st Quartile:   0.000000
+Median:         11.182427
+3rd Quartile:   13.122653
+Maximum:        16.802574
+Length:         547
+Type:           Float64
+Number Missing: 0
+% Missing:      0.000000
+
+Myst3
+Summary Stats:
+Mean:           12.542592
+Minimum:        0.000000
+1st Quartile:   12.058217
+Median:         12.713880
+3rd Quartile:   13.363304
+Maximum:        15.305513
+Length:         547
+Type:           Float64
+Number Missing: 0
+% Missing:      0.000000
+
+Nanog
+Summary Stats:
+Mean:           6.301142
+Minimum:        0.000000
+1st Quartile:   0.000000
+Median:         8.921991
+3rd Quartile:   12.176532
+Maximum:        15.011416
+Length:         547
+Type:           Float64
+Number Missing: 0
+% Missing:      0.000000
+
+Ncam1
+Summary Stats:
+Mean:           0.021395
+Minimum:        0.000000
+1st Quartile:   0.000000
+Median:         0.000000
+3rd Quartile:   0.000000
+Maximum:        9.462783
+Length:         547
+Type:           Float64
+Number Missing: 0
+% Missing:      0.000000
+
+Nestin
+Summary Stats:
+Mean:           6.274337
+Minimum:        0.000000
+1st Quartile:   0.000000
+Median:         8.309516
+3rd Quartile:   10.362304
+Maximum:        14.856225
+Length:         547
+Type:           Float64
+Number Missing: 0
+% Missing:      0.000000
+
+Notch1
+Summary Stats:
+Mean:           4.754224
+Minimum:        0.000000
+1st Quartile:   0.000000
+Median:         7.198468
+3rd Quartile:   9.140052
+Maximum:        12.658640
+Length:         547
+Type:           Float64
+Number Missing: 0
+% Missing:      0.000000
+
+Nr0b1
+Summary Stats:
+Mean:           3.405575
+Minimum:        0.000000
+1st Quartile:   0.000000
+Median:         0.000000
+3rd Quartile:   10.289983
+Maximum:        15.552638
+Length:         547
+Type:           Float64
+Number Missing: 0
+% Missing:      0.000000
+
+Nr5a2
+Summary Stats:
+Mean:           2.380123
+Minimum:        0.000000
+1st Quartile:   0.000000
+Median:         0.000000
+3rd Quartile:   0.000000
+Maximum:        12.896375
+Length:         547
+Type:           Float64
+Number Missing: 0
+% Missing:      0.000000
+
+Nr6a1
+Summary Stats:
+Mean:           3.923798
+Minimum:        0.000000
+1st Quartile:   0.000000
+Median:         0.000000
+3rd Quartile:   8.775681
+Maximum:        11.879258
+Length:         547
+Type:           Float64
+Number Missing: 0
+% Missing:      0.000000
+
+Olig1
+Summary Stats:
+Mean:           0.251723
+Minimum:        0.000000
+1st Quartile:   0.000000
+Median:         0.000000
+3rd Quartile:   0.000000
+Maximum:        21.134293
+Length:         547
+Type:           Float64
+Number Missing: 0
+% Missing:      0.000000
+
+Olig2
+Summary Stats:
+Mean:           0.120830
+Minimum:        0.000000
+1st Quartile:   0.000000
+Median:         0.000000
+3rd Quartile:   0.000000
+Maximum:        14.575692
+Length:         547
+Type:           Float64
+Number Missing: 0
+% Missing:      0.000000
+
+Otx2
+Summary Stats:
+Mean:           6.527829
+Minimum:        0.000000
+1st Quartile:   0.000000
+Median:         9.081258
+3rd Quartile:   12.624123
+Maximum:        15.970200
+Length:         547
+Type:           Float64
+Number Missing: 0
+% Missing:      0.000000
+
+Pax6
+Summary Stats:
+Mean:           2.795156
+Minimum:        0.000000
+1st Quartile:   0.000000
+Median:         0.000000
+3rd Quartile:   0.000000
+Maximum:        22.751665
+Length:         547
+Type:           Float64
+Number Missing: 0
+% Missing:      0.000000
+
+Pou5f1
+Summary Stats:
+Mean:           7.846640
+Minimum:        0.000000
+1st Quartile:   0.000000
+Median:         10.890550
+3rd Quartile:   13.242911
+Maximum:        15.222283
+Length:         547
+Type:           Float64
+Number Missing: 0
+% Missing:      0.000000
+
+Prmt6
+Summary Stats:
+Mean:           2.856657
+Minimum:        0.000000
+1st Quartile:   0.000000
+Median:         0.000000
+3rd Quartile:   8.402701
+Maximum:        12.476898
+Length:         547
+Type:           Float64
+Number Missing: 0
+% Missing:      0.000000
+
+Prmt7
+Summary Stats:
+Mean:           10.474891
+Minimum:        0.000000
+1st Quartile:   10.681904
+Median:         11.449980
+3rd Quartile:   12.176904
+Maximum:        14.035345
+Length:         547
+Type:           Float64
+Number Missing: 0
+% Missing:      0.000000
+
+Ptpn11
+Summary Stats:
+Mean:           11.909276
+Minimum:        0.000000
+1st Quartile:   11.784728
+Median:         12.576536
+3rd Quartile:   13.368312
+Maximum:        16.735811
+Length:         547
+Type:           Float64
+Number Missing: 0
+% Missing:      0.000000
+
+Rai1
+Summary Stats:
+Mean:           7.231947
+Minimum:        0.000000
+1st Quartile:   0.000000
+Median:         10.315793
+3rd Quartile:   12.104077
+Maximum:        15.773148
+Length:         547
+Type:           Float64
+Number Missing: 0
+% Missing:      0.000000
+
+Rcc1
+Summary Stats:
+Mean:           9.953987
+Minimum:        0.000000
+1st Quartile:   10.555390
+Median:         11.600957
+3rd Quartile:   12.289806
+Maximum:        14.760255
+Length:         547
+Type:           Float64
+Number Missing: 0
+% Missing:      0.000000
+
+Rest
+Summary Stats:
+Mean:           13.600980
+Minimum:        0.000000
+1st Quartile:   13.519139
+Median:         14.343742
+3rd Quartile:   15.086615
+Maximum:        17.200160
+Length:         547
+Type:           Float64
+Number Missing: 0
+% Missing:      0.000000
+
+Sall4
+Summary Stats:
+Mean:           12.740745
+Minimum:        0.000000
+1st Quartile:   12.698019
+Median:         13.606824
+3rd Quartile:   14.410457
+Maximum:        16.663822
+Length:         547
+Type:           Float64
+Number Missing: 0
+% Missing:      0.000000
+
+Setdb1
+Summary Stats:
+Mean:           9.939562
+Minimum:        0.000000
+1st Quartile:   9.701152
+Median:         10.472834
+3rd Quartile:   11.121120
+Maximum:        12.849310
+Length:         547
+Type:           Float64
+Number Missing: 0
+% Missing:      0.000000
+
+Smad1
+Summary Stats:
+Mean:           10.984843
+Minimum:        0.000000
+1st Quartile:   10.529868
+Median:         11.469151
+3rd Quartile:   12.376016
+Maximum:        15.038221
+Length:         547
+Type:           Float64
+Number Missing: 0
+% Missing:      0.000000
+
+Smarca4
+Summary Stats:
+Mean:           0.000000
+Minimum:        0.000000
+1st Quartile:   0.000000
+Median:         0.000000
+3rd Quartile:   0.000000
+Maximum:        0.000000
+Length:         547
+Type:           Float64
+Number Missing: 0
+% Missing:      0.000000
+
+Smarcc1
+Summary Stats:
+Mean:           14.464348
+Minimum:        0.000000
+1st Quartile:   13.934956
+Median:         14.506191
+3rd Quartile:   15.062702
+Maximum:        17.129792
+Length:         547
+Type:           Float64
+Number Missing: 0
+% Missing:      0.000000
+
+Socs3
+Summary Stats:
+Mean:           4.233127
+Minimum:        0.000000
+1st Quartile:   0.000000
+Median:         0.000000
+3rd Quartile:   9.999857
+Maximum:        14.369902
+Length:         547
+Type:           Float64
+Number Missing: 0
+% Missing:      0.000000
+
+Sox1
+Summary Stats:
+Mean:           0.075656
+Minimum:        0.000000
+1st Quartile:   0.000000
+Median:         0.000000
+3rd Quartile:   0.000000
+Maximum:        4.405322
+Length:         547
+Type:           Float64
+Number Missing: 0
+% Missing:      0.000000
+
+Sox2
+Summary Stats:
+Mean:           4.073697
+Minimum:        0.000000
+1st Quartile:   0.000000
+Median:         0.000000
+3rd Quartile:   10.143496
+Maximum:        13.591152
+Length:         547
+Type:           Float64
+Number Missing: 0
+% Missing:      0.000000
+
+Stat3
+Summary Stats:
+Mean:           9.817140
+Minimum:        0.000000
+1st Quartile:   10.086788
+Median:         11.747279
+3rd Quartile:   12.995503
+Maximum:        16.869976
+Length:         547
+Type:           Float64
+Number Missing: 0
+% Missing:      0.000000
+
+T
+Summary Stats:
+Mean:           0.010392
+Minimum:        0.000000
+1st Quartile:   0.000000
+Median:         0.000000
+3rd Quartile:   0.000000
+Maximum:        5.684660
+Length:         547
+Type:           Float64
+Number Missing: 0
+% Missing:      0.000000
+
+Tbx3
+Summary Stats:
+Mean:           2.537169
+Minimum:        0.000000
+1st Quartile:   0.000000
+Median:         0.000000
+3rd Quartile:   0.000000
+Maximum:        14.603622
+Length:         547
+Type:           Float64
+Number Missing: 0
+% Missing:      0.000000
+
+Tcf7l1
+Summary Stats:
+Mean:           12.951918
+Minimum:        0.000000
+1st Quartile:   12.868162
+Median:         13.661866
+3rd Quartile:   14.460978
+Maximum:        16.583124
+Length:         547
+Type:           Float64
+Number Missing: 0
+% Missing:      0.000000
+
+Tcl1
+Summary Stats:
+Mean:           0.889271
+Minimum:        0.000000
+1st Quartile:   0.000000
+Median:         0.000000
+3rd Quartile:   0.000000
+Maximum:        12.262108
+Length:         547
+Type:           Float64
+Number Missing: 0
+% Missing:      0.000000
+
+Tgm2
+Summary Stats:
+Mean:           1.105976
+Minimum:        0.000000
+1st Quartile:   0.000000
+Median:         0.000000
+3rd Quartile:   0.000000
+Maximum:        16.479034
+Length:         547
+Type:           Float64
+Number Missing: 0
+% Missing:      0.000000
+
+Trp53
+Summary Stats:
+Mean:           11.445839
+Minimum:        0.000000
+1st Quartile:   10.829822
+Median:         12.510459
+3rd Quartile:   13.495676
+Maximum:        15.597112
+Length:         547
+Type:           Float64
+Number Missing: 0
+% Missing:      0.000000
+
+Tubb3
+Summary Stats:
+Mean:           10.222309
+Minimum:        0.000000
+1st Quartile:   10.340446
+Median:         12.407760
+3rd Quartile:   13.771213
+Maximum:        19.667343
+Length:         547
+Type:           Float64
+Number Missing: 0
+% Missing:      0.000000
+
+Utf1
+Summary Stats:
+Mean:           6.416315
+Minimum:        0.000000
+1st Quartile:   0.000000
+Median:         6.748367
+3rd Quartile:   12.426573
+Maximum:        16.786172
+Length:         547
+Type:           Float64
+Number Missing: 0
+% Missing:      0.000000
+
+Vim
+Summary Stats:
+Mean:           14.241440
+Minimum:        0.000000
+1st Quartile:   13.357524
+Median:         14.897973
+3rd Quartile:   16.703616
+Maximum:        20.505669
+Length:         547
+Type:           Float64
+Number Missing: 0
+% Missing:      0.000000
+
+Wdr5
+Summary Stats:
+Mean:           12.313732
+Minimum:        0.000000
+1st Quartile:   12.106097
+Median:         12.825178
+3rd Quartile:   13.407770
+Maximum:        14.920559
+Length:         547
+Type:           Float64
+Number Missing: 0
+% Missing:      0.000000
+
+Wnt3a
+Summary Stats:
+Mean:           0.360041
+Minimum:        0.000000
+1st Quartile:   0.000000
+Median:         0.000000
+3rd Quartile:   0.000000
+Maximum:        15.080858
+Length:         547
+Type:           Float64
+Number Missing: 0
+% Missing:      0.000000
+
+Wnt5a
+Summary Stats:
+Mean:           1.635337
+Minimum:        0.000000
+1st Quartile:   0.000000
+Median:         0.000000
+3rd Quartile:   0.000000
+Maximum:        14.578127
+Length:         547
+Type:           Float64
+Number Missing: 0
+% Missing:      0.000000
+
+Zfp281
+Summary Stats:
+Mean:           13.892636
+Minimum:        0.000000
+1st Quartile:   13.337744
+Median:         14.025500
+3rd Quartile:   14.595305
+Maximum:        16.223257
+Length:         547
+Type:           Float64
+Number Missing: 0
+% Missing:      0.000000
+
+Zfp42
+Summary Stats:
+Mean:           9.537170
+Minimum:        0.000000
+1st Quartile:   8.013329
+Median:         11.113395
+3rd Quartile:   13.326869
+Maximum:        17.815045
+Length:         547
+Type:           Float64
+Number Missing: 0
+% Missing:      0.000000

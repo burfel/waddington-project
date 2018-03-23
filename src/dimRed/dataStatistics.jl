@@ -71,13 +71,18 @@ df_stats_Msort = sort(df_stats, cols = (:mean),
                     rev = (true));
 # GENES SORTED by INCREASING VARIANCE, IE UNCERTAINTY
 df_stats_Vsort = sort(df_stats, cols = cols = (:variance),
-                    rev = (true));
+                    rev = (false));
 # PLOTS
 #@df data plot(1:548, [names], xlabel = "genes (1-96)", title = "mean/ variance of gene expression levels, sorted by mean", legend=true)
 @df df_stats_Msort Plots.plot(1:96, [:mean :variance], colour = [:blue :red], xlabel = "genes (1-96)", title = "mean/ variance of gene expression levels, sorted by mean", legend=true)
+PyPlot.legend()
+PyPlot.title("Mean / variance of data -- sorted by decreasing mean")
 PyPlot.savefig("../Single_cell_data/plots/meanVar_sortedM")
+
 @df df_stats_Vsort Plots.plot(1:96, [:mean :variance], colour = [:blue :red], xlabel = "genes (1-96)", title = "mean/ variance of gene expression levels, sorted by variance", legend=true)
-PyPlot.savefig("../Single_cell_data/plots/meanVar_sortedV")
+PyPlot.legend()
+PyPlot.title("Mean / variance of data -- sorted by increasing variance")
+PyPlot.savefig("../Single_cell_data/plots/meanVar_sortedM")
 #@df df_stats_Msort bar(1:96, [:mean], colour = [:blue], xlabel = "genes (1-96)", title = "mean/ variance of gene expression levels", legend=true)
 #@df df_stats_Msort bar!(1:96, [:variance], colour = [:red], xlabel = "genes (1-96)", title = "mean/ variance of gene expression levels", legend=true)
 

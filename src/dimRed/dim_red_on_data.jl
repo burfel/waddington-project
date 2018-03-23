@@ -62,28 +62,36 @@ indim(M1_max)
 indim(M1)
 
 # Get the output dimension p, i.e the dimension of the principal subspace.
-outdim(M1_max)
+outdim(M1_max) #75
 outdim(M1)
 
 # The variances of principal components.
-principalvars(M1_max)
-principalvars(M1)
+pca_var_max = principalvars(M1_max)
+Plots.bar(pca_var_max, xlabel = "principal components")
+PyPlot.title("Eigenvalues / Explained variance of principal components")
+PyPlot.savefig("../Single_cell_data/plots/PCA/eigenvalues_of_resp_PCs_max")
+
+pca_var = principalvars(M1)
+Plots.bar(pca_var, xlabel = "principal components")
+PyPlot.title("Eigenvalues / Explained variance of principal components")
+PyPlot.savefig("../Single_cell_data/plots/PCA/eigenvalues_of_resp_PCs")
 
 # The total variance of principal components, which is equal to sum(principalvars(M)).
-tprincipalvar(M1_max)
-tprincipalvar(M1)
+print("total variance of PCs: ", tprincipalvar(M1_max)) # 1643.3876618996323
+print("total variance of PCs: ", tprincipalvar(M1)) # 501.42985340006794
 
 # The total residual variance.
-tresidualvar(M1_max)
-tprincipalvar(M1)
+print("total residual variance: ", tresidualvar(M1_max)) # 15.604526092502056
+print("total residual variance: ", tprincipalvar(M1)) # 501.42985340006794
 
 # The total observation variance, which is equal to tprincipalvar(M) + tresidualvar(M).
-tvar(M1_max)
-tvar(M1)
+print("total observation variance: ", tvar(M1_max)) # 1658.9921879921344
+print("total observation variance: ", tvar(M1)) # 1658.9921879921344
 
 # The ratio of variance preserved in the principal subspace, which is equal to tprincipalvar(M) / tvar(M).
-principalratio(M1_max)
-principalratio(M1)
+print("ratio of variance preserved in the principal subspace: ", principalratio(M1_max)) # 0.9905939725301611
+print("ratio of variance preserved in the principal subspace: ",principalratio(M1)) # 0.3022496772615576
+
 
 # PLOTS
 Plots.scatter(data_array, legend=false)
@@ -92,7 +100,7 @@ Plots.scatter(data_array, legend=false)
 
 # PCA transform
 Plots.scatter(Y1_max,title="PCA transform", legend=false)
-#PyPlot.savefig("../Single_cell_data/plots/PCA/PCA_transform_max")
+PyPlot.savefig("../Single_cell_data/plots/PCA/PCA_transform_max")
 
 Plots.scatter(Y1,title="PCA transform", legend=false) # compare it to own function
 #PyPlot.savefig("../Single_cell_data/plots/PCA/PCA_transform")
@@ -139,7 +147,7 @@ distance_matrix = gram2dmat(gram_matrix)
 MDS = classical_mds(distance_matrix, 96, dowarn=true)
 MDSt = transpose(MDS)
 
-Plots.scatter(MDSt,title="Multidimensional scaling", legend=false)
+Plots.scatter(MDSt,title="Multidimensional scaling (MDS)", legend=false)
 PyPlot.savefig("../Single_cell_data/plots/MDS/mds")
 
 
