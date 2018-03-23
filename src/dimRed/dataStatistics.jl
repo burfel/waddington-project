@@ -20,8 +20,8 @@ Returns:
 using Plots
 using PyPlot
 using StatPlots
-using DataFrames
 using StatsBase
+using DataFrames
 #using ScikitLearn.GridSearch: GridSearchCV
 #using ScikitLearn.Pipelines: Pipeline, named_steps
 
@@ -52,18 +52,19 @@ print("mean: ", statistics[1], "\n variance:", statistics[2])
 #Plots.plot!(statistics[1], label = "variance", legend = true)
 Plots.bar(statistics[2], ylabel = "gene expression level", xlabel = "genes (1-96)", title = "mean/ variance of gene expression levels", label = "mean", legend=true)
 Plots.bar!(statistics[1], label = "variance", legend = true)
+PyPlot.savefig("../Single_cell_data/plots/meanVar")
 #Plots.scatter(statistics[1])
 #Plots.scatter(statistics[2])
-legend()
-title("Mean / variance of data")
-savefig("MeanVar_data")
+#legend()
+#title("Mean / variance of data")
+#savefig("MeanVar_data")
 
 meansF = Array{Float64}(statistics[1]);
 varsF = Array{Float64}(statistics[2]);
 
 names = DataFrames.names(data);
 df_stats = DataFrame(gene_name = names, mean = statistics[1], variance = statistics[2]);
-print("Data statistics summary", df_stats)
+print("Data statistics summary:", df_stats)
 
 # GENES SORTED BY DECREASING MEAN OF GENE EXPRESSION LEVEL
 df_stats_Msort = sort(df_stats, cols = (:mean),
@@ -74,7 +75,9 @@ df_stats_Vsort = sort(df_stats, cols = cols = (:variance),
 # PLOTS
 #@df data plot(1:548, [names], xlabel = "genes (1-96)", title = "mean/ variance of gene expression levels, sorted by mean", legend=true)
 @df df_stats_Msort Plots.plot(1:96, [:mean :variance], colour = [:blue :red], xlabel = "genes (1-96)", title = "mean/ variance of gene expression levels, sorted by mean", legend=true)
+PyPlot.savefig("../Single_cell_data/plots/meanVar_sortedM")
 @df df_stats_Vsort Plots.plot(1:96, [:mean :variance], colour = [:blue :red], xlabel = "genes (1-96)", title = "mean/ variance of gene expression levels, sorted by variance", legend=true)
+PyPlot.savefig("../Single_cell_data/plots/meanVar_sortedV")
 #@df df_stats_Msort bar(1:96, [:mean], colour = [:blue], xlabel = "genes (1-96)", title = "mean/ variance of gene expression levels", legend=true)
 #@df df_stats_Msort bar!(1:96, [:variance], colour = [:red], xlabel = "genes (1-96)", title = "mean/ variance of gene expression levels", legend=true)
 
@@ -103,6 +106,7 @@ df_stats_Vsort = sort(df_stats, cols = cols = (:variance),
 #PyPlot.legend()
 PyPlot.title("Boxplot of top 5 genes with highest mean")
 PyPlot.savefig("top5_mean")
+
 
 # PLOTS THE TOP 5 HIGHEST VARIANCE
 @df data Plots.boxplot(:Gdf3, label="Gdf3")

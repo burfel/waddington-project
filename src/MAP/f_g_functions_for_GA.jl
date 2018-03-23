@@ -72,7 +72,7 @@ Plots.plot(paths[:,1],paths[:,2],xlims=[0.0,3.0],ylims=[0.0,3.0],aspect_ratio=:e
 
 #test another GA implementation
 pop=GA_mean(50,800,200,pointA,pointB,Nsize,2,f,g)
-plot(pop.space[:,1],pop.space[:,2],xlims=[-1.5,1.5],ylims=[-0.1,0.7])
+Plots.plot(pop.space[:,1],pop.space[:,2],xlims=[-1.5,1.5],ylims=[-0.1,0.7])
 
 
 #same in 3D
