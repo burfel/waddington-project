@@ -158,77 +158,43 @@
 
 % Write abstract here
 \begin{abstract}
-The \textit{Waddington} or \textit{epigenetic landscape} concept has become an important framework to reason about developmental processes. This project develops a set of Julia tools to determine the structure of such landscapes for a given dynamical system, as well as single cell data. We implement the probability flux method (PFM) of constructing a landscape, additionally applying kernel density estimation (KDE). Stability analysis is conducted on dynamical systems and their corresponding landscapes. In conjunction to that a second, more accurate approach %REALLY??
-of the landscape is performed: Minimal Action Path (MAP) method. The latter one has a direct interpretation to the force that would need to be applied to cross the landscape between two chosen points. Due to computational complexity, we limited our approach to only simulate the quasipotential given two points in space. %% IS THAT STILL TRUE?
+The \textit{Waddington} or \textit{epigenetic landscape} concept has become an important framework to reason about developmental processes. This project develops a set of Julia tools to determine the structure of such landscapes for a given dynamical system, as well as single cell data. We implement the probability flux method (PFM) of constructing a landscape, additionally applying kernel density estimation (KDE). Stability analysis is conducted on dynamical systems and their corresponding landscapes. In conjunction to that second, a more accurate approach %REALLY??
+of the landscape is performed: Minimal Action Path (MAP) method. The latter one has a direct interpretation to the force that would need to be applied to cross the landscape between two chosen points. %Due to computational complexity, we limited our approach to only simulate the quasi-potential given two points in space. %% IS THAT STILL TRUE?
 For high dimensional systems, the topic of dimensionality reduction is addressed, with corresponding tools developed to aid visualisation of these high dimensional systems. 
-Reasonable results could be yield for the 2-dimensional KDE as well as the PFM on the CPU; the PFM on the GPU posed a real challenge due to problems outlined in the group report and is still in progress.
+Reasonable results could be yielded for the 2-dimensional KDE as well as the PFM on the CPU; the PFM on the GPU posed a real challenge due to problems outlined in the group report and is still in progress.
 
 
 %SET SCIENTIFIC CONTEXT
 %METHODS, RESULTS, CONCLUSIONS CLEAR AND PRECISE
 \end{abstract}
 
+%%----------------------------------------------------------------------------------------------------------------------------------------
+%%----------------------------------------------------------------------------------------------------------------------------------------
 \section{Preface}
-The following report will focus on different methods of dimensionality reduction (DR) and literature research as this was my main focus during the project and the part that has not given enough credit in the group report (in terms of where time and brain power was speant) as it went beyond the scope and goal of our project to simulate the epigenetic landscape.
+The following report will focus on different methods of dimensionality reduction (DR) and literature research as this was the part I have been most enaged with during the project and the part that has not given enough credit in the group report (in terms of where time and brain power was speant) as it went beyond the scope and goal of our project to simulate the epigenetic landscape.
 % The theory can be found in the group report
 % also time on Bayesian Gaussian Latent variabel model and Hopfland, discovered together with MH
 Other parts I contributed to was the Genetic Algorithm (GA) to approximate the MAP, converting the MAP between two points into a quasi-potential, implementing different kernel methods for the kernel density estimation (KDE) as well as different information theory approaches to the given sample data set. However, this will not be the subject of the following report to avoid overlap with the other reports and due to the restrictive word count. For an overview we refer to the group project report, for the information theory approaches we refer to Madeleine Hall's report, for the GA we refer to Lucas Ducrot's report. The final code can be found on \begin{verbatim}
 https://github.com/burfel/waddington-project.
 \end{verbatim}	
-The \textit{README.md} was kept self-explanatory and should give an overview of the main tools implemented. \\
+%TODO: The \textit{README.md} was kept self-explanatory and should give an overview of the main tools implemented. \\
 Other important tasks of mine were documentation and commenting code, keeping our github repository nice and tidy and sharing links to interesting papers via a pad as literature research was a major part in the project. \\
 
-It should be noted that in the following, I assume the reader to have read our group report. My following individual report is kept on a personal note and should reflect my main contributions to the research project, challenges I faced and especially learnings thereof and is therefore not written in a research-style. 
+It should be noted that in the following, I assume the reader to have read our group report. My following individual report is kept on a personal note and should reflect my main contributions to the research project and time allocated during the processes, challenges I faced and especially learnings thereof and is therefore not written in a research-style. 
 
 
 %TODO:
 %INSERT ALL REFERENCES FROM THE PAD (MAINLY SECTION LITERATURE RESEARCH), GITHUB
 	
 
-%\tableofcontents 
-% Each section begins with a \section{title} command
-
-%\section{Task Description}
-%
-%Our data set consists of images of 20 characters of \textit{The Simpsons} with labels. The data originates from the Kaggle contest \textit{Simpsons by the Data}. There are 200 to 1500 examples per character offering an unbalanced data set. The images have different shapes and the characters are scattered throughout the images. Our goal is to develop an algorithm which given an input image containing a Simpson character is capable to classify, i.e. recognize the Simpsons character in the image correctly. In \textit{The Simpsons} data set this is the character the image shows. We are looking for a function that maps the input images to the labels of the images.
-%\begin{figure}[!ht]
-%	\centering
-%  \includegraphics[width=0.3\textwidth]{Image3.jpeg}
-%	\caption{Homer Simpson}
-%	\label{Homer}
-%\end{figure}
-
-%%%%------------
-%\section{Background, context and motivation}
-%For the motivation
-%
-%%%------------
-%\section{Mathematical framework}
-%
-%%%%----------
-%\subsection{Probability flux method}
-%%%%----------
-%\subsection{Kernel density estimation}
-%
-%%%%----------
-%\subsection{Stability analysis}
-%
-%%%------------
-%\section{Dynamical systems}
-%
-%%%%----------
-%\subsection{2-Dimensional model}
-%
-%%%%----------
-%\subsection{Simulations}
-%
-
-%%------------
-
+%%----------------------------------------------------------------------------------------------------------------------------------------
+%%----------------------------------------------------------------------------------------------------------------------------------------
 \section{Introduction}
 
 EXPLAIN TOPIC CLEARLY, SEE REVIEW 
 
+%%----------------------------------------------------------------------------------------------------------------------------------------
+%%----------------------------------------------------------------------------------------------------------------------------------------
 \section{Literature research}
 
 START WITH SUBSTANTIAL BACKGROUND READING
@@ -252,6 +218,8 @@ For a more thorough review on the Hopland approach, we refer to Madeleine Hall's
 As so much has been done already, and we did not want to reinvent the wheel, we defined our goal as follow: To develop a set of Julia tools and methods to simulate (via the Probability Flux Method (PFM), Kernel Density Estimation (KDE) and the Minimum-Action Path (MAP)) and analyse the given landscape including dynamical systems stability analysis; moreover, we want to provide the user with various methods to read in the data (including from sbml files), extract information from the given data set (statistical information, plots for visualisation) and based on this visualise specific genes or gene combinations after applying dimensionality reduction (DR). 
 
 
+%%----------------------------------------------------------------------------------------------------------------------------------------
+%%----------------------------------------------------------------------------------------------------------------------------------------
 \section{Exploratory data analysis}
 
 Complementary to the information given in the group report on the data (see section [REFERENCE]) that was largely taken from [REFERENCE DATA PAPER], and the information obtained by measure-theoretic anlaysis, we provide the user with an initial exploratory data analysis:
@@ -265,37 +233,44 @@ This can help the user to "get a feel" of the data set, discard outliers (COULD 
 
 %METHODS CLEAR, FOCUSED AND ROBUST.
 
-\section{Dimensionality reduction}
+%%----------------------------------------------------------------------------------------------------------------------------------------
+%%----------------------------------------------------------------------------------------------------------------------------------------
+\section{Dimensionality reduction (DR)}
 
 %This project aims to evaluate the performance of as many open source feature selection and dimensionality reduction methods as possible. The data that is going to be used will be from the Metabolomics domain.
 
 %problem: high dimensional sample spaces, 
 %(especially for applying consecutive ML algorithms)
 
-
 If the number of dimensions, ie genes in our case, is large, the number of possible states in this space grows exponentially large. In other words, with increasing dimensionality it becomes harder to sample from the space; even for a small model of three genes this can be a major challenge. Simulations take very long to run (as discussed in section ..... in the group report); similarly, to train machine learning (ML) algorithms on such high-dimensional data sets is very time-intensive and can cause over-fitting. %% REFERENCE
-This problem is often referred to as \textit{Curse of dimensionality}.
+This problem is often referred to as \textit{Curse of dimensionality}; DR can be seen as a potential pre-processing step for machine learning algorithms.
 
-Therefore, it is necessary to reduce the data to fewer dimensions to make algorithms more efficient. 
+Therefore, it is necessary to reduce the data to fewer dimensions as a preprocessing step for ML algorithms.
+% to make ML algorithms more efficient. 
 %or run faster
 Another reason to apply dimensionality reduction is the purpose of visualisation. It is hard for humans to comprehend data in many dimensions. In our specific example this translates to the obvious fact that only two genes at a time (with the amplitude of the quasi-potential in a third direction) can be visualised in our 3D world, or respectively projected onto a 2D plane.\\
 
 Dimensionality reduction (DR) reduces the number of features (here: genes) by creating new linear, or non-linear, combinations of the original features.
 
-%% CHALLENGE: INTERPRETATION OF NEW FEATURES
+%CHALLENGE: INTERPRETATION OF NEW FEATURES
 
-In the following linear as well as non-linear, including manifold learning algorithms, are presented that have or can be applied to our given data set in order to tackle the challenges discussed above.
+In the following linear as well as non-linear, including manifold learning algorithms, are presented that have (partially) been applied to our given data set in order to tackle the challenges discussed above.
+
+DR algorithms can be categorised in two main groups: Those that try to preserve the distance structure withi the data (usually linear methods) and those that aim to preserve local distances over global distances [REFERENCE: https://arxiv.org/pdf/1802.03426.pdf] (manifold learning methods).
 
 %Different methods are compared, results of the implemented functions are presented and an overall conclusion is drawn. 
+%TODO
 Principal Component Analysis (PCA) as a linear method and kernel PCA (kPCA) as a non-linear method will be explained in greater detail as they represent the simplest and most common, yet powerful, approaches to DR.
 Additionally, an interesting manifold learning algorithm, Laplacian Eigenmaps (LEM), is presented and discussed in comparison to other non-linear methods.
+%TODO_END
 
 %\subsection{Linear methods}
 % theory and what implemented functions exactly do.
 
+%%----------------------------------------------------------------------------------------------------------------------------------------
 \subsection{Principal Component Analysis (PCA)}
 
-Mathematically speaking, all PCA is is a basis transformation with an optional subsequent projection. It is linear in the sense that it only takes linear combinations of the old basis (features, here: genes) to form the new basis. \\
+Mathematically speaking, all PCA is is a basis transformation with an optional subsequent projection. It is linear in the sense that it only takes linear combinations of the old basis (features, here: genes) to form the new basis. 
 
 In other words, PCA finds the principal components (PCs) that explain the data "best", ie containing most information which is usually quantified by the total variance captured by the basis elements. The PCs are, therefore, the directions of maximum variance in the high-dimensional data. Projecting the data onto this smaller dimensional subspace (spanned by the PCs) will reduce the dimensionality of the originial feature space and still retain most of the information (variance). \\
 We will see that the new basis can be obained by performing an eigendecomposition on the initial data set, and in fact equals the eigenvectors.
@@ -304,15 +279,13 @@ We will see that the new basis can be obained by performing an eigendecompositio
 %The first step of PCA also helps us to identify patterns in the data, by detecting correlation between variables; this can also be used for a simple feature selection.
 %We can argue that only if a strong correlation between variables exists, the attempt to reduce the dimensionality makes sense.
 
+%FOR SLIDES:
 %Summary of PCA approach:
 %- standardise data
 %- obtain eigenvectors and eigenvalues from the covariance matrix (or correlation matrix --- WHATS DIFFERENCE) or perform singular value decomposition (see approach SVD / generalPCA.jl)
 %- sort eigenvalues in descending order and choose k eigenvectors that correspond to the k largest eigenvalues where k is \# dimensions of the feature subspace (k <= d)
 %- construct the projection matrix W from the selected k eigenvectors
 %- transform the original dataset X via W to obtain k-dimensional feature subspace Y.
-
-
-%%%---------
 
 %There are 3 simple steps to PCA:
 PCA can be summed up in three simple steps:
@@ -321,12 +294,13 @@ PCA can be summed up in three simple steps:
 	\item Selecting principal components
 	\item Projection onto the new feature space
 \end{enumerate}
-\newline
+%\newline
+%
+%%-----------------------------------------------------------------------
 \textbf{Eigendecomposition: Computing eigenvectors and eigenvalues}\\
 Eigenvectors and eigenvalues of a covariance (or correlation) matrix are at the very centre of PCA. The eigenvectors (PCs) determine the direction of the new feature space; the eigenvalues determine their magnitude. 
 We can obtain the eigenvectors and eigenvalues from the covariance matrix or correlation matrix or perform singular value decomposition (see approach SVD / generalPCA.jl)
 
-%%%%--
 For the reader who is unfamiliar to eigendecomposition, we insert a brief mathematical interlude on this central result in linear algebra. To learn about how to find eigenvalues and its corresponding eigenvectors, we refer to [REFERENCE].
 
 Let \( A \in \mathbb{R}^{d,d}\) be a matrix. A non-zero vector \( u \) is an eigenvector of \( A \) with a corresponding eigenvlaue \( \lambda \) if 
@@ -342,10 +316,9 @@ This result follows from the \textit{Spectral Decomposition Theorem}.
 	If \( A \in \mathbb{R}^{d,d}\) is a symmetric matrix of rank \( k \), then there exists an orthonormal basis of \( \mathbb{R}^d \), namely \( u_{1}, u_{2}, ..., u_{d} \), such that each \( u_{i} \) is an eigenvector of \( A \). Furthermore, \( A \) can be written as \( A = \sum_{i=1}^{d} \lambda_{i} u_{i} u_{i}^T \), where each \( \lambda_{i} \) is the eigenvalue corresponding to the eigenvector \( u_{i} \). Equivalently, this can be written as \( A = U D U^T \), where the columns of \( U \) are the vectors \( u_{1}, u_{2}, ..., u_{d} \), and \( D \) is a diagonal matrix with \( D_{i,i} = \lambda_{i} \) and for \( i \neq j \) we have \( D_{i,j} = 0 \). Finally, the number of \( \lambda_{i} \neq 0 \) determines the rank of the matrix; the eigenvectors which correspond to the non-zero eigenvalues span the range of \( A \), and the eigenvectors which correpsond to zero eigenvalues span the null space of \( A \).
 \end{theorem}
 
-
-%%%%--
 Assuming that the reader now knows the meaning and power of eigendecomposition, we now go back to PCA.\\
 % plot.ly documentation
+%%--------------------------------------
 \textbf{a. PCA with covariance matrix}:
 Here, before starting, one usually standardises the data. %% WHY, COMPARE!
 The classic approach of PCA is to perform the eigendecomposition of the covariance matrix \( \Sigma \), which is a \( d \times d \) matrix whose elements represent the covariance between two features calculated by 
@@ -359,7 +332,7 @@ which equals the matrix equation
 where \( \bar{x }\) is the mean vector \( \bar{x}= \sum_{k=1}^{n} x_{i}  \).
 
 The mean vector is a \(d\)-dimensional vector where each value in this vector represents the sample mean of a feature column in the data set.
-
+%%---------------------------------------
 \textbf{b. PCA with correlation matrix}: 
 Instead of the covariance matrix, one can use the correlation matrix. 
 Since the correlation matrix can be understood as the normalised covariance matrix, the eigendecomposition on the covariance matrix yields the same results (eigenvectors and eigenvalues) as one on the correlation matrix in case of standardised input data. 
@@ -373,6 +346,8 @@ For more computational efficiency, one often uses SVD for the eigendecomposition
 %%%
 %%%
 \newline
+%
+%%----------------------------------------------------------------------------------
 \textbf{Selecting the principal components}\\
 The eigenvectors form the new basis, ie the directions of the new axes and all have the same unit length 1. To decide onto which eigenvectors we want to project down to, ie which eigenvectors "to keep", we look at the corresponding eigenvalues. The eigenvectors with the highest eigenvalues capture the most distribution or information of the data and the ones that should be kept. 
 For this purpose, we sort the eigenvalues from highest to lowest in order to later choose the top \( k \) eigenvectors, where \( k \) is the number of dimensions of the feature subspace and \( k \leq d \). \\
@@ -395,6 +370,8 @@ Also to come back to the question above, we leave that up to the user that can c
 %%
 %%
 \newline
+%
+%%------------------------------------------------------------------------------------
 \textbf{Projection onto the new feature space}
 %- transform the original dataset X via W to obtain k-dimensional feature subspace Y.
 To project the data set onto the new feature subspace, we take top \( k \) eigenvectors of the just constructed projection matrix \( P \) which we will call \( P_{k} \).
@@ -407,6 +384,7 @@ For a more rigorous mathematical definition we refer to [REFERENCE SHALEV-SHWART
 
 %% WHATS DIFFERENCE BETWEEN PCA FROM PACKAGE AND GENERALISEDPCA? JULIA PCA BASED ON EIGENDECOMPOSITION, NOT ON SVD?
 
+%%----------------------------------------------------------------------------------------------------------------------------------------
 \subsection{Singular Value Decomposition (SVD)}\label{svd}
 
 A bit less intuitive than the eigendecomposition of the covariance or the correlation matrix, is the SVD.\\
@@ -415,29 +393,27 @@ Let \( A \in \mathbb{R}^{m,n} \) be a matrix of rank \( r \). If \( m \neq n\), 
 	Let \( A \in \mathbb{R}^{m,n} \) with rank \( r \). Then \( A = UDV^T\), where \( D \) is a \( r \times r \) matrix with non-zero singular values of \( A \) and the columns of \( U, V \) are orthonormal left and right singular vectors of \( A \). Furthermore, for all \( i \), \( D_{i,i}^{2} \) is an eigenvalue of \( A^T A\), the \( i \)th column of \( V \) is the corresponding eigenvector of \( A^T A\) and the \( i \)th column of \( U \) is the corresponding eigenvector of \( A A^T\).
 \end{theorem}
 
+%EXPLAIN MORE ON SVD HERE
+For the theory, we refer to [REFERENCE]. 
 In \texttt{generalPCA.jl}, another PCA method based on SVD is implemented.
 
-%% Figure: project and plot
+%ADD PLOTS (PROJECTION)
 
 %SVD from https://docs.julialang.org/en/stable/stdlib/linalg/ 
 % TODO: have a look how exactly they do it.
 
-[EXPLAIN MORE ON SVD HERE]
-
-
+%%----------------------------------------------------------------------------------------------------------------------------------------
 \subsection{Probabilistic Principal Component Analysis (PPCA)}
 %[REFERENCE: http://www.robots.ox.ac.uk/~cvrg/hilary2006/ppca.pdf]
 
-%see how it its implemented in Julia
+%SEE how it its implemented in Julia
 PCA is not based on a probability model. However, we can extend PCA by determining the PCs of a data set by maximum-likelihood estimation of parameters in a latent variable model.
 
 We can use a Gaussian latent variable model which is closely related to statistical factor analysis  [MAYBE EXPLAIN FACTOR ANALYSIS FIRST?] to derive a probabilistic formulation of PCA. The PCs result from maximum-likelihood parameter estimates which can be computed by the usual eigendecomposition of the sample covariance matrix and subsequently incorporated in the model [REFERENCE THESIS ABOVE]. 
 
-% This model is outlined in Section 2, where we discuss the existing precedence for our approach in the literature. 
-
 Alternatively, it is natural to apply an iterative, and computationally rather efficient Expectation-Maximization (EM) algorithm to estimate the principal subspace, ie effecting PCA.
 
-%% PROPERTIES, ADVANTAGES???
+%PROPERTIES, ADVANTAGES???
 
 A probabilistic formulation is intuitively appealing, as the definition of a likelihood measure
 enables comparison with other probabilistic techniques, while facilitating statistical testing and
@@ -447,14 +423,14 @@ tic PCA has additional practical advantages and can extend the scope of conventi
 	\item  Multiple PCA models may be combined as a probabilistic mixture and PCA projections could be obtained even when some data values are missing.
 	\item Besides its application to DR, probabilistic PCA can be used as a general Gaussian density model. This has the advantage that maximum-likelihood estimates for the parameters associated with the covariance matrix can be efficiently computed from the PCs and could be applied to eg classification. 
 \end{itemize}
-
-[INSERT PROJECTION AND RECONSTRUCTION FIGURE]
+%
+%INSERT PROJECTION AND RECONSTRUCTION FIGURE
 
 
-%%%%%%%-------------------
-
+%%----------------------------------------------------------------------------------------------------------------------------------------
 \subsection{ICA}
 
+%TODO
 - tries to decompose a multivariate signal into additive subcomponents;
 we assume that the subcomponents are (1) non-Gaussian signals and that (2) they are statistically independent from each other
 - often used in signal processing; eg sound is usually a signal that is composed of additive signals from several sources at each time \( t \)
@@ -469,11 +445,10 @@ we assume that the subcomponents are (1) non-Gaussian signals and that (2) they 
 
 [INSERT TABLE THAT COMPARES PCA VS ICA] 
 
-%based on JADE algorithm,
+%JADE algorithm
 
 
-% make table
-ICA:
+%.ICA:
 - finds independent components (ie factors, latent variables) by maximising the statistical independence of the estimated components
 - there are many ways to define a proxy for independence, eg minimisation of mutual information or maximation of non-gaussianity. The first one uses the Kullback-Leibler Divergence and maximum entropy; the second one is motivated by the central limit theorem %, and uses kurtosis and negentropy. %WHATS THAT???!!
 PCA:
@@ -492,7 +467,11 @@ preprocessing steps in order to simplify/ reduce the complexity of the problem t
 
 %\subsection{Non-linear methods}
 
+%%----------------------------------------------------------------------------------------------------------------------------------------
 \subsection{Kernel PCA (kPCA)}
+
+Linear methods can often be powerful, but do not detect non-linear structures in the data.
+Kernel PCA tries to generalise linear methods like PCA for non-linear data.
 
 MOTIVATION: NOT LINEARLY SEPARABLE DATA...., to generalise PCA through kernel based techniques. does not rely on structure of the manifold on which the data may possibly reside. 
 
@@ -504,33 +483,41 @@ KERNEL TRICK. COOL!!..: WE NEVER ACTUALLY WORK DIRECTLY IN THE FEATURE SPACE BUT
 [NOT VERY USEFUL AS LINEAR DR PERFORMS WELL ENOUGH, EG WE HAVE NO CIRCULAR DATA SET.] 
 
 
-\subsubsection{Other approaches}
+%%----------------------------------------------------------------------------------------------------------------------------------------
+\subsection{Other approaches}
 
-Other classical approach that have been examined included Multidimensional Scaling (MDS), Linear Discriminant Analysis (LDA) and Factor Analysis. 
+Other classical linear approach that have been examined included Multidimensional Scaling (MDS), Linear Discriminant Analysis (LDA) and Factor Analysis. 
+MDS takes a matrix of pair-wise distances between all points, and computes a position for each point. 
 
+%INSERT OVERVIEW OF ALL METHODS IN MULTIVARIATESTATS
 
+%%----------------------------------------------------------------------------------------------------------------------------------------
 \subsection{Manifold learning}
 
 Non-linear DR methods also include Manifold Learning Algorithms; this it the part where a little bit of differential geometry comes into play.
-Unlike simple linear DR methods like PCA, manifold learning techniques consider the intrinsic geometry of the data; they are based on the assumption that the given data lies on an embedded non-linear manifold within the high-dimensional space. We can then think of DR as trying to "unfold" this manifold (embedded in a high-dimensional space) so each data point is assigned a low dimensional representation while still keeping its essential geometric properties such as relative distances between points unchanged.
+Unlike simple linear DR methods like PCA, manifold learning techniques consider the intrinsic geometry of the data; they are based on the assumption that the given data lies on an embedded non-linear manifold within the high-dimensional space. We could think of DR as trying to "unfold" this manifold (embedded in a high-dimensional space) so each data point is assigned a low dimensional representation while still keeping its essential geometric properties such as relative distances between points unchanged.
 The data, assuming the manifold is of low enough dimension, can then be visualised in this lower-dimensional space.
 
+The typical manifold learning problem is unsupervised: it learns the high-dimensional structure of the data from the data itself, without using predetermined classifications [REFERENCE scikit-learn]. However, supervised versions exist as well.
+
 %https://pdfs.semanticscholar.org/333a/a1225a0364a46185aa19ec99c34b37555258.pdf
-One problem to which different methods suggest different solutions is: How to construct a representation for the data lying on such a low dimensional manifold embedded in a high dimensional space? What are criteria for "good" and "bad" representations? This answer should serve as a guiding question in the following.
+One problem to which different methods suggest different solutions is: How to construct a representation for the data lying on such a low dimensional manifold embedded in a high dimensional space? What are criteria for "good" and "bad" representations? 
+%IThis answer should serve as a guiding question in the following.
 %% We will refer to this in the following.
 
 %two groups: 
 %- those that provide a mapping (either from high-dimensional space to low-dimensional embedding or vv); in the context of ML often views as a preliminary feature extraction step after which pattern algorithms are applied
 %- those that just give a visualisation; often based on proximity data, ie distance measurements
 
-There are various methods that generate non-linear maps, ie embedding maps of the data points to a lower dimension. Most of them are self-organising or based on a neural network (see HOPFIELD); the problem is usually formalised as a non-liner optimisation problem that can be solved by eg gradient descent. However, the latter only guarantees to return a local optimum; global optima are in general difficult to obtain efficiently. Also, we do not know whether the points actually lie on a manifold of lower dimension -- it's a mere assumption.
+There are various methods that generate non-linear maps, ie embedding maps of the data points to a lower dimension. Most of them are self-organising or based on a neural network (see [REFERENCE HOPFIELD] and Madeleine Hall's individual report); the problem is usually formalised as a non-liner optimisation problem that can be solved by eg gradient descent. However, the latter only guarantees to return a local optimum; global optima are in general difficult to obtain efficiently. Also, we do not know whether the points actually lie on a manifold of lower dimension -- it's a mere assumption.
 Therefore, non-linear methods that do not rely on the assumption of a low-dimensional manifold structure, such as kernel PCA might be more useful in some cases. [MAYBE IN THE DISCUSSION PART?]
+
+In the following, we want to give an overview of main manifold learning algorithms applicable to our data set. However, we will keep the maths to the lowest level possible.
 
 %Manifold learning algorithms are implemented that way:
 %All methods implemented in this package adopt the column-major convention of JuliaStats: in a data matrix, each column corresponds to a sample/observation, while each row corresponds to a feature (variable or attribute).
 
-In the following, we want to give an overview of main manifold learning algorithms applicable to our data set. However, we will keep the maths to the lowest level possible.
-
+%%----------------------------------------------------------------------------------------------------------------------------------------
 \subsubsection{t-distributed stochastic neighbour embedding (t-SNE)}
 
 %WATCH VIDEO
@@ -545,57 +532,65 @@ In the following, we want to give an overview of main manifold learning algorith
 % Second, t-SNE defines a similar probability distribution over the points in the low-dimensional map, and it minimizes the Kullback–Leibler divergence between the two distributions with respect to the locations of the points in the map. Note that whilst the original algorithm uses the Euclidean distance between objects as the base of its similarity metric, this should be changed as appropriate.
 %
 %t-SNE has been used in a wide range of applications, including computer security research,[2] music analysis,[3] cancer research,[4] bioinformatics,[5] and biomedical signal processing.[6] It is often used to visualize high-level representations learned by an artificial neural network.[7]
-%INSERT REFERENCES
-
-Julia implementations:
-wasn't working in Julia. ..but the theory worth mentioning.
 
 
 [STANDARD APPROACH]
 
-%[MANY IMPLEMENTATIONS AVAILABLE IN OTHER LANGUAGES]
+[EXPLAIN STEPS: pseudocode]
 
-[EXPLAIN STEPS]
-
-
+%INSERT REFERENCES
+%There are two Julia implementations available:
+%wasn't working in Julia. ..but the theory worth mentioning.
 %[REFERENCE ]https://lvdmaaten.github.io/tsne/]
+
+%[MANY IMPLEMENTATIONS AVAILABLE IN OTHER LANGUAGES]
+%TRIED TO IMPLEMENT, WHAT WERE THE PROBLEMS?
+
 
 %standardisation?
 
 
+%%----------------------------------------------------------------------------------------------------------------------------------------
 \subsubsection{Laplacian eigenmaps (LEM)}\\
 %REFERENCE: https://www.mitpressjournals.org/doi/10.1162/089976603321780317 [PHD THESIS]
+%http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.70.382
+
+LEM, in scikit-learn also called \textit{Spectral Embedding}, finds a low-dimensional representation of the data using a spectral decomposition of the graph Laplacian [REFERENCE].
+The graph can be considered as a discrete approximation of the low-dimensioanl manifold in the high-dimensional space.
+
+As in the other manifold learning methods, LEM starts with the assumption that the data lie on or around a low-dimensional manifold in a (potentially) very high-dimensional space. 
+Usually, this submanifold is unknown except for finitely many points sampled form some probability distribution. 
+%[THESIS] shows that many problems of ML including classification, data representation and clustering can be approached naturally in this context. It also provides us with some theoretical guarantees including a proof of convergence. 
+
+
+%The Spectral Embedding (Laplacian Eigenmaps) algorithm comprises three stages:
+%
+%1. Weighted Graph Construction. Transform the raw input data into graph representation using affinity (adjacency) matrix representation.
+%2. Graph Laplacian Construction. unnormalized Graph Laplacian is constructed as L = D - A for and normalized one as L = D^{-\frac{1}{2}} (D - A) D^{-\frac{1}{2}}.
+%3. Partial Eigenvalue Decomposition. Eigenvalue decomposition is done on graph Laplacian
+
+
 
 % % IS THIS ANY MEANINGFUL TO ASSUME IN OUR CASE??
-
+%
 %Laplacian Eigenmaps (LEM) method uses spectral techniques to perform DR. 
-%LEM assumes that the data lies in a low-dimensional manifold in a high-dimensional space. 
+%%LEM assumes that the data lies in a low-dimensional manifold in a high-dimensional space. 
 
-
-%MEASURE RUNNING TIME ON DIFFERENT DATA SETS
-%THOROUGHLY LOOK AT HOW IMPLEMENTED IN JULIA
 
 %This algorithm cannot embed out of sample points, but techniques based on Reproducing kernel Hilbert space (RKHS) regularisation exist for adding this capability. Also, such techniques can be applied to other non-linear DR algorithms as well.
 
+%%Traditional techniques like principal component analysis do not consider the intrinsic geometry of the data.
 
-%Traditional techniques like principal component analysis do not consider the intrinsic geometry of the data.
+%LEM proposes a geometrically motivated algorithm to non-linear DR; it has neighbourhood preserving properties and a natural connection to clustering [REFERENCE PHD THESIS]. \\
 
-LEM proposes a geometrically motivated algorithm to non-linear DR; it has neighbourhood preserving properties and a natural connection to clustering [REFERENCE PHD THESIS]. \\
-
-It shares common properties with LLE, Spectral Clustering, Diffusion maps and other non-linear DR methods.
-[DO NOT MENTION IF NOT EXPLAINED BEFORE]
-
-As in the other manifold learing methods, LEM starts with the assumption that the data lie on or around a low-dimensional manifold in a (potentially) very high-dimensional space. 
-Usually, this submanifold is unknown except for finitely many points sampled form some probability distribution. [THESIS] shows that many problems of ML including classification, data representation and clustering can be approached naturally in this context. It also provides us with some theoretical quarantees including a proof of convergence. 
-
+%It shares common properties with LLE, Spectral Clustering, Diffusion maps and other non-linear DR methods.
+%[DO NOT MENTION IF NOT EXPLAINED BEFORE]
 
 
 % WHERE CAN THE READER LOOK THIS UP?
 
-1. proposes to build a graph incorporating neighbourhood information of the data set.
 
-
-Internally, LEM builds a graph using neighbourhood information of the data set. The data points represent the nodes of the graph and the edges between nodes and, therefore, the connectivity of the graph is determined by the closeness of neighbouring points usually using k-nearest neighbour algorithm (KNN). We might, therefore, think of this graph as a discrete approximation of the low-dimensional manifold in the high-dimensional space. 
+1. Internally, LEM builds a graph representation incorporating neighbourhood information of the data set. The data points represent the nodes of the graph and the edges between nodes and, therefore, the connectivity of the graph is determined by the closeness of neighbouring points usually using k-nearest neighbour algorithm (KNN). We might, therefore, think of this graph as a discrete approximation of the low-dimensional manifold in the high-dimensional space. 
 To make sure that points close to each other on the manifold are mapped close to each other in the low-dimensional space, ie local distances are preserved, we use a cost function based on the graph that is to be minimised, similar to ......
 
 It uses the correspondence between the graph Laplacian, the Laplace Beltrami operator on the manifold, and connections to the heat equation (see below). The graph Laplacian is a discrete approximation of the Laplace operator on manifolds and has been widely used for different clustering and partion problems [REFERENCE Shi and Malik, 2000, SIMON, 1991, NG et al, 2002]. (The eigenvectors of the Laplacian matrix are equivalent to eigenfunctions of the Laplace operator. The Laplace operator, in turn defines the inner-product on the tangent space for any point in the manifold. The inner product is used to define geometric notions such as length, angle, orthogonality.)
@@ -604,8 +599,10 @@ In geometry and spectral graph theory, the connections between the Laplace Beltr
 
 2. Using the notion of a Laplacian of the graph, we then compute a low-dimensional representation of the data set that optimally preserves local neighbourhood information in a certain sense.
 
-The representation map generated by the algorithm can be thought of as a discrete aooroximation to a continuous map that naturally arises from the geometry of the manifold.
+The representation map generated by the algorithm can be thought of as a discrete approximation to a continuous map that naturally arises from the geometry of the manifold.
 
+
+PRO:
 Key aspects of the algorithms are the following [REFERENCE LAPLACIAN EIGENMAPS FOR DR, 2002]:
 - The core algorithm is very simple: There is one eigenvalue problem to solve and a few local computations. The solution reflects the instrinsic geometric structure of the manifold. However, we do need to search for nearest neighbouring points in the high-dimensional space; since there are several efficient approximate techniques for that available, this is no major drawback.
 - The algorithm's justification is based on the Laplace Beltrami operator being an optimal embedding for the manifold [see ....]. 
@@ -620,9 +617,9 @@ Another consequence of preserving local structures  is that natural clusters in 
 In this sense, DR and clustering can be regarded as two sides of the same coin and this connection has been explored in greater detail in [REFERENCE LAPLACIAN EIGENMAPS FOR DR, 2002]. 
 This is in contrast to global methods, eg in ..LLE.... where pairwise geodesic distances between points are preserved.
 
-
 However, not all data sets necessarily have meaningful clusters; in these cases other methods such as Isomap or classic PCA might be more appropriate. 
 
+%WRITE AS PSEUDOCODE
 Steps of algorithms:
 
 1. Constructing the adjacency graph, eg based on \( \epsilon \)-neighbourhoods or \( n \) nearest neighbours.
@@ -631,8 +628,7 @@ The first is geometrically intuitive; however, it often leads to graphs with sev
 3. Compute the eigenmaps (eigenvalues and eigenvectors for the generalised eigenvector problem)
 
 %WHY I LIKE IT PERSONALLY:
-- LEM uses these connections to interpret DR algorithms in a geometric way; we could reinterpret LLE [ROWEIS AND SAUL] within this framework. 
-
+- LEM uses these connections to interpret DR algorithms in a geometric way %; we could reinterpret LLE [ROWEIS AND SAUL] within this framework. 
 
 
 %The eigenfunctions of the Laplace–Beltrami operator on the manifold serve as the embedding dimensions, since under mild conditions this operator has a countable spectrum that is a basis for square integrable functions on the manifold (compare to Fourier series on the unit circle manifold). 
@@ -653,6 +649,12 @@ The Julia implementation of the algorithm in the package \textit{ManifoldLearnin
 
 [PLOTS PROJECTION, TRANSFORM]
 
+%MEASURE RUNNING TIME ON DIFFERENT DATA SETS
+%THOROUGHLY LOOK AT HOW IMPLEMENTED IN JULIA
+
+
+
+%%----------------------------------------------------------------------------------------------------------------------------------------
 \subsubsection{Diffusion maps}
 %REFERENCE: www.pnas.org/content/102/21/7426
 
@@ -687,20 +689,32 @@ The Julia implementation of the algorithm in the package \textit{ManifoldLearnin
 %	
 %	For a given value of t D t {\displaystyle D_{t}} D_{t} defines a distance between any two points of the data set. This means that the value of D t ( x , y ) {\displaystyle D_{t}(x,y)} D_{t}(x,y) will be small if there are many paths that connect x to y and vice versa. The quantity D t ( x , y ) {\displaystyle D_{t}(x,y)} D_{t}(x,y) involves summing over of all paths of length t, as a result of which D t {\displaystyle D_{t}} D_{t} is extremely robust to noise in the data as opposed to geodesic distance. D t {\displaystyle D_{t}} D_{t} takes into account all the relation between points x and y while calculating the distance and serves as a better notion of proximity than just Euclidean distance or even geodesic distance.
 
-
-\textit{Hessian Locally-Linear Embedding (Hessian LLE)}
+%%----------------------------------------------------------------------------------------------------------------------------------------
+\subsubsection{Hessian Locally-Linear Embedding (Hessian LLE)}
 %REFERENCE: http://www.pnas.org/content/100/10/5591
-The Hessian Eigenmaps (Hessian LLE, HLLE) method adapts the weights in LLE to minimize the Hessian operator. Like LLE, it requires careful setting of the nearest neighbor parameter. The main advantage of Hessian LLE is the only method designed for non-convex data sets [1].
+Hessian LLE is a variant of LLE
 
-%Like LLE, Hessian LLE[35] is also based on sparse matrix techniques. It tends to yield results of a much higher quality than LLE. Unfortunately, it has a very costly computational complexity, so it is not well-suited for heavily sampled manifolds. It has no internal model.
-%Modified Locally-Linear Embedding (MLLE)
-%Modified LLE (MLLE)[36] is another LLE variant which uses multiple weights in each neighborhood to address the local weight matrix conditioning problem which leads to distortions in LLE maps. MLLE produces robust projections similar to Hessian LLE, but without the significant additional computational cost.
+%uses another method to solve the regularisation problem of the LLE; 
+and as the name suggests, it adapts the weights in LLE to minimise the Hessian operator, ie it uses a hessian-based quadratic form at each neighborhood to recover the locally linear structure. 
+
+Con: Like LLE, it requires careful setting of the nearest neighbour parameter; it poorly scales with data size.
+Unfortunately, it has a very costly computational complexity, so it is not well-suited for heavily sampled manifolds. It has no internal model.
+
+Pro: The main advantage of Hessian LLE is the only method designed for non-convex data sets [REFERENCE].
+It tends to yield results of a much higher quality than LLE. 
+
+%1. Nearest Neighbours Search.
+%2. Weight Matrix Construction.
+%3. Partial Eigenvalue Decomposition. Same as standard LLE.
 
 
+%%----------------------------------------------------------------------------------------------------------------------------------------
 \subsubsection{Local tangent space alignment}
 %REFERENCE: https://epubs.siam.org/doi/10.1137/S1064827502419154
-%Local tangent space alignment (LTSA) is a method for manifold learning, which can efficiently learn a nonlinear embedding into low-dimensional coordinates from high-dimensional data, and can also reconstruct high-dimensional coordinates from embedding coordinates [1].
+%TALK: Local tangent space alignment (LTSA) is a method for manifold learning, which can efficiently learn a nonlinear embedding into low-dimensional coordinates from high-dimensional data, and can also reconstruct high-dimensional coordinates from embedding coordinates [1].
 
+
+Though not technically a variant of LLE, Local tangent space alignment (LTSA) is algorithmically similar enough to LLE that it can be put in this category. Rather than focusing on preserving neighborhood distances as in LLE, LTSA seeks to characterize the local geometry at each neighborhood via its tangent space, and performs a global optimization to align these local tangent spaces to learn the embedding. 
 
 %
 %LTSA[38] is based on the intuition that when a manifold is correctly unfolded, all of the tangent hyperplanes to the manifold will become aligned. It begins by computing the k-nearest neighbors of every point. It computes the tangent space at every point by computing the d-first principal components in each local neighborhood. It then optimizes to find an embedding that aligns the tangent spaces.
@@ -710,25 +724,39 @@ We present a new algorithm for manifold learning and nonlinear dimensionality re
 
 %Main article: Local tangent space alignment
 
-
-\subsubsection{Isomap}
+%%----------------------------------------------------------------------------------------------------------------------------------------
+\subsubsection{Isometric Mapping (Isomap)}
 %REFERENCE: web.mit.edu/cocosci/Papers/sci_reprint.pdf -- GOOD PAPER
 
-%Isomap[18] is a combination of the Floyd–Warshall algorithm with classic Multidimensional Scaling. Classic Multidimensional Scaling (MDS) takes a matrix of pair-wise distances between all points, and computes a position for each point. Isomap assumes that the pair-wise distances are only known between neighboring points, and uses the Floyd–Warshall algorithm to compute the pair-wise distances between all other points. This effectively estimates the full matrix of pair-wise geodesic distances between all of the points. Isomap then uses classic MDS to compute the reduced-dimensional positions of all the points.
+Isomap can be seen as an extension of MDS. % or kPCA. 
+As the name suggests, it tries to find a lower-dimensional embedding which maintains geodesic distances between all points [REFERENCE].  
+It uses \textit{Dijkstra's algorithm} or  the \textit{Floyd–Warshall algorithm} to compute the pair-wise distances between all other points;  uses the Floyd–Warshall algorithm to compute the pair-wise distances between all other points and hence, estimate the full matrix of pair-wise geodesic distances between all of the points. The algorithm then uses MDS the reduced-dimensional positions of all points [REFERENCE].
+
+%1. Nearest neighbour search.
+%2. Shortest-path graph search.
+%3. Partial eigenvalue decomposition.
+
+%TALL: Isomap[18] is a combination of the Floyd–Warshall algorithm with classic Multidimensional Scaling. Isomap assumes that the pair-wise distances are only known between neighboring points, and uses the Floyd–Warshall algorithm to compute the pair-wise distances between all other points. This effectively estimates the full matrix of pair-wise geodesic distances between all of the points. Isomap then uses classic MDS to compute the reduced-dimensional positions of all the points.
 %
 %Landmark-Isomap is a variant of this algorithm that uses landmarks to increase speed, at the cost of some accuracy.
 
-
+%%----------------------------------------------------------------------------------------------------------------------------------------
 \subsubsection{Locally-linear embedding (LLE)}
 %REFERENCE: http://science.sciencemag.org/content/290/5500/2323
 
- Locally Linear Embedding (LLE) technique builds a single global coordinate system of lower dimensionality. By exploiting the local symmetries of linear reconstructions, LLE is able to learn the global structure of nonlinear manifolds [1].
 
-See Roweis \& Saul, Roweis was Hopfield's PhD student.
+LLE aims to find a lower-dimensional projection of the data which preserves distances within local neighbourhoods. We can think of it as a series of local PCAs which are globally compared to find the best non-linear embedding [REFERENCE: scikit-learn].
+%1. Nearest Neighbour Search.
+%2. Weight Matrix Construction.
+%3. Partial Eigenvalue Decomposition.
 
-Goal: find an embedding for the full D-dimensional input space into a d-dimensional space , d << D, such that the intrinsic geodesic structure of the data in the original space is preserved as much as possible.
+% Locally Linear Embedding (LLE) technique builds a single global coordinate system of lower dimensionality. By exploiting the local symmetries of linear reconstructions, LLE is able to learn the global structure of nonlinear manifolds [1].
 
-2 steps: 1. For each data point, we find a set of local weights that represent the point in a translation-, rotation- and scale-invariant way which can be formalised as an optimisation problem with two constraints [REFERECE http://www.cns.nyu.edu/~eorhan/notes/lle.pdf].
+%SSee Roweis \& Saul, Roweis was Hopfield's PhD student.
+
+%Goal: find an embedding for the full D-dimensional input space into a d-dimensional space , d << D, such that the intrinsic geodesic structure of the data in the original space is preserved as much as possible.
+%
+%2 steps: 1. For each data point, we find a set of local weights that represent the point in a translation-, rotation- and scale-invariant way which can be formalised as an optimisation problem with two constraints [REFERECE http://www.cns.nyu.edu/~eorhan/notes/lle.pdf].
 
 [REFERENCE]
 %http://www.cns.nyu.edu/~eorhan/notes/lle.pdf
@@ -752,8 +780,8 @@ Goal: find an embedding for the full D-dimensional input space into a d-dimensio
 
 % regions with high density 
 
-Laplacian Eigenmaps
-Really meaningful?
+%Laplacian Eigenmaps
+%Really meaningful?
 
 %"Autoencoders:
 %An autoencoder is a feed-forward neural netowork which is trained to approximate the identity function.
@@ -774,6 +802,7 @@ Really meaningful?
 
 %% DR for Feature selection
 
+%%----------------------------------------------------------------------------------------------------------------------------------------
 \subsubsection{Diffeomaps}
 
 %Diffeomorphic Dimensionality Reduction or Diffeomap[15] learns a smooth diffeomorphic mapping which transports the data onto a lower-dimensional linear subspace. The methods solves for a smooth time indexed vector field such that flows along the field which start at the data points will end at a lower-dimensional linear subspace, thereby attempting to preserve pairwise differences under both the forward and inverse mapping.
@@ -814,6 +843,8 @@ Really meaningful?
 OPEN QUESTIONS, CONCLUSIONS.
 
 
+%%----------------------------------------------------------------------------------------------------------------------------------------
+%%----------------------------------------------------------------------------------------------------------------------------------------
 \section{Genetic algorithm for Kernel Density Estimation (KDE) in 2D}
 
 other methods discussed
@@ -822,114 +853,74 @@ other methods discussed
 
 [PLAYING AROUND WITH DIFFERENT STARTING POINTS, BUT MAYBE LEAVE THAT UP TO [LD] AS HE WAS IN CHARGE OF IT]
 
-[IMPLEMENTATION DIFFERENT KERNEL METHODS, MAYBE COMPARE THEM? --> COULD GO IN GROUP REPORT AS WELL]
+[IMPLEMENTATION DIFFERENT KERNEL METHODS, MAYBE COMPARE THEM? --> COULD GO IN GROUP REPORT AS WELL, FUTURE WORK]
 
 see \texttt{KDE\_reduction\_2D.jl}
 
+
+The GA is are a probabilistic search approach which are based on the ideas of evolution: We develop generations of solutions based on the Darwinian principle of survival of the fittest using a specific fitness function (eg an objective function in mathematical optimisation)
+
+However, because of the probabilistic development of the solution it does not guarantee (global) optimality of the solution. 
+
+% https://www.economicsnetwork.ac.uk/cheer/ch13_1/ch13_1p16.htm
+An initial population is created containing a predefined number of individuals (or solutions), each represented by a genetic string (incorporating the variable information). Each individual has an associated fitness measure, typically representing an objective value. The concept that fittest (or best) individuals in a population will produce fitter offspring is then implemented in order to reproduce the next population. Selected individuals are chosen for reproduction (or crossover) at each generation, with an appropriate mutation factor to randomly modify the genes of an individual, in order to develop the new population. The result is another set of individuals based on the original subjects leading to subsequent populations with better (min. or max.) individual fitness. Therefore, the algorithm identifies the individuals with the optimising fitness values, and those with lower fitness will naturally get discarded from the population.
+
+[PSEUDOCODE]
+
+%%----------------------------------------------------------------------------------------------------------------------------------------
+%%----------------------------------------------------------------------------------------------------------------------------------------
 \section{Discussion and conclusion}
 
+%SOME CONCRETE FACTS ABOUT KEY RESULTS. 
 
 
+%%----------------------------------------------------------------------------------------------------------------------------------------
+%%----------------------------------------------------------------------------------------------------------------------------------------
+\section{(Personal) challenges and comments}
 
-\section{(Personal) challenges}
 
+%%----------------------------------------------------------------------------------------------------------------------------------------
 \subsection{Motivation}
 As already outlined, one of the main challenges for me was the fact that we were lacking a clear motivation for the project; there was no real (biological) question we were trying to be asnwered. The more literature research we did and encounters solutions like \textit{Netland}, \textit{Hopland} and \textit{topslam}, the less motivating and harder it got to come up with something "novel". This might sound similar to the development many people undergo during their PhD and is probably a major part of research; for me, it was unlike previous projects and I took it as part of the learning process.
 However, we can claim that we are the first group to produce something in Julia and we finally did achieve to accomodate our work and suitate it in the wider literature. 
 
-
+%%----------------------------------------------------------------------------------------------------------------------------------------
 \subsection{Julia}
 Julia and the contribution to the Julia community, to produce something that would actually be used, was one main personal motivation for the project. Unfortunately, Julia turned out to be a major drawback to our work, and to my part especially.
 
-
-In any case, I took comfort in the fact that we were contributing to the Julia community. Iand I do see potential in Julia. Having said that, it is extremely unsuitable for bigger projects where one uses different packages. Best is to only develop one package without many or just a few dependencies on other packages, especially 
-
-if one considers that the current version is just a snapshot, things will keep changing, functions will be moved into other packages, functions will be renamed and the like; one should always specify the function of what package one is using. Documentations are usually deprecated, tried hard to get things running. I often spend days on things that could have been solved in Python within minutes. We wanted to keep it Julia only.
-
-Julia might be faster, but one has to add the time it takes to load and precompile packages.
-
-In short, Julia on this day, still is very unstable and highly volatile. I am excited to see how Julia will have developed in a few years' time from now and being able to look back and say "I was using Julia back then". It's a love-hate relationship. 
-Conflicts between packages gave me a hard time. 
-
-Personal struggles.
-Julia brings me to the next point. 
-
-Julia itself isn't the issue (apart from decypherings its error messages), it's the many packages that are conflicting each other.
-
-
-personal goal: to contribute to julia community, become better at Julia
-
-
-Many issues, Many things that need fixing.
-Often only on current master (checkout, after deleting cache), \begin{verbatim}
-UndefVarError: <function> not defined
-\end{verbatim}
-was a common error message.
-% SEE PHOTOS
-
-
-
+%%-----------------------------------------------------------------
 \subsubsection{High volatility}
 Julia is still a very young and unstable language; version 1 isn't out yet. The volatility, especially in light of the soon to be published version ....
-caused methods in packages to run at some points of the project; eg out of the six methods in \textit{ManifoldLearning.jl} only one actually worked. 
+caused methods in packages to run at some points of the project; eg out of the six methods in \textit{ManifoldLearning.jl} only one actually worked. However, this is only a snapshot of the current situation; people keep chaging, moving and renaming methods which makes it very likely that our code needs fixing at some later point in time as well. 
 Also the Julia community, even though very responsive especially on \textit{https://discourse.julialang.org/} including developers, refer to the instability of the packages themselves and could therefore be of limited help. %to which they weren't able to be much of help to me/us either. 
 This meant, I had to redefine my initial goal of comparing differnent DR methods on the data set.
 In another programming language such as Python this would have been not the case, as eg [REERENCE PACKAGE SCIKITLEARN] contains ready-to-be-used stable functions of most of the major DR algorithms; however, using these would have been contrary to our actual goal to develop something in Julia.
 %see methods that have been implemented in Python, scilearn.
 
+%%-------------------------------------------------------------------
 \subsubsection{Conflicts between packages}
-Conflicts between packages like ...... to only name a few was probably the biggest time-consuming aspect; packages needed to be checked out, added, pulled from the master, cleared from the cache over and over again; workarounds needed to be found. This was a very big prize to pay for having Julia's good performance. 
+Conflicts between packages like ...... to only name a few was probably the biggest time-consuming aspect; packages needed to be checked out, added, pulled from the master, cleared from the cache over and over again; workarounds needed to be found. 
 % and one could develop an expertise just in that to an extent that it wasn't much fun to work with anymore. 
 %loading packages did take a while
 % left me frustrated, motivation down.
 However, here the julia community could sometimes help out.
+Additionally, precompiling packages was a major time-consuming aspect. All in all, Julia's good performance comes at a very high price.
 
+%%---------------------------------------------------------------------
 \subsubsection{Documentation}
 % documentation
-As the documentation of specific packages including \textit{MultivariateStats.jl} and \textit{ManifolsLearning.jl} are very sparse and to large extent deprecated, it was a challenging to not only get things running but also to understand the implementation including accessible properties of the methods.
+As the documentation of specific packages including \textit{MultivariateStats.jl} and \textit{ManifoldLearning.jl} are very sparse and to large extent deprecated, it was a challenging to not only get things running but also to understand the implementation including accessible properties of the methods.\\
 %FUTURE WORK: good documentation
 
-%To draw a conclusion to that, 
-Having said all that, I am not trying to downplay Julia. 
-
-Julia has potential and is an exciting, intuitive and promising language to contribute to and I feel our work can be seen as an investment. I like that it's open-source and all available on github. Julia can even be fun to code in (once all necessary packages have been installed and you have learned how to decipher her error messages). Also, for developing single packages/ functionalities it is suitable. However, for a rather big research project that depends on multiple (unstable) packages, I question its practicability.
-Also, only considering the time constraint, I would have found it more reasonable to stick with Python. The community is large, documentation great and it is state of the art. Manifold learning in scikit learn is good enough and there is even a scalable CPU-bound manifold learning package available in Python (\textit{Megaman}). A GPU implementation is probably soon to come out. 
-
-I will certainly keep monitoring it as it is further developed and improved. 
-
-The reason what makes people want to use Julia is mainly her technical computing convincingly presented in the cross language validation on \textit{\http://julialang.org/}. Python and other high level languages seem to be far behind in term of speed. However, I was asking myself how the Python benchmarks were written -- probably in native Python and not in an optimised version. It might be more meaningful to compare the performance based on tasks and once experts in the specific languages have produced the best code they can to perform these tasks. Indeed, as shown in [REFERENCE] it is possible to achieve the same benchmarks when one uses Python better and its tools. Also regarding running time, I think it is less of a question of whether to use Python, C or Julia but the major difference can be achieved by GPU instead of CPU.
-Still, tools I have found to explore to run Python faster include \texit{numpy} based on C, \textit{CuPy} (a NumPy-like API accelerated with CUDA) that we could have easily used for the simulation. The latter might also be handy to run some computations, eg DR methods on different data sets, and compare them to get a feel and start to understand rather than relying on one's understanding from reading literature. One might also try to use Numpy/Scipy with Intel MKL and Intel Compilers to optimise Python code.
-
-\textit{PyTorch} as an machine learning library for Python that also runs on the GPU might have been useful to get manifold learning algorithms in \textit{scikitlearn} onto a GPU. PyTorch already optimises standard optimisation algorithms.  
-
-The latter is something one might look into in another project: ..............
-
-As things move very fast in this field that it is almost hard to keep up, and given the enormous brain power including companies that are behind tools like \textit{PyTorch} and also \texit{TensorFlow}, it is very unlikely that a few Julia developers will carry the language very far. 
-
-In the end, the optimisation achieved by Julia does not seem very relevant to me; however, it can be a language fun to play around with.
-
-%[REFERENCE] https://www.ibm.com/developerworks/community/blogs/jfp/entry/Python_Meets_Julia_Micro_Performance?lang=en
 
 
-
-
-not even version 1. 
-
-
-scalable CPU-bound manifold learning package already exists in Python, it’s Megaman 
-
-It is hard to imagine that Julia will outcompete Python 
-
-Small faster not of any benefit at all; the contrary, loading packages takes too long. 
-
-
-
-
+%%----------------------------------------------------------------------------------------------------------------------------------------
+%%----------------------------------------------------------------------------------------------------------------------------------------
 \section{On a personal note -- learnings, comments, feedback } % with humour
 
 
-
-
+%%----------------------------------------------------------------------------------------------------------------------------------------
+%%----------------------------------------------------------------------------------------------------------------------------------------
 \section{Outlook}
 
 IMPLEMENT JADE ALGORITHM (WHICH I BEGAN) BUT STOPPED AS I FELT IT WAS OF NO USE FOR OUR PROJECT. 
@@ -941,7 +932,7 @@ DISCUSS LITERATURE, WHY WOULD STDE BE USEFUL?
 CRITICALLY DISCUSS FUTURE WORK
 
 
-
+%%----------------------------------------------------------------------------------------------------------------------------------------
 \subsection{Manifold Learning}
 
 We have seen that the standard Manifold Learning algorithms bear the assumption that the local neighbourhood of a point in the high-dimensional space is roughly equal to the tangent space at that point. Even if the neighbourhoods of points on the manifold have very different (Gaussian) curvature, they would still be treated equally and projected down to the lower-dimensional space in the same way. However, as this often is the case, standard DR are poorly neighbourhood preserving. [REFERENCE] suggests a solution to this: We can perform an operation on the higher-dimensional space using Ricci flow before applying manifold DR. With Ricci Flow we transform each local neighbourhood of the higher-dimensional manifold to a patch with constant curvature. Then, the higher-dimensional manifold as a whole is transformed to a subset of a sphere with constant positive curvature. They could show that this method outperforms other manifold learning algorithms with better neighbourhood preserving rate.
@@ -949,7 +940,31 @@ We have seen that the standard Manifold Learning algorithms bear the assumption 
 
 [MAYBE PICTURE FROM RICCI PAPER HERE]
 
+%%----------------------------------------------------------------------------------------------------------------------------------------
+\subsection{Data set}
+%if more data sets available...
+%compatible sample data set. cross-validate
+%use python tools available
 
+%%----------------------------------------------------------------------------------------------------------------------------------------
+\subsection{Genetic algorithms}
+% compare different kernel methods
+% implement other methods for optimisation problem
+
+\subsection{Fix broken functions in Julia}
+% if still not runnign in next round
+%Also a more user-friendly documentation 
+
+Many issues, Many things that need fixing.
+Often only on current master (checkout, after deleting cache), \begin{verbatim}
+UndefVarError: <function> not defined
+\end{verbatim}
+was a common error message.
+% SEE PHOTOS
+
+
+%%----------------------------------------------------------------------------------------------------------------------------------------
+%%----------------------------------------------------------------------------------------------------------------------------------------
 % Now we need a bibliography:
 \begin{thebibliography}{99}
 	
