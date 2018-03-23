@@ -222,6 +222,8 @@ As so much has been done already, and we did not want to reinvent the wheel, we 
 %%----------------------------------------------------------------------------------------------------------------------------------------
 \section{Exploratory data analysis}
 
+%TAKE INSPIRATION FROM https://github.com/jadianes/data-science-your-way/tree/master/02-exploratory-data-analysis
+
 Complementary to the information given in the group report on the data (see section [REFERENCE]) that was largely taken from [REFERENCE DATA PAPER], and the information obtained by measure-theoretic anlaysis, we provide the user with an initial exploratory data analysis:
 The user can obtain statistics on the whole sample set, such as mean and variance of the different genes, that can be visualised; also more detailed statistics such as percentiles by selecting individual genes can be obtained and subsequently visualised in a boxplot.
 
@@ -273,6 +275,8 @@ Additionally, an interesting manifold learning algorithm, Laplacian Eigenmaps (L
 
 %%----------------------------------------------------------------------------------------------------------------------------------------
 \subsection{Principal Component Analysis (PCA)}
+
+%TALK: PCA STEP BY STEP: http://sebastianraschka.com/Articles/2014_pca_step_by_step.html
 
 Mathematically speaking, all PCA is is a basis transformation with an optional subsequent projection. It is linear in the sense that it only takes linear combinations of the old basis (features, here: genes) to form the new basis. 
 
@@ -390,6 +394,8 @@ For a more rigorous mathematical definition we refer to [REFERENCE SHALEV-SHWART
 
 %%----------------------------------------------------------------------------------------------------------------------------------------
 \subsection{Singular Value Decomposition (SVD)}\label{svd}
+
+%https://stats.stackexchange.com/questions/107533/how-to-use-svd-for-dimensionality-reduction-to-reduce-the-number-of-columns-fea
 
 A bit less intuitive than the eigendecomposition of the covariance or the correlation matrix, is the SVD.\\
 Let \( A \in \mathbb{R}^{m,n} \) be a matrix of rank \( r \). If \( m \neq n\), the eigenvalue decomposition in \ref{spectralthm} cannot be applied. However, we can perform another decomposition on \( A \), the so-called \textit{Singular Value Decomposition} (SVD) which makes use of the \textit{SVD Theorem}.
@@ -525,18 +531,33 @@ In the following, we want to give an overview of main manifold learning algorith
 
 %%----------------------------------------------------------------------------------------------------------------------------------------
 \subsubsection{t-distributed stochastic neighbour embedding (t-SNE)}
+%PAPER: http://jmlr.org/papers/volume9/vandermaaten08a/vandermaaten08a.pdf
+%WEBSITE: http://lvdmaaten.github.io/tsne/
 
 Probably the most widely used manifold learning method is t-SNE.
-Unlike most of the linear methods, t-SNE by Laurens van der Maaten [REFERENCE] is probabilistic.
+Unlike most of the linear methods, t-SNE that was developed by Laurens van der Maaten [REFERENCE] is probabilistic.
+
+%http://scikit-learn.org/stable/modules/manifold.html
+t-SNE converts affinities of data points into probabilities. 
 
 %[https://pythonmachinelearning.pro/dimensionality-reduction/]
-t-SNE tries  to minimise the divergence between two distributions: the pairwise similarity of the points in the higher-dimensional space and the pairwise similarity of the points in the lower-dimensional space.
+t-SNE tries  to minimise the divergence between two distributions: the pairwise similarity of the points in the higher-dimensional space (represented by ) and the pairwise similarity of the points in the lower-dimensional space.
 
 The similarity is measured based on Student's t-distribution or Cauchy distribution which looks similar to a Gaussian distribution.
 
 %[INSERT 2 EQUATIONS]
+%http://alexanderfabisch.github.io/t-sne-in-scikit-learn.html
 
-To measure the divergence between these two distributions, we use the \textit{Kullback-Leibler divergence (KLD)} which we take as our cost function. From there, we can use eg gradient descent to train our model.
+To measure the divergence between these two distributions, we use the \textit{Kullback-Leibler divergence (KLD)} of the joint probabilities in the original space and the embedded space which will be our cost function. From there, we can minimise by eg gradient descent to train our model.
+
+%It should be noted that the KL divergence is not convex, ie starting from different initial points one will end up in local minima  of the KL divergence. We might want to try different seeds and can choose the embedding with the lowest divergence.
+
+CONS: 
+\begin{itemize}
+		\item computationally expensive: it scales quadratically with the number of samples
+		\item stochastic and therefore, multiple restarts with different seeds can yield different embeddings. One might choose the one with the lowest divergence.
+		\item global structure is not explicitly preserved
+	\end{itemize}
 
 %There’s just one last thing to figure out: \sigma_i. We can’t use the same \sigma for all points! Denser regions should have a smaller \sigma, and sparser regions should have a larger \sigma. We solidify this intuition into a mathematical term called perplexity. Think of it as a measure of the effective number of neighbors, similar to the k of k-nearest neighbors.
 
@@ -545,6 +566,36 @@ To measure the divergence between these two distributions, we use the \textit{Ku
 %In practice, t-SNE is very resource-intensive so we usually use another dimensionality reduction technique, like PCA, to reduce the input space into a smaller dimensionality (like maybe 50 dimensions), and then use t-SNE.
 %
 %t-SNE, as we’ll see, produces the best results out of all of the dimensionality reduction techniques because of the KLD cost function.
+
+
+% |  t-distributed Stochastic Neighbor Embedding.
+% |  
+% |  t-SNE [1] is a tool to visualize high-dimensional data. It converts
+% |  similarities between data points to joint probabilities and tries
+% |  to minimize the Kullback-Leibler divergence between the joint
+% |  probabilities of the low-dimensional embedding and the
+% |  high-dimensional data. t-SNE has a cost function that is not convex,
+% |  i.e. with different initializations we can get different results.
+% |  
+% |  It is highly recommended to use another dimensionality reduction
+% |  method (e.g. PCA for dense data or TruncatedSVD for sparse data)
+% |  to reduce the number of dimensions to a reasonable amount (e.g. 50)
+% |  if the number of features is very high. This will suppress some
+% |  noise and speed up the computation of pairwise distances between
+% |  samples. For more tips see Laurens van der Maaten's FAQ [2].
+
+
+CON: There are some modifications of t-SNE that already have been published. A huge disadvantage of t-SNE is that it scales quadratically with the number of samples (O(N2)
+
+) and the optimization is quite slow. These issues and more have been adressed in the following papers:
+
+Parametric t-SNE: Learning a Parametric Embedding by Preserving Local Structure
+% http://proceedings.mlr.press/v5/maaten09a/maaten09a.pdf
+Barnes-Hut SNE: Barnes-Hut-SNE
+% https://arxiv.org/abs/1301.3342
+Fast optimization: Fast Optimization for t-SNE
+% http://cseweb.ucsd.edu/~lvdmaaten/workshops/nips2010/papers/vandermaaten.pdf
+
 
 %WATCH VIDEO
 
@@ -739,7 +790,7 @@ It tends to yield results of a much higher quality than LLE.
 %REFERENCE: https://epubs.siam.org/doi/10.1137/S1064827502419154
 %TALK: Local tangent space alignment (LTSA) is a method for manifold learning, which can efficiently learn a nonlinear embedding into low-dimensional coordinates from high-dimensional data, and can also reconstruct high-dimensional coordinates from embedding coordinates [1].
 
-
+%from http://scikit-learn.org/stable/modules/manifold.html
 Though not technically a variant of LLE, Local tangent space alignment (LTSA) is algorithmically similar enough to LLE that it can be put in this category. Rather than focusing on preserving neighborhood distances as in LLE, LTSA seeks to characterize the local geometry at each neighborhood via its tangent space, and performs a global optimization to align these local tangent spaces to learn the embedding. 
 
 %
@@ -747,6 +798,10 @@ Though not technically a variant of LLE, Local tangent space alignment (LTSA) is
 
 We present a new algorithm for manifold learning and nonlinear dimensionality reduction. Based on a set of unorganized data points sampled with noise from a parameterized manifold, the local geometry of the manifold is learned by constructing an approximation for the tangent space at each data point, and those tangent spaces are then aligned to give the global coordinates of the data points with respect to the underlying manifold. We also present an error analysis of our algorithm showing that reconstruction errors can be quite small in some cases. We illustrate our algorithm using curves and surfaces both in two-dimensional/three-dimensional (2D/3D) Euclidean spaces and in higher-dimensional Euclidean spaces. We also address several theoretical and algorithmic issues for further research and improvements.
 
+
+%1. Nearest Neighbours Search
+%2. Weight Matrix Construction
+%3. PArtial Eigenvalue Decomposition
 
 %Main article: Local tangent space alignment
 
@@ -949,22 +1004,18 @@ As the documentation of specific packages including \textit{MultivariateStats.jl
 %%----------------------------------------------------------------------------------------------------------------------------------------
 \section{Outlook}
 
-IMPLEMENT JADE ALGORITHM (WHICH I BEGAN) BUT STOPPED AS I FELT IT WAS OF NO USE FOR OUR PROJECT. 
-
-DISCUSSION AND CONLUSION, FUTURE WORK
-
-DISCUSS LITERATURE, WHY WOULD STDE BE USEFUL?
-
-CRITICALLY DISCUSS FUTURE WORK
+%IMPLEMENT JADE ALGORITHM (WHICH I BEGAN) BUT STOPPED AS I FELT IT WAS OF NO USE FOR OUR PROJECT. 
+%
+%DISCUSSION AND CONLUSION, FUTURE WORK
+%
+%DISCUSS LITERATURE, WHY WOULD STDE BE USEFUL?
+%
+%CRITICALLY DISCUSS FUTURE WORK
 
 
 %%----------------------------------------------------------------------------------------------------------------------------------------
 \subsection{Manifold Learning}
 
-We have seen that the standard Manifold Learning algorithms bear the assumption that the local neighbourhood of a point in the high-dimensional space is roughly equal to the tangent space at that point. Even if the neighbourhoods of points on the manifold have very different (Gaussian) curvature, they would still be treated equally and projected down to the lower-dimensional space in the same way. However, as this often is the case, standard DR are poorly neighbourhood preserving. [REFERENCE] suggests a solution to this: We can perform an operation on the higher-dimensional space using Ricci flow before applying manifold DR. With Ricci Flow we transform each local neighbourhood of the higher-dimensional manifold to a patch with constant curvature. Then, the higher-dimensional manifold as a whole is transformed to a subset of a sphere with constant positive curvature. They could show that this method outperforms other manifold learning algorithms with better neighbourhood preserving rate.
-% https://arxiv.org/pdf/1703.10675.pdf
-
-[MAYBE PICTURE FROM RICCI PAPER HERE]
 
 %%----------------------------------------------------------------------------------------------------------------------------------------
 \subsection{Data set}
