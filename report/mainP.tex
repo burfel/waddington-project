@@ -231,6 +231,8 @@ BUT: OF ANY VALUE AT ALL??!
 
 This can help the user to "get a feel" of the data set, discard outliers (COULD HAVE BEEN DONE HERE BUT WASN'T) and serve as a starting point for a subsequent more detailed analysis such as information-theoretic approaches including mutual information (MI), for which we refer to Madeleine Hall's report. We will not discuss this any further here but refer to Madeleine Hall's individual report instead.
 
+The program \texttt{ReadIn.jl} reads in the data set; the path to the data set needs to be given as an argument. 
+
 %METHODS CLEAR, FOCUSED AND ROBUST.
 
 %%----------------------------------------------------------------------------------------------------------------------------------------
@@ -257,6 +259,8 @@ Dimensionality reduction (DR) reduces the number of features (here: genes) by cr
 In the following linear as well as non-linear, including manifold learning algorithms, are presented that have (partially) been applied to our given data set in order to tackle the challenges discussed above.
 
 DR algorithms can be categorised in two main groups: Those that try to preserve the distance structure withi the data (usually linear methods) and those that aim to preserve local distances over global distances [REFERENCE: https://arxiv.org/pdf/1802.03426.pdf] (manifold learning methods).
+
+%TALK: Most dimensionality reduction techniques aim to find some hyperplane, which is just a higher-dimensional version of a line, to project the points onto. 
 
 %Different methods are compared, results of the implemented functions are presented and an overall conclusion is drawn. 
 %TODO
@@ -472,6 +476,7 @@ preprocessing steps in order to simplify/ reduce the complexity of the problem t
 
 Linear methods can often be powerful, but do not detect non-linear structures in the data.
 Kernel PCA tries to generalise linear methods like PCA for non-linear data.
+It uses the kernel trick to transform non-linear data to a feature space were samples may be linearly separable.
 
 MOTIVATION: NOT LINEARLY SEPARABLE DATA...., to generalise PCA through kernel based techniques. does not rely on structure of the manifold on which the data may possibly reside. 
 
@@ -487,7 +492,8 @@ KERNEL TRICK. COOL!!..: WE NEVER ACTUALLY WORK DIRECTLY IN THE FEATURE SPACE BUT
 \subsection{Other approaches}
 
 Other classical linear approach that have been examined included Multidimensional Scaling (MDS), Linear Discriminant Analysis (LDA) and Factor Analysis. 
-MDS takes a matrix of pair-wise distances between all points, and computes a position for each point. 
+%MDS takes a matrix of pair-wise distances between all points, and computes a position for each point. 
+%LDA, supervised, returns axes that maximizes class separability (same constraint that axes are also orthogonal)
 
 %INSERT OVERVIEW OF ALL METHODS IN MULTIVARIATESTATS
 
@@ -519,6 +525,26 @@ In the following, we want to give an overview of main manifold learning algorith
 
 %%----------------------------------------------------------------------------------------------------------------------------------------
 \subsubsection{t-distributed stochastic neighbour embedding (t-SNE)}
+
+Probably the most widely used manifold learning method is t-SNE.
+Unlike most of the linear methods, t-SNE by Laurens van der Maaten [REFERENCE] is probabilistic.
+
+%[https://pythonmachinelearning.pro/dimensionality-reduction/]
+t-SNE tries  to minimise the divergence between two distributions: the pairwise similarity of the points in the higher-dimensional space and the pairwise similarity of the points in the lower-dimensional space.
+
+The similarity is measured based on Student's t-distribution or Cauchy distribution which looks similar to a Gaussian distribution.
+
+%[INSERT 2 EQUATIONS]
+
+To measure the divergence between these two distributions, we use the \textit{Kullback-Leibler divergence (KLD)} which we take as our cost function. From there, we can use eg gradient descent to train our model.
+
+%There’s just one last thing to figure out: \sigma_i. We can’t use the same \sigma for all points! Denser regions should have a smaller \sigma, and sparser regions should have a larger \sigma. We solidify this intuition into a mathematical term called perplexity. Think of it as a measure of the effective number of neighbors, similar to the k of k-nearest neighbors.
+
+%t-SNE performs a binary search for the \sigma_i that produces a distribution P_i with the perplexity specified by the user: perplexity is a hyperparameter. Values between 5 and 50 tend to work the best.
+%
+%In practice, t-SNE is very resource-intensive so we usually use another dimensionality reduction technique, like PCA, to reduce the input space into a smaller dimensionality (like maybe 50 dimensions), and then use t-SNE.
+%
+%t-SNE, as we’ll see, produces the best results out of all of the dimensionality reduction techniques because of the KLD cost function.
 
 %WATCH VIDEO
 
