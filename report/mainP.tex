@@ -169,7 +169,7 @@ Reasonable results could be yield for the 2-dimensional KDE as well as the PFM o
 \end{abstract}
 
 \section{Preface}
-The following report will focus on different methods of dimensionality reduction (DR) and literature research as this was my main focus during the project and the part that has not given enough credit in the group report as it went beyond the scope adn goal of our project to simulate the epigenetic landscape.
+The following report will focus on different methods of dimensionality reduction (DR) and literature research as this was my main focus during the project and the part that has not given enough credit in the group report (in terms of where time and brain power was speant) as it went beyond the scope and goal of our project to simulate the epigenetic landscape.
 % The theory can be found in the group report
 % also time on Bayesian Gaussian Latent variabel model and Hopfland, discovered together with MH
 Other parts I contributed to was the Genetic Algorithm (GA) to approximate the MAP, converting the MAP between two points into a quasi-potential, implementing different kernel methods for the kernel density estimation (KDE) as well as different information theory approaches to the given sample data set. However, this will not be the subject of the following report to avoid overlap with the other reports and due to the restrictive word count. For an overview we refer to the group project report, for the information theory approaches we refer to Madeleine Hall's report, for the GA we refer to Lucas Ducrot's report. The final code can be found on \begin{verbatim}
@@ -178,7 +178,7 @@ https://github.com/burfel/waddington-project.
 The \textit{README.md} was kept self-explanatory and should give an overview of the main tools implemented. \\
 Other important tasks of mine were documentation and commenting code, keeping our github repository nice and tidy and sharing links to interesting papers via a pad as literature research was a major part in the project. \\
 
-It should be noted that in the following, I assume the reader to have read our group report. My following individual report is kept on a personal note and should reflect my main contributions to the research project, challenges I faced and especially learnings thereof. 
+It should be noted that in the following, I assume the reader to have read our group report. My following individual report is kept on a personal note and should reflect my main contributions to the research project, challenges I faced and especially learnings thereof and is therefore not written in a research-style. 
 
 
 %TODO:
@@ -249,7 +249,7 @@ For a more thorough review on the Hopland approach, we refer to Madeleine Hall's
 \subsection{Wishbone}?
 \subsection{SCUBA}?
 
-As so much has been done already, and we did not want to reinvent the wheel, we defined our goal as follow: To develop a set of tools and methods to simulate (via the Probability Flux Method (PFM), Kernel Density Estimation (KDE) and the Minimum-Action Path (MAP)) and analyse the given landscape including dynamical systems stability analysis; moreover, we want to provide the user with various methods to read in the data (including from sbml files), extract information from the given data set (statistical information, plots for visualisation) and based on this visualise specific genes or gene combinations after applying dimensionality reduction (DR). 
+As so much has been done already, and we did not want to reinvent the wheel, we defined our goal as follow: To develop a set of Julia tools and methods to simulate (via the Probability Flux Method (PFM), Kernel Density Estimation (KDE) and the Minimum-Action Path (MAP)) and analyse the given landscape including dynamical systems stability analysis; moreover, we want to provide the user with various methods to read in the data (including from sbml files), extract information from the given data set (statistical information, plots for visualisation) and based on this visualise specific genes or gene combinations after applying dimensionality reduction (DR). 
 
 
 \section{Exploratory data analysis}
@@ -512,7 +512,7 @@ Other classical approach that have been examined included Multidimensional Scali
 \subsection{Manifold learning}
 
 Non-linear DR methods also include Manifold Learning Algorithms; this it the part where a little bit of differential geometry comes into play.
-Unlike simple linear DR methods like PCA, manifold learning techniques consider the intrinsic geometry of the data; they are based on the assumption that the given data lies on an embedded non-linear manifold within the high-dimensional space. We can then think of DR as trying to "unfold" this manifold (embedded in a high-dimensional space) so each data point is assigned a low dimensional representation.
+Unlike simple linear DR methods like PCA, manifold learning techniques consider the intrinsic geometry of the data; they are based on the assumption that the given data lies on an embedded non-linear manifold within the high-dimensional space. We can then think of DR as trying to "unfold" this manifold (embedded in a high-dimensional space) so each data point is assigned a low dimensional representation while still keeping its essential geometric properties such as relative distances between points unchanged.
 The data, assuming the manifold is of low enough dimension, can then be visualised in this lower-dimensional space.
 
 %https://pdfs.semanticscholar.org/333a/a1225a0364a46185aa19ec99c34b37555258.pdf
@@ -528,6 +528,8 @@ Therefore, non-linear methods that do not rely on the assumption of a low-dimens
 
 %Manifold learning algorithms are implemented that way:
 %All methods implemented in this package adopt the column-major convention of JuliaStats: in a data matrix, each column corresponds to a sample/observation, while each row corresponds to a feature (variable or attribute).
+
+In the following, we want to give an overview of main manifold learning algorithms applicable to our data set. However, we will keep the maths to the lowest level possible.
 
 \subsubsection{t-distributed stochastic neighbour embedding (t-SNE)}
 
@@ -806,10 +808,15 @@ Really meaningful?
 %\section{Discussion and outlook}
 
 
+
+
+
 OPEN QUESTIONS, CONCLUSIONS.
 
 
 \section{Genetic algorithm for Kernel Density Estimation (KDE) in 2D}
+
+other methods discussed
 
 [REFER TO GROUP PROJECT]
 
@@ -827,70 +834,17 @@ see \texttt{KDE\_reduction\_2D.jl}
 \section{(Personal) challenges}
 
 \subsection{Motivation}
-As already outlined, one of the main challenges for me was the fact that we were lacking a clear motivation for the project; there was no specific (biological) question at hand. We did achieve to accomodate our work and suitate it in the wider literature. 
+As already outlined, one of the main challenges for me was the fact that we were lacking a clear motivation for the project; there was no real (biological) question we were trying to be asnwered. The more literature research we did and encounters solutions like \textit{Netland}, \textit{Hopland} and \textit{topslam}, the less motivating and harder it got to come up with something "novel". This might sound similar to the development many people undergo during their PhD and is probably a major part of research; for me, it was unlike previous projects and I took it as part of the learning process.
+However, we can claim that we are the first group to produce something in Julia and we finally did achieve to accomodate our work and suitate it in the wider literature. 
+
 
 \subsection{Julia}
-Unfortunately, Julia was a major drawback to our work, and to my part especially.
-
-\subsubsection{High volatility}
-Julia is still a very young and unstable language. The volatility, especially in light of the soon to be published version ....
-caused methods in packages to run at some points of the project; eg out of the six methods in \textit{ManifoldLearning.jl} only one actually worked. 
-Also the Julia community, even though very responsive especially on \textit{https://discourse.julialang.org/} including developers, refer to the instability of the packages themselves and could therefore be of limited help. %to which they weren't able to be much of help to me/us either. 
-This meant, I had to redefine my initial goal of comparing differnent DR methods on the data set.
-In another programming language such as Python this would have been not the case, as eg [REERENCE PACKAGE SCIKITLEARN] contains ready-to-be-used stable functions of most of the major DR algorithms; however, using these would have been contrary to our actual goal to develop something in Julia.
-
-\subsubsection{Conflicts between packages}
-Conflicts between packages like ...... to only name a few was probably the biggest time-consuming aspect; packages needed to be checked out, added, pulled from the master, cleared from the cache over and over again; workarounds needed to be found. This was a very big prize to pay for having Julia's good performance. 
-% and one could develop an expertise just in that to an extent that it wasn't much fun to work with anymore. 
-However, here the julia community could sometimes help out.
-
-\subsubsection{Documentation}
-% documentation
-As the documentation of specific packages including \textit{MultivariateStats.jl} and \textit{ManifolsLearning.jl} are very sparse and to large extent deprecated, it was a challenging to not only get things running but also to understand the implementation including accessible properties of the methods.
-%FUTURE WORK: good documentation
-
-%loading packages did take a while
-% left me frustrated, motivation down.
-
-%To draw a conclusion to that, 
-Having said all that, Julia definitely has potential and is an exciting and promising language to contribute to and can even be fun to code in, once all necessary packages have been installed. Also, for developing single packages/ functionalities it is suitable. However, for a rather big research project that depends on multiple (unstable) packages, I question its practicability.
+Julia and the contribution to the Julia community, to produce something that would actually be used, was one main personal motivation for the project. Unfortunately, Julia turned out to be a major drawback to our work, and to my part especially.
 
 
-%see methods that have been implemented in Python, scilearn.
+In any case, I took comfort in the fact that we were contributing to the Julia community. Iand I do see potential in Julia. Having said that, it is extremely unsuitable for bigger projects where one uses different packages. Best is to only develop one package without many or just a few dependencies on other packages, especially 
 
-
-- communication with other team members, certainly developed project management skills, 
-pushing code on github, commenting especially in a group project,
-regular meetings to keep everyone in the loop
-WORKING ON CODE TOGETHER, OFTEN PARALLEL, CAN CAUSE ISSUES,
-REPORT THAT DOES NOT FLOW
-
-GET TO USE A LOT OF DIFFERENT "PROJECT MANAGEMENT TOOLS", incl github, pad and overleaf
-
-- the nitial plan was to and give recommendations which ones work best as in the literature it was stressed that it heavily depends on the nature of the data set which methods performs well. However, as most of the methods were not running, and practically none of the manidold learning algorithms this was an over-ambitious goal to do in Julia...
-we therefore focused on a few methods such as PCA, SVD, PPCA, ...
-
-- DISCUSS MORE THINGS WE CONSIDERED, eg at what time DR should be applied
-
-- get lost in paper reading, to bring everything together in the end, so much work that goes without mentioning , at the same time you want to talk about things you spent time on.
-
-COMPARISON OF METHODS
-table
-
-WANTED TO KEEP IT AS GENERAL AS POSSIBLE, USER FRIENDLY BUT CHALLENGE..
-
-NOT TO GET DRAGGED AWAY AND DEVIATE FROM PROJECT AS DIMRED IS A LARGE FIELD.
-
-
-% wichtig dass man nicht auf teufel komm raus irgwas produziert nur damit was gemacht, sondern mehr gedanken darueber machen. leute mehr hands-on approach [LD]
-
-\section{On a personal note -- learnings, comments, feedback } % with humour
-
-
-Already implemented solutions like NetLand, topslam and Hopland. It was quite hard to find the biological question we were trying to solve ..I wasn't convinced till the very end. ..and I felt like we were undergoing the journey of a PhD within a 2.5-months project, unlike any other project I have had so far. Coming up with the question one tries to answer is probably a large part of the PhD already. 
-This made it easier for me to be dragged away by topics I found more interesting but were only remotely useful for the project at hand (hoptopy theory and algebraic topology techniques); going back and refocusing on the actual task was harder in our case as there was no clear-defined question to be answered. Regular group meeting helped. 
-
-In any case, I took comfort in the fact that we were contributing to the Julia community. It was an investment, and I do see potential in Julia. Having said that, it is extrmely unsuitable for bigger projects where one uses different packages. Best is to only develop one package without many or just a few dependencies on other packages, especially if one considers that the current version is just a snapshot, things will keep changing, functions will be moved into other packages, functions will be renamed and the like; one should always specify the function of what package one is using. Documentations are usually depricated, tried hard to get things running. I often spend days on things that could have been solved in Python within minutes. We wanted to keep it Julia only.
+if one considers that the current version is just a snapshot, things will keep changing, functions will be moved into other packages, functions will be renamed and the like; one should always specify the function of what package one is using. Documentations are usually deprecated, tried hard to get things running. I often spend days on things that could have been solved in Python within minutes. We wanted to keep it Julia only.
 
 Julia might be faster, but one has to add the time it takes to load and precompile packages.
 
@@ -908,40 +862,72 @@ personal goal: to contribute to julia community, become better at Julia
 
 Many issues, Many things that need fixing.
 Often only on current master (checkout, after deleting cache), \begin{verbatim}
-	UndefVarError: <function> not defined
+UndefVarError: <function> not defined
 \end{verbatim}
 was a common error message.
 % SEE PHOTOS
 
-Thinking back, what I will definitely do differently during the next project is starting taking notes right from the beginning. As one of my focus was literature review, I spent a large amount of time reading papers and often found myself rereading things for the write-up in the end.
 
 
-Also, if the setup of programs such as ..ssh, so I could work from remote.... took longer than it should have, which wasn't Suhail's fault but due to the mere fact that we were not able to install software ourselves. I am not sure if that could be changed for next year. 
+\subsubsection{High volatility}
+Julia is still a very young and unstable language; version 1 isn't out yet. The volatility, especially in light of the soon to be published version ....
+caused methods in packages to run at some points of the project; eg out of the six methods in \textit{ManifoldLearning.jl} only one actually worked. 
+Also the Julia community, even though very responsive especially on \textit{https://discourse.julialang.org/} including developers, refer to the instability of the packages themselves and could therefore be of limited help. %to which they weren't able to be much of help to me/us either. 
+This meant, I had to redefine my initial goal of comparing differnent DR methods on the data set.
+In another programming language such as Python this would have been not the case, as eg [REERENCE PACKAGE SCIKITLEARN] contains ready-to-be-used stable functions of most of the major DR algorithms; however, using these would have been contrary to our actual goal to develop something in Julia.
+%see methods that have been implemented in Python, scilearn.
 
-My main issue was ...
+\subsubsection{Conflicts between packages}
+Conflicts between packages like ...... to only name a few was probably the biggest time-consuming aspect; packages needed to be checked out, added, pulled from the master, cleared from the cache over and over again; workarounds needed to be found. This was a very big prize to pay for having Julia's good performance. 
+% and one could develop an expertise just in that to an extent that it wasn't much fun to work with anymore. 
+%loading packages did take a while
+% left me frustrated, motivation down.
+However, here the julia community could sometimes help out.
 
-I felt like I was contributing to something bigger.
+\subsubsection{Documentation}
+% documentation
+As the documentation of specific packages including \textit{MultivariateStats.jl} and \textit{ManifolsLearning.jl} are very sparse and to large extent deprecated, it was a challenging to not only get things running but also to understand the implementation including accessible properties of the methods.
+%FUTURE WORK: good documentation
 
-discoure Julia was a website I frequented almost on a daily basis. 
+%To draw a conclusion to that, 
+Having said all that, I am not trying to downplay Julia. 
+
+Julia has potential and is an exciting, intuitive and promising language to contribute to and I feel our work can be seen as an investment. I like that it's open-source and all available on github. Julia can even be fun to code in (once all necessary packages have been installed and you have learned how to decipher her error messages). Also, for developing single packages/ functionalities it is suitable. However, for a rather big research project that depends on multiple (unstable) packages, I question its practicability.
+Also, only considering the time constraint, I would have found it more reasonable to stick with Python. The community is large, documentation great and it is state of the art. Manifold learning in scikit learn is good enough and there is even a scalable CPU-bound manifold learning package available in Python (\textit{Megaman}). A GPU implementation is probably soon to come out. 
+
+I will certainly keep monitoring it as it is further developed and improved. 
+
+The reason what makes people want to use Julia is mainly her technical computing convincingly presented in the cross language validation on \textit{\http://julialang.org/}. Python and other high level languages seem to be far behind in term of speed. However, I was asking myself how the Python benchmarks were written -- probably in native Python and not in an optimised version. It might be more meaningful to compare the performance based on tasks and once experts in the specific languages have produced the best code they can to perform these tasks. Indeed, as shown in [REFERENCE] it is possible to achieve the same benchmarks when one uses Python better and its tools. Also regarding running time, I think it is less of a question of whether to use Python, C or Julia but the major difference can be achieved by GPU instead of CPU.
+Still, tools I have found to explore to run Python faster include \texit{numpy} based on C, \textit{CuPy} (a NumPy-like API accelerated with CUDA) that we could have easily used for the simulation. The latter might also be handy to run some computations, eg DR methods on different data sets, and compare them to get a feel and start to understand rather than relying on one's understanding from reading literature. One might also try to use Numpy/Scipy with Intel MKL and Intel Compilers to optimise Python code.
+
+\textit{PyTorch} as an machine learning library for Python that also runs on the GPU might have been useful to get manifold learning algorithms in \textit{scikitlearn} onto a GPU. PyTorch already optimises standard optimisation algorithms.  
+
+The latter is something one might look into in another project: ..............
+
+As things move very fast in this field that it is almost hard to keep up, and given the enormous brain power including companies that are behind tools like \textit{PyTorch} and also \texit{TensorFlow}, it is very unlikely that a few Julia developers will carry the language very far. 
+
+In the end, the optimisation achieved by Julia does not seem very relevant to me; however, it can be a language fun to play around with.
+
+%[REFERENCE] https://www.ibm.com/developerworks/community/blogs/jfp/entry/Python_Meets_Julia_Micro_Performance?lang=en
 
 
 
-Having said all that, things that went well....
+
+not even version 1. 
 
 
-Spending time on toy model (Chickarme model and explore)
+scalable CPU-bound manifold learning package already exists in Python, it’s Megaman 
+
+It is hard to imagine that Julia will outcompete Python 
+
+Small faster not of any benefit at all; the contrary, loading packages takes too long. 
 
 
-%learnings for next time:
-%- focus, don't get lost in literature research
-%- don't switch too much between topics
-
-and a pad was a convenient way for communication and sharing material. 
 
 
-FIND IT IMPORTANT TO REFLECT FOR THE NEXT PROJECT
+\section{On a personal note -- learnings, comments, feedback } % with humour
 
-MILESTONES NECESSARY
+
 
 
 \section{Outlook}
@@ -953,6 +939,16 @@ DISCUSSION AND CONLUSION, FUTURE WORK
 DISCUSS LITERATURE, WHY WOULD STDE BE USEFUL?
 
 CRITICALLY DISCUSS FUTURE WORK
+
+
+
+\subsection{Manifold Learning}
+
+We have seen that the standard Manifold Learning algorithms bear the assumption that the local neighbourhood of a point in the high-dimensional space is roughly equal to the tangent space at that point. Even if the neighbourhoods of points on the manifold have very different (Gaussian) curvature, they would still be treated equally and projected down to the lower-dimensional space in the same way. However, as this often is the case, standard DR are poorly neighbourhood preserving. [REFERENCE] suggests a solution to this: We can perform an operation on the higher-dimensional space using Ricci flow before applying manifold DR. With Ricci Flow we transform each local neighbourhood of the higher-dimensional manifold to a patch with constant curvature. Then, the higher-dimensional manifold as a whole is transformed to a subset of a sphere with constant positive curvature. They could show that this method outperforms other manifold learning algorithms with better neighbourhood preserving rate.
+% https://arxiv.org/pdf/1703.10675.pdf
+
+[MAYBE PICTURE FROM RICCI PAPER HERE]
+
 
 % Now we need a bibliography:
 \begin{thebibliography}{99}
