@@ -62,7 +62,7 @@ p = Plots.scatter(Y1[1,:],Y1[2,:],Y1[3,:],marker=:circle,linewidth=0, title="PCA
 #scatter!(virginica[1,:],virginica[2,:],virginica[3,:],marker=:circle,linewidth=0)
 Plots.plot!(p,xlabel="PC1 (21.85%)",ylabel="PC2 (8.38%)",zlabel="PC3 (6.56%)", legend=false)
 #PyPlot.title("PCA projection onto the first 3 PCs")
-Plots.savefig("PCA_3D")
+Plots.pcasavefig("PCA_3D")
 
 # PROJECTION ONTO 2 PCs
 q = Plots.scatter(Y1[1,:],Y1[2,:],marker=:circle,linewidth=0, title="PCA projection onto the first 2 PCs")

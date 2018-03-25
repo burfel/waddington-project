@@ -246,23 +246,23 @@ x = Plots.scatter(Y2[1,:],Y2[2,:], marker=:circle,linewidth=0, title="PPCA")
 #scatter!(virginica[1,:],virginica[2,:],virginica[3,:],marker=:circle,linewidth=0)
 Plots.plot!(x,xlabel="x_new",ylabel="y_new", legend=false)
 #PyPlot.title("PCA projection onto the first 3 PCs")
-savefig("../Single_cell_data/plots/PPCA/ppca_2D")
+Plots.savefig("../Single_cell_data/plots/PPCA/ppca_2D")
 
 # PLOT RECONSTRUCTION 3D
 a = Plots.scatter(X_PPCA[1,:],X_PPCA[2,:], X_PPCA[3,:], marker=:circle,linewidth=0, title="PPCA")
 #scatter!(versicolor[1,:],versicolor[2,:],versicolor[3,:],marker=:circle,linewidth=0)
 #scatter!(virginica[1,:],virginica[2,:],virginica[3,:],marker=:circle,linewidth=0)
-Plots.plot!(a,xlabel="x",ylabel="y", zlabel="z", legend=false)
+Plots.plot!(a,xlabel="x_1",ylabel="x_2", zlabel="x_3", legend=false)
 #PyPlot.title("PCA projection onto the first 3 PCs")
-savefig("../Single_cell_data/plots/PPCA/ppca_3D_recon")
+Plots.savefig("../Single_cell_data/plots/PPCA/ppca_3D_recon")
 
 # PLOT RECONSTRUCTION 2D
 b = Plots.scatter(X_PPCA[1,:],X_PPCA[2,:], marker=:circle,linewidth=0, title="PPCA")
 #scatter!(versicolor[1,:],versicolor[2,:],versicolor[3,:],marker=:circle,linewidth=0)
 #scatter!(virginica[1,:],virginica[2,:],virginica[3,:],marker=:circle,linewidth=0)
-Plots.plot!(b,xlabel="x",ylabel="y", legend=false)
+Plots.plot!(b,xlabel="x_1",ylabel="x_2", legend=false)
 #PyPlot.title("PCA projection onto the first 3 PCs")
-savefig("../Single_cell_data/plots/PPCA/ppca_2D_recon")
+Plots.savefig("../Single_cell_data/plots/PPCA/ppca_2D_recon")
 
 
 #----- 5. Factor Analysis -------------------------------------------------------
@@ -285,15 +285,15 @@ X_FactorAna = reconstruct(M22, Y22)
 #----- 6. Kernel PCA ------------------------------------------------------------
 
 # train a kernel PCA model
-M3_max = fit(KernelPCA, data_array; maxoutdim=96, inverse=true)
+#M3_max = fit(KernelPCA, data_array; maxoutdim=96, inverse=true)
 M3 = fit(KernelPCA, data_array; maxoutdim=2, inverse=true)
 
 # apply kernel PCA model to testing set
-Y3_max = transform(M3_max, data_array)
+#Y3_max = transform(M3_max, data_array)
 Y3 = transform(M3, data_array)
 
 # reconstruct testing observations (approximately)
-X_kernel_max = reconstruct(M3_max, Y3_max)
+#X_kernel_max = reconstruct(M3_max, Y3_max)
 X_kernel = reconstruct(M3, Y3)
 
 #=
@@ -311,33 +311,29 @@ Plots.scatter(X_kernel, title="kernelPCA reconstruct", legend=false)
 PyPlot.savefig("../Single_cell_data/plots/kernelPCA/kernelPCA_reconstruct")
 =#
 
-c = Plots.scatter(Y3_max[1,:],Y3_max[2,:], Y3_max[3,:], marker=:circle,linewidth=0, title="Kernel PCA")
+c = Plots.scatter(Y3[1,:],Y3[2,:], marker=:circle,linewidth=0, title="Kernel PCA")
 #scatter!(versicolor[1,:],versicolor[2,:],versicolor[3,:],marker=:circle,linewidth=0)
 #scatter!(virginica[1,:],virginica[2,:],virginica[3,:],marker=:circle,linewidth=0)
-Plots.plot!(c,xlabel="PC1",ylabel="PC2", zlabel="PC3", legend=false)
+Plots.plot!(c,xlabel="PC1",ylabel="PC2", legend=false)
 #PyPlot.title("PCA projection onto the first 3 PCs")
-savefig("../Single_cell_data/plots/kernelPCA/kpca_3D_max")
+Plots.savefig("../Single_cell_data/plots/kernelPCA/kpca_2D")
 
-d = Plots.scatter(Y3[1,:],Y3[2,:], Y3[3,:], marker=:circle,linewidth=0, title="Kernel PCA")
-#scatter!(versicolor[1,:],versicolor[2,:],versicolor[3,:],marker=:circle,linewidth=0)
-#scatter!(virginica[1,:],virginica[2,:],virginica[3,:],marker=:circle,linewidth=0)
-Plots.plot!(d,xlabel="PC1",ylabel="PC2", zlabel="PC3", legend=false)
-#PyPlot.title("PCA projection onto the first 3 PCs")
-savefig("../Single_cell_data/plots/kernelPCA/kpca_3D")
 
-e = Plots.scatter(Y3_max[1,:],Y3_max[2,:], marker=:circle,linewidth=0, title="Kernel PCA")
+d = Plots.scatter(X_kernel[1,:],X_kernel[2,:], marker=:circle,linewidth=0, title="Reconstruction from Kernel PCA")
 #scatter!(versicolor[1,:],versicolor[2,:],versicolor[3,:],marker=:circle,linewidth=0)
 #scatter!(virginica[1,:],virginica[2,:],virginica[3,:],marker=:circle,linewidth=0)
-Plots.plot!(e,xlabel="PC1",ylabel="PC2", legend=false)
+Plots.plot!(d,xlabel="x_1",ylabel="x_2", legend=false)
 #PyPlot.title("PCA projection onto the first 3 PCs")
-savefig("../Single_cell_data/plots/kernelPCA/kpca_2D_max")
+Plots.savefig("../Single_cell_data/plots/kernelPCA/kpca_recon_2D")
 
-e = Plots.scatter(Y3[1,:],Y3[2,:], marker=:circle,linewidth=0, title="Kernel PCA")
+
+e = Plots.scatter(X_kernel[1,:],X_kernel[2,:], X_kernel[3,:],marker=:circle,linewidth=0, title="Reconstruction from Kernel PCA")
 #scatter!(versicolor[1,:],versicolor[2,:],versicolor[3,:],marker=:circle,linewidth=0)
 #scatter!(virginica[1,:],virginica[2,:],virginica[3,:],marker=:circle,linewidth=0)
-Plots.plot!(e,xlabel="PC1",ylabel="PC2", legend=false)
+Plots.plot!(e,xlabel="x_1",ylabel="x_2", zlabel="x_3", legend=false)
 #PyPlot.title("PCA projection onto the first 3 PCs")
-savefig("../Single_cell_data/plots/kernelPCA/kpca_2D)
+Plots.savefig("../Single_cell_data/plots/kernelPCA/kpca_recon_3D")
+
 
 
 ###--------------------------------------------------------------------------------
@@ -365,6 +361,16 @@ Y_HLLE = transform(HLLE, data_array; k = 12, d = 2)
 Y_LTSA = transform(LTSA, data_array; k = 12, d = 2)
 Plots.scatter(Y_LTSA, title="ManifoldLearning: Local tangent space alignment")
 #PyPlot.savefig("../Single_cell_data/plots/manifold-learning/ltsa")
+
+
+#= ----cannot plot object LEM (no user recipe defined)----------
+f = Plots.scatter(Y_LEM[1,:],Y_LEM[2,:], Y_LEM[3,:],marker=:circle,linewidth=0, title="Laplacian Eigenmaps")
+#scatter!(versicolor[1,:],versicolor[2,:],versicolor[3,:],marker=:circle,linewidth=0)
+#scatter!(virginica[1,:],virginica[2,:],virginica[3,:],marker=:circle,linewidth=0)
+Plots.plot!(f,xlabel="x_1",ylabel="x_2", zlabel="x_3", legend=false)
+#PyPlot.title("PCA projection onto the first 3 PCs")
+Plots.savefig("LEM")
+=#
 
 
 #--------other useful methods
