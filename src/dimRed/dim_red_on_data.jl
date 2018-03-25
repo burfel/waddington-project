@@ -61,6 +61,46 @@ M1_proj = projection(M1_3) # 96x3
 #indim(M1)
 #outdim(M1)
 
+##---LINEAR COMBINATIONS OF OLD BASIS (GENES)
+pc1 = M1_proj[:,1]
+Plots.bar(pc1, ylabel="weight of particular gene", xlabel="genes (1-96)", legend=false, title="Composition of first PC")
+Plots.savefig("../Single_cell_data/plots/PCA/compPC1")
+
+pc2 = M1_proj[:,2]
+Plots.bar(pc2, ylabel="weight of particular gene", xlabel="genes (1-96)", legend=false, title="Composition of second PC")
+Plots.savefig("../Single_cell_data/plots/PCA/compPC2")
+
+pc3 = M1_proj[:,3]
+Plots.bar(pc3, ylabel="weight of particular gene", xlabel="genes (1-96)", legend=false, title="Composition of third PC")
+Plots.savefig("../Single_cell_data/plots/PCA/compPC3")
+##----
+# WHICH ARE THE BIGGEST WEIGHTS?
+names = DataFrames.names(data)
+#max_pc1=findmax(pc1)
+#names[71] #Rai1
+min_pc1=findmin(pc1) #
+names[22] #Fgf4
+
+pc_total = sum(transpose(abs(M1_proj_max)),1)
+Plots.bar(transpose(pc_total), ylabel="weight of particular gene", xlabel="genes (1-96)", legend=false, title="Contribution of genes summed over all PCs")
+Plots.savefig("../Single_cell_data/plots/PCA/compPC_total")
+
+max_pc2=findmax(pc2)
+names[11] #Cldn6
+#min_pc2=findmin(pc2)
+
+#max_pc3=findmax(pc3)
+#names[45] #Klf4
+min_pc3=findmin(pc3)
+names[8] #Cdh2
+
+print(data[:Smarca4])
+
+findmax(pc_total)
+findmin(pc_total)
+names[89] #Tubb3
+names[49] #MBP
+
 # Get the input dimension d, i.e the dimension of the observation space.
 indim(M1_max) #96
 indim(M1) #96
@@ -74,7 +114,7 @@ outdim(M1_3) #3
 # The variances of principal components.
 pca_var_max = principalvars(M1_max)
 Plots.bar(pca_var_max, xlabel = "Principal components", ylabel = "Eigenvalues", legend=false, title="Explained variances of all the PCs")
-savefig("../Single_cell_data/plots/PCA/eigenvalues_of_resp_PCs_max")
+Plots.savefig("../Single_cell_data/plots/PCA/eigenvalues_of_resp_PCs_max")
 
 # NORMALISED variance:
 
@@ -83,16 +123,19 @@ normalise(x) = x/maxVar
 normalisedEVs = normalise.(pca_var_max)
 print(normalisedEVs)
 
+cum=cumsum(normalisedEVs)
 Plots.bar(normalisedEVs, xlabel = "Principal components", ylabel = "Explained variance", legend=false, title="Explained variances of all the PCs")
-savefig("../Single_cell_data/plots/PCA/eigenvalues_of_resp_PCs_max_normed")
+Plots.plot!(cum, label="cumulative variance")
+Plots.savefig("../Single_cell_data/plots/PCA/eigenvalues_of_resp_PCs_max_normed_cum")
+#savefig("../Single_cell_data/plots/PCA/eigenvalues_of_resp_PCs_max_normed")
 
 pca_var = principalvars(M1)
 Plots.bar(pca_var, xlabel = "Principal components", ylabel = "Eigenvalues", legend=false, title="Explained variances of 2 PCs")
-savefig("../Single_cell_data/plots/PCA/eigenvalues_of_resp_PCs")
+Plots.savefig("../Single_cell_data/plots/PCA/eigenvalues_of_resp_PCs")
 
 pca_var_3 = principalvars(M1_3)
 Plots.bar(pca_var_3, xlabel = "Principal components", ylabel = "Eigenvalues", legend=false, title="Explained variances of 3 PCs")
-savefig("../Single_cell_data/plots/PCA/eigenvalues_of_resp_PCs_3")
+Plots.savefig("../Single_cell_data/plots/PCA/eigenvalues_of_resp_PCs_3")
 
 # The total variance of principal components, which is equal to sum(principalvars(M)).
 print("total variance of PCs: ", tprincipalvar(M1_max)) # 1643.3876618996323
@@ -114,13 +157,20 @@ print("ratio of variance preserved in the principal subspace: ", principalratio(
 print("ratio of variance preserved in the principal subspace: ",principalratio(M1)) # 0.3022496772615576
 print("ratio of variance preserved in the principal subspace: ",principalratio(M1_3)) # 0.36787883302124375
 
-#=
+
 # PLOTS (not very meaningful)
-Plots.scatter(data_array, legend=false)
+Plots.scatter(data_array[:,1:5], legend=false, title="Sample data set", xlabel="Samples (1-547)", ylabel="Expression level of genes 1-5", legend=true)
 Plots.plot(data_array, legend=false)
-#PyPlot.title("Data set")
+Plots.savefig("../Single_cell_data/plots/data_set_5genes")
 #PyPlot.savefig("../Single_cell_data/plots/data_set")
 
+Plots.scatter(transpose(data_array), legend=false, title="Sample data set", xlabel="Genes (1-96)", ylabel="Gene expression level", legend=false)
+Plots.plot(data_array, legend=false)
+Plots.savefig("../Single_cell_data/plots/data_set_T")
+#Plots.savefig("../Single_cell_data/plots/data_set")
+#PyPlot.savefig("../Single_cell_data/plots/data_set")
+
+#=
 # PCA transform
 Plots.scatter(Y1_max,title="PCA transform", legend=false)
 # Plots.plot(Y1_max,title="PCA transform", legend=false)

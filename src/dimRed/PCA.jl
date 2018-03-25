@@ -85,19 +85,19 @@ tresidualvar(M1)
 # 3rd PC: 6.56%
 
 ##-------------PLOT RECONSTRUCTION--------------------------------------------------
-r = Plots.scatter(X_PCA[1,:],X_PCA[2,:],X_PCA[3,:],marker=:circle,linewidth=0, title="PCA reconstruction from the first 3 PCs")
+r = Plots.scatter(X_PCA[31,:],X_PCA[22,:],X_PCA[11,:],marker=:circle,linewidth=0, title="PCA reconstruction from the first 3 PCs")
 #scatter!(versicolor[1,:],versicolor[2,:],versicolor[3,:],marker=:circle,linewidth=0)
 #scatter!(virginica[1,:],virginica[2,:],virginica[3,:],marker=:circle,linewidth=0)
-Plots.plot!(r,xlabel="x_1",ylabel="x_2",zlabel="x_3", legend=false)
+Plots.plot!(r,xlabel="Gdf3",ylabel="Fgf4",zlabel="Cldn6", legend=false)
 #PyPlot.title("PCA projection onto the first 3 PCs")
-Plots.savefig("PCA_reconstruction_3D")
+Plots.savefig("PCA_reconstruction_3D_impGenes")
 
-s = Plots.scatter(X_PCA[1,:],X_PCA[2,:], marker=:circle,linewidth=0, title="PCA reconstruction from the first 2 PCs")
+s = Plots.scatter(X_PCA[31,:],X_PCA[22,:], marker=:circle,linewidth=0, title="PCA reconstruction from the first 2 PCs")
 #scatter!(versicolor[1,:],versicolor[2,:],versicolor[3,:],marker=:circle,linewidth=0)
 #scatter!(virginica[1,:],virginica[2,:],virginica[3,:],marker=:circle,linewidth=0)
-Plots.plot!(s,xlabel="x_1",ylabel="x_2", legend=false)
+Plots.plot!(s,xlabel="Gdf3",ylabel="Fgf4", legend=false)
 #PyPlot.title("PCA projection onto the first 3 PCs")
-Plots.savefig("PCA_reconstruction_2D")
+Plots.savefig("PCA_reconstruction_2D_impGenes")
 
 
 ##-------------PLOT PROJECTION (rotation matrix)---------------------------------------
