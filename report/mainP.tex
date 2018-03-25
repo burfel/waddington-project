@@ -267,10 +267,10 @@ The user can obtain statistics on the whole sample set, such as mean and varianc
 [INSERT TABLE HIGHEST MEAN, LOWEST MEAN, SAME FOR VARIANCE]
 BUT: OF ANY VALUE AT ALL??!
 
-\begin{figure}[t]
-	\includegraphics[width=8cm]{Plot}
-	\centering
-\end{figure}
+%\begin{figure}[t]
+%	\includegraphics[width=8cm]{Plot}
+%	\centering
+%\end{figure}
 
 This can help the user to "get a feel" of the data set, discard outliers (COULD HAVE BEEN DONE HERE BUT WASN'T) and serve as a starting point for a subsequent more detailed analysis. 
 
@@ -287,13 +287,18 @@ Additionally to computing pairwise correlations of genes, we therefore used meas
 the program can be found on \texttt{https://github.com/burfel/waddington-project/blob/master/src/InformationMeasuresTest.jl}.
 %This was inspired by [REFERENCE PAPER]
 
+These methods based on information theory can be regarded as a generalisation of the ones based on statistics since they can capture non-linear relationships between variables, can handle interval and categorical data at the same time, and most of them are invariant to monotonic transformations of the input variables [REFERENCE].
+% reference:https://arxiv.org/ftp/arxiv/papers/1403/1403.2877.pdf
+
 % CONDIITONAL MUTUAL I
 %MAXIMAL INTERACITON INFORMATION
 % TOTAL CORRELATION 
 %PARTIAL INFORMATION DECOMPOSITION
 A summary of the results can be found in table 1 of the group report; for the plots, a discussion and further details we refer to Madeleine Hall's individual report.
 
-%FUTURE: APPLY DR FOR FEATURE SELECTION
+%EDIT
+For more on feature selection, we refer to [Dash1997], [Guyon2003] and [Saeys2007
+
 
 %METHODS CLEAR, FOCUSED AND ROBUST.
 
@@ -307,15 +312,22 @@ A summary of the results can be found in table 1 of the group report; for the pl
 %(especially for applying consecutive ML algorithms)
 
 
-If the number of dimensions, ie genes in our case, is large, the number of possible states in this space grows exponentially large. In other words, with increasing dimensionality it becomes harder to sample from the space; even for a small model of three genes this can be a major challenge. Simulations take very long to run (as discussed in section ..... in the group report); similarly, to train machine learning (ML) algorithms on such high-dimensional data sets is very time-intensive and can cause over-fitting. %% REFERENCE
-This problem is often referred to as \textit{Curse of dimensionality}; DR can be seen as a potential pre-processing step for machine learning algorithms.
+%If the number of dimensions, ie genes in our case, is large, the number of possible states in this space grows exponentially large. In other words, with increasing dimensionality it becomes harder to sample from the space; even for a small model of three genes this can be a major challenge. Simulations take very long to run (as discussed in section ..... in the group report); 
+As DR is being applied in many different fields, 
 
-Therefore, it is necessary to reduce the data to fewer dimensions as a preprocessing step for ML algorithms.
+Complementary to our motivation to apply DR outlined in the group report, DR is often used as a pre-processing step for machine learning (ML) algorithms as training on high-dimensional data sets is very time-intensive and can cause overfitting [REFERENCE]. However, no matter how universal the application of DR is, the common goal is usually the same: To reduce the complexity of the data set to a more understandable representation without losing (much) information. \\
+
+%similarly, to train machine learning (ML) algorithms on such high-dimensional data sets is very time-intensive and can cause over-fitting. %% REFERENCE
+%This problem is often referred to as \textit{Curse of dimensionality}; DR can be seen as a potential pre-processing step for machine learning algorithms.
+
+%Therefore, it is necessary to reduce the data to fewer dimensions as a preprocessing step for ML algorithms.
 % to make ML algorithms more efficient. 
 %or run faster
-Another reason to apply dimensionality reduction is the purpose of visualisation. It is hard for humans to comprehend data in many dimensions. In our specific example this translates to the obvious fact that only two genes at a time (with the amplitude of the quasi-potential in a third direction) can be visualised in our 3D world, or respectively projected onto a 2D plane.\\
 
-Dimensionality reduction (DR) reduces the number of features (here: genes) by creating new linear, or non-linear, combinations of the original features.
+%INTO GROUP REPORT
+%In our case, the reason to apply dimensionality reduction is the purpose of visualisation. It is hard for humans to comprehend data in many dimensions. In our specific example this translates to the obvious fact that only two genes at a time (with the amplitude of the quasi-potential in a third direction) can be visualised in our 3D world, or respectively projected onto a 2D plane.\\
+%
+%Unlike feature selection that tries to only keep the most relevant features from the original data set, we can reduce the dimensions by applying dimensionality reduction (DR) techniques. These methods make use of the redundancy of the original data set and reduce the number of features (here: genes) by creating new linear, or non-linear, combinations of the original features.
 
 
 %CHALLENGE: INTERPRETATION OF NEW FEATURES
@@ -333,9 +345,12 @@ Principal Component Analysis (PCA) as a linear method and kernel PCA (KPCA) as a
 Additionally, an interesting manifold learning algorithm, Laplacian Eigenmaps (LEM), has been presented and discussed in comparison to other non-linear methods in the group report.
 %in comparison to other non-linear methods.
 
-For an complete list of DR methods we refer to table [?????]; for an extended explanation to [APPENDIX OF GROUP REPORT].
+For an overview, we andcategorise the plethora of DR methods in table [?????]; for an extended explanation to [APPENDIX OF GROUP REPORT].
 
-%TODO_END
+A proof-of-concept example of the LLE, Hessian LLE and Isomap for the Swiss roll input data is given in figure [ADD].
+% https://arxiv.org/ftp/arxiv/papers/1403/1403.2877.pdf
+
+%ADD FIGURE HERE
 
 
 %\subsection{Linear methods}
@@ -387,7 +402,7 @@ Let \( A \in \mathbb{R}^{d,d}\) be a matrix. A non-zero vector \( u \) is an eig
 	A u = \lambda u .
 \end{equation}
 
-It can be shown with basic algebra results that every (non-singular) diagonalisable matrix \( A \) can be factorised into a canonical form, whereby \( A \) is represented in terms of its eigenvalues and eigenvectors.
+It can be shown with basic linear algebra results that every (non-singular) diagonalisable matrix \( A \) can be factorised into a canonical form, whereby \( A \) is represented in terms of its eigenvalues and eigenvectors.
 Note, the matrix \( A \) is diagonalisable if and only if the algebraic multiplicity equals the geometric multiplicity of each eigenvalues, ie \( A \) has \( d \) distinct eigenvalues.
 
 This result follows from the \textit{Spectral Decomposition Theorem}. 
@@ -463,6 +478,9 @@ For a more rigorous mathematical definition we refer to [REFERENCE SHALEV-SHWART
 
 %% WHATS DIFFERENCE BETWEEN PCA FROM PACKAGE AND GENERALISEDPCA? JULIA PCA BASED ON EIGENDECOMPOSITION, NOT ON SVD?
 
+%INSERT PLOT
+Figure [ADD] [REFERENCE] shows a graphical sketch of a PCA transformation in two dimensions.
+
 %%----------------------------------------------------------------------------------------------------------------------------------------
 \hfill 
 \subsubsection{Singular Value Decomposition (SVD)}\label{svd}
@@ -470,11 +488,13 @@ For a more rigorous mathematical definition we refer to [REFERENCE SHALEV-SHWART
 %https://stats.stackexchange.com/questions/107533/how-to-use-svd-for-dimensionality-reduction-to-reduce-the-number-of-columns-fea
 
 A bit less intuitive than the eigendecomposition of the covariance or the correlation matrix, is the SVD.\\
-Let \( A \in \mathbb{R}^{m,n} \) be a matrix of rank \( r \). If \( m \neq n\), the eigenvalue decomposition in \ref{spectralthm} cannot be applied. However, we can perform another decomposition on \( A \), the so-called \textit{Singular Value Decomposition} (SVD) which makes use of the \textit{SVD Theorem}.
+Let \( A \in \mathbb{R}^{m,n} \) be a matrix of rank \( r \). If \( m \neq n\), the eigenvalue decomposition in \ref{spectralthm} cannot be applied. However, we can perform another decomposition on \( A \), the so-called \textit{Singular Value Decomposition} (SVD) which makes use of the \textit{SVD Theorem} [REFERENCE].
 \begin{theorem}\label{svdthm}
 	Let \( A \in \mathbb{R}^{m,n} \) with rank \( r \). Then \( A = UDV^T\), where \( D \) is a \( r \times r \) matrix with non-zero singular values of \( A \) and the columns of \( U, V \) are orthonormal left and right singular vectors of \( A \). Furthermore, for all \( i \), \( D_{i,i}^{2} \) is an eigenvalue of \( A^T A\), the \( i \)th column of \( V \) is the corresponding eigenvector of \( A^T A\) and the \( i \)th column of \( U \) is the corresponding eigenvector of \( A A^T\).
 \end{theorem}
 
+% results in same eprojection directions and feature vectors
+% 
 %EXPLAIN MORE ON SVD HERE
 For the theory, we refer to [REFERENCE]. 
 In \texttt{generalPCA.jl}, another PCA method based on SVD is implemented.
@@ -577,7 +597,8 @@ KERNEL TRICK. COOL!!..: WE NEVER ACTUALLY WORK DIRECTLY IN THE FEATURE SPACE BUT
 
 Other classical linear approach that have been examined included Multidimensional Scaling (MDS), Linear Discriminant Analysis (LDA) and Factor Analysis. 
 %MDS takes a matrix of pair-wise distances between all points, and computes a position for each point. 
-%LDA, supervised, returns axes that maximizes class separability (same constraint that axes are also orthogonal)
+%Fisher's Linear Discriminant Analysis (LDA) takes into account the class of observaions, ie there are observations, supervised, returns axes that maximizes class separability (same constraint that axes are also orthogonal)
+
 
 %INSERT OVERVIEW OF ALL METHODS IN MULTIVARIATESTATS
 
@@ -585,7 +606,8 @@ Other classical linear approach that have been examined included Multidimensiona
 \subsection{Manifold learning}
 
 Non-linear DR methods also include Manifold Learning Algorithms; this it the part where a little bit of differential geometry comes into play. Certainly, manifolds are of great interest in differential geometry; for a (mathematically rigorous) definition of manifolds we refer to [REFERENCE].
-Unlike simple linear DR methods like PCA, manifold learning techniques consider the intrinsic geometry of the data; they are based on the assumption that the given data lies on an embedded non-linear manifold within the high-dimensional space. We could think of DR as trying to "unfold" this manifold (embedded in a high-dimensional space) so each data point is assigned a low dimensional representation while still keeping its essential geometric properties such as relative distances between points unchanged.
+Unlike simple linear DR methods like PCA, manifold learning techniques consider the intrinsic geometry of the data; they are based on the assumption that the given data lies on an embedded non-linear manifold within the high-dimensional space. 
+Instead of prpjecting the data onto the "right" set of directions, we look for a manifold close to the data, project it onto that manifold and "unfold" the manifold for representation. We do this in a way that each data point is assigned a low dimensional representation while still keeping its essential geometric properties such as relative distances between points unchanged.
 The data, assuming the manifold is of low enough dimension, can then be visualised in this lower-dimensional space.
 
 Another major difference between (most) manifold learning techniques and linear methods is that only local features of the data are considered opposed to global ones by eg taking correlations of the entire data set.
@@ -601,8 +623,8 @@ One problem to which different methods suggest different solutions is: How to co
 %- those that provide a mapping (either from high-dimensional space to low-dimensional embedding or vv); in the context of ML often views as a preliminary feature extraction step after which pattern algorithms are applied
 %- those that just give a visualisation; often based on proximity data, ie distance measurements
 
-There are various methods that generate non-linear maps, ie embedding maps of the data points to a lower dimension. Most of them are self-organising or based on a neural network (see [REFERENCE HOPFIELD] that we examined and was presented in Madeleine Hall's individual report); the problem is usually formalised as a non-liner optimisation problem that can be solved by eg gradient descent. However, the latter only guarantees to return a local optimum; global optima are in general difficult to obtain efficiently. Also, we do not know whether the points actually lie on a manifold of lower dimension -- it's a mere assumption.
-Therefore, non-linear methods that do not rely on the assumption of a low-dimensional manifold structure, such as kernel PCA might be more useful in some cases. [MAYBE IN THE DISCUSSION PART?]
+%REFERENCE: self-organising: [Kohonen1990, Kohonen1993, Kohonen2001]
+% self-organising: They work pretty well on most contexts, very simple to understand and implrement, but lack from a solid mathematical framework (they are noc optimising any functional and they cannot be put in a statistical framework)
 
 In the following, we want to give an overview of the main manifold learning algorithms applicable to our data set. However, we will keep the maths to the lowest level possible.
 % In mathematics, a manifold is a topological space that locally resembles Euclidean space near each point. More precisely, each point of an n-dimensional manifold has a neighbourhood that is homeomorphic to the Euclidean space of dimension n.
@@ -779,6 +801,9 @@ Another consequence of preserving local structures  is that natural clusters in 
 In this sense, DR and clustering can be regarded as two sides of the same coin and this connection has been explored in greater detail in [REFERENCE LAPLACIAN EIGENMAPS FOR DR, 2002]. 
 This is in contrast to global methods, eg in ..LLE.... where pairwise geodesic distances between points are preserved.
 
+%GG The geodesic distance between two points in a manifold is the one measured along the manifold itself
+%in practical terms it is computed as the shortest path in a neighbourhood graph connecting each observation to its K-nearest neighbours
+
 However, not all data sets necessarily have meaningful clusters; in these cases other methods such as Isomap or classic PCA might be more appropriate. 
 
 %WRITE AS PSEUDOCODE
@@ -855,11 +880,12 @@ The Julia implementation of the algorithm in the package \textit{ManifoldLearnin
 
 %%----------------------------------------------------------------------------------------------------------------------------------------
 \hfill
-\subsubsection{Isometric Mapping (Isomap)}
+\subsubsection{Isometric mapping (Isomap)}
 %REFERENCE: web.mit.edu/cocosci/Papers/sci_reprint.pdf -- GOOD PAPER
 
 Isomap can be seen as an extension of MDS. % or KPCA. 
 As the name suggests, it tries to find a lower-dimensional embedding which maintains geodesic distances between all points [REFERENCE].  
+
 It uses \textit{Dijkstra's algorithm} or  the \textit{Floyd–Warshall algorithm} to compute the pair-wise distances between all other points;  uses the Floyd–Warshall algorithm to compute the pair-wise distances between all other points and hence, estimate the full matrix of pair-wise geodesic distances between all of the points. The algorithm then uses MDS the reduced-dimensional positions of all points [REFERENCE].
 
 %1. Nearest neighbour search.
@@ -953,7 +979,7 @@ However, one well-known issue with LLE is the regularisation problem. When the n
 
 %%----------------------------------------------------------------------------------------------------------------------------------------
 \hfill
-\subsubsection{Hessian Locally-Linear Embedding (Hessian LLE)}
+\subsubsection{Hessian locally-linear embedding (Hessian LLE)}
 %REFERENCE: http://www.pnas.org/content/100/10/5591
 [UNFINISHED]
 
@@ -1121,8 +1147,31 @@ An initial population is created containing a predefined number of individuals (
 
 \subsection{DR and the process over the project}\label{discussion}
 
-As there are packages for DR available in Julia already, I was planning on comparing and evaluating different methods of DR, linear and non-linear, on a certain data set (real data and simulated data) — as performance of different algorithms heavily depend on the nature of the data — and evaluate which ones work best. Following the \textit{No free lunch theorem}, there is no best method; it depends on the specific data set.
+As there are packages for DR available in Julia already, I was planning on comparing and evaluating different methods of DR, linear and non-linear, on a certain data set (real data and simulated data) — as performance of different algorithms heavily depend on the nature of the data — and evaluate which ones work best. 
+
+However, as hardly any methods in \textit{MultivariateStats.jl} and \textit{ManifoldLearning.jl} were actually running (eg only a third of the six manifold learning techniques), even with the help of the Julia community, my initial turned out to be over-ambitious due to the major challenges in Julia explained in [REFERENCE]. 
+They methods have been partially flagged for fixing by the time of writing this report. Therefore, we were limited to few methods such as PCA, PPCA, MDS, KPCA and LEM and LTSA to test our given sample data set. However for the latter two, the returned objects no user recipe functions including plotting have been implemented and are therefore of no practical use. Another PCA based on SVD was implemented. \\
+
+%Due to lack of documentation, it was unclear, what the 
+
+Two implementations of t-SNE are available in Julia [REFERENCE, REFERENCE]; none of the packages have been added to the \textit{ManifoldLearning.jl} package since the latest Julia fails to build them though. Also, they depended on the package \textit{Gadfly} that was unstable or \textit{RDatasets} that was not compatible with other packages we were using at the time respectively. Also, a documentation of how to call the function needs to be added. \\
+
+On the other hand, in Python all the major manifold learning methods are implemented (see \textit{\url{}http://scikit-learn.org/stable/modules/manifold.html}}) and worked smoothly; also the package \textit{ScikitLearn.jl} had major flaws and even though I often did, any Python-package in Julia was recommended not to be used by some members of the community also due to instability. \\
+
+As there was a tradeoff for me between working on DR and contributing to our actual project. 
+For the first one, I could have reimplemented already existing, but broken, methods to maybe gain a better understanding for the algorithms or implemented other methods, eg the JADE algorithm for ICA or a rather involved manifold learning algorithm, such as an optimised version t-SNE. The latter could be another project, certainly beyond the scope of our project. However, I didn’t see much point in trying to “reinvent the wheel”, and the risk that it might not work for future Julia versions if it depends on other packages was not motivating for me. Also, we had not enough data available to test the algorithm on that would have justified an implementation; sample data sets from \textit{RDataset} were difficult as the package was not compatible with \textit{DiffentialEquations.jl} and all in all, it was of little use for our actual project. I therefore based my understanding of the algorithms, the comparison and their benefits and drawbacks on literature as well as the implementation in Python using \textit{scikit-learn} [REFERENCE].
+For the second one, I was working on the other parts outlined in the preview which went smoothly, the largely Julia packages were reliable and the code can be found in the repository. \\
+
+Facing these major obstacles, DR (in Julia and also the theory, especially manifold learning) is an entirely different project; DR itself is a whole research field. For comments regarding Julia, I refer to the appendix. \\
+
+
+\subsection{When to use which DR method?}
+
+Following the \textit{No free lunch theorem}, there is no best method; it depends on the specific data set.
 Eg LDA would make more sense than PCA if you have a linear classification task; however, empirical studies have showed that it is not always the case [REFERENCE: https://github.com/rasbt/python-machine-learning-book/blob/master/faq/dimensionality-reduction.md]. Although kernel PCA can separate concentric circles, it fails to unfold the Swiss Roll, for example; here, locally linear embedding (LLE) would be more appropriate [REFERENCE: https://github.com/rasbt/python-machine-learning-book/blob/master/faq/dimensionality-reduction.md]. \\
+As we have seen, there are various methods that generate non-linear maps, ie embedding maps of the data points to a lower dimension. Others are self-organising [REEFERENCE] or based on a neural network (see [REFERENCE HOPFIELD] presented in Madeleine Hall's individual report); the problem is usually formalised as a non-liner optimisation problem that can be solved by eg gradient descent. However, the latter only guarantees to return a local optimum; global optima are in general difficult to obtain efficiently. Also, we do not know whether the points actually lie on a manifold of lower dimension -- it's a mere assumption.
+Therefore, non-linear methods that do not rely on the assumption of a low-dimensional manifold structure, such as kernel PCA might be more useful in some cases. [MAYBE IN THE DISCUSSION PART?]
+\\
 % [Quantitative Comparison of Linear and Non-Linear Dimensionality Reduction Techniques for Solar Image Archives 
 Juan M. Banda ]
 It is reasonable to say that DR should be selected on the following criteria based on this priority [REFERENCE]:
@@ -1133,23 +1182,17 @@ It is reasonable to say that DR should be selected on the following criteria bas
 \item Computational cost
 \end{enumerate}
 
-However, as hardly any methods in \textit{MultivariateStats.jl} and \textit{ManifoldLearning.jl} were actually running, even with the help of the Julia community, my initial turned out to be over-ambitious due to the major challenges in Julia explained in [REFERENCE]. 
-They methods have been partially flagged for fixing by the time of writing this report. Therefore, we were limited to few methods such as PCA, PPCA, PCA and LEM and LTSA to test our given sample data set. However for the latter two, the returned objects no user recipe functions including plotting have been implemented and are therefore of no practical use. Another PCA based on SVD was implemented. \\
+%INSERT GEODESIC/ EUCLIDEAN DISTANCE HERE
+%https://arxiv.org/ftp/arxiv/papers/1403/1403.2877.pdf
+
+FIGURE: Euclidean vs geodesic distance. The geodesic distance between two points is the length of the path belonging to a given manifold that joins the two points whereas the Euclidean distance is the length of the linear path between the two points [REFERENCE].
+\\
 
 
-%Due to lack of documentation, it was unclear, what the 
+Regarding popularity in the literature, %analysing the number of citations that ....
+by far the most popular techniques are still classic linear techiques such as PCA of ICA -- probably due to its simplicity and intuitiveness. However, probably due to the non-linear nature of experimental data in many fields, a  tendency towards applying manifold learning techniques could be identified. This might be due to the rise of non-linear experimental data in many fields and its capability of keeping the local structure of the data.
 
-
-Two implementations of t-SNE are available in Julia [REFERENCE, REFERENCE]; none of the packages have been added to the \textit{ManifoldLearning.jl} package since the latest Julia fails to build them though. Also, they depended on the package \textit{Gadfly} that was unstable or \textit{RDatasets} that was not compatible with other packages we were using at the time respectively. Also, a documentation of how to call the function needs to be added. \\
-
-On the other hand, in Python all the major manifold learning methods are implemented (see http://scikit-learn.org/stable/modules/manifold.html) and worked smoothly; also the package \textit{ScikitLearn.jl} had major flaws and even though I often did, any Python-package in Julia was recommended not to be used by some members of the community also due to instability. \\
-
-As there was a tradeoff for me between working on DR and contributing to our actual project. 
-For the first one, I could have reimplemented already existing, but broken, methods to maybe gain a better understanding for the algorithms or implemented other methods, eg the JADE algorithm for ICA or a rather involved manifold learning algorithm, such as an optimised version t-SNE. The latter could be another project, certainly beyond the scope of our project. However, I didn’t see much point in trying to “reinvent the wheel”, and the risk that it might not work for future Julia versions if it depends on other packages was not motivating for me. Also, we had not enough data available to test the algorithm on that would have justified an implementation; sample data sets from \textit{RDataset} were difficult as the package was not compatible with \textit{DiffentialEquations.jl} and all in all, it was of little use for our actual project. I therefore based my understanding of the algorithms, the comparison and their benefits and drawbacks on literature as well as the implementation in Python using \textit{scikit-learn} [REFERENCE].
-For the second one, I was working on the other parts outlined in the preview which went smoothly, the largely Julia packages were reliable and the code can be found in the repository. \\
-
-Facing these major obstacles, DR (in Julia and also the theory, especially manifold learning) is an entirely different project; DR itself is a whole research field. For comments regarding Julia, I refer to the appendix. \\
-
+Likewise, new methods in this fields have been developed in the last two decades.
 
 \subsection{Regarding DR on the simulated data set}
 
@@ -1158,6 +1201,12 @@ Also, the point of time at which DR should be applied has been discussed: As we 
 Another challenge was the biological interpretability. In the case of PCA, the PCs would be interpreted as linear combinations of genes. Due to the way PCA is computed these are genes that correlate positively and could eg be regulated by the same TF or be found in the same pathway. 
 One could try to further investigate that experimentally. \\
 Another idea would be to compare the centroids of the clusters detected by a standard PCA with the basins of attraction or fixed points from the stability analysis and wether they correspond.
+
+\subsection{One problem of Manifold Learning techniques: Scalability}
+During literature research we noticed that manifold learning isn’t widely used in papers but people seem to still rely on standard PCA and other linear DR methods. 
+One reason for that might be that manifold learning techniques depend on the shape of the data, ie the mapping is implicit, and do not scale well [REFERENCE]. 
+% https://arxiv.org/ftp/arxiv/papers/1403/1403.2877.pdf
+One of the main problems of the manifold learning techniques explained here, is that they are only defined in a neighbourhood of the input data and they usually scale very poorly. In secion [FUTURE WORKS] we refer to a recent technique that tries to solve this issue.
 
 
 \subsubsection{Genetic Algorithm}
@@ -1264,11 +1313,10 @@ As the documentation of specific packages including \textit{MultivariateStats.jl
 \subsection{Run DR methods on multiple data sets}
 
 Still an interesting task to do is to run different DR methods explained here, eg by using the scikit-learn methods in Python, on a large pool of data sets; for other methods available in Python that could have been useful for other parts of the project we refer to \ref{suggestionsjulia}. Provided the data is available, the easiest thing to do this would be by using the scikit-learn methods in Python. This way, we can get a feel for when or on what kind of data some methods work best, maybe identify emerging patters, and develop an understanding that is hard to do by just reading literature and understanding the theory. One can then come up with improvement, as there is always room for improvement, test it on sample data sets and work out the maths behind it. A good review where the different DR methods are summarised would be useful, too. Which methods to select is often not easy and highly depends on the data under study.\\
-As mentioned before, feature selection is another motivation for comparing different DR methods.\\
+
 Also, comparing the running time of different methods and cross-check it with results found in literature would be worth doing.
 
 As single cell data are often very noisy which might affect DR techniques, it might be recommendable to preprocess data using some single-cell analysis technique, eg \textit{PAGODA} [REFERENCE].
-
 
 
 \subsection{Manifold learning}
@@ -1279,20 +1327,22 @@ The \textit{Modified Locally-Linear Embedding (MLLE)} algorithm has shown to be 
 Apart from the many manifold learning method that are (currently) not working in Julia, MLLE does not yet exist in Julia and might be a suggestion to implement in the future.\\
 
 
-\subsubsection{Ricci Flow when different curvature} 
+\subsubsection{Ricci Flow if different curvature} 
 We have seen that the standard Manifold Learning algorithms bear the assumption that the local neighbourhood of a point in the high-dimensional space is roughly equal to the tangent space at that point. Even if the neighbourhoods of points on the manifold have very different (Gaussian) curvature, they would still be treated equally and projected down to the lower-dimensional space in the same way. However, as this often is the case, standard DR are poorly neighbourhood preserving. [REFERENCE] suggests a solution to this: We can perform an operation on the higher-dimensional space using Ricci flow before applying manifold DR. With Ricci Flow we transform each local neighbourhood of the higher-dimensional manifold to a patch with constant curvature. Then, the higher-dimensional manifold as a whole is transformed to a subset of a sphere with constant positive curvature. They could show that this method outperforms other manifold learning algorithms with better neighbourhood preserving rate.% https://arxiv.org/pdf/1703.10675.pdf [MAYBE PICTURE FROM RICCI PAPER HERE]
 
 [MAYBE INSERT FIGURE FROM PAPER]
 
+\\
 \subsubsection{Scalability: UMAP}
-During my literature research, I noticed that manifold learning isn’t widely used in papers but people seem to still rely on standard PCA and other linear DR methods. 
-One reason for that might be that manifold learning techniques depend on the shape of the data and do not scale well [REFERENCE]. Also, the maths can be deterring sometimes. Manifold learning in scikit-learn are good enough and there is even a scalable CPU-bound manifold learning package available in Python (\textit{Megaman}). A GPU implementation might come out soon.\\
-A very promising and novel manifold learning technique I found recently is the Uniform Manifold Approximation and Projection (UMAP) on [https://arxiv.org/pdf/1802.03426.pdf]. Mathematically more involved as it draws from techniques in algebraic topology and Riemannian geometry, it scales incredibly well. It is superior to the wildly-used t-SNE in terms of visualisation quality, preserves more of the global structure and runs faster; referring to [https://arxiv.org/pdf/1802.03426.pdf] its running time is indeed astonishing. It is widely applicable as it makes no restrictions regarding embedding dimension. If it could be implemented to run on a GPU even, the running time would massively increase even more. I believe that this projects holds great potential and could be applied to a any type of data set, including biological data.
+
+%Also, the maths can be deterring sometimes. 
+Manifold learning in scikit-learn have proven to be good and there is even a scalable CPU-bound manifold learning package available in Python (\textit{Megaman}). A GPU implementation might come out soon.\\
+Also, a very promising and novel manifold learning technique I found recently is the Uniform Manifold Approximation and Projection (UMAP) on [https://arxiv.org/pdf/1802.03426.pdf]. Mathematically more involved as it draws from techniques in algebraic topology and Riemannian geometry, it scales incredibly well. It is superior to the wildly-used t-SNE in terms of visualisation quality, preserves more of the global structure and runs faster; referring to [https://arxiv.org/pdf/1802.03426.pdf] its running time is indeed astonishing. It is widely applicable as it makes no restrictions regarding embedding dimension. If it could be implemented to run on a GPU even, the running time would massively increase even more. I believe that this projects holds great potential and could be applied to a any type of data set, including biological data.
 
 
 \subsection{Genetic Algorithm}
 
-Other evolutionary algorithms, simulated annealing or divide and conquer techniques could be worth looking into. In the end, there is a no free launch theorem. Also for other metaheuristics, it is the design of that algorithm that determine their performance. And even though the results were not optimal, the GA suited the purpose well.
+Other evolutionary algorithms, simulated annealing or divide and conquer techniques could be worth looking into. In the end, there is a no free launch theorem. Also for other metaheuristics, it is the design of that algorithm that determine their performance. And even though the results were not optimal, the GA suited our purpose well.
 
 
 \subsection{Further work on Julia}
@@ -1302,23 +1352,24 @@ If one wants to contribute to the Julia community, one could update outdated doc
 Apart from MLLE, a rather low hanging fruit would be to implement another ICA method based on the JADE algorithm in Julia or fix the existing one (which fails to converge on our data set) [REFERENCE]; this did not seem any relevant for our project.
 
 
-\section{Personal motivation and conclusion}
+\section{Conclusion}
+For a general conclusion regarding the project, I refer to the group report. For a personal conclusion, we refer to the [FIRST SECTION OF APPENDIX]..
 
-\subsubsection{Why Dimensionality Reduction?}
+\newpage
+\appendix 
+
+\subsection{Personal motivation and conclusion}\label{personalconclusion}
+\textbf{Why Dimensionality Reduction?}\\
 The high-dimensionality of the problem, especially in the real data set, was an initial motivation to apply dimensionality reduction to save computational power but especially in order to visualise data. %and save , %less for simulation purposes.
 My interest in applying DR in the project stemmed the fact that I have hardly worked with it before this project but I was keen on diving deeper into the research in this field. As I had similar projects on simulations in the past, I wasn’t exactly excited about the simulation (PFM) part and the effort to get it running on a GPU in CUDA. My C skills aren’t that great and I believe things could have been implemented far easier and faster if we used CuPy [REFERENCE] and our project was based on Python; in my opinion, initialising kernels in CUDA is a lot of work and I would say not state-of-the-art anymore and there are more convenient tools available. 
-
-\subsubsection{Why so much literature research?}
+\\
+\textbf{Why so much literature research?}
 I was predominantly looking for an interesting research question that we could try to answer or maths that got me “hooked”. Also, I wanted to do read the relevant literature (and ask communities) that explain these methods and their advantages and/or disadvantages to first gain an understanding of which methods are appropriate. Also, especially some manifold learning algorithms are rather involved (mathematically).
-
-\subsubsection{Personal conclusion}
+\\
+\textbf{Personal conclusion: }
 I saw this project and the great part of literature research to it as a learning project. I learned how to use and tried to understand Julia; however, I wouldn’t use Julia as it is now again for a bigger project where the main purpose is not to contribute to the community as for this project, the programming language was a great limitation.
 The project’s code is solely written Julia (except the C parts in CUDA) and we developed something new regarding Waddington’s landscape. I encountered an exciting research field (DR), some interesting papers and ideas for future projects (see [REFERENCE]).
-For a general conclusion regarding the project, I refer to the group report.
 
-
-
-\appendix 
 
 \subsection{Suggestions regarding Julia}\label{suggestionsjulia}
 %To draw a conclusion to that, 
@@ -1331,9 +1382,9 @@ Having said that, I will certainly keep monitoring it as it is further developed
 
 I can see why people get excited Julia. It is an easy language, has good support for functional programming and its raw speed is close to those of a compiled language like C convincingly presented in the cross language validation on \textit{http://julialang.org/}. 
 %Python and other high level languages seem to be far behind in term of speed. 
-However, I was asking myself how the se Python benchmarks were written -- very likely in native Python and not in an optimised version. It might be more meaningful to compare the performance based on tasks and once experts in the specific languages have produced the best code they can to perform these tasks. Indeed, as shown in [REFERENCE] it is possible to achieve the same benchmarks when one uses Python better and its tools. Also regarding running time, I think it is less of a question of whether to use Python, C or Julia but the major difference can be achieved by GPU instead of CPU.
-Still, there are plenty of tools available to optimise Python including \textit{numpy} based on C or the C extension \textit{Cython}, \textit{Numba} that contains high performance functions written directly in Python and also \textit{CuPy} (a NumPy-like API accelerated with CUDA) which I would have preferred for the simulation. The latter might also be handy to run some computations, eg DR methods on different data sets, and compare them to get a feel and start to understand rather than relying on one's understanding from reading literature. One might also try to use Numpy/Scipy with Intel MKL and Intel Compilers to optimise Python code; but often it's lready enough to write critical parts in Cython.\\
-
+However, I was asking myself how the se Python benchmarks were written -- very likely in native Python and not in an optimised version. It might be more meaningful to compare the performance based on tasks and once experts in the specific languages have produced the best code they can to perform these tasks. Indeed, as shown in [REFERENCE] it is possible to achieve the same benchmarks when one uses Python better and its tools. This is supported by the running time analysis regarding the simulation on the GPU (see group report).
+In fact, I think it is less of a question of whether to use Python, C or Julia but the major difference can be achieved by GPU instead of CPU.\\
+Still, there are plenty of tools available to optimise Python including \textit{numpy} based on C or the C extension \textit{Cython}, \textit{Numba} that contains high performance functions written directly in Python and also \textit{CuPy} (a NumPy-like API accelerated with CUDA) which I would have preferred for the simulation. The latter might also be handy to run some computations, eg DR methods on different data sets, and compare them to get a feel and start to understand rather than relying on one's understanding from reading literature. One might also try to use Numpy/Scipy with Intel MKL and Intel Compilers to optimise Python code; but often it is already enough to write critical parts in Cython.\\
 \textit{PyTorch} as an machine learning library for Python that also runs on the GPU might have been useful to get manifold learning algorithms in \textit{scikitlearn} onto a GPU. PyTorch already optimises standard optimisation algorithms.  \\
 
 As things move very fast in this field that it is almost hard to keep up, and given the enormous brain power including money of companies that are behind tools like \textit{PyTorch} and also \textit{TensorFlow}, the numerus libraries that are available in Python, it is very unlikely that a few Julia developers will outcompete the developments currently happening in Python. \\
@@ -1357,7 +1408,7 @@ The following is part is a reflection on learnings that will be useful for the p
 %\subsubsection{Project Management skills}
 
 Working in a group can often be challenging but also a great opportunity to develop soft skills useful elsewhere in life. Over the course of the project, I could develop project management skills and I found it great to work in a diverse team, with people from different disciplines. 
-We had to establish means of communication (between group members as well as group and supervisor). Since we were locally close to each other most of the time, a pad (\textit{http://pad.spline.de/}), emails and a messaging app were sufficient for exchanging ideas including sharing links to interesting papers.
+We had to establish means of communication (between group members as well as group and supervisor). Since we were locally close to each other most of the time, a pad (\textit{\url{http://pad.spline.de/}}), emails and a messaging app were sufficient for exchanging ideas including sharing links to interesting papers.
 
 \subsection{My top 6 learnings:}
 
@@ -1367,22 +1418,22 @@ The plan was “to look before we dived deep”. We wanted to get a feel of what
 %at some point we needed to start,
 
 \hfill
-\subsubsection{Learning \#0: Get all the set-up done quickly.}
+\subsubsection{Learning \#0: Get all the set-up done quickly}
 
 Install or ask to have all software installed right from the beginning; this saves emails and time. Also make sure that the computer is sufficiently fast and the graphics okay or switch to a laptop. Make sure you can access the computer from remote, so you can work independently.
 
 \hfill
-\subsubsection{Learning \#1: Divide tasks and define interfaces clearly.}
+\subsubsection{Learning \#1: Divide tasks and define interfaces clearly}
 Even though we could not clearly define functionalities required and interfaces (input/output) between certain components of the work from the beginning, we did manage to split work to explore different parts of the project early-on. However, we carried our “exploratory phase” (toy models, literature research etc) until very far into the project, kept brainstorming ideas and adjusting (individual) goals as we went along; this might have been largely due to the fact that we could not start off with a clear-defined goal and our work wasn’t based on one single paper. \\
 Regular meetings to discuss progress and inform other group members about one’s work and keep everyone in the loop was proven to be useful. 
 
 \hfill
-\subsubsection{Learning \#2: Always pull and push.}
+\subsubsection{Learning \#2: Always pull and push}
 We chose \textit{GitHub} as a version control repository to share, backup and edit each other’s code as well as overleaf to work on the report; our final code can be found on \textit{https://github.com/burfel/waddington-project}. One take-away from working with GitHub, especially when working on one single branch, is: \textit{Always pull first and push regularly!} This cannot be repeated often enough. This spares time-consuming merging phases and avoid double-work which often happened as we were working on the same code at the same time. 
 I promote an open approach of sharing source code as I hold this to be important for an sustainable future in science; too often results cannot be reproduces when the code isn’t reviewed or even shared.
 
 \hfill
-\subsubsection{Learning \#3: Comment code.}
+\subsubsection{Learning \#3: Comment code}
 Commenting code is especially necessary when working together on code and for documentation reasons for users or developers to build upon your code but also to make it understandable to you and “why” you implemented it that way — as one wise man once said to me: “Each line of comment is a conversation between you and your future self”. Also using meaningful variable names and formatting the code consistently can have great benefits.
 Understanding other people’s (uncommented) code often takes more time than starting from scratch — a major problem in industry that has been addressed by businesses like [CODEPLOT ETC]; however, comprehending commented and readable code can be enriching and help develop empathy for people. In the end, writing code is like writing poetry. 
 I had to learn this lesson in the past the hard way
@@ -1391,11 +1442,11 @@ I had to learn this lesson in the past the hard way
 and was trying to get my team members stick to that rule as well. This prevents time drains and errors. 
 
 \hfill
-\subsubsection{Learning \#4: Do not get lost in literature research, keep track of your readings.}
+\subsubsection{Learning \#4: Do not get lost in literature research, keep track of your readings}
 This might especially be a personal learning. Constant alerts by \textit{Google scholar} and \textit{pubmed} were constantly throwing me back into reading mode, even during the implementation part, but most of the time not relevant. It is easy to get dragged away and find things you might be more interested in working on (eg topological data analysis tools are interesting but only remotely relevant for our 12-week project), especially if you lack a clear-defined goal. Literature research often can be overwhelming. Therefore, it is good to find a way how to best keep track of the readings and resources and tools used for literature research; otherwise, it can make the write-up especially painful. %I learnt this too late.
 
 \hfill
-\subsubsection{Learning \#5: Keep track of your achievements/ problems/ ideas.}
+\subsubsection{Learning \#5: Keep track of your achievements/ problems/ ideas}
 Also, to reflect weekly on the work like writing down your weekly achievements and problems and ideas and steps for the following week, seems like a motivating and useful thing to do. This might help you to refocus and prevent to go overboard with the reading (see learning \#5) and fits my big-picture thinking. Also, it might prevent you from jumping between tasks too much. Setting milestones for oneself or the group might be useful too. 
 
 

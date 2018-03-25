@@ -15,49 +15,49 @@
 \BOOKMARK [3][-]{subsubsection.4.1.1}{Principal Component Analysis \(PCA\)}{subsection.4.1}% 15
 \BOOKMARK [3][-]{subsubsection.4.1.2}{Singular Value Decomposition \(SVD\)}{subsection.4.1}% 16
 \BOOKMARK [3][-]{subsubsection.4.1.3}{Probabilistic Principal Component Analysis \(PPCA\)}{subsection.4.1}% 17
-\BOOKMARK [3][-]{subsubsection.4.1.4}{ICA}{subsection.4.1}% 18
-\BOOKMARK [3][-]{subsubsection.4.1.5}{Kernel PCA \(kPCA\)}{subsection.4.1}% 19
+\BOOKMARK [3][-]{subsubsection.4.1.4}{Independent Component Analysis \(ICA\)}{subsection.4.1}% 18
+\BOOKMARK [3][-]{subsubsection.4.1.5}{Kernel PCA \(KPCA\)}{subsection.4.1}% 19
 \BOOKMARK [3][-]{subsubsection.4.1.6}{Other approaches}{subsection.4.1}% 20
 \BOOKMARK [2][-]{subsection.4.2}{Manifold learning}{section.4}% 21
 \BOOKMARK [3][-]{subsubsection.4.2.1}{t-distributed stochastic neighbour embedding \(t-SNE\)}{subsection.4.2}% 22
 \BOOKMARK [3][-]{subsubsection.4.2.2}{Laplacian eigenmaps \(LEM\)}{subsection.4.2}% 23
-\BOOKMARK [3][-]{subsubsection.4.2.3}{Isometric Mapping \(Isomap\)}{subsection.4.2}% 24
+\BOOKMARK [3][-]{subsubsection.4.2.3}{Isometric mapping \(Isomap\)}{subsection.4.2}% 24
 \BOOKMARK [3][-]{subsubsection.4.2.4}{Locally-linear embedding \(LLE\)}{subsection.4.2}% 25
-\BOOKMARK [3][-]{subsubsection.4.2.5}{Hessian Locally-Linear Embedding \(Hessian LLE\)}{subsection.4.2}% 26
+\BOOKMARK [3][-]{subsubsection.4.2.5}{Hessian locally-linear embedding \(Hessian LLE\)}{subsection.4.2}% 26
 \BOOKMARK [3][-]{subsubsection.4.2.6}{Local tangent space alignment \(LTSA\)}{subsection.4.2}% 27
 \BOOKMARK [3][-]{subsubsection.4.2.7}{Diffusion maps and other methods}{subsection.4.2}% 28
 \BOOKMARK [1][-]{section.5}{Genetic algorithm}{}% 29
 \BOOKMARK [1][-]{section.6}{Extended discussion}{}% 30
 \BOOKMARK [2][-]{subsection.6.1}{DR and the process over the project}{section.6}% 31
-\BOOKMARK [2][-]{subsection.6.2}{Regarding DR on the simulated data set}{section.6}% 32
-\BOOKMARK [3][-]{subsubsection.6.2.1}{Genetic Algorithm}{subsection.6.2}% 33
-\BOOKMARK [3][-]{subsubsection.6.2.2}{Different kernels in Kernel Density Estimation \(KDE\)}{subsection.6.2}% 34
-\BOOKMARK [1][-]{section.7}{\(Personal\) challenges and comments}{}% 35
-\BOOKMARK [2][-]{subsection.7.1}{Motivation}{section.7}% 36
-\BOOKMARK [2][-]{subsection.7.2}{Julia}{section.7}% 37
-\BOOKMARK [3][-]{subsubsection.7.2.1}{High volatility}{subsection.7.2}% 38
-\BOOKMARK [3][-]{subsubsection.7.2.2}{Conflicts between packages}{subsection.7.2}% 39
-\BOOKMARK [3][-]{subsubsection.7.2.3}{Documentation}{subsection.7.2}% 40
-\BOOKMARK [1][-]{section.8}{Future work}{}% 41
-\BOOKMARK [2][-]{subsection.8.1}{Run DR methods on multiple data sets}{section.8}% 42
-\BOOKMARK [2][-]{subsection.8.2}{Manifold learning}{section.8}% 43
-\BOOKMARK [3][-]{subsubsection.8.2.1}{MLLE}{subsection.8.2}% 44
-\BOOKMARK [3][-]{subsubsection.8.2.2}{Ricci Flow when different curvature}{subsection.8.2}% 45
-\BOOKMARK [3][-]{subsubsection.8.2.3}{Scalability: UMAP}{subsection.8.2}% 46
-\BOOKMARK [2][-]{subsection.8.3}{Genetic Algorithm}{section.8}% 47
-\BOOKMARK [2][-]{subsection.8.4}{\(}{section.8}% 48
-\BOOKMARK [1][-]{section.9}{Personal motivation and conclusion}{}% 49
-\BOOKMARK [2][-]{subsubsection.9.0.1}{Why Dimensionality Reduction?}{section.9}% 50
-\BOOKMARK [3][-]{subsubsection.9.0.2}{Why so much literature research?}{subsubsection.9.0.1}% 51
-\BOOKMARK [3][-]{subsubsection.9.0.3}{Personal conclusion}{subsubsection.9.0.1}% 52
-\BOOKMARK [1][-]{section*.1}{Appendix}{}% 53
-\BOOKMARK [2][-]{subsection.Appendix.A.1}{Suggestions regarding Julia}{section*.1}% 54
-\BOOKMARK [2][-]{subsection.Appendix.A.2}{On a personal note \205 reflection and learnings}{section*.1}% 55
-\BOOKMARK [2][-]{subsection.Appendix.A.3}{My top 6 learnings:}{section*.1}% 56
-\BOOKMARK [3][-]{subsubsection.Appendix.A.3.1}{Learning \0430: Get all the set-up done quickly.}{subsection.Appendix.A.3}% 57
-\BOOKMARK [3][-]{subsubsection.Appendix.A.3.2}{Learning \0431: Divide tasks and define interfaces clearly.}{subsection.Appendix.A.3}% 58
-\BOOKMARK [3][-]{subsubsection.Appendix.A.3.3}{Learning \0432: Always pull and push.}{subsection.Appendix.A.3}% 59
-\BOOKMARK [3][-]{subsubsection.Appendix.A.3.4}{Learning \0433: Comment code.}{subsection.Appendix.A.3}% 60
-\BOOKMARK [3][-]{subsubsection.Appendix.A.3.5}{Learning \0434: Do not get lost in literature research, keep track of your readings.}{subsection.Appendix.A.3}% 61
-\BOOKMARK [3][-]{subsubsection.Appendix.A.3.6}{Learning \0435: Keep track of your achievements/ problems/ ideas.}{subsection.Appendix.A.3}% 62
+\BOOKMARK [2][-]{subsection.6.2}{When to use which DR method?}{section.6}% 32
+\BOOKMARK [2][-]{subsection.6.3}{Regarding DR on the simulated data set}{section.6}% 33
+\BOOKMARK [2][-]{subsection.6.4}{One problem of Manifold Learning techniques: Scalability}{section.6}% 34
+\BOOKMARK [3][-]{subsubsection.6.4.1}{Genetic Algorithm}{subsection.6.4}% 35
+\BOOKMARK [3][-]{subsubsection.6.4.2}{Different kernels in Kernel Density Estimation \(KDE\)}{subsection.6.4}% 36
+\BOOKMARK [1][-]{section.7}{\(Personal\) challenges and comments}{}% 37
+\BOOKMARK [2][-]{subsection.7.1}{Motivation}{section.7}% 38
+\BOOKMARK [2][-]{subsection.7.2}{Julia}{section.7}% 39
+\BOOKMARK [3][-]{subsubsection.7.2.1}{High volatility}{subsection.7.2}% 40
+\BOOKMARK [3][-]{subsubsection.7.2.2}{Conflicts between packages}{subsection.7.2}% 41
+\BOOKMARK [3][-]{subsubsection.7.2.3}{Documentation}{subsection.7.2}% 42
+\BOOKMARK [1][-]{section.8}{Future work}{}% 43
+\BOOKMARK [2][-]{subsection.8.1}{Run DR methods on multiple data sets}{section.8}% 44
+\BOOKMARK [2][-]{subsection.8.2}{Manifold learning}{section.8}% 45
+\BOOKMARK [3][-]{subsubsection.8.2.1}{MLLE}{subsection.8.2}% 46
+\BOOKMARK [3][-]{subsubsection.8.2.2}{Ricci Flow if different curvature}{subsection.8.2}% 47
+\BOOKMARK [3][-]{subsubsection.8.2.3}{Scalability: UMAP}{subsection.8.2}% 48
+\BOOKMARK [2][-]{subsection.8.3}{Genetic Algorithm}{section.8}% 49
+\BOOKMARK [2][-]{subsection.8.4}{Further work on Julia}{section.8}% 50
+\BOOKMARK [1][-]{section.9}{Conclusion}{}% 51
+\BOOKMARK [1][-]{section*.1}{Appendix}{}% 52
+\BOOKMARK [2][-]{subsection.Appendix.A.1}{Personal motivation and conclusion}{section*.1}% 53
+\BOOKMARK [2][-]{subsection.Appendix.A.2}{Suggestions regarding Julia}{section*.1}% 54
+\BOOKMARK [2][-]{subsection.Appendix.A.3}{On a personal note \205 reflection and learnings}{section*.1}% 55
+\BOOKMARK [2][-]{subsection.Appendix.A.4}{My top 6 learnings:}{section*.1}% 56
+\BOOKMARK [3][-]{subsubsection.Appendix.A.4.1}{Learning \0430: Get all the set-up done quickly}{subsection.Appendix.A.4}% 57
+\BOOKMARK [3][-]{subsubsection.Appendix.A.4.2}{Learning \0431: Divide tasks and define interfaces clearly}{subsection.Appendix.A.4}% 58
+\BOOKMARK [3][-]{subsubsection.Appendix.A.4.3}{Learning \0432: Always pull and push}{subsection.Appendix.A.4}% 59
+\BOOKMARK [3][-]{subsubsection.Appendix.A.4.4}{Learning \0433: Comment code}{subsection.Appendix.A.4}% 60
+\BOOKMARK [3][-]{subsubsection.Appendix.A.4.5}{Learning \0434: Do not get lost in literature research, keep track of your readings}{subsection.Appendix.A.4}% 61
+\BOOKMARK [3][-]{subsubsection.Appendix.A.4.6}{Learning \0435: Keep track of your achievements/ problems/ ideas}{subsection.Appendix.A.4}% 62
 \BOOKMARK [1][-]{section*.2}{References}{}% 63
