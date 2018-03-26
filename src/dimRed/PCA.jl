@@ -99,6 +99,36 @@ Plots.plot!(s,xlabel="Gdf3",ylabel="Fgf4", legend=false)
 #PyPlot.title("PCA projection onto the first 3 PCs")
 Plots.savefig("PCA_reconstruction_2D_impGenes")
 
+##-------------old data set for comparison-------------------------------------
+uu = Plots.scatter(data_array[31,:], data_array[22,:],data_array[11,:],marker=:circle,linewidth=0, title="Visualisation of the original data set (3 dimensions with highest variance)")
+#scatter!(versicolor[1,:],versicolor[2,:],versicolor[3,:],marker=:circle,linewidth=0)
+#scatter!(virginica[1,:],virginica[2,:],virginica[3,:],marker=:circle,linewidth=0)
+Plots.plot!(uu,xlabel="Gdf3",ylabel="Fgf4",zlabel="Cldn6", legend=false)
+#PyPlot.title("PCA projection onto the first 3 PCs")
+Plots.savefig("PCA_reconstruction_3D_impGenes")
+
+u = Plots.scatter(data_array[31,:],data_array[22,:], marker=:circle,linewidth=0, title="Visualisation of the original data set (2 dimensions with highest variance)")
+#scatter!(versicolor[1,:],versicolor[2,:],versicolor[3,:],marker=:circle,linewidth=0)
+#scatter!(virginica[1,:],virginica[2,:],virginica[3,:],marker=:circle,linewidth=0)
+Plots.plot!(u,xlabel="Gdf3",ylabel="Fgf4", legend=false)
+#PyPlot.title("PCA projection onto the first 3 PCs")
+#Plots.savefig("PCA_reconstruction_2D_impGenes")
+
+
+vv = Plots.scatter(data_array[31,:], data_array[22,:],data_array[11,:],marker=:circle,linewidth=0, title="Visualisation of the original data set (first 3 dimensions)")
+#scatter!(versicolor[1,:],versicolor[2,:],versicolor[3,:],marker=:circle,linewidth=0)
+#scatter!(virginica[1,:],virginica[2,:],virginica[3,:],marker=:circle,linewidth=0)
+Plots.plot!(vv,xlabel="x_1",ylabel="x_2",zlabel="x_3", legend=false)
+#PyPlot.title("PCA projection onto the first 3 PCs")
+#Plots.savefig("PCA_reconstruction_3D_impGenes")
+
+v = Plots.scatter(data_array[31,:],data_array[22,:], marker=:circle,linewidth=0, title="Visualisation of the original data set (first 2 dimensions)")
+#scatter!(versicolor[1,:],versicolor[2,:],versicolor[3,:],marker=:circle,linewidth=0)
+#scatter!(virginica[1,:],virginica[2,:],virginica[3,:],marker=:circle,linewidth=0)
+Plots.plot!(v,xlabel="x_1",ylabel="x_2", legend=false)
+#PyPlot.title("PCA projection onto the first 3 PCs")
+#Plots.savefig("PCA_reconstruction_2D_impGenes")
+
 
 ##-------------PLOT PROJECTION (rotation matrix)---------------------------------------
 t = Plots.bar(M1_proj[1,:],M1_proj[2,:],M1_proj[3,:],marker=:circle,linewidth=0, title="PCA rotation matrix for the first 3 PCs")
