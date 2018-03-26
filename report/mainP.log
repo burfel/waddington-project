@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.6.28)  25 MAR 2018 11:32
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.6.28)  26 MAR 2018 02:33
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -642,8 +642,8 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.141 \usepackage
-                 {hyperref}
+l.142 
+      
 The package url has already been loaded with options:
   []
 There has now been an attempt to load it with options
@@ -653,119 +653,7 @@ Adding the global options:
 to your \documentclass declaration may fix this.
 Try typing  <return>  to proceed.
 
-(/usr/local/texlive/2016/texmf-dist/tex/latex/hyperref/hyperref.sty
-Package: hyperref 2016/05/05 v6.83n Hypertext links for LaTeX
-
-(/usr/local/texlive/2016/texmf-dist/tex/generic/oberdiek/hobsub-hyperref.sty
-Package: hobsub-hyperref 2016/05/16 v1.14 Bundle oberdiek, subset hyperref (HO)
-
-
-(/usr/local/texlive/2016/texmf-dist/tex/generic/oberdiek/hobsub-generic.sty
-Package: hobsub-generic 2016/05/16 v1.14 Bundle oberdiek, subset generic (HO)
-Package: hobsub 2016/05/16 v1.14 Construct package bundles (HO)
-Package hobsub Info: Skipping package `infwarerr' (already loaded).
-Package hobsub Info: Skipping package `ltxcmds' (already loaded).
-Package: ifluatex 2016/05/16 v1.4 Provides the ifluatex switch (HO)
-Package ifluatex Info: LuaTeX not detected.
-Package: ifvtex 2016/05/16 v1.6 Detect VTeX and its facilities (HO)
-Package ifvtex Info: VTeX not detected.
-Package: intcalc 2016/05/16 v1.2 Expandable calculations with integers (HO)
-Package: ifpdf 2016/05/14 v3.1 Provides the ifpdf switch
-Package: etexcmds 2016/05/16 v1.6 Avoid name clashes with e-TeX commands (HO)
-Package etexcmds Info: Could not find \expanded.
-(etexcmds)             That can mean that you are not using pdfTeX 1.50 or
-(etexcmds)             that some package has redefined \expanded.
-(etexcmds)             In the latter case, load this package earlier.
-Package: kvsetkeys 2016/05/16 v1.17 Key value parser (HO)
-Package: kvdefinekeys 2016/05/16 v1.4 Define keys (HO)
-Package: pdftexcmds 2016/05/10 v0.21 Utility functions of pdfTeX for LuaTeX (HO
-)
-Package pdftexcmds Info: LuaTeX not detected.
-Package pdftexcmds Info: \pdf@primitive is available.
-Package pdftexcmds Info: \pdf@ifprimitive is available.
-Package pdftexcmds Info: \pdfdraftmode found.
-Package: pdfescape 2016/05/16 v1.14 Implements pdfTeX's escape features (HO)
-Package: bigintcalc 2016/05/16 v1.4 Expandable calculations on big integers (HO
-)
-Package: bitset 2016/05/16 v1.2 Handle bit-vector datatype (HO)
-Package: uniquecounter 2016/05/16 v1.3 Provide unlimited unique counter (HO)
-)
-Package hobsub Info: Skipping package `hobsub' (already loaded).
-Package: letltxmacro 2016/05/16 v1.5 Let assignment for LaTeX macros (HO)
-Package: hopatch 2016/05/16 v1.3 Wrapper for package hooks (HO)
-Package: xcolor-patch 2016/05/16 xcolor patch
-Package: atveryend 2016/05/16 v1.9 Hooks at the very end of document (HO)
-Package atveryend Info: \enddocument detected (standard20110627).
-Package: atbegshi 2016/05/16 v1.17 At begin shipout hook (HO)
-Package: refcount 2016/05/16 v3.5 Data extraction from label references (HO)
-Package: hycolor 2016/05/16 v1.8 Color options for hyperref/bookmark (HO)
-)
-(/usr/local/texlive/2016/texmf-dist/tex/generic/ifxetex/ifxetex.sty
-Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
-)
-(/usr/local/texlive/2016/texmf-dist/tex/latex/oberdiek/auxhook.sty
-Package: auxhook 2016/05/16 v1.4 Hooks for auxiliary files (HO)
-)
-(/usr/local/texlive/2016/texmf-dist/tex/latex/oberdiek/kvoptions.sty
-Package: kvoptions 2016/05/16 v3.12 Key value format for package options (HO)
-)
-\@linkdim=\dimen146
-\Hy@linkcounter=\count122
-\Hy@pagecounter=\count123
-
-(/usr/local/texlive/2016/texmf-dist/tex/latex/hyperref/pd1enc.def
-File: pd1enc.def 2016/05/05 v6.83n Hyperref: PDFDocEncoding definition (HO)
-Now handling font encoding PD1 ...
-... no UTF-8 mapping file for font encoding PD1
-)
-\Hy@SavedSpaceFactor=\count124
-
-(/usr/local/texlive/2016/texmf-dist/tex/latex/latexconfig/hyperref.cfg
-File: hyperref.cfg 2002/06/06 v1.2 hyperref configuration of TeXLive
-)
-Package hyperref Info: Hyper figures OFF on input line 4446.
-Package hyperref Info: Link nesting OFF on input line 4451.
-Package hyperref Info: Hyper index ON on input line 4454.
-Package hyperref Info: Plain pages OFF on input line 4461.
-Package hyperref Info: Backreferencing OFF on input line 4466.
-Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
-Package hyperref Info: Bookmarks ON on input line 4691.
-\c@Hy@tempcnt=\count125
-LaTeX Info: Redefining \url on input line 5044.
-\XeTeXLinkMargin=\dimen147
-\Fld@menulength=\count126
-\Field@Width=\dimen148
-\Fld@charsize=\dimen149
-Package hyperref Info: Hyper figures OFF on input line 6298.
-Package hyperref Info: Link nesting OFF on input line 6303.
-Package hyperref Info: Hyper index ON on input line 6306.
-Package hyperref Info: backreferencing OFF on input line 6313.
-Package hyperref Info: Link coloring OFF on input line 6318.
-Package hyperref Info: Link coloring with OCG OFF on input line 6323.
-Package hyperref Info: PDF/A mode OFF on input line 6328.
-LaTeX Info: Redefining \ref on input line 6368.
-LaTeX Info: Redefining \pageref on input line 6372.
-\Hy@abspage=\count127
-\c@Item=\count128
-\c@Hfootnote=\count129
-)
-
-Package hyperref Message: Driver (autodetected): hpdftex.
-
-(/usr/local/texlive/2016/texmf-dist/tex/latex/hyperref/hpdftex.def
-File: hpdftex.def 2016/05/05 v6.83n Hyperref driver for pdfTeX
-\Fld@listcount=\count130
-\c@bookmark@seq@number=\count131
-
-(/usr/local/texlive/2016/texmf-dist/tex/latex/oberdiek/rerunfilecheck.sty
-Package: rerunfilecheck 2016/05/16 v1.8 Rerun checks for auxiliary files (HO)
-Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
-82.
-)
-\Hy@SectionHShift=\skip54
-)
-\c@theorem=\count132
-
+\c@theorem=\count122
 (./mainP.aux)
 \openout1 = `mainP.aux'.
 
@@ -781,29 +669,59 @@ LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 151.
 LaTeX Font Info:    ... okay on input line 151.
 LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 151.
 LaTeX Font Info:    ... okay on input line 151.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 151.
-LaTeX Font Info:    ... okay on input line 151.
 
 -- Lines per column: 58 (exact).
 (/usr/local/texlive/2016/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count133
-\scratchdimen=\dimen150
+\scratchcounter=\count123
+\scratchdimen=\dimen146
 \scratchbox=\box32
-\nofMPsegments=\count134
-\nofMParguments=\count135
+\nofMPsegments=\count124
+\nofMParguments=\count125
 \everyMPshowfont=\toks26
-\MPscratchCnt=\count136
-\MPscratchDim=\dimen151
-\MPnumerator=\count137
-\makeMPintoPDFobject=\count138
+\MPscratchCnt=\count126
+\MPscratchDim=\dimen147
+\MPnumerator=\count127
+\makeMPintoPDFobject=\count128
 \everyMPtoPDFconversion=\toks27
-) (/usr/local/texlive/2016/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
+) (/usr/local/texlive/2016/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
+Package: pdftexcmds 2016/05/10 v0.21 Utility functions of pdfTeX for LuaTeX (HO
+)
+
+(/usr/local/texlive/2016/texmf-dist/tex/generic/oberdiek/ifluatex.sty
+Package: ifluatex 2016/05/16 v1.4 Provides the ifluatex switch (HO)
+Package ifluatex Info: LuaTeX not detected.
+)
+(/usr/local/texlive/2016/texmf-dist/tex/generic/oberdiek/ifpdf.sty
+Package: ifpdf 2016/05/14 v3.1 Provides the ifpdf switch
+)
+Package pdftexcmds Info: LuaTeX not detected.
+Package pdftexcmds Info: \pdf@primitive is available.
+Package pdftexcmds Info: \pdf@ifprimitive is available.
+Package pdftexcmds Info: \pdfdraftmode found.
+)
+(/usr/local/texlive/2016/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
 
 (/usr/local/texlive/2016/texmf-dist/tex/latex/oberdiek/grfext.sty
 Package: grfext 2016/05/16 v1.2 Manage graphics extensions (HO)
-)
+
+(/usr/local/texlive/2016/texmf-dist/tex/generic/oberdiek/kvdefinekeys.sty
+Package: kvdefinekeys 2016/05/16 v1.4 Define keys (HO)
+))
+(/usr/local/texlive/2016/texmf-dist/tex/latex/oberdiek/kvoptions.sty
+Package: kvoptions 2016/05/16 v3.12 Key value format for package options (HO)
+
+(/usr/local/texlive/2016/texmf-dist/tex/generic/oberdiek/kvsetkeys.sty
+Package: kvsetkeys 2016/05/16 v1.17 Key value parser (HO)
+
+(/usr/local/texlive/2016/texmf-dist/tex/generic/oberdiek/etexcmds.sty
+Package: etexcmds 2016/05/16 v1.6 Avoid name clashes with e-TeX commands (HO)
+Package etexcmds Info: Could not find \expanded.
+(etexcmds)             That can mean that you are not using pdfTeX 1.50 or
+(etexcmds)             that some package has redefined \expanded.
+(etexcmds)             In the latter case, load this package earlier.
+)))
 Package grfext Info: Graphics extension search list:
 (grfext)             [.png,.pdf,.jpg,.mps,.jpeg,.jbig2,.jb2,.PNG,.PDF,.JPG,.JPE
 G,.JBIG2,.JB2,.eps]
@@ -816,7 +734,6 @@ e
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: subfig package v1.3 is loaded.
 Package caption Info: float package is loaded.
-Package caption Info: hyperref package is loaded.
 Package caption Info: End \AtBeginDocument code.
 LaTeX Info: Redefining \celsius on input line 151.
 Package gensymb Info: Faking symbols for \degree and \celsius on input line 151
@@ -830,26 +747,7 @@ Package gensymb Info: Using \Omega for \ohm on input line 151.
 
 Package gensymb Warning: Not defining \micro.
 
-\AtBeginShipoutBox=\box33
-Package hyperref Info: Link coloring OFF on input line 151.
-(/usr/local/texlive/2016/texmf-dist/tex/latex/hyperref/nameref.sty
-Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
-
-(/usr/local/texlive/2016/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
-Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
-)
-\c@section@level=\count139
-)
-LaTeX Info: Redefining \ref on input line 151.
-LaTeX Info: Redefining \pageref on input line 151.
-LaTeX Info: Redefining \nameref on input line 151.
-
-(./mainP.out) (./mainP.out)
-\@outlinefile=\write3
-\openout3 = `mainP.out'.
-
 LaTeX Font Info:    Try loading font information for U+msa on input line 156.
-
 (/usr/local/texlive/2016/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
@@ -880,11 +778,33 @@ Underfull \hbox (badness 10000) in paragraph at lines 183--193
 
  []
 
+
+Underfull \hbox (badness 10000) in paragraph at lines 194--195
+
+ []
+
+
+Underfull \hbox (badness 2591) in paragraph at lines 232--233
+[]\OT1/ptm/m/it/10 Wanderlust \OT1/ptm/m/n/10 [REF-ER-ENCE] uses t-SNE. A non-l
+inear
+ []
+
+
+Underfull \hbox (badness 1824) in paragraph at lines 235--236
+[]\OT1/ptm/m/it/10 Monocle \OT1/ptm/m/n/10 [REF-ER-ENCE] uses In-de-pen-dent Co
+m-po-nent
+ []
+
 [2
 
 ]
-Underfull \hbox (badness 2753) in paragraph at lines 266--269
-\OT1/ptm/m/n/10 PLOT] [IN-SERT TA-BLE HIGH-EST MEAN, LOW-EST
+Underfull \hbox (badness 3623) in paragraph at lines 262--265
+\OT1/ptm/m/n/10 in-for-ma-tion ob-tained by measure-theoretic an-la-y-sis, we
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 262--265
+
  []
 
 
@@ -897,6 +817,11 @@ LaTeX Font Info:    Try loading font information for OT1+pcr on input line 287.
 (/usr/local/texlive/2016/texmf-dist/tex/latex/psnfss/ot1pcr.fd
 File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
 )
+Underfull \hbox (badness 1383) in paragraph at lines 285--289
+\OT1/ptm/m/n/10 to two genes. For that pur-pose, we choose genes that
+ []
+
+
 Underfull \hbox (badness 10000) in paragraph at lines 285--289
 \OT1/ptm/m/n/10 ap-proaches im-ple-mented in the \OT1/ptm/m/it/10 In-for-ma-tio
 n-Mea-sures.jl
@@ -919,7 +844,27 @@ formationMeasuresTest.jl\OT1/ptm/m/n/10 .
  []
 
 
+Underfull \hbox (badness 10000) in paragraph at lines 285--289
+
+ []
+
+
 Underfull \hbox (badness 10000) in paragraph at lines 318--319
+
+ []
+
+
+Underfull \hbox (badness 4819) in paragraph at lines 335--337
+\OT1/ptm/m/n/10 man-i-fold learn-ing al-go-rithms, are pre-sented that have
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 335--337
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 338--339
 
  []
 
@@ -928,269 +873,321 @@ Underfull \hbox (badness 10000) in paragraph at lines 387--388
 []\OT1/ptm/m/n/10 Eigendecomposition: Com-put-ing eigen-vec-tors and
  []
 
+
+Underfull \hbox (badness 10000) in paragraph at lines 460--461
+
+ []
+
 [4]
-Underfull \hbox (badness 10000) in paragraph at lines 499--501
+Underfull \hbox (badness 10000) in paragraph at lines 502--503
 []\OT1/ptm/m/n/10 For the the-ory, we re-fer to [REF-ER-ENCE]. In
  []
 
 
-Underfull \hbox (badness 3849) in paragraph at lines 538--546
- \OT1/ptm/m/it/10 4) In-de-pen-dent Com-po-nent Anal-y-sis (ICA): [][][] \OT1/p
-tm/m/n/10 [UN-FIN-
+Underfull \hbox (badness 10000) in paragraph at lines 502--503
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 508--509
+
  []
 
 [5]
-Underfull \hbox (badness 2103) in paragraph at lines 598--601
- \OT1/ptm/m/it/10 6) Other ap-proaches: [][][] \OT1/ptm/m/n/10 Other clas-si-ca
-l lin-ear ap-proach
- []
-
-[6] [7]
-Underfull \hbox (badness 10000) in paragraph at lines 1046--1047
-
- []
-
-[8]
-Underfull \hbox (badness 10000) in paragraph at lines 1152--1154
-
+Underfull \hbox (badness 3849) in paragraph at lines 572--580
+ \OT1/ptm/m/it/10 4) In-de-pen-dent Com-po-nent Anal-y-sis (ICA): [][] \OT1/ptm
+/m/n/10 [UN-FIN-
  []
 
 
-Underfull \hbox (badness 1436) in paragraph at lines 1157--1158
+Underfull \hbox (badness 2103) in paragraph at lines 632--635
+ \OT1/ptm/m/it/10 6) Other ap-proaches: [][] \OT1/ptm/m/n/10 Other clas-si-cal 
+lin-ear ap-proach
+ []
+
+
+Underfull \hbox (badness 2990) in paragraph at lines 642--646
+\OT1/ptm/m/n/10 in-ter-est in dif-fer-en-tial ge-om-e-try; for a (math-e-mat-i-
+cally
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 642--646
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 647--648
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 649--650
+
+ []
+
+[6] [7] [8]
+Underfull \hbox (badness 10000) in paragraph at lines 1089--1090
+
+ []
+
+
+Underfull \hbox (badness 1603) in paragraph at lines 1193--1195
+\OT1/ptm/m/n/10 and \OT1/ptm/m/it/10 Man-i-foldLearn-ing.jl \OT1/ptm/m/n/10 wer
+e ac-tu-ally run-ning (eg only
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1193--1195
+
+ []
+
+
+Underfull \hbox (badness 1436) in paragraph at lines 1198--1199
 []\OT1/ptm/m/n/10 Two im-ple-men-ta-tions of t-SNE are avail-able in Ju-lia
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1157--1158
-
- []
-
-! Too many }'s.
-<recently read> }
-                 
-l.1159 ...learn.org/stable/modules/manifold.html}}
-                                                  ) and worked smoothly; als...
-You've closed more groups than you opened.
-Such booboos are generally harmless, so keep going.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1159--1160
-\OT1/ptm/m/n/10 learn-ing meth-ods are im-ple-mented (see []$$[]\OT1/ptm/m/it/1
-0 http://scikit-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1159--1160
-\OT1/ptm/m/it/10 learn.org/stable/modules/manifold.html\OT1/ptm/m/n/10 ) and wo
-rked
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1159--1160
+Underfull \hbox (badness 10000) in paragraph at lines 1198--1199
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1161--1164
+Underfull \hbox (badness 10000) in paragraph at lines 1200--1201
+[]\OT1/ptm/m/n/10 On the other hand, in Python all the ma-jor
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1200--1201
+\OT1/ptm/m/n/10 man-i-fold learn-ing meth-ods are im-ple-mented (see
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1200--1201
+\OT1/ptm/m/it/10 http : / / scikit-[]learn . org / stable / modules / manifold 
+. html$\OT1/ptm/m/n/10 ) and
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1200--1201
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1165--1166
+Underfull \hbox (badness 1755) in paragraph at lines 1202--1205
+\OT1/ptm/m/n/10 project. For the first one, I could have reim-ple-mented
+ []
+
+
+Underfull \hbox (badness 1975) in paragraph at lines 1202--1205
+\OT1/ptm/m/n/10 bet-ter un-der-stand-ing for the al-go-rithms or im-ple-mented
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1202--1205
 
  []
 
 
-Underfull \hbox (badness 3861) in paragraph at lines 1170--1179
+Underfull \hbox (badness 10000) in paragraph at lines 1206--1207
+
+ []
+
+[9]
+Underfull \hbox (badness 3861) in paragraph at lines 1211--1219
 []\OT1/ptm/m/n/10 Following the \OT1/ptm/m/it/10 No free lunch the-o-rem\OT1/pt
 m/m/n/10 , there is no
  []
 
 
-Underfull \hbox (badness 2426) in paragraph at lines 1170--1179
-\OT1/ptm/m/n/10 best method; it de-pends on the spe-cific data set. Eg
+Underfull \hbox (badness 10000) in paragraph at lines 1211--1219
+\OT1/ptm/m/n/10 best method; it de-pends on the spe-cific data set.
  []
 
 
-Underfull \hbox (badness 1796) in paragraph at lines 1170--1179
-\OT1/ptm/m/n/10 LDA would make more sense than PCA if you have
+Underfull \hbox (badness 3179) in paragraph at lines 1211--1219
+\OT1/ptm/m/n/10 Eg LDA would make more sense than PCA if you
  []
 
 
-Underfull \hbox (badness 4181) in paragraph at lines 1170--1179
-\OT1/ptm/m/n/10 a lin-ear clas-si-fi-ca-tion task; how-ever, em-pir-i-cal stud-
-ies
+Underfull \hbox (badness 10000) in paragraph at lines 1211--1219
+\OT1/ptm/m/n/10 have a lin-ear clas-si-fi-ca-tion task; how-ever, em-pir-i-cal
  []
 
 
-Underfull \hbox (badness 4967) in paragraph at lines 1170--1179
-\OT1/ptm/m/n/10 have showed that it is not al-ways the case [REF-
+Underfull \hbox (badness 5490) in paragraph at lines 1211--1219
+\OT1/ptm/m/n/10 stud-ies have shown that it is not al-ways the case
  []
 
 
-Underfull \hbox (badness 3354) in paragraph at lines 1170--1179
-\OT1/ptm/m/n/10 ER-ENCE: https://github.com/rasbt/python-machine-learning-
+Underfull \hbox (badness 10000) in paragraph at lines 1211--1219
+\OT1/ptm/m/n/10 [REF-ER-ENCE: https://github.com/rasbt/python-machine-
  []
 
 
-Underfull \hbox (badness 1946) in paragraph at lines 1170--1179
-\OT1/ptm/m/n/10 ker-nel PCA can sep-a-rate con-cen-tric cir-cles, it fails to
+Underfull \hbox (badness 10000) in paragraph at lines 1211--1219
+\OT1/ptm/m/n/10 learning-book/blob/master/faq/dimensionality-reduction.md].
  []
 
 
-Underfull \hbox (badness 2189) in paragraph at lines 1170--1179
-\OT1/ptm/m/n/10 un-fold the Swiss Roll, for ex-am-ple; here, lo-cally lin-
+Underfull \hbox (badness 10000) in paragraph at lines 1211--1219
+\OT1/ptm/m/n/10 Al-though KPCA can sep-a-rate con-cen-tric cir-cles, it
  []
 
 
-Underfull \hbox (badness 3354) in paragraph at lines 1170--1179
-\OT1/ptm/m/n/10 ER-ENCE: https://github.com/rasbt/python-machine-learning-
+Underfull \hbox (badness 7151) in paragraph at lines 1211--1219
+\OT1/ptm/m/n/10 fails to un-fold the Swiss Roll, for ex-am-ple; here,
  []
 
 
-Underfull \hbox (badness 1509) in paragraph at lines 1188--1190
-\OT1/ptm/m/n/10 dis-tance be-tween two points is the length of the path
+Underfull \hbox (badness 10000) in paragraph at lines 1211--1219
+\OT1/ptm/m/n/10 lo-cally lin-ear em-bed-ding (LLE) would be more
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1188--1190
-
- []
-
-[9]
-Underfull \hbox (badness 10000) in paragraph at lines 1199--1200
-
+Underfull \hbox (badness 10000) in paragraph at lines 1211--1219
+\OT1/ptm/m/n/10 ap-pro-pri-ate [REF-ER-ENCE TO FIG-URE GITHUB
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1259--1261
- \OT1/ptm/m/it/10 3) Doc-u-men-ta-tion: [][][] \OT1/ptm/m/n/10 As the doc-u-men
--ta-tion of
+Underfull \hbox (badness 10000) in paragraph at lines 1211--1219
+\OT1/ptm/m/n/10 FILE][REFERENCE: https://github.com/rasbt/python-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1259--1261
+Underfull \hbox (badness 10000) in paragraph at lines 1211--1219
+\OT1/ptm/m/n/10 machine-learning-book/blob/master/faq/dimensionality-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1228--1231
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1242--1243
+
+ []
+
+[10]
+Underfull \hbox (badness 10000) in paragraph at lines 1302--1304
+ \OT1/ptm/m/it/10 3) Doc-u-men-ta-tion: [][] \OT1/ptm/m/n/10 As the doc-u-men-t
+a-tion of
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1302--1304
 \OT1/ptm/m/n/10 spe-cific pack-ages in-clud-ing \OT1/ptm/m/it/10 Mul-ti-vari-at
 -eS-tats.jl \OT1/ptm/m/n/10 and
  []
 
 
-Underfull \hbox (badness 1365) in paragraph at lines 1259--1261
+Underfull \hbox (badness 1365) in paragraph at lines 1302--1304
 \OT1/ptm/m/it/10 Man-i-foldLearn-ing.jl \OT1/ptm/m/n/10 are very sparse and to 
 large ex-tent
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1259--1261
+Underfull \hbox (badness 10000) in paragraph at lines 1302--1304
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1315--1316
-
- []
-
-[10]
-Underfull \hbox (badness 10000) in paragraph at lines 1323--1324
+Underfull \hbox (badness 10000) in paragraph at lines 1358--1359
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1326--1328
- \OT1/ptm/m/it/10 1) MLLE: [][][] \OT1/ptm/m/n/10 The \OT1/ptm/m/it/10 Mod-i-fi
-ed Locally-Linear Em-bed-ding
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1326--1328
+Underfull \hbox (badness 10000) in paragraph at lines 1366--1367
 
  []
 
 
-! LaTeX Error: There's no line here to end.
+Underfull \hbox (badness 10000) in paragraph at lines 1369--1371
+ \OT1/ptm/m/it/10 1) MLLE: [][] \OT1/ptm/m/n/10 The \OT1/ptm/m/it/10 Mod-i-fied
+ Locally-Linear Em-bed-ding
+ []
 
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1336 \subsubsection
-                     {Scalability: UMAP}
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
+
+Underfull \hbox (badness 10000) in paragraph at lines 1369--1371
+
+ []
 
 [11]
-Underfull \hbox (badness 2326) in paragraph at lines 1378--1381
+Underfull \hbox (badness 3068) in paragraph at lines 1382--1384
+\OT1/ptm/m/n/10 Math-e-mat-i-cally more in-volved as it draws from tech-
+ []
+
+
+Underfull \hbox (badness 1803) in paragraph at lines 1382--1384
+\OT1/ptm/m/n/10 the global struc-ture and runs faster. With ref-er-ence to
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1419--1420
+
+ []
+
+
+Underfull \hbox (badness 2326) in paragraph at lines 1421--1424
 []\OT1/ptm/m/n/10 Julia has po-ten-tial and is an ex-cit-ing, in-tu-itive and
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1378--1381
+Underfull \hbox (badness 10000) in paragraph at lines 1421--1424
 
  []
 
-
-Underfull \hbox (badness 1874) in paragraph at lines 1383--1389
+[12]
+Underfull \hbox (badness 1874) in paragraph at lines 1426--1432
 \OT1/ptm/m/n/10 di-rectly in Python and also \OT1/ptm/m/it/10 CuPy \OT1/ptm/m/n
 /10 (a NumPy-like API
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1383--1389
+Underfull \hbox (badness 10000) in paragraph at lines 1426--1432
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1390--1391
+Underfull \hbox (badness 10000) in paragraph at lines 1433--1434
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1406--1407
+Underfull \hbox (badness 10000) in paragraph at lines 1449--1450
 
  []
 
-[12]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1477.
- [13]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1477.
- (./mainP.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1477.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1477.
+[13] [14
 
-Package rerunfilecheck Info: File `mainP.out' has not changed.
-(rerunfilecheck)             Checksum: 1E919F5B0D12BD646FC61AB3D71122E9;5086.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1477.
- ) 
+] (./mainP.aux) ) 
 Here is how much of TeX's memory you used:
- 9152 strings out of 493014
- 138855 string characters out of 6133351
- 242523 words of memory out of 5000000
- 12478 multiletter control sequences out of 15000+600000
+ 5577 strings out of 493014
+ 84013 string characters out of 6133351
+ 165336 words of memory out of 5000000
+ 9016 multiletter control sequences out of 15000+600000
  39638 words of font info for 76 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 44i,6n,42p,1893b,364s stack positions out of 5000i,500n,10000p,200000b,80000s
-pdfTeX warning (dest): name{Hfootnote.1} has been referenced but does not exi
-st, replaced by a fixed one
-
-{/usr/local/texlive/2016/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/tex
-live/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texl
-ive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texli
-ve/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive
-/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2
-016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2016
-/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2016/
-texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2016/te
-xmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/201
-6/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/local/texlive/2016/texmf-
-dist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2016/texmf-dist/fonts
-/type1/urw/times/utmbi8a.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/ur
-w/times/utmr8a.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/urw/times/ut
-mri8a.pfb>
-Output written on mainP.pdf (13 pages, 204445 bytes).
+ 44i,6n,42p,1893b,256s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/local/texlive/2016/texmf-dist/fonts/enc/dvips/base/8r.en
+c}</usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb
+></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb>
+</usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></
+usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></us
+r/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/l
+ocal/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/lo
+cal/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/loca
+l/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/
+local/texlive/2016/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/local/te
+xlive/2016/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2016
+/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb></usr/local/texlive/2016/texmf-di
+st/fonts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2016/texmf-dist/fonts/t
+ype1/urw/times/utmri8a.pfb>
+Output written on mainP.pdf (14 pages, 204189 bytes).
 PDF statistics:
- 417 PDF objects out of 1000 (max. 8388607)
- 385 compressed objects within 4 object streams
- 93 named destinations out of 1000 (max. 500000)
- 505 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 103 PDF objects out of 1000 (max. 8388607)
+ 73 compressed objects within 1 object stream
+ 0 named destinations out of 1000 (max. 500000)
+ 1 words of extra memory for PDF output out of 10000 (max. 10000000)
 
