@@ -180,7 +180,7 @@ Reasonable results could be yielded for the 2-dimensional KDE as well as the PFM
 %%----------------------------------------------------------------------------------------------------------------------------------------
 %\section{Preface}
 \section{Introduction}
-The following report will focus on different methods and discussion of dimensionality reduction (DR) and literature research as this was the part I have been most enaged with during the project and the part that has not given enough credit in the group report (in terms of where time and brain power was speant) as it went beyond the scope and goal of our project to simulate the epigenetic landscape.
+The following report will focus on different methods, discussion and suggestions regarding dimensionality reduction (DR) and literature research regarding this as this was the part I was most enaged with during the project and the part that has not given enough credit in the group report (in terms of where time and brain power was speant) as it went beyond the scope and goal of our project to simulate the epigenetic landscape.
 % The theory can be found in the group report
 % also time on Bayesian Gaussian Latent variabel model and Hopfland, discovered together with MH
 Other parts I contributed to was the Genetic Algorithm (GA) to approximate the MAP, implementing different kernels for the KDE in 2D, converting the MAP between two points into a quasi-potential (a now more elaborate final version has been developed), implementing different kernel methods for the kernel density estimation (KDE) as well as different information theory approaches to the given sample data set. However, this will not be the subject of the following report to avoid overlap with the other reports and due to the restrictive word count. For an overview we refer to the group project report, for the information theory approaches we refer to Madeleine Hall's report, for the GA as well as the KDE we refer to Lucas Ducrot's report. The final code can be found on 
@@ -189,9 +189,9 @@ Other parts I contributed to was the Genetic Algorithm (GA) to approximate the M
 %\end{verbatim}	
 %TODO: 
 The \textit{README.md} will be kept self-explanatory and should give an overview of the main tools implemented. \\
-Other important tasks of mine were documentation, understanding, adjusting and commenting other people's code, keeping our github repository nice and tidy and sharing links to interesting papers via a pad as literature research was a major part in the project. \\
+Besides literature research on and the application of DR, important tasks of mine were documentation, adjusting our code, keeping our github repository nice and tidy and sharing interesting papers via a pad as literature research was a major part in the project. \\
 
-It should be noted that in the following, I assume the reader to have read our group report. My following individual report is kept on a personal note and should reflect my main contributions to the research project and time allocated during the processes, challenges I faced and especially learnings thereof and is therefore not written in formal research-style. \\
+It should be noted that in the following, I assume the reader to have read our group report. My following individual reportis not technical, it is kept on a personal note and should reflect my main contributions to the research project and time allocated during the processes, challenges I faced and especially learnings thereof and is therefore not a formal report.. \\
 
 For an introduction to the Waddington's landscape and the scope of the project, we refer to the group project.
 
@@ -224,7 +224,7 @@ For an introduction to the Waddington's landscape and the scope of the project, 
 Before I started with anything (except some toy models) I did some extensive literature research on the work that has already been done regarding Waddington's landscape. This was necessary as there was no specific task given, and no underlying biological question that needed to be answered. It was probably one of the major challenges of the whole project: To find a (convincing) motivation of the project and to come up with a specific goal.\\
 It is challenging to synthesise the work that has been done as very different approaches have been taken. In order to situate our work within the wider literature, we highlighted the major state-of-the-art methods that have been developed by other groups in the group report.
 %I am going to highlight the major state-of-the-art methods that have been developed by other groups:
-Here, I will point out the approach these methods took regarding dimentionality reduction (DR) which this report will be focusing on. 
+Here, I will point out the approach these methods took regarding dimensionality reduction (DR) which this report will be focusing on. 
 
 [UNFINISHED]
 
@@ -233,6 +233,7 @@ Here, I will point out the approach these methods took regarding dimentionality 
 
 \subsection{Monocle}
 \textit{Monocle} [REFERENCE] uses Independent Component Analysis (ICA). This method, however, assumes a linear map, which does not seem like a realistic assumption.
+%COMPARISON ICA -- PCA
 
 \subsection{Topslam}
 \textit{Topslam} [REFERENCE] uses PPCA which seems like an appropriate and beneficial method to use.
@@ -257,6 +258,8 @@ For a more thorough review on the Hopland approach, we refer to Madeleine Hall's
 
 %TAKE INSPIRATION FROM https://github.com/jadianes/data-science-your-way/tree/master/02-exploratory-data-analysis
 
+
+%%%%-------------IN GROUP REPORT-------------
 \subsection{Exploratory data analysis}
 
 Complementary to the information given in the group report on the data (see section [REFERENCE]) that was largely taken from [REFERENCE DATA PAPER], and the information obtained by measure-theoretic anlaysis, we provide the user with an initial exploratory data analysis. This can help the user to "get a feel" of the data set, discard outliers (COULD HAVE BEEN DONE HERE BUT WASN'T) and serve as a starting point for a subsequent more detailed analysis. \\
@@ -278,12 +281,14 @@ For other data analysis such as  expression of different genes over time points 
 
 %The program \texttt{Readin.jl} reads in the data set; the path to the data set needs to be given as an argument. 
 
+%%%%-------------------------------
+
 \subsection{Feature selection}
 
 When we visualise the Waddington's epigenetic landscape in three dimensions, typically the x-axis and y-axis correspond to the expression level of two marker genes that represent cell states, while the z-axis represents the potential. To visualise global information, both in case of real world data or simulated data based on a model of more than two genes, DR techniques would be needed (see next chapter).\\
 
 For now, we mean to visualise the landscape with respect to two genes. For that purpose, we choose genes that have an "important" relationship and would result in a distinctive landscape. 
-Additionally to computing pairwise correlations of genes, we therefore used measure theoretic approaches implemented in the \textit{InformationMeasures.jl} package to examine relationships between genes. These included eg mutual information (MI), conditional MI,  entropy and conditional entropy; %, interaction information, total correlation as well as partial information decomposition; 
+Additionally to computing pairwise correlations of genes, we therefore used information-theoretic approaches implemented in the \textit{InformationMeasures.jl} package to examine relationships between genes. These included eg mutual information (MI), conditional MI,  entropy and conditional entropy; %, interaction information, total correlation as well as partial information decomposition; 
 the program can be found on \texttt{https://github.com/burfel/waddington-project/blob/master/src/InformationMeasuresTest.jl}.\\
 %This was inspired by [REFERENCE PAPER]
 
@@ -303,7 +308,7 @@ For more on feature selection, we refer to [Dash1997], [Guyon2003] and [Saeys200
 %METHODS CLEAR, FOCUSED AND ROBUST.
 
 %%----------------------------------------------------------------------------------------------------------------------------------------
-%%----------------------------------------------------------------------------------------------------------------------------------------
+%%----------------------------------------------------------------------------------------------------------------------------------------%%%%%----------GROUP REPORT------------------------
 \section{Dimensionality reduction (DR)}
 
 %This project aims to evaluate the performance of as many open source feature selection and dimensionality reduction methods as possible. The data that is going to be used will be from the Metabolomics domain.
@@ -538,6 +543,7 @@ Also one could anal
 %SVD from https://docs.julialang.org/en/stable/stdlib/linalg/ 
 % TODO: have a look how exactly they do it.
 
+%%-----------------END-----GROUP REPORT---------------------------
 %%----------------------------------------------------------------------------------------------------------------------------------------
 \hfill
 \subsubsection{Probabilistic Principal Component Analysis (PPCA)}
@@ -1239,7 +1245,7 @@ Likewise, new methods in this fields have been developed in the last two decades
 
 \subsection{Regarding DR on the simulated data set}
 
-As a group we discussed at which point in time DR should or could be applied: As we saw no way to apply DR before the actual simulation of trajectories and the estimation of landscape thereof, we could not save any computational power here. Therefore, we would treat the simulation similar to a real data set in a lower-dimensional space and motivate DR by visualisation purposes only.\\
+As a group we discussed at which point in time DR should or could be applied: As we saw no way to apply DR before the actual simulation of trajectories and the estimation of landscape thereof, we could not save any computational power here. Therefore, we would treat the simulation similar to a real data set in a lower-dimensional space and motivate DR by visualisation purposes only. For where in the project of DR feeds into we refer to the workflow diagram in the group project.\\
 
 Another challenge was the biological interpretability. In the case of PCA, the PCs could be interpreted as linear combinations of genes as we have seen. Due to the way PCA is computed these are genes that correlate positively and could eg be regulated by the same transcription factor or be found in the same pathway. 
 One could try to further investigate that experimentally. \\
