@@ -129,6 +129,10 @@ Plots.plot!(cum, label="cumulative variance")
 Plots.savefig("../Single_cell_data/plots/PCA/eigenvalues_of_resp_PCs_max_normed_cum")
 #savefig("../Single_cell_data/plots/PCA/eigenvalues_of_resp_PCs_max_normed")
 
+Plots.plot(cum, xlabel = "Principal components", ylabel = "Explained variance", legend=false, title="Explained variances of all the PCs", label="cumulative variance")
+#Plots.savefig("../Single_cell_data/plots/PCA/eigenvalues_of_resp_PCs_max_normed_cum")
+Plots.savefig("../Single_cell_data/plots/PCA/eigenvalues_of_resp_PCs_max_normed_cum_only")
+
 pca_var = principalvars(M1)
 Plots.bar(pca_var, xlabel = "Principal components", ylabel = "Eigenvalues", legend=false, title="Explained variances of 2 PCs")
 Plots.savefig("../Single_cell_data/plots/PCA/eigenvalues_of_resp_PCs")
