@@ -63,3 +63,4 @@ Readin.readin("../Single_cell_data/", true)
 =#
 
 data = readin("../Single_cell_data/", true)
+data[:Actb]
