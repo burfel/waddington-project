@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.6.28)  26 MAR 2018 02:33
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.6.28)  27 MAR 2018 07:01
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -635,54 +635,70 @@ Package: algorithmic 2009/08/24 v0.1 Document Style `algorithmic'
 (/usr/local/texlive/2016/texmf-dist/tex/latex/was/gensymb.sty
 Package: gensymb 2003/07/02 v1.0 (WaS)
 )
+(/usr/local/texlive/2016/texmf-dist/tex/latex/algorithmicx/algpseudocode.sty
+Package: algpseudocode 
 
-! LaTeX Error: Option clash for package url.
+(/usr/local/texlive/2016/texmf-dist/tex/latex/algorithmicx/algorithmicx.sty
+Package: algorithmicx 2005/04/27 v1.2 Algorithmicx
+
+Document Style algorithmicx 1.2 - a greatly improved `algorithmic' style
+\c@ALG@line=\count122
+\c@ALG@rem=\count123
+\c@ALG@nested=\count124
+\ALG@tlm=\skip54
+\ALG@thistlm=\skip55
+\c@ALG@Lnr=\count125
+\c@ALG@blocknr=\count126
+\c@ALG@storecount=\count127
+\c@ALG@tmpcounter=\count128
+\ALG@tmplength=\skip56
+
+! LaTeX Error: Command \algorithmic already defined.
+               Or name \end... illegal, see p.192 of the manual.
 
 See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.142 
-      
-The package url has already been loaded with options:
-  []
-There has now been an attempt to load it with options
-  [hyphens]
-Adding the global options:
-  ,hyphens
-to your \documentclass declaration may fix this.
-Try typing  <return>  to proceed.
+l.112    }
+          %
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
 
-\c@theorem=\count122
-(./mainP.aux)
+)
+Document Style - pseudocode environments for use with the `algorithmicx' style
+)
+\c@theorem=\count129
+ (./mainP.aux)
 \openout1 = `mainP.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 151.
-LaTeX Font Info:    ... okay on input line 151.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 151.
-LaTeX Font Info:    ... okay on input line 151.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 151.
-LaTeX Font Info:    ... okay on input line 151.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 151.
-LaTeX Font Info:    ... okay on input line 151.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 151.
-LaTeX Font Info:    ... okay on input line 151.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 151.
-LaTeX Font Info:    ... okay on input line 151.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 155.
+LaTeX Font Info:    ... okay on input line 155.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 155.
+LaTeX Font Info:    ... okay on input line 155.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 155.
+LaTeX Font Info:    ... okay on input line 155.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 155.
+LaTeX Font Info:    ... okay on input line 155.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 155.
+LaTeX Font Info:    ... okay on input line 155.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 155.
+LaTeX Font Info:    ... okay on input line 155.
 
 -- Lines per column: 58 (exact).
 (/usr/local/texlive/2016/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count123
+\scratchcounter=\count130
 \scratchdimen=\dimen146
 \scratchbox=\box32
-\nofMPsegments=\count124
-\nofMParguments=\count125
+\nofMPsegments=\count131
+\nofMParguments=\count132
 \everyMPshowfont=\toks26
-\MPscratchCnt=\count126
+\MPscratchCnt=\count133
 \MPscratchDim=\dimen147
-\MPnumerator=\count127
-\makeMPintoPDFobject=\count128
+\MPnumerator=\count134
+\makeMPintoPDFobject=\count135
 \everyMPtoPDFconversion=\toks27
 ) (/usr/local/texlive/2016/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
 Package: pdftexcmds 2016/05/10 v0.21 Utility functions of pdfTeX for LuaTeX (HO
@@ -735,28 +751,28 @@ Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: subfig package v1.3 is loaded.
 Package caption Info: float package is loaded.
 Package caption Info: End \AtBeginDocument code.
-LaTeX Info: Redefining \celsius on input line 151.
-Package gensymb Info: Faking symbols for \degree and \celsius on input line 151
+LaTeX Info: Redefining \celsius on input line 155.
+Package gensymb Info: Faking symbols for \degree and \celsius on input line 155
 .
 
 
 Package gensymb Warning: Not defining \perthousand.
 
-LaTeX Info: Redefining \ohm on input line 151.
-Package gensymb Info: Using \Omega for \ohm on input line 151.
+LaTeX Info: Redefining \ohm on input line 155.
+Package gensymb Info: Using \Omega for \ohm on input line 155.
 
 Package gensymb Warning: Not defining \micro.
 
-LaTeX Font Info:    Try loading font information for U+msa on input line 156.
+LaTeX Font Info:    Try loading font information for U+msa on input line 160.
 (/usr/local/texlive/2016/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 156.
+LaTeX Font Info:    Try loading font information for U+msb on input line 160.
 
 (/usr/local/texlive/2016/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-Underfull \hbox (badness 10000) in paragraph at lines 156--157
+Underfull \hbox (badness 10000) in paragraph at lines 160--161
 
  []
 
@@ -764,430 +780,343 @@ Underfull \hbox (badness 10000) in paragraph at lines 156--157
 
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 183--193
-\OT1/ptm/m/n/10 Other im-por-tant tasks of mine were doc-u-men-ta-tion,
+Underfull \hbox (badness 1400) in paragraph at lines 187--197
+\OT1/ptm/m/n/10 (in terms of where time and brain power was speant)
  []
 
 
-Underfull \hbox (badness 1990) in paragraph at lines 183--193
-\OT1/ptm/m/n/10 un-der-stand-ing, ad-just-ing and com-ment-ing other peo-ple's
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 183--193
+Underfull \hbox (badness 10000) in paragraph at lines 187--197
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 194--195
+Underfull \hbox (badness 10000) in paragraph at lines 198--199
 
  []
 
 
-Underfull \hbox (badness 2591) in paragraph at lines 232--233
-[]\OT1/ptm/m/it/10 Wanderlust \OT1/ptm/m/n/10 [REF-ER-ENCE] uses t-SNE. A non-l
-inear
- []
+Underfull \hbox (badness 10000) in paragraph at lines 274--276
 
-
-Underfull \hbox (badness 1824) in paragraph at lines 235--236
-[]\OT1/ptm/m/it/10 Monocle \OT1/ptm/m/n/10 [REF-ER-ENCE] uses In-de-pen-dent Co
-m-po-nent
  []
 
 [2
 
 ]
-Underfull \hbox (badness 3623) in paragraph at lines 262--265
-\OT1/ptm/m/n/10 in-for-ma-tion ob-tained by measure-theoretic an-la-y-sis, we
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 262--265
+Underfull \hbox (badness 10000) in paragraph at lines 296--297
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 283--284
+Underfull \hbox (badness 10000) in paragraph at lines 331--332
 
  []
 
-LaTeX Font Info:    Try loading font information for OT1+pcr on input line 287.
+
+Underfull \hbox (badness 10000) in paragraph at lines 351--352
+
+ []
+
+LaTeX Font Info:    Try loading font information for OT1+pcr on input line 361.
 
 (/usr/local/texlive/2016/texmf-dist/tex/latex/psnfss/ot1pcr.fd
 File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
 )
-Underfull \hbox (badness 1383) in paragraph at lines 285--289
-\OT1/ptm/m/n/10 to two genes. For that pur-pose, we choose genes that
+Underfull \hbox (badness 10000) in paragraph at lines 361--362
+[]\OT1/ptm/m/n/10 For an overview, we cat-e-gorise the main DR
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 285--289
-\OT1/ptm/m/n/10 ap-proaches im-ple-mented in the \OT1/ptm/m/it/10 In-for-ma-tio
-n-Mea-sures.jl
+Underfull \hbox (badness 4886) in paragraph at lines 361--362
+\OT1/ptm/m/n/10 meth-ods avail-able in Ju-lia in the di-a-gram found in
  []
 
 
-Underfull \hbox (badness 1701) in paragraph at lines 285--289
-\OT1/ptm/m/n/10 pack-age to ex-am-ine re-la-tion-ships be-tween genes. These
+Underfull \hbox (badness 1655) in paragraph at lines 361--362
+\OT1/ptm/m/n/10 DR meth-ods avail-able could be found we cre-ated one
  []
 
 
-Underfull \hbox (badness 4144) in paragraph at lines 285--289
-\OT1/ptm/m/n/10 in-cluded eg mu-tual in-for-ma-tion (MI), con-di-tional MI,
+Underfull \hbox (badness 2393) in paragraph at lines 361--362
+\OT1/ptm/m/n/10 on the low-est level of maths for which we re-fer to
  []
 
 
-Overfull \hbox (272.5pt too wide) in paragraph at lines 285--289
-\OT1/pcr/m/n/10 https://github.com/burfel/waddington-project/blob/master/src/In
-formationMeasuresTest.jl\OT1/ptm/m/n/10 . 
+Overfull \hbox (170.5pt too wide) in paragraph at lines 361--362
+\OT1/pcr/m/n/10 https://github.com/burfel/waddington-project/tree/master/papers
+/dimRed\OT1/ptm/m/n/10 . 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 285--289
-
- []
+LaTeX Warning: Reference `label' on page 3 undefined on input line 449.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 318--319
-
- []
-
-
-Underfull \hbox (badness 4819) in paragraph at lines 335--337
-\OT1/ptm/m/n/10 man-i-fold learn-ing al-go-rithms, are pre-sented that have
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 335--337
+Underfull \hbox (badness 10000) in paragraph at lines 449--451
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 338--339
-
- []
-
-[3]
-Underfull \hbox (badness 10000) in paragraph at lines 387--388
-[]\OT1/ptm/m/n/10 Eigendecomposition: Com-put-ing eigen-vec-tors and
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 460--461
-
- []
-
-[4]
-Underfull \hbox (badness 10000) in paragraph at lines 502--503
-[]\OT1/ptm/m/n/10 For the the-ory, we re-fer to [REF-ER-ENCE]. In
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 502--503
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 508--509
-
- []
-
-[5]
-Underfull \hbox (badness 3849) in paragraph at lines 572--580
- \OT1/ptm/m/it/10 4) In-de-pen-dent Com-po-nent Anal-y-sis (ICA): [][] \OT1/ptm
-/m/n/10 [UN-FIN-
- []
-
-
-Underfull \hbox (badness 2103) in paragraph at lines 632--635
- \OT1/ptm/m/it/10 6) Other ap-proaches: [][] \OT1/ptm/m/n/10 Other clas-si-cal 
-lin-ear ap-proach
- []
-
-
-Underfull \hbox (badness 2990) in paragraph at lines 642--646
-\OT1/ptm/m/n/10 in-ter-est in dif-fer-en-tial ge-om-e-try; for a (math-e-mat-i-
-cally
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 642--646
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 647--648
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 649--650
-
- []
-
-[6] [7] [8]
-Underfull \hbox (badness 10000) in paragraph at lines 1089--1090
-
- []
-
-
-Underfull \hbox (badness 1603) in paragraph at lines 1193--1195
-\OT1/ptm/m/n/10 and \OT1/ptm/m/it/10 Man-i-foldLearn-ing.jl \OT1/ptm/m/n/10 wer
-e ac-tu-ally run-ning (eg only
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1193--1195
-
- []
-
-
-Underfull \hbox (badness 1436) in paragraph at lines 1198--1199
+Underfull \hbox (badness 1436) in paragraph at lines 454--455
 []\OT1/ptm/m/n/10 Two im-ple-men-ta-tions of t-SNE are avail-able in Ju-lia
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1198--1199
+Underfull \hbox (badness 10000) in paragraph at lines 454--455
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1200--1201
-[]\OT1/ptm/m/n/10 On the other hand, in Python all the ma-jor
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1200--1201
-\OT1/ptm/m/n/10 man-i-fold learn-ing meth-ods are im-ple-mented (see
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1200--1201
-\OT1/ptm/m/it/10 http : / / scikit-[]learn . org / stable / modules / manifold 
-. html$\OT1/ptm/m/n/10 ) and
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1200--1201
+Underfull \hbox (badness 10000) in paragraph at lines 456--457
 
  []
 
+[3]
+Underfull \hbox (badness 10000) in paragraph at lines 458--462
 
-Underfull \hbox (badness 1755) in paragraph at lines 1202--1205
-\OT1/ptm/m/n/10 project. For the first one, I could have reim-ple-mented
+ []
+
+<img/geodesic_euclidean_distance.png, id=17, 811.03pt x 390.45876pt>
+File: img/geodesic_euclidean_distance.png Graphic file (type png)
+
+<use img/geodesic_euclidean_distance.png>
+Package pdftex.def Info: img/geodesic_euclidean_distance.png used on input line
+ 488.
+(pdftex.def)             Requested size: 284.52756pt x 136.98433pt.
+
+Overfull \hbox (32.52756pt too wide) in paragraph at lines 488--489
+ [][] 
  []
 
 
-Underfull \hbox (badness 1975) in paragraph at lines 1202--1205
-\OT1/ptm/m/n/10 bet-ter un-der-stand-ing for the al-go-rithms or im-ple-mented
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1202--1205
+Underfull \hbox (badness 10000) in paragraph at lines 505--506
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1206--1207
+Underfull \hbox (badness 10000) in paragraph at lines 507--508
 
  []
 
-[9]
-Underfull \hbox (badness 3861) in paragraph at lines 1211--1219
-[]\OT1/ptm/m/n/10 Following the \OT1/ptm/m/it/10 No free lunch the-o-rem\OT1/pt
-m/m/n/10 , there is no
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1211--1219
-\OT1/ptm/m/n/10 best method; it de-pends on the spe-cific data set.
- []
-
-
-Underfull \hbox (badness 3179) in paragraph at lines 1211--1219
-\OT1/ptm/m/n/10 Eg LDA would make more sense than PCA if you
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1211--1219
-\OT1/ptm/m/n/10 have a lin-ear clas-si-fi-ca-tion task; how-ever, em-pir-i-cal
- []
-
-
-Underfull \hbox (badness 5490) in paragraph at lines 1211--1219
-\OT1/ptm/m/n/10 stud-ies have shown that it is not al-ways the case
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1211--1219
-\OT1/ptm/m/n/10 [REF-ER-ENCE: https://github.com/rasbt/python-machine-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1211--1219
-\OT1/ptm/m/n/10 learning-book/blob/master/faq/dimensionality-reduction.md].
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1211--1219
-\OT1/ptm/m/n/10 Al-though KPCA can sep-a-rate con-cen-tric cir-cles, it
- []
-
-
-Underfull \hbox (badness 7151) in paragraph at lines 1211--1219
-\OT1/ptm/m/n/10 fails to un-fold the Swiss Roll, for ex-am-ple; here,
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1211--1219
-\OT1/ptm/m/n/10 lo-cally lin-ear em-bed-ding (LLE) would be more
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1211--1219
-\OT1/ptm/m/n/10 ap-pro-pri-ate [REF-ER-ENCE TO FIG-URE GITHUB
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1211--1219
-\OT1/ptm/m/n/10 FILE][REFERENCE: https://github.com/rasbt/python-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1211--1219
-\OT1/ptm/m/n/10 machine-learning-book/blob/master/faq/dimensionality-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1228--1231
+[4 <./img/geodesic_euclidean_distance.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 617--618
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1242--1243
-
- []
-
-[10]
-Underfull \hbox (badness 10000) in paragraph at lines 1302--1304
- \OT1/ptm/m/it/10 3) Doc-u-men-ta-tion: [][] \OT1/ptm/m/n/10 As the doc-u-men-t
-a-tion of
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1302--1304
-\OT1/ptm/m/n/10 spe-cific pack-ages in-clud-ing \OT1/ptm/m/it/10 Mul-ti-vari-at
--eS-tats.jl \OT1/ptm/m/n/10 and
- []
-
-
-Underfull \hbox (badness 1365) in paragraph at lines 1302--1304
-\OT1/ptm/m/it/10 Man-i-foldLearn-ing.jl \OT1/ptm/m/n/10 are very sparse and to 
-large ex-tent
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1302--1304
+Underfull \hbox (badness 10000) in paragraph at lines 625--626
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1358--1359
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1366--1367
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1369--1371
+Underfull \hbox (badness 10000) in paragraph at lines 628--630
  \OT1/ptm/m/it/10 1) MLLE: [][] \OT1/ptm/m/n/10 The \OT1/ptm/m/it/10 Mod-i-fied
  Locally-Linear Em-bed-ding
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1369--1371
+Underfull \hbox (badness 10000) in paragraph at lines 628--630
 
  []
 
-[11]
-Underfull \hbox (badness 3068) in paragraph at lines 1382--1384
-\OT1/ptm/m/n/10 Math-e-mat-i-cally more in-volved as it draws from tech-
+[5]
+
+LaTeX Warning: Reference `neuralnetworks' on page 6 undefined on input line 641
+.
+
+
+LaTeX Warning: Reference `deepgenmodels' on page 6 undefined on input line 641.
+
+
+
+Underfull \hbox (badness 2556) in paragraph at lines 641--644
+ \OT1/ptm/m/it/10 3) Scal-a-bil-ity: [][] \OT1/ptm/m/n/10 Man-i-fold learn-ing 
+in scikit-learn have
  []
 
 
-Underfull \hbox (badness 1803) in paragraph at lines 1382--1384
-\OT1/ptm/m/n/10 the global struc-ture and runs faster. With ref-er-ence to
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1419--1420
+Underfull \hbox (badness 1389) in paragraph at lines 641--644
+\OT1/ptm/m/n/10 [https://arxiv.org/pdf/1802.03426.pdf]. Math-e-mat-i-cally more
 
  []
 
+[6]
+** WARNING: Ignoring useless \section in Appendix (line 682).
 
-Underfull \hbox (badness 2326) in paragraph at lines 1421--1424
+Underfull \hbox (badness 10000) in paragraph at lines 716--718
+ \OT1/ptm/m/it/10 3) Doc-u-men-ta-tion: [][] \OT1/ptm/m/n/10 As the doc-u-men-t
+a-tion of
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 716--718
+\OT1/ptm/m/n/10 spe-cific pack-ages in-clud-ing \OT1/ptm/m/it/10 Mul-ti-vari-at
+-eS-tats.jl \OT1/ptm/m/n/10 and
+ []
+
+
+Underfull \hbox (badness 1365) in paragraph at lines 716--718
+\OT1/ptm/m/it/10 Man-i-foldLearn-ing.jl \OT1/ptm/m/n/10 are very sparse and to 
+large ex-tent
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 716--718
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 722--723
+
+ []
+
+
+Underfull \hbox (badness 2326) in paragraph at lines 724--727
 []\OT1/ptm/m/n/10 Julia has po-ten-tial and is an ex-cit-ing, in-tu-itive and
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1421--1424
+Underfull \hbox (badness 10000) in paragraph at lines 724--727
 
  []
 
-[12]
-Underfull \hbox (badness 1874) in paragraph at lines 1426--1432
+[7]
+Underfull \hbox (badness 1874) in paragraph at lines 729--735
 \OT1/ptm/m/n/10 di-rectly in Python and also \OT1/ptm/m/it/10 CuPy \OT1/ptm/m/n
 /10 (a NumPy-like API
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1426--1432
+Underfull \hbox (badness 10000) in paragraph at lines 729--735
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1433--1434
+Underfull \hbox (badness 10000) in paragraph at lines 736--737
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1449--1450
+Underfull \hbox (badness 10000) in paragraph at lines 752--753
 
  []
 
-[13] [14
+[8]
+Underfull \hbox (badness 10000) in paragraph at lines 825--826
+[]\OT1/ptm/m/n/8 scikit-learn. \OT1/ptm/m/it/8 https://plot.ly/ipython-notebook
+s/principal-component-
+ []
 
-] (./mainP.aux) ) 
+
+Overfull \hbox (70.17256pt too wide) in paragraph at lines 857--859
+[]\OT1/ptm/m/n/8 Lin C et al. [].
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 875--876
+[]\OT1/ptm/m/n/8 Bioconductor. \OT1/ptm/m/it/8 https://www.bioconductor.org/hel
+p/course-
+ []
+
+
+Overfull \hbox (6.04544pt too wide) in paragraph at lines 875--876
+\OT1/ptm/m/it/8 materials/2017/BioC2017/Day2/Workshops/singleCell/doc/workshop.
+html\OT1/ptm/m/n/8 ,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 900--902
+[]\OT1/ptm/m/n/8 Marco E et al. \OT1/ptm/m/it/8 Bi-fur-ca-tion anal-y-sis of si
+ngle-cell gene
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 900--902
+\OT1/ptm/m/it/8 ex-pres-sion data re-veals epi-ge-netic land-scape\OT1/ptm/m/n/
+8 . PNAS,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 907--910
+[]\OT1/ptm/m/n/8 . Asp P et al. \OT1/ptm/m/it/8 Genome-wide re-mod-el-ing of th
+e epi-ge-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 907--910
+\OT1/ptm/m/it/8 netic land-scape dur-ing myo-ge-netic dif-fer-en-ti-a-tion\OT1/
+ptm/m/n/8 . PNAS,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 935--937
+[]\OT1/ptm/m/n/8 Zwiesele M and Lawrence ND. \OT1/ptm/m/it/8 Top-slam: Wadding-
+ton
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 935--937
+\OT1/ptm/m/it/8 Land-scape Re-cov-ery for Sin-gle Cell Ex-per-i-ments\OT1/ptm/m
+/n/8 . bioRxiv,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 954--955
+[]\OT1/ptm/m/n/8 https://omictools.com/single-cell-clustering-using-bifurcation
+-analysis-
+ []
+
+
+Overfull \hbox (17.9281pt too wide) in paragraph at lines 957--958
+[]\OT1/pcr/m/n/8 http://scikit-learn.org/stable/modules/manifold.html\OT1/ptm/m
+/n/8 ,
+ []
+
+
+Overfull \hbox (233.92824pt too wide) in paragraph at lines 960--961
+[]\OT1/pcr/m/n/8 https://github.com/rasbt/python-machine-learning-book/blob/mas
+ter/faq/dimensionality-reduction.md\OT1/ptm/m/n/8 ,
+ []
+
+[9]
+Underfull \hbox (badness 10000) in paragraph at lines 967--969
+[]\OT1/ptm/m/n/8 Sorzano COS, Var-gas J and Pascual-Montano A.
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 967--969
+\OT1/ptm/m/it/8 A sur-vey of di-men-sion-al-ity re-duc-tion tech-niques\OT1/ptm
+/m/n/8 .
+ []
+
+
+Overfull \hbox (20.7281pt too wide) in paragraph at lines 967--969
+\OT1/pcr/m/n/8 https://arxiv.org/ftp/arxiv/papers/1403/1403.2877.pdf 
+ []
+
+[10
+
+] (./mainP.aux)
+
+LaTeX Warning: There were undefined references.
+
+ ) 
 Here is how much of TeX's memory you used:
- 5577 strings out of 493014
- 84013 string characters out of 6133351
- 165336 words of memory out of 5000000
- 9016 multiletter control sequences out of 15000+600000
- 39638 words of font info for 76 fonts, out of 8000000 for 9000
+ 6063 strings out of 493014
+ 91052 string characters out of 6133351
+ 173299 words of memory out of 5000000
+ 9491 multiletter control sequences out of 15000+600000
+ 40153 words of font info for 78 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 44i,6n,42p,1893b,256s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/local/texlive/2016/texmf-dist/fonts/enc/dvips/base/8r.en
-c}</usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb
-></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb>
-</usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></
-usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></us
-r/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/l
-ocal/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/lo
-cal/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/loca
-l/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/
-local/texlive/2016/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/local/te
-xlive/2016/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2016
-/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb></usr/local/texlive/2016/texmf-di
-st/fonts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2016/texmf-dist/fonts/t
-ype1/urw/times/utmri8a.pfb>
-Output written on mainP.pdf (14 pages, 204189 bytes).
+ 44i,6n,42p,1102b,305s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/local/texlive/2016/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/t
+exlive/2016/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/local/texlive/2
+016/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2016/texmf-
+dist/fonts/type1/urw/times/utmbi8a.pfb></usr/local/texlive/2016/texmf-dist/font
+s/type1/urw/times/utmr8a.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/ur
+w/times/utmri8a.pfb>
+Output written on mainP.pdf (10 pages, 295301 bytes).
 PDF statistics:
- 103 PDF objects out of 1000 (max. 8388607)
- 73 compressed objects within 1 object stream
+ 61 PDF objects out of 1000 (max. 8388607)
+ 41 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 6 words of extra memory for PDF output out of 10000 (max. 10000000)
 
