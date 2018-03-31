@@ -1,0 +1,481 @@
+%%----------------------------------------------------------------------------------------------------------------------------------------
+\hfill
+\subsubsection{t-distributed stochastic neighbour embedding (t-SNE)}
+%PAPER: http://jmlr.org/papers/volume9/vandermaaten08a/vandermaaten08a.pdf
+%WEBSITE: http://lvdmaaten.github.io/tsne/
+[UNFINISHED]
+
+Probably the most widely used manifold learning method is t-SNE.
+Unlike most of the linear methods, t-SNE that was developed by Laurens van der Maaten [REFERENCE] is probabilistic.
+
+%http://scikit-learn.org/stable/modules/manifold.html
+t-SNE converts affinities of data points into probabilities. 
+
+%[https://pythonmachinelearning.pro/dimensionality-reduction/]
+t-SNE tries  to minimise the divergence between two distributions: the pairwise similarity of the points in the higher-dimensional space (represented by ) and the pairwise similarity of the points in the lower-dimensional space.
+
+The similarity is measured based on Student's t-distribution or Cauchy distribution which looks similar to a Gaussian distribution.
+
+%[INSERT 2 EQUATIONS]
+%http://alexanderfabisch.github.io/t-sne-in-scikit-learn.html
+
+To measure the divergence between these two distributions, we use the \textit{Kullback-Leibler divergence (KLD)} of the joint probabilities in the original space and the embedded space which will be our cost function. From there, we can minimise by eg gradient descent to train our model.
+
+%It should be noted that the KL divergence is not convex, ie starting from different initial points one will end up in local minima  of the KL divergence. We might want to try different seeds and can choose the embedding with the lowest divergence.
+
+CONS: 
+\begin{itemize}
+		\item computationally expensive: it scales quadratically with the number of samples
+		\item stochastic and therefore, multiple restarts with different seeds can yield different embeddings. One might choose the one with the lowest divergence.
+		\item global structure is not explicitly preserved
+	\end{itemize}
+
+%There’s just one last thing to figure out: \sigma_i. We can’t use the same \sigma for all points! Denser regions should have a smaller \sigma, and sparser regions should have a larger \sigma. We solidify this intuition into a mathematical term called perplexity. Think of it as a measure of the effective number of neighbors, similar to the k of k-nearest neighbors.
+
+%t-SNE performs a binary search for the \sigma_i that produces a distribution P_i with the perplexity specified by the user: perplexity is a hyperparameter. Values between 5 and 50 tend to work the best.
+%
+%In practice, t-SNE is very resource-intensive so we usually use another dimensionality reduction technique, like PCA, to reduce the input space into a smaller dimensionality (like maybe 50 dimensions), and then use t-SNE.
+%
+%t-SNE, as we’ll see, produces the best results out of all of the dimensionality reduction techniques because of the KLD cost function.
+
+
+% |  t-distributed Stochastic Neighbor Embedding.
+% |  
+% |  t-SNE [1] is a tool to visualize high-dimensional data. It converts
+% |  similarities between data points to joint probabilities and tries
+% |  to minimize the Kullback-Leibler divergence between the joint
+% |  probabilities of the low-dimensional embedding and the
+% |  high-dimensional data. t-SNE has a cost function that is not convex,
+% |  i.e. with different initializations we can get different results.
+% |  
+% |  It is highly recommended to use another dimensionality reduction
+% |  method (e.g. PCA for dense data or TruncatedSVD for sparse data)
+% |  to reduce the number of dimensions to a reasonable amount (e.g. 50)
+% |  if the number of features is very high. This will suppress some
+% |  noise and speed up the computation of pairwise distances between
+% |  samples. For more tips see Laurens van der Maaten's FAQ [2].
+
+
+CON: There are some modifications of t-SNE that already have been published. A huge disadvantage of t-SNE is that it scales quadratically with the number of samples (O(N2)
+
+) and the optimization is quite slow. These issues and more have been adressed in the following papers:
+
+Parametric t-SNE: Learning a Parametric Embedding by Preserving Local Structure
+% http://proceedings.mlr.press/v5/maaten09a/maaten09a.pdf
+Barnes-Hut SNE: Barnes-Hut-SNE
+% https://arxiv.org/abs/1301.3342
+Fast optimization: Fast Optimization for t-SNE
+% http://cseweb.ucsd.edu/~lvdmaaten/workshops/nips2010/papers/vandermaaten.pdf
+
+
+%WATCH VIDEO
+
+%T-distributed stochastic neighbor embedding (t-SNE) is a ML algorithm for dimensionality reduction developed by Geoffrey Hinton and Laurens van der Maaten.[1] It is a nonlinear dimensionality reduction technique that is particularly well-suited for embedding high-dimensional data into a space of two or three dimensions, which can then be visualized in a scatter plot. 
+%
+%More precisely, it models each high-dimensional object by a two- or three-dimensional point in such a way that similar objects are modeled by nearby points and dissimilar objects are modeled by distant points.
+%
+%The t-SNE algorithm comprises two main stages:
+% First, t-SNE constructs a probability distribution over pairs of high-dimensional objects in such a way that similar objects have a high probability of being picked, whilst dissimilar points have an extremely small probability of being picked. 
+% 
+% Second, t-SNE defines a similar probability distribution over the points in the low-dimensional map, and it minimizes the Kullback–Leibler divergence between the two distributions with respect to the locations of the points in the map. Note that whilst the original algorithm uses the Euclidean distance between objects as the base of its similarity metric, this should be changed as appropriate.
+%
+%t-SNE has been used in a wide range of applications, including computer security research,[2] music analysis,[3] cancer research,[4] bioinformatics,[5] and biomedical signal processing.[6] It is often used to visualize high-level representations learned by an artificial neural network.[7]
+
+
+[STANDARD APPROACH]
+
+[EXPLAIN STEPS: pseudocode]
+
+%INSERT REFERENCES
+%There are two Julia implementations available:
+%wasn't working in Julia. ..but the theory worth mentioning.
+%[REFERENCE ]https://lvdmaaten.github.io/tsne/]
+
+%[MANY IMPLEMENTATIONS AVAILABLE IN OTHER LANGUAGES]
+%TRIED TO IMPLEMENT, WHAT WERE THE PROBLEMS?
+
+
+%standardisation?
+
+
+%%----------------------------------------------------------------------------------------------------------------------------------------
+\hfill
+\subsubsection{Laplacian eigenmaps (LEM)}
+%REFERENCE: https://www.mitpressjournals.org/doi/10.1162/089976603321780317 [PHD THESIS]
+%http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.70.382
+[UNFINISHED]
+
+LEM, in scikit-learn also called \textit{Spectral Embedding}, finds a low-dimensional representation of the data using a spectral decomposition of the graph Laplacian [REFERENCE].
+The graph can be considered as a discrete approximation of the low-dimensioanl manifold in the high-dimensional space.
+
+As in the other manifold learning methods, LEM starts with the assumption that the data lie on or around a low-dimensional manifold in a (potentially) very high-dimensional space. 
+Usually, this submanifold is unknown except for finitely many points sampled form some probability distribution. 
+%[THESIS] shows that many problems of ML including classification, data representation and clustering can be approached naturally in this context. It also provides us with some theoretical guarantees including a proof of convergence. 
+
+
+%The Spectral Embedding (Laplacian Eigenmaps) algorithm comprises three stages:
+%
+%1. Weighted Graph Construction. Transform the raw input data into graph representation using affinity (adjacency) matrix representation.
+%2. Graph Laplacian Construction. unnormalized Graph Laplacian is constructed as L = D - A for and normalized one as L = D^{-\frac{1}{2}} (D - A) D^{-\frac{1}{2}}.
+%3. Partial Eigenvalue Decomposition. Eigenvalue decomposition is done on graph Laplacian
+
+
+
+% % IS THIS ANY MEANINGFUL TO ASSUME IN OUR CASE??
+%
+%Laplacian Eigenmaps (LEM) method uses spectral techniques to perform DR. 
+%%LEM assumes that the data lies in a low-dimensional manifold in a high-dimensional space. 
+
+
+%This algorithm cannot embed out of sample points, but techniques based on Reproducing kernel Hilbert space (RKHS) regularisation exist for adding this capability. Also, such techniques can be applied to other non-linear DR algorithms as well.
+
+%%Traditional techniques like principal component analysis do not consider the intrinsic geometry of the data.
+
+%LEM proposes a geometrically motivated algorithm to non-linear DR; it has neighbourhood preserving properties and a natural connection to clustering [REFERENCE PHD THESIS]. \\
+
+%It shares common properties with LLE, Spectral Clustering, Diffusion maps and other non-linear DR methods.
+%[DO NOT MENTION IF NOT EXPLAINED BEFORE]
+
+
+% WHERE CAN THE READER LOOK THIS UP?
+
+
+1. Internally, LEM builds a graph representation incorporating neighbourhood information of the data set. The data points represent the nodes of the graph and the edges between nodes and, therefore, the connectivity of the graph is determined by the closeness of neighbouring points usually using k-nearest neighbour algorithm (KNN). We might, therefore, think of this graph as a discrete approximation of the low-dimensional manifold in the high-dimensional space. 
+To make sure that points close to each other on the manifold are mapped close to each other in the low-dimensional space, ie local distances are preserved, we use a cost function based on the graph that is to be minimised, similar to ......
+
+It uses the correspondence between the graph Laplacian, the Laplace Beltrami operator on the manifold, and connections to the heat equation (see below). The graph Laplacian is a discrete approximation of the Laplace operator on manifolds and has been widely used for different clustering and partion problems [REFERENCE Shi and Malik, 2000, SIMON, 1991, NG et al, 2002]. (The eigenvectors of the Laplacian matrix are equivalent to eigenfunctions of the Laplace operator. The Laplace operator, in turn defines the inner-product on the tangent space for any point in the manifold. The inner product is used to define geometric notions such as length, angle, orthogonality.)
+
+In geometry and spectral graph theory, the connections between the Laplace Beltrami operator and the graph Laplacian have been known for long [REFERENCE Chung, 1997; Chung, Grigoryan and Yau, 1997]; however, LEM was the first DR method that exploited this relationship. 
+
+2. Using the notion of a Laplacian of the graph, we then compute a low-dimensional representation of the data set that optimally preserves local neighbourhood information in a certain sense.
+
+The representation map generated by the algorithm can be thought of as a discrete approximation to a continuous map that naturally arises from the geometry of the manifold.
+
+
+PRO:
+Key aspects of the algorithms are the following [REFERENCE LAPLACIAN EIGENMAPS FOR DR, 2002]:
+- The core algorithm is very simple: There is one eigenvalue problem to solve and a few local computations. The solution reflects the instrinsic geometric structure of the manifold. However, we do need to search for nearest neighbouring points in the high-dimensional space; since there are several efficient approximate techniques for that available, this is no major drawback.
+- The algorithm's justification is based on the Laplace Beltrami operator being an optimal embedding for the manifold [see ....]. 
+While the manifold is approximated by the adjacency graph computed from the data points, the Laplace Beltrami operator is approximated by the weighted Laplacian of the adjacency graph with weights chosen appropriately. % see...
+Since the Laplace Beltrami plays a key role in the heat equation, we can use the heat kernel to choose the weight decay function. Therefore, the embedding maps for the data approximate the Eigenmaps of the Laplace Beltrami operator which are maps intrinsically defined on the entire manifold.
+
+The Laplacian of a graph is analogous to the Laplace Beltrami operator on manifolds; 
+
+- The locality preserving character of the LEM makes it relatively insensitive to outliers and noise. 
+PRESERVE LOCAL INFORMATION IN THE EMBEDDING, ie points that map....conneted points stay as close together as possible.
+Another consequence of preserving local structures  is that natural clusters in the data are "weighted" more and we can see a connectio to spectral clustering algorithms developed in learning and computer vision [REFERENCE LAPLACIAN EIGENMAPS FOR DR, 2002].
+In this sense, DR and clustering can be regarded as two sides of the same coin and this connection has been explored in greater detail in [REFERENCE LAPLACIAN EIGENMAPS FOR DR, 2002]. 
+This is in contrast to global methods, eg in ..LLE.... where pairwise geodesic distances between points are preserved.
+
+%GG The geodesic distance between two points in a manifold is the one measured along the manifold itself
+%in practical terms it is computed as the shortest path in a neighbourhood graph connecting each observation to its K-nearest neighbours
+
+However, not all data sets necessarily have meaningful clusters; in these cases other methods such as Isomap or classic PCA might be more appropriate. 
+
+%WRITE AS PSEUDOCODE
+Steps of algorithms:
+
+1. Constructing the adjacency graph, eg based on \( \epsilon \)-neighbourhoods or \( n \) nearest neighbours.
+The first is geometrically intuitive; however, it often leads to graphs with several connected components and, as usual, it may be difficult to choose the right \( \epsilon \). \( N \) nearest neighbour on the other hand is easy to choose and does not tend to lead to disconnected graphs but is less geometrically intuitive.
+2. Choosing the weights for the edges, eg by using a heat kernel.
+3. Compute the eigenmaps (eigenvalues and eigenvectors for the generalised eigenvector problem)
+
+%WHY I LIKE IT PERSONALLY:
+- LEM uses these connections to interpret DR algorithms in a geometric way %; we could reinterpret LLE [ROWEIS AND SAUL] within this framework. 
+
+
+%The eigenfunctions of the Laplace–Beltrami operator on the manifold serve as the embedding dimensions, since under mild conditions this operator has a countable spectrum that is a basis for square integrable functions on the manifold (compare to Fourier series on the unit circle manifold). 
+%Attempts to place Laplacian eigenmaps on solid theoretical ground have met with some success, as under certain nonrestrictive assumptions, the graph Laplacian matrix has been shown to converge to the Laplace–Beltrami operator as the number of points goes to infinity.[24] 
+
+In M Belkhin's PhD thesis [REFERENCE] the problem of learning a function on manifold given by data points is discussed in greater detail. The space of functions on a Riemann manifold has a family of smoothness functionals and a canonical basis associated to the Laplace-Beltrami operator. It can be shown, that the Laplace-Beltrami operator can be reconstructed with certain convergence guarantees when the manifold is only given by sampled data points [REFERENCE PHD THESIS]. This is very useful, as we can then apply techniques of regularisation and Fourier analysis to functions defined on data. 
+ 
+ %For more details on LEM we refer to [REFERENCE PHD THESIS BELKIN]; it also discusses illustrative examples and applications.
+ %% PHD THESIS: [http://web.cse.ohio-state.edu/~belkin.8/papers/PLM_UCTHESIS_03.pdf]
+ 
+%
+%In classification applications, low dimension manifolds can be used to model data classes which can be defined from sets of observed instances. Each observed instance can be described by two independent factors termed ’content’ and ’style’, where ’content’ is the invariant factor related to the essence of the class and ’style’ expresses variations in that class between instances.[27] Unfortunately, Laplacian Eigenmaps may fail to produce a coherent representation of a class of interest when training data consist of instances varying significantly in terms of style.[28] In the case of classes which are represented by multivariate sequences, Structural Laplacian Eigenmaps has been proposed to overcome this issue by adding additional constraints within the Laplacian Eigenmaps neighborhood information graph to better reflect the intrinsic structure of the class.[29] More specifically, the graph is used to encode both the sequential structure of the multivariate sequences and, to minimise stylistic variations, proximity between data points of different sequences or even within a sequence, if it contains repetitions. Using dynamic time warping, proximity is detected by finding correspondences between and within sections of the multivariate sequences that exhibit high similarity. Experiments conducted on vision-based activity recognition, object orientation classification and human 3D pose recovery applications have demonstrate the added value of Structural Laplacian Eigenmaps when dealing with multivariate sequence data.[29] An extension of Structural Laplacian Eigenmaps, Generalized Laplacian Eigenmaps led to the generation of manifolds where one of the dimensions specifically represents variations in style. This has proved particularly valuable in applications such as tracking of the human articulated body and silhouette extraction.[30]
+
+
+%See also: Manifold regularization
+
+The Julia implementation of the algorithm in the package \textit{ManifoldLearning.jl} provides a computationally efficient approach to non-linear DR that has locally preserving properties.
+
+[PLOTS PROJECTION, TRANSFORM]
+
+%MEASURE RUNNING TIME ON DIFFERENT DATA SETS
+%THOROUGHLY LOOK AT HOW IMPLEMENTED IN JULIA
+
+
+
+%%----------------------------------------------------------------------------------------------------------------------------------------
+%\subsubsection{Diffusion maps}
+%%REFERENCE: www.pnas.org/content/102/21/7426
+
+
+%This package defines a DiffMap type to represent a Hessian LLE results, and provides a set of methods to access its properties.
+
+%Diffusion maps leverages the relationship between heat diffusion and a random walk (Markov Chain); an analogy is drawn between the diffusion operator on a manifold and a Markov transition matrix operating on functions defined on the graph whose nodes were sampled from the manifold.[32] In particular let a data set be represented by X = [ x 1 , x 2 , … , x n ] ∈ Ω ⊂ R D {\displaystyle \mathbf {X} =[x_{1},x_{2},\ldots ,x_{n}]\in \Omega \subset \mathbf {R^{D}} } \mathbf {X} =[x_{1},x_{2},\ldots ,x_{n}]\in \Omega \subset \mathbf {R^{D}} . The underlying assumption of diffusion map is that the data although high-dimensional, lies on a low-dimensional manifold of dimensions d {\displaystyle \mathbf {d} } \mathbf {d} . Let X represent the data set and μ {\displaystyle \mu } \mu represent the distribution of the data points on X. In addition to this lets define a kernel which represents some notion of affinity of the points in X. The kernel k {\displaystyle {\mathit {k}}} {\mathit {k}} has the following properties[33]
+%
+%k ( x , y ) = k ( y , x ) , {\displaystyle k(x,y)=k(y,x),\,} k(x,y)=k(y,x),\,
+%
+%k is symmetric
+%
+%k ( x , y ) ≥ 0 ∀ x , y , k {\displaystyle k(x,y)\geq 0\qquad \forall x,y,k} k(x,y)\geq 0\qquad \forall x,y,k
+%
+%k is positivity preserving
+%
+%Thus one can think of the individual data points as the nodes of a graph and the kernel k defining some sort of affinity on that graph. The graph is symmetric by construction since the kernel is symmetric. It is easy to see here that from the tuple (X,k) one can construct a reversible Markov Chain. This technique is fairly popular in a variety of fields and is known as the graph laplacian.
+%
+%The graph K = (X,E) can be constructed for example using a Gaussian kernel.
+%
+%K i j = { e − ‖ x i − x j ‖ 2 2 / σ 2 if  x i ∼ x j 0 otherwise {\displaystyle K_{ij}={\begin{cases}e^{-\|x_{i}-x_{j}\|_{2}^{2}/\sigma ^{2}}&{\text{if }}x_{i}\sim x_{j}\\0&{\text{otherwise}}\end{cases}}} K_{ij}={\begin{cases}e^{-\|x_{i}-x_{j}\|_{2}^{2}/\sigma ^{2}}&{\text{if }}x_{i}\sim x_{j}\\0&{\text{otherwise}}\end{cases}}
+%	
+%	In this above equation x i ∼ x j {\displaystyle x_{i}\sim x_{j}} x_{i}\sim x_{j} denotes that x i {\displaystyle x_{i}} x_{i} is a nearest neighbor of x j {\displaystyle x_{j}} x_{j}. In reality Geodesic distance should be used to actually measure distances on the manifold. Since the exact structure of the manifold is not available, the geodesic distance is approximated by euclidean distances with only nearest neighbors. The choice σ {\displaystyle \sigma } \sigma modulates our notion of proximity in the sense that if ‖ x i − x j ‖ 2 ≫ σ {\displaystyle \|x_{i}-x_{j}\|_{2}\gg \sigma } \|x_{i}-x_{j}\|_{2}\gg \sigma then K i j = 0 {\displaystyle K_{ij}=0} K_{ij}=0 and if ‖ x i − x j ‖ 2 ≪ σ {\displaystyle \|x_{i}-x_{j}\|_{2}\ll \sigma } \|x_{i}-x_{j}\|_{2}\ll \sigma then K i j = 1 {\displaystyle K_{ij}=1} K_{ij}=1. The former means that very little diffusion has taken place while the latter implies that the diffusion process is nearly complete. Different strategies to choose σ {\displaystyle \sigma } \sigma can be found in.[34] If K {\displaystyle K} K has to faithfully represent a Markov matrix, then it has to be normalized by the corresponding degree matrix D {\displaystyle D} D:
+%	
+%	P = D − 1 K . {\displaystyle P=D^{-1}K.\,} P=D^{-1}K.\,
+%	
+%	P {\displaystyle P} P now represents a Markov chain. P ( x i , x j ) {\displaystyle P(x_{i},x_{j})} P(x_{i},x_{j}) is the probability of transitioning from x i {\displaystyle x_{i}} x_{i} to x j {\displaystyle x_{j}} x_{j} in one time step. Similarly the probability of transitioning from x i {\displaystyle x_{i}} x_{i} to x j {\displaystyle x_{j}} x_{j} in t time steps is given by P t ( x i , x j ) {\displaystyle P^{t}(x_{i},x_{j})} P^{t}(x_{i},x_{j}). Here P t {\displaystyle P^{t}} P^{t} is the matrix P {\displaystyle P} P multiplied to itself t times. Now the Markov matrix P {\displaystyle P} P constitutes some notion of local geometry of the data set X. 
+%TThe major difference between diffusion maps and principal component analysis is that only local features of the data is considered in diffusion maps as opposed to taking correlations of the entire data set.
+%	
+%	K {\displaystyle K} K defines a random walk on the data set which means that the kernel captures some local geometry of data set. The Markov chain defines fast and slow directions of propagation, based on the values taken by the kernel, and as one propagates the walk forward in time, the local geometry information aggregates in the same way as local transitions (defined by differential equations) of the dynamical system.[33] The concept of diffusion arises from the definition of a family diffusion distance { D t {\displaystyle D_{t}} D_{t}} t ∈ N {\displaystyle _{t\in N}} _{t\in N}
+%	
+%	D t 2 ( x , y ) = | | p t ( x , ⋅ ) − p t ( y , ⋅ ) | | 2 {\displaystyle D_{t}^{2}(x,y)=||p_{t}(x,\cdot )-p_{t}(y,\cdot )||^{2}} D_{t}^{2}(x,y)=||p_{t}(x,\cdot )-p_{t}(y,\cdot )||^{2}
+%	
+%	For a given value of t D t {\displaystyle D_{t}} D_{t} defines a distance between any two points of the data set. This means that the value of D t ( x , y ) {\displaystyle D_{t}(x,y)} D_{t}(x,y) will be small if there are many paths that connect x to y and vice versa. The quantity D t ( x , y ) {\displaystyle D_{t}(x,y)} D_{t}(x,y) involves summing over of all paths of length t, as a result of which D t {\displaystyle D_{t}} D_{t} is extremely robust to noise in the data as opposed to geodesic distance. D t {\displaystyle D_{t}} D_{t} takes into account all the relation between points x and y while calculating the distance and serves as a better notion of proximity than just Euclidean distance or even geodesic distance.
+
+
+%%----------------------------------------------------------------------------------------------------------------------------------------
+\hfill
+\subsubsection{Isometric mapping (Isomap)}
+%REFERENCE: web.mit.edu/cocosci/Papers/sci_reprint.pdf -- GOOD PAPER
+
+Isomap can be seen as an extension of MDS. % or KPCA. 
+As the name suggests, it tries to find a lower-dimensional embedding which maintains geodesic distances between all points [REFERENCE].  
+
+It uses \textit{Dijkstra's algorithm} or  the \textit{Floyd–Warshall algorithm} to compute the pair-wise distances between all other points;  uses the Floyd–Warshall algorithm to compute the pair-wise distances between all other points and hence, estimate the full matrix of pair-wise geodesic distances between all of the points. The algorithm then uses MDS the reduced-dimensional positions of all points [REFERENCE].
+
+%1. Nearest neighbour search.
+%2. Shortest-path graph search.
+%3. Partial eigenvalue decomposition.
+
+%TALL: Isomap[18] is a combination of the Floyd–Warshall algorithm with classic Multidimensional Scaling. Isomap assumes that the pair-wise distances are only known between neighboring points, and uses the Floyd–Warshall algorithm to compute the pair-wise distances between all other points. This effectively estimates the full matrix of pair-wise geodesic distances between all of the points. Isomap then uses classic MDS to compute the reduced-dimensional positions of all the points.
+%
+%Landmark-Isomap is a variant of this algorithm that uses landmarks to increase speed, at the cost of some accuracy.
+
+%%----------------------------------------------------------------------------------------------------------------------------------------
+\hfill
+\subsubsection{Locally-linear embedding (LLE)}
+%REFERENCE: http://science.sciencemag.org/content/290/5500/2323
+[UNFINISHED]
+
+LLE aims to find a lower-dimensional projection of the data which preserves distances within local neighbourhoods. We can think of it as a series of local PCAs which are globally compared to find the best non-linear embedding [REFERENCE: scikit-learn].
+%1. Nearest Neighbour Search.
+%2. Weight Matrix Construction.
+%3. Partial Eigenvalue Decomposition.
+
+% Locally Linear Embedding (LLE) technique builds a single global coordinate system of lower dimensionality. By exploiting the local symmetries of linear reconstructions, LLE is able to learn the global structure of nonlinear manifolds [1].
+
+%SSee Roweis \& Saul, Roweis was Hopfield's PhD student.
+
+%Goal: find an embedding for the full D-dimensional input space into a d-dimensional space , d << D, such that the intrinsic geodesic structure of the data in the original space is preserved as much as possible.
+%
+%2 steps: 1. For each data point, we find a set of local weights that represent the point in a translation-, rotation- and scale-invariant way which can be formalised as an optimisation problem with two constraints [REFERECE http://www.cns.nyu.edu/~eorhan/notes/lle.pdf].
+
+%REFERENCE]
+%http://www.cns.nyu.edu/~eorhan/notes/lle.pdf
+
+%Locally-Linear Embedding (LLE)[20] 
+LLE was presented at approximately the same time as Isomap. 
+%PRO:  NEEDS REPRASING AS COPIED
+As shown in [REFERENCE], it has several advantages over Isomap, including faster optimization when implemented to take advantage of sparse matrix algorithms, and better results with many problems. LLE also begins by finding a set of the nearest neighbors of each point. It then computes a set of weights for each point that best describes the point as a linear combination of its neighbors. Finally, it uses an eigenvector-based optimization technique to find the low-dimensional embedding of points, such that each point is still described with the same linear combination of its neighbors. LLE tends to handle non-uniform sample densities poorly because there is no fixed unit to prevent the weights from drifting as various regions differ in sample densities. LLE has no internal model.\\
+Unlike most other methods, LLE uses the barycentric coordinates of a point based on its neighbours, which have some nice benefits compared to existing planar coordinates [REFERENCE].
+
+%CONS:
+%[REFERENCE: http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.70.382]
+However, one well-known issue with LLE is the regularisation problem. When the number of neighbours is greater than the number of input dimensions, the matrix defining each local neighbourhood is rank-deficient. 
+
+%To address this, standard LLE applies an arbitrary regularization parameter \( r \)
+%￼
+%, which is chosen relative to the trace of the local weight matrix. Though it can be shown formally that as \(  r \to 0 |\)
+%￼
+%, the solution converges to the desired embedding, there is no guarantee that the optimal solution will be found for \(  r > 0\)
+%￼
+%. This problem manifests itself in embeddings which distort the underlying geometry of the manifold.
+%One method to address the regularization problem is MLLE.
+%
+
+
+%benefits of barycentric coordinates:
+%-Simple expressions for lines in general, making it computationally feasible to intersect lines.
+%-Simple forms for some common points (centroid, incenter, symmedian point...)
+%-Very strong handling of ratios of lengths.
+%-A useful method for dropping arbitrary perpendiculars.
+%-An area formula.
+%-Circle formula.
+%-Distance formula.
+.
+%coordinates generalize existing planar coordinates
+
+%
+%LLE computes the barycentric coordinates of a point Xi based on its neighbors Xj. The original point is reconstructed by a linear combination, given by the weight matrix Wij, of its neighbors. The reconstruction error is given by the cost function E(W).
+%
+%E ( W ) = ∑ i | X i − ∑ j W i j X j | 2 {\displaystyle E(W)=\sum _{i}|{\mathbf {X} _{i}-\sum _{j}{\mathbf {W} _{ij}\mathbf {X} _{j}}|}^{\mathsf {2}}} E(W)=\sum _{i}|{\mathbf {X} _{i}-\sum _{j}{\mathbf {W} _{ij}\mathbf {X} _{j}}|}^{\mathsf {2}}
+%
+%The weights Wij refer to the amount of contribution the point Xj has while reconstructing the point Xi. The cost function is minimized under two constraints: (a) Each data point Xi is reconstructed only from its neighbors, thus enforcing Wij to be zero if point Xj is not a neighbor of the point Xi and (b) The sum of every row of the weight matrix equals 1.
+%
+%∑ j W i j = 1 {\displaystyle \sum _{j}{\mathbf {W} _{ij}}=1} \sum _{j}{\mathbf {W} _{ij}}=1
+%
+%The original data points are collected in a D dimensional space and the goal of the algorithm is to reduce the dimensionality to d such that D >> d. The same weights Wij that reconstructs the ith data point in the D dimensional space will be used to reconstruct the same point in the lower d dimensional space. A neighborhood preserving map is created based on this idea. Each point Xi in the D dimensional space is mapped onto a point Yi in the d dimensional space by minimizing the cost function
+%
+%C ( Y ) = ∑ i | Y i − ∑ j W i j Y j | 2 {\displaystyle C(Y)=\sum _{i}|{\mathbf {Y} _{i}-\sum _{j}{\mathbf {W} _{ij}\mathbf {Y} _{j}}|}^{\mathsf {2}}} C(Y)=\sum _{i}|{\mathbf {Y} _{i}-\sum _{j}{\mathbf {W} _{ij}\mathbf {Y} _{j}}|}^{\mathsf {2}}
+%
+%In this cost function, unlike the previous one, the weights Wij are kept fixed and the minimization is done on the points Yi to optimize the coordinates. This minimization problem can be solved by solving a sparse N X N eigen value problem (N being the number of data points), whose bottom d nonzero eigen vectors provide an orthogonal set of coordinates. Generally the data points are reconstructed from K nearest neighbors, as measured by Euclidean distance. For such an implementation the algorithm has only one free parameter K, which can be chosen by cross validation.
+
+
+% regions with high density 
+
+%Laplacian Eigenmaps
+%Really meaningful?
+
+
+%....and many variations to it.
+
+
+%% DR for Feature selection
+
+%%----------------------------------------------------------------------------------------------------------------------------------------
+\hfill
+\subsubsection{Hessian locally-linear embedding (Hessian LLE)}
+%REFERENCE: http://www.pnas.org/content/100/10/5591
+[UNFINISHED]
+
+Hessian LLE is a variant of LLE
+
+%uses another method to solve the regularisation problem of the LLE; 
+and as the name suggests, it adapts the weights in LLE to minimise the Hessian operator, ie it uses a hessian-based quadratic form at each neighborhood to recover the locally linear structure. 
+
+Con: Like LLE, it requires careful setting of the nearest neighbour parameter; it poorly scales with data size.
+Unfortunately, it has a very costly computational complexity, so it is not well-suited for heavily sampled manifolds. It has no internal model.
+
+Pro: The main advantage of Hessian LLE is the only method designed for non-convex data sets [REFERENCE].
+It tends to yield results of a much higher quality than LLE. 
+
+%1. Nearest Neighbours Search.
+%2. Weight Matrix Construction.
+%3. Partial Eigenvalue Decomposition. Same as standard LLE.
+
+A proof-of-concept example of the LLE, Hessian LLE and Isomap for the Swiss roll input data is given in figure [ADD].
+% https://arxiv.org/ftp/arxiv/papers/1403/1403.2877.pdf
+
+%%----------------------------------------------------------------------------------------------------------------------------------------
+\hfill
+\subsubsection{Local tangent space alignment (LTSA)}
+%REFERENCE: https://epubs.siam.org/doi/10.1137/S1064827502419154
+%TALK: Local tangent space alignment (LTSA) is a method for manifold learning, which can efficiently learn a nonlinear embedding into low-dimensional coordinates from high-dimensional data, and can also reconstruct high-dimensional coordinates from embedding coordinates [1].
+
+%from http://scikit-learn.org/stable/modules/manifold.html
+%Not technically, but algorithmically LTSA is similar to LLE
+%Though not technically a variant of LLE, Local tangent space alignment (LTSA) is algorithmically similar enough to LLE that it can be put in this category. 
+Unlike LLE that tries to preserve neighbourhood distances, LTSA tries to capture the local geometry at each neighbourhood via its tangent space, and performs a global optimization to align these local tangent spaces to learn the embedding, ie the global coordinates of the data points with respect to the underlying manifold [REFERENCE].
+
+%by constructing an approximation for the tangent space at each data point, and those tangent spaces are then aligned to give the global coordinates of the data points with respect to the underlying manifold
+
+It is based on the intuition that when a manifold is correctly unfolded, all of the tangent hyperplanes to the manifold will become aligned. 
+The algorithm can be sketched by the following steps:
+\begin{itemize}
+	\item compute the d-first principal components in each local neighborhood
+	\item based on that, compute an approximation of the tangent space at every point 
+	\item optimise to find an embedding that aligns the tangent spaces
+\end{itemize}
+
+We present a new algorithm for manifold learning and nonlinear dimensionality reduction. Based on a set of unorganized data points sampled with noise from a parameterized manifold, the local geometry of the manifold is learned by constructing an approximation for the tangent space at each data point, and those tangent spaces are then aligned to give the global coordinates of the data points with respect to the underlying manifold. We also present an error analysis of our algorithm showing that 
+
+%PRO:
+%reconstruction errors can be quite small in some cases. We illustrate our algorithm using curves and surfaces both in two-dimensional/three-dimensional (2D/3D) Euclidean spaces and in higher-dimensional Euclidean spaces. We also address several theoretical and algorithmic issues for further research and improvements.
+
+
+%1. Nearest Neighbours Search
+%2. Weight Matrix Construction
+%3. PArtial Eigenvalue Decomposition
+
+%Main article: Local tangent space alignment
+
+
+
+
+%%----------------------------------------------------------------------------------------------------------------------------------------
+\hfill
+\subsubsection{Diffusion maps and other methods}
+%\subsubsection{Diffusion maps}
+%REFERENCE: www.pnas.org/content/102/21/7426
+
+Other methods such as \textit{Diffusion maps} [REFERENCE] and \textit{Diffeomorphic Dimensionality Reduction}, or \textit{Diffeomaps} or other variants of the LLE, have been development. 
+Diffusion maps exploit the relationship between the heat diffusion and a random walk or Markov Chain; 
+%PRO: 
+they seem to be robust to noise in the data as opposed to methods that use geodesic distance and its calculation of distance seemes to serve as a better notion of proximity than just Euclidean distance or even geodesic distance [REFERENCE].
+
+Diffeomaps try to learn a smooth diffeomorphic mapping for the data from the high-dimensional onto the lower-dimensional space. However, these need a little bit more explanation and understanding on the mathematical side. \\
+
+Also Bayesian Gaussian Process Latent Variable Models (BGPLVM), that were used in [REFERENCE: HOPLAND PAPER], are other interesting probabilistic DR that use Gaussian processes to find a lower-dimensional non-linear embedding of high-dimensional data. For more information, we refer to Madeleine Hall's individual report.
+
+
+%"Autoencoders:
+%An autoencoder is a feed-forward neural netowork which is trained to approximate the identity function.
+%That is, it is trained to map from a vector of values to the same vector. When used for dimensionality reduction purposes, one of the hidden layers in the network is limited to contain only a small number of network units. Thus, the network must learn to encode the vector into a small number of dimensions and then decode it back into the original space. Thus, the first half of the network is a model which maps from high to low-dimensional space, and the second half maps from low to high-dimensional space. Although the idea of autoencoders is quite old, training of deep autoencoders has only recently become possible through the use of restricted Boltzmann machines and stacked denoising autoencoders. Related to autoencoders is the NeuroScale algorithm, which uses stress functions inspired by multidimensional scaling and Sammon mappings (see below) to learn a non-linear mapping from the high-dimensional to the embedded space. The mappings in NeuroScale are based on radial basis function networks. "
+
+
+%Gaussian process latent variable models
+%
+%Gaussian process latent variable models (GPLVM)[11] are probabilistic dimensionality reduction methods that use Gaussian Processes (GPs) to find a lower dimensional non-linear embedding of high dimensional data. They are an extension of the Probabilistic formulation of PCA. The model is defined probabilistically and the latent variables are then marginalized and parameters are obtained by maximizing the likelihood. Like kernel PCA they use a kernel function to form a non linear mapping (in the form of a Gaussian process). However, in the GPLVM the mapping is from the embedded(latent) space to the data space (like density networks and GTM) whereas in kernel PCA it is in the opposite direction. It was originally proposed for visualization of high dimensional data but has been extended to construct a shared manifold model between two observation spaces. GPLVM and its many variants have been proposed specially for human motion modeling, e.g., back constrained GPLVM, GP dynamic model (GPDM), balanced GPDM (B-GPDM) and topologically constrained GPDM. To capture the coupling effect of the pose and gait manifolds in the gait analysis, a multi-layer joint gait-pose manifolds was proposed.[12]
+% SEE HOPLAND PAPER
+
+
+%\subsubsection{Nonlinear PCA}
+%Nonlinear PCA[40] (NLPCA) uses backpropagation to train a multi-layer perceptron (MLP) to fit to a manifold. Unlike typical MLP training, which only updates the weights, NLPCA updates both the weights and the inputs. That is, both the weights and inputs are treated as latent values. After training, the latent inputs are a low-dimensional representation of the observed vectors, and the MLP maps from that low-dimensional representation to the high-dimensional observation space.
+
+
+
+%This package defines a DiffMap type to represent a Hessian LLE results, and provides a set of methods to access its properties.
+
+%Diffusion maps leverages the relationship between heat diffusion and a random walk (Markov Chain); an analogy is drawn between the diffusion operator on a manifold and a Markov transition matrix operating on functions defined on the graph whose nodes were sampled from the manifold.[32] In particular let a data set be represented by X = [ x 1 , x 2 , … , x n ] ∈ Ω ⊂ R D {\displaystyle \mathbf {X} =[x_{1},x_{2},\ldots ,x_{n}]\in \Omega \subset \mathbf {R^{D}} } \mathbf {X} =[x_{1},x_{2},\ldots ,x_{n}]\in \Omega \subset \mathbf {R^{D}} . The underlying assumption of diffusion map is that the data although high-dimensional, lies on a low-dimensional manifold of dimensions d {\displaystyle \mathbf {d} } \mathbf {d} . Let X represent the data set and μ {\displaystyle \mu } \mu represent the distribution of the data points on X. In addition to this lets define a kernel which represents some notion of affinity of the points in X. The kernel k {\displaystyle {\mathit {k}}} {\mathit {k}} has the following properties[33]
+
+
+%%----------------------------------------------------------------------------------------------------------------------------------------
+%\subsubsection{Diffeomaps}
+
+%Diffeomorphic Dimensionality Reduction or Diffeomap[15] learns a smooth diffeomorphic mapping which transports the data onto a lower-dimensional linear subspace. The methods solves for a smooth time indexed vector field such that flows along the field which start at the data points will end at a lower-dimensional linear subspace, thereby attempting to preserve pairwise differences under both the forward and inverse mapping.
+
+% HOW IMPLEMENTED??
+
+%%%------------
+%\section{Single Cell data}
+%- Relationship between genes
+%
+%% refer for results of information measurement to maddies report
+
+%%%------------
+%\section{Single Cell data}
+%
+%sort data, statistics
+%boxplo
+%
+%%%------------
+%\section{Results of the landscapes}
+%
+%% 3D visualisation
+%% 2D visualisation + contour plot
+%
+%
+%
+%%%------------
+%\section{Biological context}
+%
+%
+%%%------------
+%\section{Discussion and outlook}
+
+
+
+
+
+%OPEN QUESTIONS, CONCLUSIONS.
