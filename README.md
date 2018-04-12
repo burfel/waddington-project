@@ -24,9 +24,25 @@ There is first an alternative, towards the right or the left. Along the former p
 
 ## Workflow
 
-![Workflow](pres/workflow.png?raw=true "Workflow")
+![Workflow](pres/workflow.png?raw=true "Workflow of the project")
 
-## Mathematical introduction on stochastic models and landscape formation
+## Mathematical introduction on stochastic models and landscape formation: </br>
+https://github.com/burfel/waddington-project/blob/master/pres/main.pdf
+
+From a stochastic system to an epigenetic landscape:
+* Some stochastic systems can be expressed in terms of a potential.
+* Potential functions are similar to epigenetic landscapes.
+
+A general stochastic model is of the form:
+
+<img src="https://latex.codecogs.com/svg.latex?\Large&space;x=dX_{t} = f(X_{t}, t)dt + g(X_{t}, t) dW_{t}" />
+
+and can be written as an ODE  
+
+<img src="https://latex.codecogs.com/svg.latex?\Large&space;x=\frac{dX_{t}}{dt} = f(X_{t}, t)" />
+
+in the limit of low noise (high copy numbers).
+
 
 ## Optional input: SBML file
 
