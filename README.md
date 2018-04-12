@@ -9,7 +9,9 @@ This project aim to develop a set of _Julia_ tools to explore the structure of s
 
 <!---![\Large x=\frac{-b\pm\sqrt{b^2-4ac}}{2a}](https://latex.codecogs.com/svg.latex?x%3D%5Cfrac%7B-b%5Cpm%5Csqrt%7Bb%5E2-4ac%7D%7D%7B2a%7D)--->
 
-## Structure
+## Workflow
+
+![Alt text](pres/workflow.png?raw=true "Workflow")
 
 ### Simulations
 #### Single-cell data
