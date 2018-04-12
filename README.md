@@ -16,32 +16,38 @@ We provide different tools and methods in Julia to <br/>
 
 The _Waddington_ or _epigenetic landscape_ provides a theoretical framework for cell development and differentiation. A figure and citation from Waddington's original paper [1]:
 
-![Part of the epigenetic landscape](pres/ball.PNG?raw=true "Part of the epigenetic landscape")
+![Part of the epigenetic landscape](pres/landscapeCitation.PNG?raw=true "Part of the epigenetic landscape")
+
+<--! ![Part of the epigenetic landscape](pres/ball.PNG?raw=true "Part of the epigenetic landscape")
 
 _"The path followed by the ball […] corresponds to the developmental history of a particular part of the egg.
-There is first an alternative, towards the right or the left. Along the former path, a second alternative is offered; along the path to the left, the main channel continues leftwards, but there is an alternative path which, however, can only be reached over a threshold"_ (Waddington, 1940).
+There is first an alternative, towards the right or the left. Along the former path, a second alternative is offered; along the path to the left, the main channel continues leftwards, but there is an alternative path which, however, can only be reached over a threshold"_ (Waddington, 1940). --->
 
 
 ## Workflow
 
 ![Workflow](pres/workflow.png?raw=true "Workflow of the project")
 
-## Mathematical introduction on stochastic models and landscape formation: </br>
-https://github.com/burfel/waddington-project/blob/master/pres/main.pdf
+## Mathematical introduction on stochastic models and landscape formation:
 
-From a stochastic system to an epigenetic landscape:
+The cell development process can be described by a general stochastic model:
+
+
+
+How do we get from a stochastic system to an epigenetic landscape?
 * Some stochastic systems can be expressed in terms of a potential.
 * Potential functions are similar to epigenetic landscapes.
 
 A general stochastic model is of the form:
 
-<img src="https://latex.codecogs.com/svg.latex?\Large&space;x=dX_{t} = f(X_{t}, t)dt + g(X_{t}, t) dW_{t}" />
+![A general stochastic model](pres/stochasticModel.png?raw=true "A general stochastic model")
 
-and can be written as an ODE  
+<!--- and can be written as an ODE  
+in the limit of noise (high copy numbers). --->
 
-<img src="https://latex.codecogs.com/svg.latex?\Large&space;x=\frac{dX_{t}}{dt} = f(X_{t}, t)" />
+![Decomposition of the forcing vector](pres/decomposition.png?raw=true "Decomposition of the forcing vector")
 
-in the limit of low noise (high copy numbers).
+
 
 
 ## Optional input: SBML file
@@ -59,7 +65,7 @@ in the limit of low noise (high copy numbers).
 ## Landscapes from single-cell data
 
 ## Dimensionality Reduction (DR)
-Different dimensionality reduction methods are used, ia linear methods such as PCA, SVD, PPCA as well as non-linear methods such as kernelPCA, MDS, ICA.
+Different dimensionality reduction methods are used, ia linear methods such as PCA, SVD, PPCA as well as non-linear methods such as Kernel PCA, MDS, ICA.
 
 <!---## Contributing
 _TODO_
@@ -75,7 +81,7 @@ _TODO_ --->
 * **Madeleine Hall**  -- [mgh17](https://github.com/mgh17)
 * **Luis Torada** --[lt2216](https://github.com/lt2216)
 
-See also the list of [contributors](https://github.com/waddle-project/contributors) who participated in this project.
+<!--- See also the list of [contributors](https://github.com/waddle-project/contributors) who participated in this project. --->
 
 <!--- ## License
 _TODO_ --->
@@ -84,8 +90,8 @@ _TODO_ --->
 * [JuliaDiffEq](https://github.com/JuliaDiffEq) and its contributors
 * [JuliaPlots](https://github.com/JuliaPlots) and its contributors
 <!---* Hat tip to anyone whose code was used --->
-* supervisor Prof Michael PH Stumpf for advice and guidance 
-* members of the Theoretical Systems Biology Group at IC London, especially Rowan Brackston and Ivan Croydon Veleslavov, for their help and expertise in both the topic and Julia 
+* Our supervisor Prof Michael PH Stumpf for advice and guidance 
+* The members of the Theoretical Systems Biology Group at IC London, especially Rowan Brackston and Ivan Croydon Veleslavov, for their help and expertise in both the topic and Julia 
 * Suhail A Islam for fixing technical issues 
 * Prof Michael Sternberg and others involved in conducting and overseeing the MSc in Bioinformatics and Theoretical Systems Biology at IC London
 
