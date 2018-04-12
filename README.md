@@ -16,9 +16,9 @@ We provide different tools and methods in Julia to <br/>
 
 The _Waddington_ or _epigenetic landscape_ provides a theoretical framework for cell development and differentiation. A figure and citation from Waddington's original paper [1]:
 
-![Part of the epigenetic landscape](pres/landscapeCitation.PNG?raw=true "Part of the epigenetic landscape")
+![Part of the epigenetic landscape](pres/landscapeCitation.png?raw=true "Part of the epigenetic landscape")
 
-<--! ![Part of the epigenetic landscape](pres/ball.PNG?raw=true "Part of the epigenetic landscape")
+<!--- ![Part of the epigenetic landscape](pres/ball.PNG?raw=true "Part of the epigenetic landscape")
 
 _"The path followed by the ball […] corresponds to the developmental history of a particular part of the egg.
 There is first an alternative, towards the right or the left. Along the former path, a second alternative is offered; along the path to the left, the main channel continues leftwards, but there is an alternative path which, however, can only be reached over a threshold"_ (Waddington, 1940). --->
@@ -30,15 +30,13 @@ There is first an alternative, towards the right or the left. Along the former p
 
 ## Mathematical introduction on stochastic models and landscape formation:
 
-The cell development process can be described by a general stochastic model:
-
-
+The cell development process can be described by a general stochastic model.
 
 How do we get from a stochastic system to an epigenetic landscape?
 * Some stochastic systems can be expressed in terms of a potential.
 * Potential functions are similar to epigenetic landscapes.
 
-A general stochastic model is of the form:
+<!--- A general stochastic model is of the form: --->
 
 ![A general stochastic model](pres/stochasticModel.png?raw=true "A general stochastic model")
 
