@@ -38,12 +38,12 @@ How do we get from a stochastic system to an epigenetic landscape?
 
 <!--- A general stochastic model is of the form: --->
 
-![A general stochastic model](pres/stochasticModel.png?raw=true "A general stochastic model")
+![A general stochastic model](pres/stochasticModel.png?raw=true "")
 
 <!--- and can be written as an ODE  
 in the limit of noise (high copy numbers). --->
 
-![Decomposition of the forcing vector](pres/decomposition.png?raw=true "Decomposition of the forcing vector")
+![](pres/decomposition.png?raw=true "Decomposition of the forcing vector")
 
 
 
