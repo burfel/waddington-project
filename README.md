@@ -4,6 +4,11 @@ The _Waddington_ or _epigenetic landscape_ provides a theoretical framework for 
 
 This project aim to develop a set of _Julia_ tools to explore the structure of such landscapes for a given model. We use single-cell data as well as simulated data.
 
+
+<img src="https://latex.codecogs.com/svg.latex?\Large&space;x=\frac{-b\pm\sqrt{b^2-4ac}}{2a}" title="\Large x=\frac{-b\pm\sqrt{b^2-4ac}}{2a}" />
+
+<!---![\Large x=\frac{-b\pm\sqrt{b^2-4ac}}{2a}](https://latex.codecogs.com/svg.latex?x%3D%5Cfrac%7B-b%5Cpm%5Csqrt%7Bb%5E2-4ac%7D%7D%7B2a%7D)--->
+
 ## Structure
 
 ### Simulations
@@ -20,8 +25,8 @@ Different dimensionality reduction methods are used, ia linear methods such as P
 _TODO_
 Please read [CONTRIBUTING.md] for details on our code of conduct, and the process for submitting pull requests to us.
 
-## Versioning
-_TODO_
+<!---## Versioning
+_TODO_ --->
 
 ## Authors
 
