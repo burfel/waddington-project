@@ -32,6 +32,7 @@ function KDE_reduction_2D(end_state, boundaries, nb_bin, dim1,dim2)
     function KDE(x1,x2,kernel="gaussian")
         sum = 0
 
+        # TODO: try out different kernel methods and compare results
         # uses the squared exponential, ie gaussian kernel
         if kernel=="gaussian"
             for i = 1:nb_sim
