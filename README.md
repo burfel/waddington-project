@@ -6,7 +6,7 @@ explore the structure of such landscapes for a given model. We use single-cell d
 
 We provide different tools and methods in Julia to <br/>
 (1) simulate, explore and analyse the landscape for a given model and <br/>
-(2) visualise the landscape certain genes or gene combinations (after applying dimensionality reduction) given a single-cell data set.
+(2) visualise the landscape of certain genes or gene combinations (after applying dimensionality reduction) given a single-cell data set.
 
 <!--- <img src="https://latex.codecogs.com/svg.latex?\Large&space;x=\frac{-b\pm\sqrt{b^2-4ac}}{2a}" title="\Large x=\frac{-b\pm\sqrt{b^2-4ac}}{2a}" /> --->
 
